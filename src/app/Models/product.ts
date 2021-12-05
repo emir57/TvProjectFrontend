@@ -1,12 +1,12 @@
 export interface Product{
-  Id:number;
-  ProductName:string;
-  ProductCode:string;
-  ScreenType:string;
-  ScreenInch:string;
-  Extras:string;
-  BrandId:number;
-  UnitPrice:Float32Array;
-  Discount:number;
-  IsDiscount:boolean;
+  id:number;
+  productName:string;
+  productCode:string;
+  screenType:string;
+  screenInch:string;
+  extras:string;
+  brandId:number;
+  unitPrice:Float32Array;
+  discount:number;
+  isDiscount:boolean;
 }
