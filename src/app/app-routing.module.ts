@@ -4,6 +4,7 @@ import { CategoryComponent } from './Components/User/category/category.component
 import { LoginComponent } from './Components/User/login/login.component';
 import { ProductComponent } from './Components/User/product/product.component';
 import { RegisterComponent } from './Components/User/register/register.component';
+import { SecurityGuard } from './Guards/security.guard';
 
 const routes: Routes = [
   {path:"",component:ProductComponent},
