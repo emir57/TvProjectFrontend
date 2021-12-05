@@ -1,7 +1,10 @@
+<!-- <div class="display-6" *ngIf="currentCategory">{{currentCategory.name}}</div> -->
+
 <ul class="list-group">
-  <li class="list-group-item" routerLink="/products">Tüm Kategoriler</li>
-  <li class="list-group-item" *ngFor="let category of categories"
-  routerLink="/products/category/{{category.id}}">
+  <li (click)="clearCategory()" [ngClass]="getAllCategoryClass()" routerLink="/products">Tüm Ürünler</li>
+  <li  *ngFor="let category of categories"
+    [ngClass]="getCurrentCategoryClass(category)" routerLink="/products/category/{{category.id}}"
+    (click)="setCurrentCategory(category)">
     {{category.name}}
   </li>
 </ul>

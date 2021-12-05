@@ -33,9 +33,8 @@ export class ProductComponent implements OnInit {
   }
   getProducts() {
     this.activatedRoute.params.subscribe(param => {
-      console.log(param["categoryId"])
-      if(param["categoryId"]) {
 
+      if(param["categoryId"]) {
         this.productService.getProductsByCategory(param["categoryId"])
           .subscribe(response => {
             this.products = response.data;
@@ -49,5 +48,7 @@ export class ProductComponent implements OnInit {
   getImageUrl(){
     return this.apiUrl;
   }
+
+
 
 }
