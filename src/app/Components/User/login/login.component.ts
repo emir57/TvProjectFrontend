@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators,FormControl,ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm:FormGroup
   constructor(
     private formBuilder:FormBuilder,
-    private authService:AuthService
+    private authService:AuthService,
+    private toastrService:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -33,8 +35,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel)
         .subscribe(response=>{
           if(response.isSuccess){
-            console.log("Giriş başarılı");
-            console.log(response)
+            this.toastrService.success(response.message)
           }
         },responseErr=>{
           console.log(responseErr)
