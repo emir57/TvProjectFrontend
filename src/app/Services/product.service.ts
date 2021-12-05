@@ -18,5 +18,9 @@ export class ProductService {
       let newPath = `${this.apiUrl}/api/tvs/getall`;
       return this.httpClient.get<ResponseListModel<ProductAndPhoto>>(newPath);
     }
+    getProductsByCategory(id:number):Observable<ResponseListModel<ProductAndPhoto>>{
+      let newPath = `${this.apiUrl}/api/tvs/getbycategoryid?id=${id}`;
+      return this.httpClient.get<ResponseListModel<ProductAndPhoto>>(newPath);
+    }
 
 }
