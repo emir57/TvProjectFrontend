@@ -1,3 +1,14 @@
+<img width="100%" src="{{getImageUrl()}}/images/main-home-page.jpg" alt="">
+
+<!-- <div class="row">
+  <div class="col-4"></div>
+  <div class="col-8">
+    <img width="80%" src="{{getImageUrl()}}/images/lg-home-page.jpg" alt="">
+    <img width="80%" src="{{getImageUrl()}}/images/lg-home-page.jpg" alt="">
+    <img width="80%" src="{{getImageUrl()}}/images/lg-home-page.jpg" alt="">
+  </div>
+</div> -->
+
 <div class="container">
   <div class="row">
     <div class="col-2">
@@ -12,12 +23,18 @@
           <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl">
           <div class="card-body">
             <h5 class="card-title">{{product.productName}}</h5>
+            <p *ngIf="product.productCode" class="card-text">Ürün Kodu {{product.productCode}}</p>
+            <p class="card-text">{{product.screenType}} {{product.screenInch}}</p>
             <p class="card-text">{{product.extras}}</p>
+
+          </div>
+          <div class="card-footer">
+            <p class="card-text"><span class="text-muted"><del>{{product.unitPrice | currency:'TRY'}}</del></span> {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} <span *ngIf="product.isDiscount" class=" badge rounded-pill bg-danger">-%{{product.discount}}</span></p>
+
             <a href="#" class="btn btn-primary">Hemen Satın Al</a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 

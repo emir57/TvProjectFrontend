@@ -6,7 +6,7 @@ export interface Product{
   screenInch:string;
   extras:string;
   brandId:number;
-  unitPrice:Float32Array;
+  unitPrice:number;
   discount:number;
   isDiscount:boolean;
 }
