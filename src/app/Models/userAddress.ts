@@ -1,6 +1,6 @@
 export interface UserAddress{
-  Id:number;
-  UserId:number;
-  AddressText:string;
-  CityId:number;
+  id:number;
+  userId:number;
+  addressText:string;
+  cityId:number;
 }

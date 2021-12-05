@@ -1,4 +1,4 @@
 export interface City{
-  Id:number;
-  CityName:string;
+  id:number;
+  cityName:string;
 }

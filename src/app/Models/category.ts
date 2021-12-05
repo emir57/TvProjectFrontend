@@ -1,6 +1,6 @@
 export interface Category{
-  Id:number;
-  Name:string;
-  PhoneNumber:string;
-  Address:string;
+  id:number;
+  mame:string;
+  phoneNumber:string;
+  address:string;
 }

@@ -1,7 +1,7 @@
 export interface UserCreditCard{
-  Id:number;
-  UserId:number;
-  CreditCardNumber:string;
-  CVV:string;
-  Date:string;
+  id:number;
+  userId:number;
+  creditCardNumber:string;
+  cVV:string;
+  date:string;
 }
