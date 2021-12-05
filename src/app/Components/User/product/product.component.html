@@ -1,8 +1,19 @@
-<div class="card" style="width: 18rem;" *ngFor="let product of products">
-  <img [src]="product.imageUrl" class="card-img-top" [alt]="product.imageUrl">
-  <div class="card-body">
-    <h5 class="card-title">{{product.productName}}</h5>
-    <p class="card-text">{{product.extras}}</p>
-    <a href="#" class="btn btn-primary">Hemen Satın Al</a>
+<div class="row">
+  <div class="col-3">
+
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div class="card m-1" style="width: 18rem;" *ngFor="let product of products">
+        <img [src]="product.imageUrl" class="card-img-top" [alt]="product.imageUrl">
+        <div class="card-body">
+          <h5 class="card-title">{{product.productName}}</h5>
+          <p class="card-text">{{product.extras}}</p>
+          <a href="#" class="btn btn-primary">Hemen Satın Al</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
+
