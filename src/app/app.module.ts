@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { DiscountPipe } from './pipes/discount.pipe';
 import { FooterComponent } from './Components/User/footer/footer.component';
+import { LoginComponent } from './Components/User/login/login.component';
+import { RegisterComponent } from './Components/User/register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { FooterComponent } from './Components/User/footer/footer.component';
     NavbarComponent,
     DiscountPipe,
     FooterComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
