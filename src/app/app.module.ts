@@ -10,6 +10,7 @@ import { NavbarComponent } from './Components/User/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { DiscountPipe } from './pipes/discount.pipe';
+import { FooterComponent } from './Components/User/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DiscountPipe } from './pipes/discount.pipe';
     ProductComponent,
     NavbarComponent,
     DiscountPipe,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
