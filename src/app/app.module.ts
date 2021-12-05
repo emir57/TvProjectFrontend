@@ -14,6 +14,8 @@ import { FooterComponent } from './Components/User/footer/footer.component';
 import { LoginComponent } from './Components/User/login/login.component';
 import { RegisterComponent } from './Components/User/register/register.component';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,15 +25,18 @@ import { RegisterComponent } from './Components/User/register/register.component
     NavbarComponent,
     DiscountPipe,
     FooterComponent,
-    LoginComponent,
     RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
