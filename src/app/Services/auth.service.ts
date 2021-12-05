@@ -7,6 +7,7 @@ import { AuthResponseModel } from '../Models/authResponseModel';
 import { LoginModel } from '../Models/loginModel';
 import { RegisterModel } from '../Models/registerModel';
 import { ResponseModel } from '../Models/responseModel';
+import { User } from '../Models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,17 @@ export class AuthService {
   register(registerModel: RegisterModel): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/auth/register`;
     return this.httpClient.post<ResponseModel>(newPath, registerModel);
+  }
+
+  userCheck(user:User){
+    let newPath = `${this.apiUrl}/api/auth/checkuser`;
+    this.httpClient.post<ResponseModel>(newPath,user)
+      .subscribe(response=>{
+        if(response.isSuccess){
+          this.isLogin=true;
+        }
+      })
+      this.isLogin=false;
   }
 
   isAuthenticated(){

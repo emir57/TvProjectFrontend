@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/Models/user';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createLoginForm();
+
   }
 
   createLoginForm() {
