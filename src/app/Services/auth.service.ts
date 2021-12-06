@@ -53,4 +53,10 @@ export class AuthService {
   isAuthenticated(){
     return this.isLogin;
   }
+
+  logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    this.isLogin=false;
+  }
 }
