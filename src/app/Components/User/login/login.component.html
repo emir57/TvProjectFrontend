@@ -17,7 +17,7 @@
       <div class="text text-danger" *ngIf="loginForm.get('email').errors.required">Eposta alanı zorunlu</div>
       <div class="text text-danger" *ngIf="loginForm.get('email').errors.email">Geçersiz eposta</div>
       <div class="text text-danger" *ngIf="loginForm.get('password').errors.required">Şifre alanı zorunlu</div>
-      <div class="text text-danger" *ngIf="loginForm.get('password').errors.required">Şifre minimum 5 karakter olabilir</div>
+      <div class="text text-danger" *ngIf="loginForm.get('password').errors.minlength">Şifre minimum 5 karakter olabilir</div>
     </div>
 
     <div class="checkbox mb-3">

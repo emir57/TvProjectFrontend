@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
@@ -7,6 +8,7 @@ import { AuthResponseModel } from '../Models/authResponseModel';
 import { LoginModel } from '../Models/loginModel';
 import { RegisterModel } from '../Models/registerModel';
 import { ResponseModel } from '../Models/responseModel';
+import { ResponseSingleModel } from '../Models/responseSingleModel';
 import { User } from '../Models/user';
 
 @Injectable({
@@ -17,26 +19,33 @@ export class AuthService {
   apiUrl = ApiUrl
   constructor(
     private httpClient: HttpClient,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private router:Router
   ) { }
   isLogin=false;
 
   login(loginModel: LoginModel,rememberMe:boolean) {
     let newPath = `${this.apiUrl}/api/auth/login`;
-    return this.httpClient.post<AuthResponseModel>(newPath, loginModel)
+    return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
         if(rememberMe){
-          localStorage.setItem("token", response.accessToken.token)
-          localStorage.setItem("user", JSON.stringify(response.user))
+          localStorage.setItem("token", response.data.accessToken.token)
+          localStorage.setItem("user", JSON.stringify(response.data.user))
         }else{
-          sessionStorage.setItem("token", response.accessToken.token)
-          sessionStorage.setItem("user", JSON.stringify(response.user))
+          sessionStorage.setItem("token", response.data.accessToken.token)
+          sessionStorage.setItem("user", JSON.stringify(response.data.user))
         }
-
+        console.log(response)
+        if(!response.isSuccess){
+          console.log(response.message)
+          this.toastrService.error(response.message)
+        }
         this.toastrService.success("Giriş Başarılı")
         this.isLogin=true;
+        this.router.navigate(["/"])
       }, responseErr => {
         console.log(responseErr)
+        this.toastrService.error(responseErr.error.message)
       })
   }
 
@@ -63,6 +72,8 @@ export class AuthService {
   logout(){
     localStorage.removeItem("token")
     localStorage.removeItem("user")
+    sessionStorage.removeItem("token")
+    sessionStorage.removeItem("user")
     this.isLogin=false;
   }
 }
