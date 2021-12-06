@@ -23,7 +23,7 @@
           <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl">
           <div class="card-body">
             <h5 class="card-title">{{product.productName}}</h5>
-            <p *ngIf="product.productCode" class="card-text">Ürün Kodu {{product.productCode}}</p>
+            <p  class="card-text">Ürün Kodu: <span *ngIf="product.productCode">{{product.productCode}}</span><span class="text-muted" *ngIf="!product.productCode">Belirtilmedi</span></p>
             <p class="card-text">{{product.screenType}} {{product.screenInch}}</p>
             <p class="card-text">{{product.extras}}</p>
 
