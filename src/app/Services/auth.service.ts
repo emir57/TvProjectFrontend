@@ -21,12 +21,18 @@ export class AuthService {
   ) { }
   isLogin=false;
 
-  login(loginModel: LoginModel) {
+  login(loginModel: LoginModel,rememberMe:boolean) {
     let newPath = `${this.apiUrl}/api/auth/login`;
     return this.httpClient.post<AuthResponseModel>(newPath, loginModel)
       .subscribe(response => {
-        localStorage.setItem("token", response.accessToken.token)
-        localStorage.setItem("user", JSON.stringify(response.user))
+        if(rememberMe){
+          localStorage.setItem("token", response.accessToken.token)
+          localStorage.setItem("user", JSON.stringify(response.user))
+        }else{
+          sessionStorage.setItem("token", response.accessToken.token)
+          sessionStorage.setItem("user", JSON.stringify(response.user))
+        }
+
         this.toastrService.success("Giriş Başarılı")
         this.isLogin=true;
       }, responseErr => {

@@ -26,16 +26,17 @@ export class LoginComponent implements OnInit {
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      rememberMe:[false]
     })
 
   }
 
   login() {
     if (this.loginForm.valid) {
+      let rememberMe=this.loginForm.get("rememberMe").value;
       let loginModel = Object.assign({}, this.loginForm.value);
-      this.authService.login(loginModel)
-
+      this.authService.login(loginModel,rememberMe)
     }
   }
 
