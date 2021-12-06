@@ -19,32 +19,31 @@ export class AuthService {
   apiUrl = ApiUrl
   constructor(
     private httpClient: HttpClient,
-    private toastrService:ToastrService,
-    private router:Router
+    private toastrService: ToastrService,
+    private router: Router
   ) { }
-  isLogin=false;
+  isLogin = false;
 
-  login(loginModel: LoginModel,rememberMe:boolean) {
+  login(loginModel: LoginModel, rememberMe: boolean) {
     let newPath = `${this.apiUrl}/api/auth/login`;
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
-        if(rememberMe){
+        if (rememberMe) {
           localStorage.setItem("token", response.data.accessToken.token)
           localStorage.setItem("user", JSON.stringify(response.data.user))
-        }else{
+        } else {
           sessionStorage.setItem("token", response.data.accessToken.token)
           sessionStorage.setItem("user", JSON.stringify(response.data.user))
         }
-        console.log(response)
-        if(!response.isSuccess){
+        if (response.isSuccess) {
+          this.toastrService.success(response.message)
+          this.isLogin = true;
+          this.router.navigate(["/"])
+        } else {
           console.log(response.message)
           this.toastrService.error(response.message)
         }
-        this.toastrService.success("Giriş Başarılı")
-        this.isLogin=true;
-        this.router.navigate(["/"])
       }, responseErr => {
-        console.log(responseErr)
         this.toastrService.error(responseErr.error.message)
       })
   }
@@ -54,26 +53,26 @@ export class AuthService {
     return this.httpClient.post<ResponseModel>(newPath, registerModel);
   }
 
-  userCheck(user:User){
+  userCheck(user: User) {
     let newPath = `${this.apiUrl}/api/auth/checkuser`;
-    this.httpClient.post<ResponseModel>(newPath,user)
-      .subscribe(response=>{
-        if(response.isSuccess){
-          this.isLogin=true;
+    this.httpClient.post<ResponseModel>(newPath, user)
+      .subscribe(response => {
+        if (response.isSuccess) {
+          this.isLogin = true;
         }
       })
-      this.isLogin=false;
+    this.isLogin = false;
   }
 
-  isAuthenticated(){
+  isAuthenticated() {
     return this.isLogin;
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem("token")
     localStorage.removeItem("user")
     sessionStorage.removeItem("token")
     sessionStorage.removeItem("user")
-    this.isLogin=false;
+    this.isLogin = false;
   }
 }
