@@ -24,7 +24,7 @@
         <div class="card m-1" style="width: 18rem;" *ngFor="let product of products | productSearch:searchString">
           <!-- <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl"> -->
           <!-- Carousel Start -->
-          <div [id]="getCarouselId(product)" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel">
+          <div [id]="getCarouselId(product)" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div *ngFor="let photo of product.photos" [class]="photocheck(photo)">
                 <img src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
@@ -56,3 +56,4 @@
   </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
 import { ProductSearchPipe } from './pipes/product-search.pipe';
+import { SliderModule } from 'angular-image-slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { ProductSearchPipe } from './pipes/product-search.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SliderModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"

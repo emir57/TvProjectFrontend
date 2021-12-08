@@ -65,8 +65,11 @@ export class ProductComponent implements OnInit {
     return `#carousel${product.id}`
   }
 
-  click(product:Product){
-    console.log(product)
+  getImages(photos:Photo[]){
+    let photosUrl:string[]=[]
+    photos.forEach(photo=>photosUrl.push(`${this.apiUrl}${photo.imageUrl}`))
+    console.log(photosUrl)
+    return photosUrl;
   }
 
 
