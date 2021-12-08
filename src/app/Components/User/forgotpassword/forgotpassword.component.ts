@@ -42,7 +42,7 @@ export class ForgotpasswordComponent implements OnInit {
           }
           this.isSend=true;
         },responseErr=>{
-          console.log(responseErr)
+          this.isSend=true;
         })
     }
   }
