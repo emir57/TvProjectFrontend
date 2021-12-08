@@ -29,7 +29,9 @@
         <input formControlName="rememberMe" type="checkbox" value="remember-me"> Beni Hatırla
       </label>
     </div>
-    <button [disabled]="!(loginForm.valid)" class="w-100 btn btn-lg btn-primary" (click)="login()">Giriş yap</button>
+    <button [disabled]="!(loginForm.valid)" class="w-100 btn btn-lg btn-primary" (click)="login()">
+      Giriş yap
+    </button>
     <a routerLink="/register">Hesabın yok mu? Hemen kayıt ol</a>
     <br>
     <a routerLink="/forgotpassword">Şifremi unuttum</a>
