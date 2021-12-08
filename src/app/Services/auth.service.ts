@@ -9,6 +9,7 @@ import { LoginModel } from '../Models/loginModel';
 import { RegisterModel } from '../Models/registerModel';
 import { ResponseModel } from '../Models/responseModel';
 import { ResponseSingleModel } from '../Models/responseSingleModel';
+import { SendMailModel } from '../Models/sendMailModel';
 import { User } from '../Models/user';
 
 @Injectable({
@@ -74,5 +75,11 @@ export class AuthService {
     sessionStorage.removeItem("token")
     sessionStorage.removeItem("user")
     this.isLogin = false;
+  }
+
+  sendMail(email:SendMailModel):Observable<ResponseModel>{
+    let newPath = `${this.apiUrl}/api/auth/sendemail`
+    return this.httpClient.post<ResponseModel>(newPath,email)
+
   }
 }
