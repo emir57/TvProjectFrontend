@@ -7,6 +7,7 @@ import { ApiUrl } from '../Models/apiUrl';
 import { AuthResponseModel } from '../Models/authResponseModel';
 import { LoginModel } from '../Models/loginModel';
 import { RegisterModel } from '../Models/registerModel';
+import { ResetPasswordModel } from '../Models/resetPasswordModel';
 import { ResponseModel } from '../Models/responseModel';
 import { ResponseSingleModel } from '../Models/responseSingleModel';
 import { SendMailModel } from '../Models/sendMailModel';
@@ -81,5 +82,9 @@ export class AuthService {
     let newPath = `${this.apiUrl}/api/auth/sendemail`
     return this.httpClient.post<ResponseModel>(newPath,email)
 
+  }
+  resetPassword(resetModel:ResetPasswordModel):Observable<ResponseModel>{
+    let newPath = `${this.apiUrl}/api/auth/resetpassword`;
+    return this.httpClient.post<ResponseModel>(newPath,resetModel);
   }
 }
