@@ -38,6 +38,7 @@ export class AuthService {
           sessionStorage.setItem("user", JSON.stringify(response.data.user))
         }
         if (response.isSuccess) {
+          this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
           this.isLogin = true;
           this.router.navigate(["/"])

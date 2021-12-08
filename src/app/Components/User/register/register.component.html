@@ -42,7 +42,10 @@
         <input formControlName="agreement" type="checkbox" value="subscribe"> Sözleşmeyi Okudum
       </label>
     </div>
-    <button (click)="register()" class="w-100 btn btn-lg btn-primary" type="submit">Kayıt Ol</button>
+    <button [disabled]="!isLoad" [disabled]="!registerForm.valid" (click)="register()" class="w-100 btn btn-lg btn-primary" type="submit">
+      <span *ngIf="!isLoad" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Kayıt Ol
+    </button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>

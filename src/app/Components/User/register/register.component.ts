@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,9 +11,13 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, Valid
 })
 export class RegisterComponent implements OnInit {
 
+  isLoad=true;
   registerForm: FormGroup
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService:AuthService,
+    private toastrService:ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +36,22 @@ export class RegisterComponent implements OnInit {
 
   register(){
     if(this.registerForm.valid && this.registerForm.get('agreement').value){
-      console.log("başarılı")
+      this.isLoad=false;
+      let registerModel = Object.assign({},this.registerForm.value);
+      this.authService.register(registerModel)
+        .subscribe(response=>{
+          if(response.isSuccess){
+            this.toastrService.success(response.message);
+            this.isLoad=true;
+            this.router.navigate(["login"]);
+          }
+          else{
+            this.toastrService.error(response.message);
+          }
+          this.isLoad=true;
+        },responseErr=>{
+          console.log(responseErr)
+        })
     }
   }
 

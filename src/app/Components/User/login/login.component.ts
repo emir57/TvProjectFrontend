@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      this.toastrService.info("Giriş Yapılıyor...")
       let rememberMe=this.loginForm.get("rememberMe").value;
       let loginModel = Object.assign({}, this.loginForm.value);
       this.authService.login(loginModel,rememberMe)
