@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private authService:AuthService
+    private authService:AuthService,
+    private toastrService:ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -20,7 +22,9 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
+    this.toastrService.info("Çıkış Yapılıyor...")
     this.authService.logout();
+    this.toastrService.success("Başarıyla Çıkış Yapıldı")
   }
 
 }
