@@ -4,7 +4,6 @@ import { ApiUrl } from 'src/app/Models/apiUrl';
 import { Product } from 'src/app/Models/product';
 import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
 import { ProductService } from 'src/app/Services/product.service';
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -13,6 +12,7 @@ import { ProductService } from 'src/app/Services/product.service';
 export class ProductComponent implements OnInit {
 
   apiUrl = ApiUrl
+  searchString="";
   products: ProductAndPhoto[] = [];
   constructor(
     private productService: ProductService,

@@ -1,12 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Product } from '../Models/product';
 
 @Pipe({
   name: 'productSearch'
 })
 export class ProductSearchPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: Product[], searchString:string): Product[] {
+    searchString = searchString ?? searchString.toLocaleLowerCase()
+    return value.filter(
+      product=>product.productName.toLocaleLowerCase().indexOf(searchString)!==-1 ||
+      product.screenInch.indexOf(searchString)!==-1 ||
+      product.extras.toLocaleLowerCase().indexOf(searchString)!==-1
+        )
   }
 
 }

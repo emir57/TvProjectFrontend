@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-2">
       <h6 class="display-6">Ürün Ara</h6>
-      <input type="text" class="form-control mb-1">
+      <input [(ngModel)]="searchString" type="text" class="form-control mb-1">
       <app-category></app-category>
     </div>
     <div class="col-10">
@@ -21,7 +21,7 @@
         <div class="alert alert-info" align="center" *ngIf="products.length==0">
           Bu Kategoride Henüz Ürünümüz Yok.
         </div>
-        <div class="card m-1" style="width: 18rem;" *ngFor="let product of products">
+        <div class="card m-1" style="width: 18rem;" *ngFor="let product of products | productSearch:searchString">
           <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl">
           <div class="card-body">
             <h5 class="card-title">{{product.productName}}</h5>
