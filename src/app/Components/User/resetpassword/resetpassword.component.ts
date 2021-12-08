@@ -62,6 +62,7 @@ export class ResetpasswordComponent implements OnInit {
           },responseErr=>{
             console.log(responseErr)
             this.toastrService.error(responseErr.error)
+            this.isLoad=true;
           }
         )
     }
