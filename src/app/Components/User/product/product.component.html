@@ -22,17 +22,32 @@
           Bu Kategoride Henüz Ürünümüz Yok.
         </div>
         <div class="card m-1" style="width: 18rem;" *ngFor="let product of products | productSearch:searchString">
-          <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl">
+          <!-- <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl"> -->
+          <!-- Carousel Start -->
+          <div [id]="getCarouselId(product)" class="carousel slide" data-bs-touch="true" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div *ngFor="let photo of product.photos" [class]="photocheck(photo)">
+                <img src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
+              </div>
+            </div>
+            <button (click)="click(product)" class="carousel-control-prev" type="button" data-bs-target="{{getCarouselButtonId(product)}}" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Geri</span>
+            </button>
+            <button (click)="click(product)" class="carousel-control-next" type="button" data-bs-target="{{getCarouselButtonId(product)}}" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">İleri</span>
+            </button>
+          </div>
+          <!-- Carousel End -->
           <div class="card-body">
             <h5 class="card-title">{{product.productName}}</h5>
             <p  class="card-text">Ürün Kodu: <span *ngIf="product.productCode">{{product.productCode}}</span><span class="text-muted" *ngIf="!product.productCode">Belirtilmedi</span></p>
             <p class="card-text">{{product.screenType}} {{product.screenInch}}</p>
             <p class="card-text">{{product.extras}}</p>
-
           </div>
           <div class="card-footer">
             <p class="card-text"><span class="text-muted"><del *ngIf="product.isDiscount">{{product.unitPrice | currency:'TRY'}}</del></span> {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} <span *ngIf="product.isDiscount" class=" badge rounded-pill bg-danger">-%{{product.discount}}</span></p>
-
             <a href="#" class="btn btn-primary">Hemen Satın Al</a>
           </div>
         </div>

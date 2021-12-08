@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
     if(localStorage.getItem('user')){
       this.user = JSON.parse(localStorage.getItem('user'))
       this.authService.userCheck(this.user)
-    }else{
+    }else if(sessionStorage.getItem('user')){
       this.user = JSON.parse(sessionStorage.getItem('user'))
       this.authService.userCheck(this.user)
     }

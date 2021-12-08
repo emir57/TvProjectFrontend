@@ -15,7 +15,7 @@ export class ProductService {
     private httpClient:HttpClient
   ) { }
     getProducts():Observable<ResponseListModel<ProductAndPhoto>>{
-      let newPath = `${this.apiUrl}/api/tvs/getall`;
+      let newPath = `${this.apiUrl}/api/tvs/gettvdetail`;
       return this.httpClient.get<ResponseListModel<ProductAndPhoto>>(newPath);
     }
     getProductsByCategory(id:number):Observable<ResponseListModel<ProductAndPhoto>>{

@@ -1,3 +1,5 @@
+import { Photo } from "./photo";
+
 export interface Product{
   id:number;
   productName:string;
@@ -9,4 +11,5 @@ export interface Product{
   unitPrice:number;
   discount:number;
   isDiscount:boolean;
+  photos:Photo[]
 }

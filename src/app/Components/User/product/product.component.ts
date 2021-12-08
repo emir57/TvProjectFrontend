@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiUrl } from 'src/app/Models/apiUrl';
+import { Photo } from 'src/app/Models/photo';
 import { Product } from 'src/app/Models/product';
 import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
 import { ProductService } from 'src/app/Services/product.service';
@@ -47,6 +48,25 @@ export class ProductComponent implements OnInit {
 
   getImageUrl(){
     return this.apiUrl;
+  }
+
+  photocheck(photo:Photo){
+    if(photo.isMain==true){
+      return "carousel-item active"
+    }else{
+      return "carousel-item"
+    }
+  }
+
+  getCarouselId(product:Product){
+    return `carousel${product.id}`
+  }
+  getCarouselButtonId(product:Product){
+    return `#carousel${product.id}`
+  }
+
+  click(product:Product){
+    console.log(product)
   }
 
 
