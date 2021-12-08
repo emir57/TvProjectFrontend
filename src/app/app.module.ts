@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
+import { ProductSearchPipe } from './pipes/product-search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { ResetpasswordComponent } from './Components/User/resetpassword/resetpas
     RegisterComponent,
     LoginComponent,
     ForgotpasswordComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    ProductSearchPipe
   ],
   imports: [
     BrowserModule,
