@@ -24,7 +24,9 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   send(){
+    if(this.forgotPasswordForm.valid){
 
+    }
   }
 
 }

@@ -5,6 +5,7 @@ import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgot
 import { LoginComponent } from './Components/User/login/login.component';
 import { ProductComponent } from './Components/User/product/product.component';
 import { RegisterComponent } from './Components/User/register/register.component';
+import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
 import { SecurityGuard } from './Guards/security.guard';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"forgotpassword",component:ForgotpasswordComponent},
+  {path:"resetpassword/:id",component:ResetpasswordComponent},
   // {path:"categories",component:CategoryComponent},
 ];
 
