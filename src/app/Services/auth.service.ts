@@ -34,10 +34,10 @@ export class AuthService {
       .subscribe(response => {
         if (rememberMe) {
           localStorage.setItem("token", response.data.accessToken.token)
-          localStorage.setItem("user", JSON.stringify(response.data.user))
+          localStorage.setItem("user", JSON.stringify(response.data.user.id))
         } else {
           sessionStorage.setItem("token", response.data.accessToken.token)
-          sessionStorage.setItem("user", JSON.stringify(response.data.user))
+          sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
         }
         if (response.isSuccess) {
           this.toastrService.info("Giriş Yapılıyor...")
