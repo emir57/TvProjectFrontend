@@ -106,7 +106,16 @@ export class AuthService {
   getUserRoles(id:number):Observable<ResponseListModel<Role>>{
     let newPath = `${ApiUrl}/api/auth/getroles/?id=${id}`;
     return this.httpClient.get<ResponseListModel<Role>>(newPath)
-
   }
+  isInRole(roles:Role[],roleName:string):boolean{
+    let inRole = false;
+    roles.forEach(role => {
+      if (role.name == roleName) {
+        inRole = true;
+      }
+    });
+    return inRole;
+  }
+
 
 }

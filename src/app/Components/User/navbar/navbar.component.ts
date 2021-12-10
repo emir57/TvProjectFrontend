@@ -47,13 +47,7 @@ export class NavbarComponent implements OnInit {
 
   }
   isInRoleAdmin(roleName: string): boolean {
-    let inRole = false;
-    this.roles.forEach(role => {
-      if (role.name == roleName) {
-        inRole = true;
-      }
-    });
-    return inRole;
+    return this.authService.isInRole(this.roles,roleName);
   }
 
 }
