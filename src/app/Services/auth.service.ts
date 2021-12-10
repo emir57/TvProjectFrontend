@@ -91,13 +91,19 @@ export class AuthService {
     return this.httpClient.post<ResponseModel>(newPath, resetModel);
   }
 
-  getLoginUser(): User {
+  getLoginUser(): Observable<ResponseSingleModel<User>> {
+    if(!this.isAuthenticated()){
+      return;
+    }
+    let path = `${this.apiUrl}/api/auth/getuser/?id=`;
     let sessionUser = sessionStorage.getItem("user");
     let localUser = localStorage.getItem("user");
     if (sessionUser) {
-      return JSON.parse(sessionUser);
+      path = `${path}${sessionUser}`
+      return this.httpClient.get<ResponseSingleModel<User>>(path)
     } else if (localUser) {
-      return JSON.parse(localUser);
+      path = `${path}${localUser}`
+      return this.httpClient.get<ResponseSingleModel<User>>(path)
     }
   }
 
@@ -114,6 +120,5 @@ export class AuthService {
     let roles: Role[] = []
     let newPath = `${ApiUrl}/api/auth/getroles/?id=${id}`;
     return this.httpClient.get<ResponseListModel<Role>>(newPath)
-
   }
 }
