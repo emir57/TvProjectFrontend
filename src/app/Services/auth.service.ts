@@ -88,4 +88,17 @@ export class AuthService {
     let newPath = `${this.apiUrl}/api/auth/resetpassword`;
     return this.httpClient.post<ResponseModel>(newPath,resetModel);
   }
+
+  getLoginUser():User{
+    let sessionUser = sessionStorage.getItem("user");
+    let localUser = localStorage.getItem("user");
+    if(this.isAuthenticated()){
+      if(sessionUser){
+        return JSON.parse(sessionUser);
+      }else if(localUser){
+        return JSON.parse(localUser);
+      }
+      return null;
+    }
+  }
 }
