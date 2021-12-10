@@ -13,44 +13,44 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private authService:AuthService,
-    private toastrService:ToastrService
+    private authService: AuthService,
+    private toastrService: ToastrService
   ) { }
 
-  currentUser:User;
-  roles:Role[]=[]
+  currentUser: User;
+  roles: Role[] = []
   userPhoto = `${ApiUrl}/images/user.png`
   ngOnInit(): void {
     this.currentUser = this.getUser();
     this.getUserRoles();
   }
 
-  isLogin(){
+  isLogin() {
     return this.authService.isAuthenticated();
   }
 
-  logout(){
+  logout() {
     this.toastrService.info("Çıkış Yapılıyor...")
     this.authService.logout();
     this.toastrService.success("Başarıyla Çıkış Yapıldı")
   }
-  getUser():User{
+  getUser(): User {
     return this.authService.getLoginUser();
   }
-  getUserRoles(){
+  getUserRoles() {
     this.authService.getUserRoles(this.currentUser.id)
-      .subscribe(response=>{
-        if(response.isSuccess){
+      .subscribe(response => {
+        if (response.isSuccess) {
           this.roles = response.data
-          console.log(this.roles)
         }
       })
+
   }
-  isInRoleAdmin(roleName:string):boolean{
-    let inRole=false;
+  isInRoleAdmin(roleName: string): boolean {
+    let inRole = false;
     this.roles.forEach(role => {
-      if(role.name==roleName){
-        inRole=true;
+      if (role.name == roleName) {
+        inRole = true;
       }
     });
     return inRole;

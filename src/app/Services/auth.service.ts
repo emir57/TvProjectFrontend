@@ -106,5 +106,7 @@ export class AuthService {
   getUserRoles(id:number):Observable<ResponseListModel<Role>>{
     let newPath = `${ApiUrl}/api/auth/getroles/?id=${id}`;
     return this.httpClient.get<ResponseListModel<Role>>(newPath)
+
   }
+
 }
