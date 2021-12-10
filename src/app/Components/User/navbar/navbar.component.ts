@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrl } from 'src/app/Models/apiUrl';
+import { Role } from 'src/app/Models/role';
 import { User } from 'src/app/Models/user';
 import { AuthService } from 'src/app/Services/auth.service';
 
@@ -17,10 +18,11 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   currentUser:User;
+  roles:Role[]=[]
   userPhoto = `${ApiUrl}/images/user.png`
   ngOnInit(): void {
     this.currentUser = this.getUser();
-    console.log(this.currentUser)
+    this.getUserRoles();
   }
 
   isLogin(){
@@ -34,6 +36,24 @@ export class NavbarComponent implements OnInit {
   }
   getUser():User{
     return this.authService.getLoginUser();
+  }
+  getUserRoles(){
+    this.authService.getUserRoles(this.currentUser.id)
+      .subscribe(response=>{
+        if(response.isSuccess){
+          this.roles = response.data
+          console.log(this.roles)
+        }
+      })
+  }
+  isInRoleAdmin(roleName:string):boolean{
+    let inRole=false;
+    this.roles.forEach(role => {
+      if(role.name==roleName){
+        inRole=true;
+      }
+    });
+    return inRole;
   }
 
 }

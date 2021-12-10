@@ -8,8 +8,10 @@ import { AuthResponseModel } from '../Models/authResponseModel';
 import { LoginModel } from '../Models/loginModel';
 import { RegisterModel } from '../Models/registerModel';
 import { ResetPasswordModel } from '../Models/resetPasswordModel';
+import { ResponseListModel } from '../Models/responseListModel';
 import { ResponseModel } from '../Models/responseModel';
 import { ResponseSingleModel } from '../Models/responseSingleModel';
+import { Role } from '../Models/role';
 import { SendMailModel } from '../Models/sendMailModel';
 import { User } from '../Models/user';
 
@@ -100,5 +102,9 @@ export class AuthService {
       }
       return null;
     }
+  }
+  getUserRoles(id:number):Observable<ResponseListModel<Role>>{
+    let newPath = `${ApiUrl}/api/auth/getroles/?id=${id}`;
+    return this.httpClient.get<ResponseListModel<Role>>(newPath)
   }
 }
