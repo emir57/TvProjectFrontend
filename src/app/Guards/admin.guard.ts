@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Role } from '../Models/role';
 import { User } from '../Models/user';
 import { AuthService } from '../Services/auth.service';
@@ -16,42 +16,39 @@ export class AdminGuard implements CanActivate {
     private authService: AuthService,
     private router: Router
   ) {
-    this.getUser();
-    this.getRoles();
+
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-
-    console.log(this.roles)
-    return false
-    // this.authService.getUserRoles(this.currentUser.id).subscribe(response => {
-    //   if (response.isSuccess) {
-    //     this.roles = response.data
-    //   }
-    // }, responseErr => {
-    // }, () => {
-    //   console.log(this.isInRoleAdmin())
-    //   if (this.isInRoleAdmin()) {
-    //     return true;
-    //   }
-    //   return false;
-    // })
-    // return false;
+    const result = new Subject<boolean>();
+    this.getUser().subscribe(response => {
+      this.currentUser = response.data
+    }, responseErr => { },
+      () => {
+        this.getRoles().subscribe(response => {
+          if (response.isSuccess) {
+            response.data.forEach(role => {
+              if (role.name == "Admin") {
+                result.next(true);
+                result.complete();
+                return result.asObservable();
+              }
+            })
+          }
+          result.next(false);
+          result.complete();
+          // this.router.navigate(["login"])
+        })
+      })
+    return result;
   }
   getRoles() {
-    this.authService.getUserRoles(this.currentUser.id).subscribe(response => {
-      if (response.isSuccess) {
-        this.roles = response.data;
-      }
-    })
+    return this.authService.getUserRoles(this.currentUser.id)
   }
   getUser() {
     if (this.authService.isAuthenticated()) {
-      this.authService.getLoginUser().subscribe(response=>{
-        this.currentUser=response.data
-      })
+      return this.authService.getLoginUser()
     }
   }
   isInRoleAdmin(): boolean {
