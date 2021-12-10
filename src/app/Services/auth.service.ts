@@ -28,7 +28,7 @@ export class AuthService {
   ) { }
   isLogin = false;
 
-  login(loginModel: LoginModel, rememberMe: boolean) {
+  async login(loginModel: LoginModel, rememberMe: boolean) {
     let newPath = `${this.apiUrl}/api/auth/login`;
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
@@ -81,33 +81,27 @@ export class AuthService {
     this.isLogin = false;
   }
 
-  sendMail(email:SendMailModel):Observable<ResponseModel>{
+  sendMail(email: SendMailModel): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/auth/sendemail`
-    return this.httpClient.post<ResponseModel>(newPath,email)
+    return this.httpClient.post<ResponseModel>(newPath, email)
 
   }
-  resetPassword(resetModel:ResetPasswordModel):Observable<ResponseModel>{
+  resetPassword(resetModel: ResetPasswordModel): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/auth/resetpassword`;
-    return this.httpClient.post<ResponseModel>(newPath,resetModel);
+    return this.httpClient.post<ResponseModel>(newPath, resetModel);
   }
 
-  getLoginUser():User{
+  getLoginUser(): User {
     let sessionUser = sessionStorage.getItem("user");
     let localUser = localStorage.getItem("user");
-    if(this.isAuthenticated()){
-      if(sessionUser){
-        return JSON.parse(sessionUser);
-      }else if(localUser){
-        return JSON.parse(localUser);
-      }
-      return null;
+    if (sessionUser) {
+      return JSON.parse(sessionUser);
+    } else if (localUser) {
+      return JSON.parse(localUser);
     }
   }
-  getUserRoles(id:number):Observable<ResponseListModel<Role>>{
-    let newPath = `${ApiUrl}/api/auth/getroles/?id=${id}`;
-    return this.httpClient.get<ResponseListModel<Role>>(newPath)
-  }
-  isInRole(roles:Role[],roleName:string):boolean{
+
+  isInRole(roles: Role[], roleName: string): boolean {
     let inRole = false;
     roles.forEach(role => {
       if (role.name == roleName) {
@@ -116,6 +110,10 @@ export class AuthService {
     });
     return inRole;
   }
+  getUserRoles(id: number): Observable<ResponseListModel<Role>> {
+    let roles: Role[] = []
+    let newPath = `${ApiUrl}/api/auth/getroles/?id=${id}`;
+    return this.httpClient.get<ResponseListModel<Role>>(newPath)
 
-
+  }
 }

@@ -20,6 +20,7 @@ import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgot
 import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
 import { ProductSearchPipe } from './pipes/product-search.pipe';
 import { SliderModule } from 'angular-image-slider';
+import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { SliderModule } from 'angular-image-slider';
     LoginComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
-    ProductSearchPipe
+    ProductSearchPipe,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

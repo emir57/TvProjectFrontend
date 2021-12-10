@@ -20,9 +20,11 @@ export class NavbarComponent implements OnInit {
   currentUser: User;
   roles: Role[] = []
   userPhoto = `${ApiUrl}/images/user.png`
+  isAdmin=false;
   ngOnInit(): void {
-    this.currentUser = this.getUser();
-    this.getUserRoles();
+    this.getUser();
+    this.getRoles();
+    this.isAdmin = this.isInRoleAdmin();
   }
 
   isLogin() {
@@ -34,20 +36,21 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.toastrService.success("Başarıyla Çıkış Yapıldı")
   }
-  getUser(): User {
-    return this.authService.getLoginUser();
-  }
-  getUserRoles() {
-    this.authService.getUserRoles(this.currentUser.id)
-      .subscribe(response => {
-        if (response.isSuccess) {
-          this.roles = response.data
-        }
-      })
 
+  getRoles(){
+    this.authService.getUserRoles(this.currentUser.id).subscribe(response=>{
+      if(response.isSuccess){
+        this.roles=response.data
+      }
+    })
   }
-  isInRoleAdmin(roleName: string): boolean {
-    return this.authService.isInRole(this.roles,roleName);
+  getUser() {
+    if (this.authService.isAuthenticated()) {
+      this.currentUser = this.authService.getLoginUser();
+    }
+  }
+  isInRoleAdmin():boolean{
+    return this.authService.isInRole(this.roles,"Admin");
   }
 
 }

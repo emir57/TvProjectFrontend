@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
 import { CategoryComponent } from './Components/User/category/category.component';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './Components/User/login/login.component';
 import { ProductComponent } from './Components/User/product/product.component';
 import { RegisterComponent } from './Components/User/register/register.component';
 import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
+import { AdminGuard } from './Guards/admin.guard';
 import { SecurityGuard } from './Guards/security.guard';
 
 const routes: Routes = [
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path:"register",component:RegisterComponent},
   {path:"forgotpassword",component:ForgotpasswordComponent},
   {path:"resetpassword/:key",component:ResetpasswordComponent},
+
+  {path:"admindashboard",component:AdminDashboardComponent,canActivate:[AdminGuard]},
   // {path:"categories",component:CategoryComponent},
 ];
 
