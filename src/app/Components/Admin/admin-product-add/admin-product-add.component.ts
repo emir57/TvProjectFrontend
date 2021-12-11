@@ -57,6 +57,9 @@ export class AdminProductAddComponent implements OnInit {
           this.toastrService.success(response.message);
           this.productAddForm.reset;
         }
+      },responseErr=>{
+        console.log(responseErr)
+        this.toastrService.error(responseErr.error.Message)
       })
     }
   }
