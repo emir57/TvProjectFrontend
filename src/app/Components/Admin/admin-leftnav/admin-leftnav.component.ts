@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminPanelItem } from 'src/app/Models/adminPanelItem';
 import { AdminPanelItems } from 'src/app/Models/adminPanelItems';
+import { AdminPanelOperationItems } from 'src/app/Models/adminPanelOperationItems';
 
 @Component({
   selector: 'app-admin-leftnav',
@@ -10,13 +11,15 @@ import { AdminPanelItems } from 'src/app/Models/adminPanelItems';
 })
 export class AdminLeftnavComponent implements OnInit {
 
-  items: AdminPanelItem[] = []
+  items: AdminPanelItem[] = [];
+  operationItems:AdminPanelItem[]=[]
   constructor(
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.items = AdminPanelItems
+    this.operationItems=AdminPanelOperationItems
   }
 
   getItemClass(item:AdminPanelItem) {
