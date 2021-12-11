@@ -22,6 +22,7 @@ import { ProductSearchPipe } from './pipes/product-search.pipe';
 import { SliderModule } from 'angular-image-slider';
 import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
 import { AdminLeftnavComponent } from './Components/Admin/admin-leftnav/admin-leftnav.component';
+import { AdminNavbarComponent } from './Components/Admin/admin-navbar/admin-navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { AdminLeftnavComponent } from './Components/Admin/admin-leftnav/admin-le
     ResetpasswordComponent,
     ProductSearchPipe,
     AdminDashboardComponent,
-    AdminLeftnavComponent
+    AdminLeftnavComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
