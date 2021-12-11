@@ -32,7 +32,7 @@ const routes: Routes = [
   {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard]},
   {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard]},
   {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/productupdate",component:AdminProductUpdateComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/productupdate/:id",component:AdminProductUpdateComponent,canActivate:[AdminGuard]},
   // {path:"categories",component:CategoryComponent},
 ];
 

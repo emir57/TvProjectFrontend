@@ -16,8 +16,8 @@ export class ProductService {
   constructor(
     private httpClient:HttpClient
   ) { }
-    getProduct():Observable<ResponseSingleModel<Product>>{
-      let newPath = `${this.apiUrl}/api/tvs/get`;
+    getProduct(id:number):Observable<ResponseSingleModel<Product>>{
+      let newPath = `${this.apiUrl}/api/tvs/get/?id=${id}`;
       return this.httpClient.get<ResponseSingleModel<Product>>(newPath);
     }
     getProducts():Observable<ResponseListModel<ProductAndPhoto>>{
