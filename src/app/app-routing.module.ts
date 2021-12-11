@@ -18,8 +18,11 @@ const routes: Routes = [
   {path:"register",component:RegisterComponent},
   {path:"forgotpassword",component:ForgotpasswordComponent},
   {path:"resetpassword/:key",component:ResetpasswordComponent},
-
+  //Admin Panels
   {path:"admindashboard",component:AdminDashboardComponent,canActivate:[AdminGuard]},
+  {path:"adminproducts",component:AdminDashboardComponent,canActivate:[AdminGuard]},
+  {path:"admindorders",component:AdminDashboardComponent,canActivate:[AdminGuard]},
+  {path:"admincustomers",component:AdminDashboardComponent,canActivate:[AdminGuard]},
   // {path:"categories",component:CategoryComponent},
 ];
 

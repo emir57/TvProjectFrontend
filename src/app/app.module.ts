@@ -23,6 +23,9 @@ import { SliderModule } from 'angular-image-slider';
 import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
 import { AdminLeftnavComponent } from './Components/Admin/admin-leftnav/admin-leftnav.component';
 import { AdminNavbarComponent } from './Components/Admin/admin-navbar/admin-navbar.component';
+import { AdminProductsComponent } from './Components/Admin/admin-products/admin-products.component';
+import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orders.component';
+import { AdminCustomersComponent } from './Components/Admin/admin-customers/admin-customers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,10 @@ import { AdminNavbarComponent } from './Components/Admin/admin-navbar/admin-navb
     ProductSearchPipe,
     AdminDashboardComponent,
     AdminLeftnavComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    AdminProductsComponent,
+    AdminOrdersComponent,
+    AdminCustomersComponent
   ],
   imports: [
     BrowserModule,
