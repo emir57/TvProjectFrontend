@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminCustomersComponent } from './Components/Admin/admin-customers/admin-customers.component';
 import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
+import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './Components/Admin/admin-products/admin-products.component';
 import { CategoryComponent } from './Components/User/category/category.component';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './Components/User/login/login.component';
@@ -20,9 +23,9 @@ const routes: Routes = [
   {path:"resetpassword/:key",component:ResetpasswordComponent},
   //Admin Panels
   {path:"admindashboard",component:AdminDashboardComponent,canActivate:[AdminGuard]},
-  {path:"adminproducts",component:AdminDashboardComponent,canActivate:[AdminGuard]},
-  {path:"admindorders",component:AdminDashboardComponent,canActivate:[AdminGuard]},
-  {path:"admincustomers",component:AdminDashboardComponent,canActivate:[AdminGuard]},
+  {path:"adminproducts",component:AdminProductsComponent,canActivate:[AdminGuard]},
+  {path:"admindorders",component:AdminOrdersComponent,canActivate:[AdminGuard]},
+  {path:"admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard]},
   // {path:"categories",component:CategoryComponent},
 ];
 
