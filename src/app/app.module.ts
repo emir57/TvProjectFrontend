@@ -27,6 +27,7 @@ import { AdminProductsComponent } from './Components/Admin/admin-products/admin-
 import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orders.component';
 import { AdminCustomersComponent } from './Components/Admin/admin-customers/admin-customers.component';
 import { AdminBrandsComponent } from './Components/Admin/admin-brands/admin-brands.component';
+import { AdminProductAddComponent } from './Components/Admin/admin-product-add/admin-product-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { AdminBrandsComponent } from './Components/Admin/admin-brands/admin-bran
     AdminProductsComponent,
     AdminOrdersComponent,
     AdminCustomersComponent,
-    AdminBrandsComponent
+    AdminBrandsComponent,
+    AdminProductAddComponent
   ],
   imports: [
     BrowserModule,
