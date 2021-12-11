@@ -11,132 +11,165 @@
         <h1 class="h2 display-4">Ürün Güncelle</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminproducts">Geri Gel</button>
-            <button [disabled]="!isOk" [disabled]="!product" (click)="deleteProduct()" type="button" class="btn btn-sm btn-outline-danger">
+            <button type="button" class="btn btn-sm btn-outline-secondary"
+              routerLink="/admindashboard/adminproducts">Geri Gel</button>
+            <button [disabled]="!isOk" [disabled]="!product" (click)="deleteProduct()" type="button"
+              class="btn btn-sm btn-outline-danger">
               <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
               Bu Ürünü Sil
             </button>
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <!-- Form Start -->
-        <form [formGroup]="productUpdateForm" class="">
-          <div class="row">
-            <input formControlName="id" type="hidden">
-            <!-- Product Name -->
-            <div class="form-group col-6 mb-3">
-              <label for="productName">Ürün İsmi</label>
-              <input formControlName="productName" id="productName" type="text" class="form-control"
-                placeholder="Philips 50PUS/8505">
-              <div
-                *ngIf="(productUpdateForm.get('productName').dirty || productUpdateForm.get('productName').touched) && productUpdateForm.get('productName').errors">
-                <span *ngIf="productUpdateForm.get('productName').errors.required" class="text-danger">Ürün ismi gerekli
-                </span>
-                <span *ngIf="productUpdateForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi 50
-                  karakteri geçemez </span>
-                <span *ngIf="productUpdateForm.get('productName').errors.minlength" class="text-danger">Ürün ismi 5
-                  karakterden küçük olamaz </span>
+      <div class="row">
+        <div class="col-6">
+          <!-- Form Start -->
+          <form [formGroup]="productUpdateForm" class="">
+            <div class="row">
+              <input formControlName="id" type="hidden">
+              <!-- Product Name -->
+              <div class="form-group col-6 mb-3">
+                <label for="productName">Ürün İsmi</label>
+                <input formControlName="productName" id="productName" type="text" class="form-control"
+                  placeholder="Philips 50PUS/8505">
+                <div
+                  *ngIf="(productUpdateForm.get('productName').dirty || productUpdateForm.get('productName').touched) && productUpdateForm.get('productName').errors">
+                  <span *ngIf="productUpdateForm.get('productName').errors.required" class="text-danger">Ürün ismi
+                    gerekli
+                  </span>
+                  <span *ngIf="productUpdateForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi 50
+                    karakteri geçemez </span>
+                  <span *ngIf="productUpdateForm.get('productName').errors.minlength" class="text-danger">Ürün ismi 5
+                    karakterden küçük olamaz </span>
+                </div>
+              </div>
+              <!-- Product Code -->
+              <div class="form-group col-6 mb-3">
+                <label for="productCode">Ürün Kodu</label>
+                <input formControlName="productCode" id="productCode" type="text" class="form-control"
+                  placeholder="Philips 50PUS/8505">
+              </div>
+              <!-- Screen Type -->
+              <div class="form-group col-6 mb-3">
+                <label for="screenType">Ekran Türü</label>
+                <input formControlName="screenType" id="screenType" type="text" class="form-control" placeholder="OLED">
+                <div
+                  *ngIf="(productUpdateForm.get('screenType').dirty || productUpdateForm.get('screenType').touched) && productUpdateForm.get('screenType').errors">
+                  <span *ngIf="productUpdateForm.get('screenType').errors.required" class="text-danger">Ekran türü
+                    gerekli
+                  </span>
+                  <span *ngIf="productUpdateForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü 50
+                    karakteri geçemez</span>
+                </div>
+              </div>
+              <!-- Screen Inch -->
+              <div class="form-group col-6 mb-3">
+                <label for="screenInch">Inç</label>
+                <input formControlName="screenInch" id="screenInch" type="text" class="form-control" placeholder='50"'>
+                <div
+                  *ngIf="(productUpdateForm.get('screenInch').dirty || productUpdateForm.get('screenInch').touched) && productUpdateForm.get('screenInch').errors">
+                  <span *ngIf="productUpdateForm.get('screenInch').errors.required" class="text-danger">Inç gerekli
+                  </span>
+                  <span *ngIf="productUpdateForm.get('screenInch').errors.maxlength" class="text-danger">Inç 50
+                    karakteri
+                    geçemez</span>
+                </div>
+              </div>
+              <!-- Extras -->
+              <div class="form-group col-12 mb-3">
+                <label for="extras">Ekstra Özellikler</label>
+                <textarea formControlName="extras" id="extras" type="text" class="form-control"
+                  placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
+                <div
+                  *ngIf="(productUpdateForm.get('extras').dirty || productUpdateForm.get('extras').touched) && productUpdateForm.get('extras').errors">
+                  <span *ngIf="productUpdateForm.get('extras').errors.maxlength" class="text-danger">50 karakteri
+                    geçemez</span>
+                </div>
+              </div>
+              <!-- Brand -->
+              <div class="form-group col-12 mb-3">
+                <select formControlName="brandId" id="brandId" class="form-control">
+                  <option [value]="productUpdateForm.get('brandId').value">Marka Seçiniz</option>
+                  <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                </select>
+                <div
+                  *ngIf="(productUpdateForm.get('brandId').dirty || productUpdateForm.get('brandId').touched) && productUpdateForm.get('brandId').errors">
+                  <span *ngIf="productUpdateForm.get('brandId').errors.required" class="text-danger">Marka gerekli
+                  </span>
+                </div>
+              </div>
+              <!-- Unit Price -->
+              <div class="form-group col-6 mb-3">
+                <label for="unitPrice">Ürün Fiyatı</label>
+                <input formControlName="unitPrice" id="unitPrice" type="number" class="form-control" placeholder='5000'>
+                <div
+                  *ngIf="(productUpdateForm.get('unitPrice').dirty || productUpdateForm.get('unitPrice').touched) && productUpdateForm.get('unitPrice').errors">
+                  <span *ngIf="productUpdateForm.get('unitPrice').errors.required" class="text-danger">Ürün fiyatı
+                    gerekli
+                  </span>
+                  <span *ngIf="productUpdateForm.get('unitPrice').errors.min" class="text-danger">Minimum 500
+                    olabilir</span>
+                </div>
+              </div>
+              <!-- Discount -->
+              <div class="form-group col-6 mb-3">
+                <label for="unitPrice">İndirim Oranı %</label>
+                <input formControlName="discount" id="discount" type="number" class="form-control" placeholder='5'>
+              </div>
+              <!-- Stock -->
+              <div class="form-group col-12 mb-3">
+                <label for="stock">Stok Adedi</label>
+                <input formControlName="stock" id="stock" type="number" class="form-control" placeholder='3'>
+                <div
+                  *ngIf="(productUpdateForm.get('stock').dirty || productUpdateForm.get('stock').touched) && productUpdateForm.get('stock').errors">
+                  <span *ngIf="productUpdateForm.get('stock').errors.required" class="text-danger">Stok adedi boş
+                    olamaz</span>
+                  <span *ngIf="productUpdateForm.get('stock').errors.min" class="text-danger">En az 1 olabilir</span>
+                  <span *ngIf="productUpdateForm.get('stock').errors.max" class="text-danger">En fazla 255
+                    olabilir</span>
+                </div>
+              </div>
+              <!-- Is Discount ?-->
+              <div class="form-group col-6 mb-3">
+                <div class="form-check">
+                  <input formControlName="isDiscount" class="form-check-input" type="checkbox"
+                    [value]="productUpdateForm.get('isDiscount').value" id="isDiscount">
+                  <label class="form-check-label" for="isDiscount">
+                    İndirimli Mi?
+                  </label>
+                </div>
               </div>
             </div>
-            <!-- Product Code -->
-            <div class="form-group col-6 mb-3">
-              <label for="productCode">Ürün Kodu</label>
-              <input formControlName="productCode" id="productCode" type="text" class="form-control"
-                placeholder="Philips 50PUS/8505">
-            </div>
-            <!-- Screen Type -->
-            <div class="form-group col-6 mb-3">
-              <label for="screenType">Ekran Türü</label>
-              <input formControlName="screenType" id="screenType" type="text" class="form-control" placeholder="OLED">
-              <div
-                *ngIf="(productUpdateForm.get('screenType').dirty || productUpdateForm.get('screenType').touched) && productUpdateForm.get('screenType').errors">
-                <span *ngIf="productUpdateForm.get('screenType').errors.required" class="text-danger">Ekran türü gerekli
-                </span>
-                <span *ngIf="productUpdateForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü 50
-                  karakteri geçemez</span>
+          </form>
+          <!-- Form End -->
+          <button [disabled]="!isOk" (click)="updateProduct()" [disabled]="!productUpdateForm.valid"
+            class="btn btn-primary col-12 mb-3">
+            <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Kaydet
+          </button>
+        </div>
+        <div class="col-6">
+          <!-- Carousel Start -->
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div *ngFor="let photo of product.photos" class="carousel-item active">
+                <img src="{{apiUrl}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
               </div>
             </div>
-            <!-- Screen Inch -->
-            <div class="form-group col-6 mb-3">
-              <label for="screenInch">Inç</label>
-              <input formControlName="screenInch" id="screenInch" type="text" class="form-control" placeholder='50"'>
-              <div
-                *ngIf="(productUpdateForm.get('screenInch').dirty || productUpdateForm.get('screenInch').touched) && productUpdateForm.get('screenInch').errors">
-                <span *ngIf="productUpdateForm.get('screenInch').errors.required" class="text-danger">Inç gerekli </span>
-                <span *ngIf="productUpdateForm.get('screenInch').errors.maxlength" class="text-danger">Inç 50 karakteri
-                  geçemez</span>
-              </div>
-            </div>
-            <!-- Extras -->
-            <div class="form-group col-12 mb-3">
-              <label for="extras">Ekstra Özellikler</label>
-              <textarea formControlName="extras" id="extras" type="text" class="form-control"
-                placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
-              <div
-                *ngIf="(productUpdateForm.get('extras').dirty || productUpdateForm.get('extras').touched) && productUpdateForm.get('extras').errors">
-                <span *ngIf="productUpdateForm.get('extras').errors.maxlength" class="text-danger">50 karakteri
-                  geçemez</span>
-              </div>
-            </div>
-            <!-- Brand -->
-            <div class="form-group col-12 mb-3">
-              <select formControlName="brandId" id="brandId" class="form-control">
-                <option [value]="productUpdateForm.get('brandId').value">Marka Seçiniz</option>
-                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-              </select>
-              <div
-                *ngIf="(productUpdateForm.get('brandId').dirty || productUpdateForm.get('brandId').touched) && productUpdateForm.get('brandId').errors">
-                <span *ngIf="productUpdateForm.get('brandId').errors.required" class="text-danger">Marka gerekli </span>
-              </div>
-            </div>
-            <!-- Unit Price -->
-            <div class="form-group col-6 mb-3">
-              <label for="unitPrice">Ürün Fiyatı</label>
-              <input formControlName="unitPrice" id="unitPrice" type="number" class="form-control" placeholder='5000'>
-              <div
-                *ngIf="(productUpdateForm.get('unitPrice').dirty || productUpdateForm.get('unitPrice').touched) && productUpdateForm.get('unitPrice').errors">
-                <span *ngIf="productUpdateForm.get('unitPrice').errors.required" class="text-danger">Ürün fiyatı gerekli
-                </span>
-                <span *ngIf="productUpdateForm.get('unitPrice').errors.min" class="text-danger">Minimum 500 olabilir</span>
-              </div>
-            </div>
-            <!-- Discount -->
-            <div class="form-group col-6 mb-3">
-              <label for="unitPrice">İndirim Oranı %</label>
-              <input formControlName="discount" id="discount" type="number" class="form-control" placeholder='5'>
-            </div>
-            <!-- Stock -->
-            <div class="form-group col-12 mb-3">
-              <label for="stock">Stok Adedi</label>
-              <input formControlName="stock" id="stock" type="number" class="form-control" placeholder='3'>
-              <div
-                *ngIf="(productUpdateForm.get('stock').dirty || productUpdateForm.get('stock').touched) && productUpdateForm.get('stock').errors">
-                <span *ngIf="productUpdateForm.get('stock').errors.required" class="text-danger">Stok adedi boş
-                  olamaz</span>
-                <span *ngIf="productUpdateForm.get('stock').errors.min" class="text-danger">En az 1 olabilir</span>
-                <span *ngIf="productUpdateForm.get('stock').errors.max" class="text-danger">En fazla 255 olabilir</span>
-              </div>
-            </div>
-            <!-- Is Discount ?-->
-            <div class="form-group col-6 mb-3">
-              <div class="form-check">
-                <input formControlName="isDiscount" class="form-check-input" type="checkbox"
-                  [value]="productUpdateForm.get('isDiscount').value" id="isDiscount">
-                <label class="form-check-label" for="isDiscount">
-                  İndirimli Mi?
-                </label>
-              </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-        </form>
-        <!-- Form End -->
-        <button [disabled]="!isOk" (click)="updateProduct()" [disabled]="!productUpdateForm.valid" class="btn btn-primary col-12 mb-3">
-          <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          Kaydet
-        </button>
+          <!-- Carousel End -->
+        </div>
       </div>
     </main>
   </div>
 </div>
-

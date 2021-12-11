@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ApiUrl } from 'src/app/Models/apiUrl';
 import { Category } from 'src/app/Models/category';
 import { Product } from 'src/app/Models/product';
 import { CategoryService } from 'src/app/Services/category.service';
@@ -14,6 +15,7 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class AdminProductUpdateComponent implements OnInit {
 
+  apiUrl=ApiUrl
   isOk=true;
   productUpdateForm: FormGroup;
   categories: Category[] = [];
