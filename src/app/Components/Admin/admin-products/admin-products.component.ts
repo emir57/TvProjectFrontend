@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { ProductService } from 'src/app/Services/product.service';
 
@@ -11,7 +12,8 @@ export class AdminProductsComponent implements OnInit {
 
   products:Product[]=[];
   constructor(
-    private productService:ProductService
+    private productService:ProductService,
+    private Router:Router
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,10 @@ export class AdminProductsComponent implements OnInit {
     }else{
       return "text-danger"
     }
+  }
+  goUpdatePage(product:Product){
+    this.Router.navigate(["admindashboard/productupdate",JSON.stringify(product)])
+    // routerLink="/admindashboard/productupdate/{{product}}"
   }
 
 }
