@@ -6,6 +6,7 @@ import { Product } from '../Models/product';
 import { ProductAndPhoto } from '../Models/productAndPhoto';
 import { ResponseListModel } from '../Models/responseListModel';
 import { ResponseModel } from '../Models/responseModel';
+import { ResponseSingleModel } from '../Models/responseSingleModel';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class ProductService {
   constructor(
     private httpClient:HttpClient
   ) { }
+    getProduct():Observable<ResponseSingleModel<Product>>{
+      let newPath = `${this.apiUrl}/api/tvs/get`;
+      return this.httpClient.get<ResponseSingleModel<Product>>(newPath);
+    }
     getProducts():Observable<ResponseListModel<ProductAndPhoto>>{
       let newPath = `${this.apiUrl}/api/tvs/gettvdetail`;
       return this.httpClient.get<ResponseListModel<ProductAndPhoto>>(newPath);
