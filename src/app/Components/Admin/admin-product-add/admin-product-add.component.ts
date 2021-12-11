@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { $ } from 'protractor';
 import { Category } from 'src/app/Models/category';
 import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
@@ -13,7 +14,7 @@ import { ProductService } from 'src/app/Services/product.service';
 export class AdminProductAddComponent implements OnInit {
 
   productAddForm:FormGroup
-  brands:Category[]=[]
+  categories:Category[]=[]
   constructor(
     private formBuilder:FormBuilder,
     private productService:ProductService,
@@ -22,7 +23,11 @@ export class AdminProductAddComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.categoryService.getCategories().subscribe(response=>{
+      if(response.isSuccess){
+        this.categories = response.data;
+      }
+    })
     this.createAddproductForm();
   }
 
@@ -37,8 +42,14 @@ export class AdminProductAddComponent implements OnInit {
       unitPrice:['',[Validators.required,Validators.min(500)]],
       discount:['',[]],
       isDiscount:[false,[]],
-      stock:['',[Validators.required,Validators.min(1)]],
+      stock:['',[Validators.required,Validators.min(1),Validators.max(255)]],
     })
+  }
+
+  addProduct(){
+    if(this.productAddForm.valid){
+      console.log("Valid!");
+    }
   }
 
 }
