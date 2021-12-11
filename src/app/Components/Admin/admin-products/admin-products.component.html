@@ -9,6 +9,45 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 display-4">Ürünler</h1>
       </div>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Ürün Adı</th>
+                <th>Ürün Kodu</th>
+                <th>Ekran Tipi</th>
+                <th>Ekran Inch</th>
+                <th>Ekstra</th>
+                <th>Marka Id</th>
+                <th>Fiyat</th>
+                <th>Indirim %</th>
+                <th>Indirimli mi?</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{product.id}}</td>
+                <td>{{product.productName}}</td>
+                <td>
+                  <span *ngIf="product.productCode">{{product.productCode}}</span>
+                  <small class="text-muted" *ngIf="!product.productCode">Ürün Kodu Belirtilmedi</small>
+                </td>
+                <td>{{product.screenType}}</td>
+                <td>{{product.screenInch}}</td>
+                <td>{{product.extras}}</td>
+                <td>{{product.brandId}}</td>
+                <td>{{product.unitPrice | currency:"TRY"}}</td>
+                <td>{{product.discount}}</td>
+                <td>
+                  <span [class]="isDiscount(product)">{{product.isDiscount}}</span>
+                </td>
+                <td><a routerLink=""><i class="far fa-edit"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </main>
   </div>
 </div>
