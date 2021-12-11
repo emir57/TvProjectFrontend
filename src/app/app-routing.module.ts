@@ -4,6 +4,7 @@ import { AdminBrandsComponent } from './Components/Admin/admin-brands/admin-bran
 import { AdminCustomersComponent } from './Components/Admin/admin-customers/admin-customers.component';
 import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
 import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orders.component';
+import { AdminProductAddComponent } from './Components/Admin/admin-product-add/admin-product-add.component';
 import { AdminProductsComponent } from './Components/Admin/admin-products/admin-products.component';
 import { CategoryComponent } from './Components/User/category/category.component';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[AdminGuard]},
   {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard]},
   {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[AdminGuard]},
   // {path:"categories",component:CategoryComponent},
 ];
 
