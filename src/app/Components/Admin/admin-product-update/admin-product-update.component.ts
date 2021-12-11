@@ -65,5 +65,13 @@ export class AdminProductUpdateComponent implements OnInit {
 
     }
   }
+  deleteProduct(){
+    this.productService.deleteProduct(this.product).subscribe(response=>{
+      if(response.isSuccess){
+        this.toastrService.success(response.message);
+        this.router.navigate(["admindashboard/adminproducts"])
+      }
+    })
+  }
 
 }
