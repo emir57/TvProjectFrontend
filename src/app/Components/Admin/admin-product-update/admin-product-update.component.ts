@@ -14,6 +14,7 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class AdminProductUpdateComponent implements OnInit {
 
+  isOk=true;
   productUpdateForm: FormGroup;
   categories: Category[] = [];
   product: Product;
@@ -62,10 +63,21 @@ export class AdminProductUpdateComponent implements OnInit {
 
   updateProduct() {
     if (this.productUpdateForm.valid) {
-
+      this.isOk=false;
+      let productModel = Object.assign({},this.productUpdateForm.value);
+      this.productService.updateProduct(productModel).subscribe(response=>{
+        if(response.isSuccess){
+          this.toastrService.success(response.message);
+          this.isOk=true;
+          this.router.navigate(["admindashboard/productupdate",JSON.stringify(productModel)])
+        }
+      },responseErr=>{
+        this.toastrService.error(responseErr.error.Message)
+      })
     }
   }
   deleteProduct(){
+    this.isOk=false;
     this.productService.deleteProduct(this.product).subscribe(response=>{
       if(response.isSuccess){
         this.toastrService.success(response.message);

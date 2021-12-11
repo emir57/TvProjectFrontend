@@ -12,7 +12,10 @@
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminproducts">Geri Gel</button>
-            <button [disabled]="!product" (click)="deleteProduct()" type="button" class="btn btn-sm btn-outline-danger">Bu Ürünü Sil</button>
+            <button [disabled]="!isOk" [disabled]="!product" (click)="deleteProduct()" type="button" class="btn btn-sm btn-outline-danger">
+              <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Bu Ürünü Sil
+            </button>
           </div>
         </div>
       </div>
@@ -128,7 +131,10 @@
           </div>
         </form>
         <!-- Form End -->
-        <button (click)="updateProduct()" [disabled]="!productUpdateForm.valid" class="btn btn-primary col-12 mb-3">Kaydet</button>
+        <button [disabled]="!isOk" (click)="updateProduct()" [disabled]="!productUpdateForm.valid" class="btn btn-primary col-12 mb-3">
+          <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Kaydet
+        </button>
       </div>
     </main>
   </div>
