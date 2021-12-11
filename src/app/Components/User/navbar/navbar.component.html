@@ -38,7 +38,7 @@
         <div class="dropdown" *ngIf="isLogin()">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{userPhoto}}" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>{{currentUser.firstName}} {{currentUser.lastName}}</strong>
+            <strong *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</strong>
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser2">
             <li *ngIf="isInRoleAdmin()"><a class="dropdown-item" routerLink="admindashboard">Admin Paneli</a></li>
@@ -47,7 +47,6 @@
             <li><a class="dropdown-item text-danger" href="#" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
           </ul>
         </div>
-
       </div>
     </div>
   </div>

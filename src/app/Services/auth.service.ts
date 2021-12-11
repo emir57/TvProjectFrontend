@@ -32,20 +32,19 @@ export class AuthService {
     let newPath = `${this.apiUrl}/api/auth/login`;
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
-        if (rememberMe) {
-          localStorage.setItem("token", response.data.accessToken.token)
-          localStorage.setItem("user", JSON.stringify(response.data.user.id))
-        } else {
-          sessionStorage.setItem("token", response.data.accessToken.token)
-          sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
-        }
         if (response.isSuccess) {
+          if (rememberMe) {
+            localStorage.setItem("token", response.data.accessToken.token)
+            localStorage.setItem("user", JSON.stringify(response.data.user.id))
+          } else {
+            sessionStorage.setItem("token", response.data.accessToken.token)
+            sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
+          }
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
           this.isLogin = true;
           this.router.navigate(["/"])
         } else {
-          console.log(response.message)
           this.toastrService.error(response.message)
         }
       }, responseErr => {
@@ -58,9 +57,9 @@ export class AuthService {
     return this.httpClient.post<ResponseModel>(newPath, registerModel);
   }
 
-  userCheck(user: User) {
-    let newPath = `${this.apiUrl}/api/auth/checkuser`;
-    this.httpClient.post<ResponseModel>(newPath, user)
+  userCheck(userId: number) {
+    let newPath = `${this.apiUrl}/api/auth/getuser/?id=${userId}`;
+    this.httpClient.get<ResponseModel>(newPath)
       .subscribe(response => {
         if (response.isSuccess) {
           this.isLogin = true;

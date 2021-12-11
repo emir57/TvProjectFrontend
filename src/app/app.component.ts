@@ -8,7 +8,6 @@ import { AuthService } from './Services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  user:User;
   constructor(
     private authService:AuthService
   ){
@@ -17,12 +16,12 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     if(localStorage.getItem('user')){
-      this.user = JSON.parse(localStorage.getItem('user'))
-      this.authService.userCheck(this.user)
+      let userId = JSON.parse(localStorage.getItem('user'))
+      this.authService.userCheck(userId)
       this.authService.isLogin=true;
     }else if(sessionStorage.getItem('user')){
-      this.user = JSON.parse(sessionStorage.getItem('user'))
-      this.authService.userCheck(this.user)
+      let userId = JSON.parse(sessionStorage.getItem('user'))
+      this.authService.userCheck(userId)
       this.authService.isLogin=true;
     }
   }
