@@ -23,11 +23,12 @@ const routes: Routes = [
   {path:"forgotpassword",component:ForgotpasswordComponent},
   {path:"resetpassword/:key",component:ResetpasswordComponent},
   //Admin Panels
-  {path:"admindashboard",component:AdminDashboardComponent,canActivate:[AdminGuard]},
-  {path:"adminproducts",component:AdminProductsComponent,canActivate:[AdminGuard]},
-  {path:"admindorders",component:AdminOrdersComponent,canActivate:[AdminGuard]},
-  {path:"admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard]},
-  {path:"adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/home",component:AdminDashboardComponent,canActivate:[AdminGuard]},
+  // {path:"admindashboard/:section",component:AdminDashboardComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/adminproducts",component:AdminProductsComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard]},
   // {path:"categories",component:CategoryComponent},
 ];
 

@@ -1,7 +1,12 @@
 <nav id="sidebarMenu" class="col-3 col-lg-2 d-md-block bg-light sidebar collapse">
   <div class="position-sticky pt-3">
     <ul class="nav flex-column">
-      <li class="nav-item">
+      <li class="nav-item" *ngFor="let item of items">
+        <a [class]="getItemClass(item)" aria-current="page" [routerLink]="item.link">
+          <span [innerHtml]="item.displayName"></span>
+        </a>
+      </li>
+      <!-- <li class="nav-item">
         <a class="nav-link active" aria-current="page" routerLink="/admindashboard">
           <i class="fas fa-home"></i>
           Ana Sayfa
@@ -42,7 +47,7 @@
           <i class="fas fa-layer-group"></i>
           Entegrasyonlar
         </a>
-      </li>
+      </li> -->
     </ul>
 
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
