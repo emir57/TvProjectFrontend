@@ -58,7 +58,7 @@
                   geçemez</span>
               </div>
             </div>
-            <!-- Extrax -->
+            <!-- Extras -->
             <div class="form-group col-12 mb-3">
               <label for="extras">Ekstra Özellikler</label>
               <textarea formControlName="extras" id="extras" type="text" class="form-control"
@@ -72,6 +72,7 @@
             <!-- Brand -->
             <div class="form-group col-12 mb-3">
               <select formControlName="brandId" id="brandId" class="form-control">
+                <option [value]="productAddForm.get('brandId').value">Marka Seçiniz</option>
                 <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
               </select>
               <div
@@ -82,7 +83,7 @@
             <!-- Unit Price -->
             <div class="form-group col-6 mb-3">
               <label for="unitPrice">Ürün Fiyatı</label>
-              <input formControlName="unitPrice" id="unitPrice" type="text" class="form-control" placeholder='5000'>
+              <input formControlName="unitPrice" id="unitPrice" type="number" class="form-control" placeholder='5000'>
               <div
                 *ngIf="(productAddForm.get('unitPrice').dirty || productAddForm.get('unitPrice').touched) && productAddForm.get('unitPrice').errors">
                 <span *ngIf="productAddForm.get('unitPrice').errors.required" class="text-danger">Ürün fiyatı gerekli
@@ -93,12 +94,12 @@
             <!-- Discount -->
             <div class="form-group col-6 mb-3">
               <label for="unitPrice">İndirim Oranı %</label>
-              <input formControlName="discount" id="discount" type="text" class="form-control" placeholder='5'>
+              <input formControlName="discount" id="discount" type="number" class="form-control" placeholder='5'>
             </div>
-            <!-- Stock stock-->
+            <!-- Stock -->
             <div class="form-group col-12 mb-3">
               <label for="stock">Stok Adedi</label>
-              <input formControlName="stock" id="stock" type="text" class="form-control" placeholder='3'>
+              <input formControlName="stock" id="stock" type="number" class="form-control" placeholder='3'>
               <div
                 *ngIf="(productAddForm.get('stock').dirty || productAddForm.get('stock').touched) && productAddForm.get('stock').errors">
                 <span *ngIf="productAddForm.get('stock').errors.required" class="text-danger">Stok adedi boş
