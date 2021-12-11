@@ -50,7 +50,6 @@ export class AdminProductAddComponent implements OnInit {
   addProduct(){
     if(this.productAddForm.valid){
       this.productAddForm.get("brandId").setValue(+this.productAddForm.get("brandId").value)
-      console.log(this.productAddForm.value)
       let productModel:Product = Object.assign({},this.productAddForm.value);
       this.productService.addProduct(productModel).subscribe(response=>{
         if(response.isSuccess){
@@ -58,7 +57,6 @@ export class AdminProductAddComponent implements OnInit {
           this.productAddForm.reset;
         }
       },responseErr=>{
-        console.log(responseErr)
         this.toastrService.error(responseErr.error.Message)
       })
     }
