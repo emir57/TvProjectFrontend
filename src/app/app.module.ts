@@ -29,6 +29,7 @@ import { AdminCustomersComponent } from './Components/Admin/admin-customers/admi
 import { AdminBrandsComponent } from './Components/Admin/admin-brands/admin-brands.component';
 import { AdminProductAddComponent } from './Components/Admin/admin-product-add/admin-product-add.component';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
+import { AdminProductUpdateComponent } from './Components/Admin/admin-product-update/admin-product-update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
     AdminOrdersComponent,
     AdminCustomersComponent,
     AdminBrandsComponent,
-    AdminProductAddComponent
+    AdminProductAddComponent,
+    AdminProductUpdateComponent
   ],
   imports: [
     BrowserModule,
