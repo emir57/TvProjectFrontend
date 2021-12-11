@@ -11,5 +11,6 @@ export interface Product{
   unitPrice:number;
   discount:number;
   isDiscount:boolean;
-  photos:Photo[]
+  photos:Photo[],
+  stock:number;
 }
