@@ -8,7 +8,7 @@ import { CategoryComponent } from './Components/User/category/category.component
 import { ProductComponent } from './Components/User/product/product.component';
 import { NavbarComponent } from './Components/User/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { DiscountPipe } from './pipes/discount.pipe';
 import { FooterComponent } from './Components/User/footer/footer.component';
 import { LoginComponent } from './Components/User/login/login.component';
@@ -28,6 +28,7 @@ import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orde
 import { AdminCustomersComponent } from './Components/Admin/admin-customers/admin-customers.component';
 import { AdminBrandsComponent } from './Components/Admin/admin-brands/admin-brands.component';
 import { AdminProductAddComponent } from './Components/Admin/admin-product-add/admin-product-add.component';
+import { AuthInterceptor } from './Interceptors/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +64,9 @@ import { AdminProductAddComponent } from './Components/Admin/admin-product-add/a
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
