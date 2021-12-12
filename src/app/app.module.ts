@@ -30,7 +30,7 @@ import { AdminBrandsComponent } from './Components/Admin/admin-brands/admin-bran
 import { AdminProductAddComponent } from './Components/Admin/admin-product-add/admin-product-add.component';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { AdminProductUpdateComponent } from './Components/Admin/admin-product-update/admin-product-update.component';
-import { AdminUploaimageComponent } from './Components/Admin/admin-uploaimage/admin-uploaimage.component';
+import { AdminUploadimageComponent } from './Components/Admin/admin-uploadimage/admin-uploadimage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +54,7 @@ import { AdminUploaimageComponent } from './Components/Admin/admin-uploaimage/ad
     AdminBrandsComponent,
     AdminProductAddComponent,
     AdminProductUpdateComponent,
-    AdminUploaimageComponent,
+    AdminUploadimageComponent,
   ],
   imports: [
     BrowserModule,

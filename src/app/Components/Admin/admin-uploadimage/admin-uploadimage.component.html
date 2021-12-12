@@ -16,7 +16,15 @@
       </div>
       <div class="row">
         <div class="col-6">
-
+          <form [formGroup]="photoUploadForm" action="" enctype="multipart/form-data">
+            <div class="form-group mb-3">
+              <input type="text" placeholder="Ürün Ara" [(ngModel)]="searchString" class="form-control">
+              <select formControlName="tvId" class="form-control">
+                <option value="0">Ürün Seçiniz</option>
+                <option *ngFor="let product of products | productSearch:searchString" [value]="product.id">{{product.productName}}</option>
+              </select>
+            </div>
+          </form>
           <button [disabled]="!isOk" (click)="uploadImage()" [disabled]=""
             class="btn btn-primary col-12 mb-3">
             <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
