@@ -35,6 +35,7 @@ const routes: Routes = [
   {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard,ExpirationGuard]},
   {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[AdminGuard,ExpirationGuard]},
   {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/categoryupdate/:category",component:AdminProductUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
   {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[AdminGuard,ExpirationGuard]},
   // {path:"categories",component:CategoryComponent},
 ];

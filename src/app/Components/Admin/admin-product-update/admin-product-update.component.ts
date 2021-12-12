@@ -40,6 +40,7 @@ export class AdminProductUpdateComponent implements OnInit {
     this.createproductUpdateForm();
   }
 
+
   getCategories() {
     this.categoryService.getCategories().subscribe(response => {
       if (response.isSuccess) {
@@ -47,23 +48,6 @@ export class AdminProductUpdateComponent implements OnInit {
       }
     })
   }
-  createproductUpdateForm() {
-    this.productUpdateForm = this.formBuilder.group({
-      id: [this.product.id, []],
-      productName: [this.product.productName, [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],
-      productCode: [this.product.productCode, []],
-      screenType: [this.product.screenType, [Validators.required, Validators.maxLength(50)]],
-      screenInch: [this.product.screenInch, [Validators.required, Validators.maxLength(10)]],
-      extras: [this.product.extras, [Validators.maxLength(50)]],
-      brandId: [this.product.brandId, [Validators.required, Validators.min(1)]],
-      unitPrice: [this.product.unitPrice, [Validators.required, Validators.min(500)]],
-      discount: [this.product.discount, []],
-      isDiscount: [this.product.isDiscount, []],
-      stock: [this.product.stock, [Validators.required, Validators.min(1), Validators.max(255)]],
-      photos:[this.product.photos]
-    })
-  }
-
   updateProduct() {
     if (this.productUpdateForm.valid) {
       this.isOk=false;
@@ -86,6 +70,22 @@ export class AdminProductUpdateComponent implements OnInit {
         this.toastrService.success(response.message);
         this.router.navigate(["admindashboard/adminproducts"])
       }
+    })
+  }
+  createproductUpdateForm() {
+    this.productUpdateForm = this.formBuilder.group({
+      id: [this.product.id, []],
+      productName: [this.product.productName, [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],
+      productCode: [this.product.productCode, []],
+      screenType: [this.product.screenType, [Validators.required, Validators.maxLength(50)]],
+      screenInch: [this.product.screenInch, [Validators.required, Validators.maxLength(10)]],
+      extras: [this.product.extras, [Validators.maxLength(50)]],
+      brandId: [this.product.brandId, [Validators.required, Validators.min(1)]],
+      unitPrice: [this.product.unitPrice, [Validators.required, Validators.min(500)]],
+      discount: [this.product.discount, []],
+      isDiscount: [this.product.isDiscount, []],
+      stock: [this.product.stock, [Validators.required, Validators.min(1), Validators.max(255)]],
+      photos:[this.product.photos]
     })
   }
 

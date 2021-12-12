@@ -13,7 +13,7 @@ export class AdminProductsComponent implements OnInit {
   products:Product[]=[];
   constructor(
     private productService:ProductService,
-    private Router:Router
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class AdminProductsComponent implements OnInit {
     }
   }
   goUpdatePage(product:Product){
-    this.Router.navigate(["admindashboard/productupdate",JSON.stringify(product)])
+    this.router.navigate(["admindashboard/productupdate",JSON.stringify(product)])
     // routerLink="/admindashboard/productupdate/{{product}}"
   }
 

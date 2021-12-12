@@ -45,7 +45,9 @@
                 <td>
                   <span [class]="isDiscount(product)">{{product.isDiscount}}</span>
                 </td>
-                <td><a (click)="goUpdatePage(product)"><i class="far fa-edit"></i></a></td>
+                <td>
+                  <a (click)="goUpdatePage(product)"><i class="far fa-edit"></i></a>
+                </td>
               </tr>
             </tbody>
           </table>

@@ -9,6 +9,28 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 display-4">Markalar</h1>
       </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Marka Adı</th>
+            <th>Telefon Numarası</th>
+            <th>Adres</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{category.id}}</td>
+            <td>{{category.name}}</td>
+            <td>{{category.phoneNumber}} <small *ngIf="!category.phoneNumber" class="text-muted">Belirtilmedi</small></td>
+            <td>{{category.address}} <small *ngIf="!category.address" class="text-muted">Belirtilmedi</small></td>
+            <td>
+              <a (click)="goUpdatePage(category)"><i class="far fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </main>
   </div>
 </div>
