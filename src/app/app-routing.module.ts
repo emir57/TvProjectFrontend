@@ -7,6 +7,7 @@ import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orde
 import { AdminProductAddComponent } from './Components/Admin/admin-product-add/admin-product-add.component';
 import { AdminProductUpdateComponent } from './Components/Admin/admin-product-update/admin-product-update.component';
 import { AdminProductsComponent } from './Components/Admin/admin-products/admin-products.component';
+import { AdminUploaimageComponent } from './Components/Admin/admin-uploaimage/admin-uploaimage.component';
 import { CategoryComponent } from './Components/User/category/category.component';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './Components/User/login/login.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard,ExpirationGuard]},
   {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[AdminGuard,ExpirationGuard]},
   {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/uploadimage",component:AdminUploaimageComponent,canActivate:[AdminGuard,ExpirationGuard]},
   // {path:"categories",component:CategoryComponent},
 ];
 
