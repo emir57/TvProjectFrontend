@@ -1,9 +1,26 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiUrl } from '../Models/apiUrl';
+import { Photo } from '../Models/photo';
+import { ResponseModel } from '../Models/responseModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotoService {
 
-  constructor() { }
+  apiUrl=`${ApiUrl}/api/photos/upload`
+  constructor(
+    private httpClient:HttpClient
+  ) { }
+
+  uploadImage(image:File,photoModel:Photo):Observable<ResponseModel>{
+    const sendForm = new FormData();
+    sendForm.append("file",image,image.name);
+    sendForm.append("tvid",JSON.stringify(photoModel.tvId));
+    sendForm.append("ismain",JSON.stringify(photoModel.isMain));
+    // sendForm.append("",JSON.stringify(photoModel));
+    return this.httpClient.post<ResponseModel>(this.apiUrl,sendForm)
+  }
 }

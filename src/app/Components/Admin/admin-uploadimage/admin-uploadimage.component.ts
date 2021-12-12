@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ApiUrl } from 'src/app/Models/apiUrl';
 import { Product } from 'src/app/Models/product';
 import { PhotoService } from 'src/app/Services/photo.service';
 import { ProductService } from 'src/app/Services/product.service';
@@ -16,6 +17,7 @@ export class AdminUploadimageComponent implements OnInit {
   isOk = true;
   photoUploadForm: FormGroup
   products: Product[] = []
+  selectedFile:File;
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
@@ -25,26 +27,35 @@ export class AdminUploadimageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    this.createPhotoUploadForm();
   }
 
   uploadImage() {
+    if(this.photoUploadForm.valid){
+      this.photoUploadForm.get("tvId").setValue(+this.photoUploadForm.get("tvId").value)
+      let photoModel = Object.assign({},this.photoUploadForm.value)
+      this.photoService.uploadImage(this.selectedFile,photoModel).subscribe(response=>{
+      })
+      console.log(photoModel)
+    }
   }
 
-  createPhotoUploadForm() {
-    this.photoUploadForm = this.formBuilder.group({
-      tvId: [0, [Validators.required]],
-      isMain: [false]
-    })
-  }
+
   getProducts() {
     this.productService.getProducts().subscribe(response => {
       if (response.isSuccess) {
         this.products = response.data;
 
       }
-    }, responseErr => { },
-      () => {
-        this.createPhotoUploadForm();
-      })
+    })
+  }
+  createPhotoUploadForm() {
+    this.photoUploadForm = this.formBuilder.group({
+      tvId: [0, [Validators.required]],
+      isMain: [false]
+    })
+  }
+  setFile(files:FileList){
+    this.selectedFile = files.item(0);
   }
 }

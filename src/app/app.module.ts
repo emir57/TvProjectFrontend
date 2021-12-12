@@ -31,6 +31,7 @@ import { AdminProductAddComponent } from './Components/Admin/admin-product-add/a
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { AdminProductUpdateComponent } from './Components/Admin/admin-product-update/admin-product-update.component';
 import { AdminUploadimageComponent } from './Components/Admin/admin-uploadimage/admin-uploadimage.component';
+import { AngularFileUploaderModule } from 'angular-file-uploader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +65,7 @@ import { AdminUploadimageComponent } from './Components/Admin/admin-uploadimage/
     HttpClientModule,
     SliderModule,
     BrowserAnimationsModule,
+    AngularFileUploaderModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })
