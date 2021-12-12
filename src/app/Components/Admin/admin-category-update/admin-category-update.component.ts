@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/Models/category';
 import { CategoryService } from 'src/app/Services/category.service';
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector: 'app-admin-category-update',
@@ -41,7 +41,7 @@ export class AdminCategoryUpdateComponent implements OnInit {
 
   createCategoryUpdateForm() {
     this.categoryUpdateForm = this.formBuilder.group({
-      id:[this.category.id],
+      id: [this.category.id],
       name: [this.category.name, [Validators.required, Validators.maxLength(50)]],
       phoneNumber: [this.category.phoneNumber, [Validators.maxLength(15)]],
       address: [this.category.address, [Validators.maxLength(250)]]
@@ -55,31 +55,31 @@ export class AdminCategoryUpdateComponent implements OnInit {
       this.categoryService.updateCategory(categoryModel).subscribe(response => {
         if (response.isSuccess) {
           this.toastrService.success(response.message);
-          this.isOk=true;
-          this.router.navigate(["admindashboard/categoryupdate",JSON.stringify(categoryModel)]);
+          this.isOk = true;
+          this.router.navigate(["admindashboard/categoryupdate", JSON.stringify(categoryModel)]);
         }
       }, responseErr => {
         console.log(responseErr);
         this.toastrService.error("Bir hata oluştu.")
-        this.isOk=true;
+        this.isOk = true;
       })
     }
   }
 
   deleteCategory() {
-    if(confirm("Silmek istediğinizden emin misiniz?")){
+    if (confirm("Silmek istediğinizden emin misiniz?")) {
       this.isOk = false;
-    this.categoryService.deleteCategory(this.category.id).subscribe(response => {
-      if (response.isSuccess) {
-        this.toastrService.success("Marka başarıyla silindi");
-        this.router.navigate(["admindashboard/adminbrands"])
+      this.categoryService.deleteCategory(this.category.id).subscribe(response => {
+        if (response.isSuccess) {
+          this.toastrService.success("Marka başarıyla silindi");
+          this.router.navigate(["admindashboard/adminbrands"])
+          this.isOk = true;
+        }
+      }, responseErr => {
+        console.log(responseErr);
         this.isOk = true;
-      }
-    }, responseErr => {
-      console.log(responseErr);
-      this.isOk = true;
-    })
-    }else{
+      })
+    } else {
       this.toastrService.info("Silme işlemi iptal edildi")
     }
   }

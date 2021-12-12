@@ -11,13 +11,13 @@
         <h1 class="h2 display-4">Marka Güncelle</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminbrands">Geri Gel</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminbrands">Geri
+              Gel</button>
           </div>
-          <button [disabled]="!isOk" (click)="deleteCategory()" type="button"
-              class="btn btn-sm btn-outline-danger">
-              <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-              Bu Markayı Sil
-            </button>
+          <button [disabled]="!isOk" (click)="deleteCategory()" type="button" class="btn btn-sm btn-outline-danger">
+            <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Bu Markayı Sil
+          </button>
         </div>
       </div>
       <div class="col-6">
@@ -27,8 +27,7 @@
             <!-- Category Name -->
             <div class="form-group col-6 mb-3">
               <label for="name">Ürün İsmi</label>
-              <input formControlName="name" id="name" type="text" class="form-control"
-                placeholder="Philips">
+              <input formControlName="name" id="name" type="text" class="form-control" placeholder="Philips">
               <div
                 *ngIf="(categoryUpdateForm.get('name').dirty || categoryUpdateForm.get('name').touched) && categoryUpdateForm.get('name').errors">
                 <span *ngIf="categoryUpdateForm.get('name').errors.required" class="text-danger">Kategori ismi gerekli
@@ -40,7 +39,8 @@
             <!-- Phone Number -->
             <div class="form-group col-6 mb-3">
               <label for="phoneNumber">Telefon Numarası</label>
-              <input formControlName="phoneNumber" id="phoneNumber" type="text" class="form-control" placeholder='000 000 00 00'>
+              <input formControlName="phoneNumber" id="phoneNumber" type="text" class="form-control"
+                placeholder='000 000 00 00'>
               <div
                 *ngIf="(categoryUpdateForm.get('phoneNumber').dirty || categoryUpdateForm.get('phoneNumber').touched) && categoryUpdateForm.get('phoneNumber').errors">
                 <span *ngIf="categoryUpdateForm.get('phoneNumber').errors.maxlength" class="text-danger">
@@ -62,7 +62,8 @@
           </div>
         </form>
         <!-- Form End -->
-        <button [disabled]="!isOk" [disabled]="!categoryUpdateForm.valid" (click)="updateCategory()" class="btn btn-primary col-12">
+        <button [disabled]="!isOk" [disabled]="!categoryUpdateForm.valid" (click)="updateCategory()"
+          class="btn btn-primary col-12">
           <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           Kaydet
         </button>
@@ -70,5 +71,3 @@
     </main>
   </div>
 </div>
-
-

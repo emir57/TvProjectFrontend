@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrl } from 'src/app/Models/apiUrl';
@@ -15,8 +15,8 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class AdminProductUpdateComponent implements OnInit {
 
-  apiUrl=ApiUrl
-  isOk=true;
+  apiUrl = ApiUrl
+  isOk = true;
   productUpdateForm: FormGroup;
   categories: Category[] = [];
   product: Product;
@@ -50,27 +50,32 @@ export class AdminProductUpdateComponent implements OnInit {
   }
   updateProduct() {
     if (this.productUpdateForm.valid) {
-      this.isOk=false;
-      let productModel = Object.assign({},this.productUpdateForm.value);
-      this.productService.updateProduct(productModel).subscribe(response=>{
-        if(response.isSuccess){
+      this.isOk = false;
+      let productModel = Object.assign({}, this.productUpdateForm.value);
+      this.productService.updateProduct(productModel).subscribe(response => {
+        if (response.isSuccess) {
           this.toastrService.success(response.message);
-          this.isOk=true;
-          this.router.navigate(["admindashboard/productupdate",JSON.stringify(productModel)])
+          this.isOk = true;
+          this.router.navigate(["admindashboard/productupdate", JSON.stringify(productModel)])
         }
-      },responseErr=>{
+      }, responseErr => {
         this.toastrService.error(responseErr.error.Message)
       })
     }
   }
-  deleteProduct(){
-    this.isOk=false;
-    this.productService.deleteProduct(this.product).subscribe(response=>{
-      if(response.isSuccess){
-        this.toastrService.success(response.message);
-        this.router.navigate(["admindashboard/adminproducts"])
-      }
-    })
+  deleteProduct() {
+    if (confirm("Silmek istediğinizden emin misiniz?")) {
+      this.isOk = false;
+      this.productService.deleteProduct(this.product).subscribe(response => {
+        if (response.isSuccess) {
+          this.toastrService.success(response.message);
+          this.router.navigate(["admindashboard/adminproducts"])
+        }
+      })
+    } else {
+      this.toastrService.info("Silme işlemi iptal edildi.")
+    }
+
   }
   createproductUpdateForm() {
     this.productUpdateForm = this.formBuilder.group({
@@ -85,7 +90,7 @@ export class AdminProductUpdateComponent implements OnInit {
       discount: [this.product.discount, []],
       isDiscount: [this.product.isDiscount, []],
       stock: [this.product.stock, [Validators.required, Validators.min(1), Validators.max(255)]],
-      photos:[this.product.photos]
+      photos: [this.product.photos]
     })
   }
 
