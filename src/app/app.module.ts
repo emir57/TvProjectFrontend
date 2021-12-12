@@ -32,6 +32,8 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { AdminProductUpdateComponent } from './Components/Admin/admin-product-update/admin-product-update.component';
 import { AdminUploadimageComponent } from './Components/Admin/admin-uploadimage/admin-uploadimage.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { AdminCategoryUpdateComponent } from './Components/Admin/admin-category-update/admin-category-update.component';
+import { AdminCategoryAddComponent } from './Components/Admin/admin-category-add/admin-category-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +58,8 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
     AdminProductAddComponent,
     AdminProductUpdateComponent,
     AdminUploadimageComponent,
+    AdminCategoryUpdateComponent,
+    AdminCategoryAddComponent,
   ],
   imports: [
     BrowserModule,
