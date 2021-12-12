@@ -17,7 +17,7 @@
       </div>
       <div class="col-6">
         <!-- Form Start -->
-        <form [formGroup]="productAddForm" class="">
+        <form [formGroup]="productAddForm" class="" enctype="multipart/form-data">
           <div class="row">
             <!-- Product Name -->
             <div class="form-group col-6 mb-3">
@@ -112,6 +112,11 @@
                 <span *ngIf="productAddForm.get('stock').errors.min" class="text-danger">En az 1 olabilir</span>
                 <span *ngIf="productAddForm.get('stock').errors.max" class="text-danger">En fazla 255 olabilir</span>
               </div>
+            </div>
+            <!-- Photo -->
+            <div class="form-group col-12 mb-3">
+              <label for="photo">Ürün Fotoğrafı</label>
+              <input formControlName="photo" (change)="onSelectedFile($event)" id="photo" type="file" class="form-control" placeholder='3'>
             </div>
             <!-- Is Discount ?-->
             <div class="form-group col-6 mb-3">
