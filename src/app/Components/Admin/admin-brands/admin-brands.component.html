@@ -26,7 +26,7 @@
             <td>{{category.phoneNumber}} <small *ngIf="!category.phoneNumber" class="text-muted">Belirtilmedi</small></td>
             <td>{{category.address}} <small *ngIf="!category.address" class="text-muted">Belirtilmedi</small></td>
             <td>
-              <a (click)="goUpdatePage(category)"><i class="far fa-edit"></i></a>
+              <a class="edit" (click)="goUpdatePage(category)"><i class="far fa-edit"></i></a>
             </td>
           </tr>
         </tbody>
