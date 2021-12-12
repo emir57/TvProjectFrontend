@@ -1,1 +1,67 @@
-<p>admin-category-add works!</p>
+<app-admin-navbar></app-admin-navbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <app-admin-leftnav></app-admin-leftnav>
+    </div>
+    <main class="col-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2 display-4">Kategori Ekle</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminbrands">Geri Gel</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <!-- Form Start -->
+        <form [formGroup]="categoryAddForm" class="">
+          <div class="row">
+            <!-- Category Name -->
+            <div class="form-group col-6 mb-3">
+              <label for="name">Ürün İsmi</label>
+              <input formControlName="name" id="name" type="text" class="form-control"
+                placeholder="Philips">
+              <div
+                *ngIf="(categoryAddForm.get('name').dirty || categoryAddForm.get('name').touched) && categoryAddForm.get('name').errors">
+                <span *ngIf="categoryAddForm.get('name').errors.required" class="text-danger">Kategori ismi gerekli
+                </span>
+                <span *ngIf="categoryAddForm.get('name').errors.maxlength" class="text-danger">Kategori ismi 50
+                  karakteri geçemez </span>
+              </div>
+            </div>
+            <!-- Phone Number -->
+            <div class="form-group col-6 mb-3">
+              <label for="phoneNumber">Telefon Numarası</label>
+              <input formControlName="phoneNumber" id="phoneNumber" type="text" class="form-control" placeholder='000 000 00 00'>
+              <div
+                *ngIf="(categoryAddForm.get('phoneNumber').dirty || categoryAddForm.get('phoneNumber').touched) && categoryAddForm.get('phoneNumber').errors">
+                <span *ngIf="categoryAddForm.get('phoneNumber').errors.maxlength" class="text-danger">
+                  Telefon numarası 15 karakteri geçemez
+                </span>
+              </div>
+            </div>
+            <!-- Address -->
+            <div class="form-group col-12 mb-3">
+              <label for="address">Ekstra Özellikler</label>
+              <textarea formControlName="address" id="address" type="text" class="form-control"
+                placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
+              <div
+                *ngIf="(categoryAddForm.get('extras').dirty || categoryAddForm.get('extras').touched) && categoryAddForm.get('extras').errors">
+                <span *ngIf="categoryAddForm.get('extras').errors.maxlength" class="text-danger">250 karakteri
+                  geçemez</span>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- Form End -->
+        <button [disabled]="!isOk" [disabled]="!categoryAddForm.valid" (click)="addCategory()" class="btn btn-primary col-12">
+          Kaydet
+        </button>
+      </div>
+    </main>
+  </div>
+</div>
+
