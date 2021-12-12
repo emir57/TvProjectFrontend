@@ -40,7 +40,7 @@
           <button [disabled]="!isOk" (click)="uploadImage()" [disabled]=""
             class="btn btn-primary col-12 mb-3">
             <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            <i class="fas fa-file-upload"></i>
+            <i *ngIf="isOk" class="fas fa-file-upload"></i>
             Yükle
           </button>
         </div>

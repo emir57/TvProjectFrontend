@@ -32,9 +32,16 @@ export class AdminUploadimageComponent implements OnInit {
 
   uploadImage() {
     if(this.photoUploadForm.valid){
+      this.isOk = false;
       this.photoUploadForm.get("tvId").setValue(+this.photoUploadForm.get("tvId").value)
       let photoModel = Object.assign({},this.photoUploadForm.value)
       this.photoService.uploadImage(this.selectedFile,photoModel).subscribe(response=>{
+        if(response.isSuccess){
+          this.toastrService.success(response.message);
+        }else{
+          this.toastrService.error(response.message)
+        }
+        this.isOk=true;
       })
       console.log(photoModel)
     }
