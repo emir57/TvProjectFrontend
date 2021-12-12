@@ -40,6 +40,12 @@ export class AuthService {
             sessionStorage.setItem("token", response.data.accessToken.token)
             sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
           }
+          //Expiration
+          let will = new Date;
+          will.setMinutes(+response.data.accessToken.expiration.substring(11,19).split(":")[1])
+          will.setHours(+response.data.accessToken.expiration.substring(11,19).split(":")[0])
+          localStorage.setItem("expiration",will.getTime()+"")
+
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
           this.isLogin = true;

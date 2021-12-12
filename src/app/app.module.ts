@@ -52,7 +52,7 @@ import { AdminProductUpdateComponent } from './Components/Admin/admin-product-up
     AdminCustomersComponent,
     AdminBrandsComponent,
     AdminProductAddComponent,
-    AdminProductUpdateComponent
+    AdminProductUpdateComponent,
   ],
   imports: [
     BrowserModule,

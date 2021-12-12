@@ -14,6 +14,7 @@ import { ProductComponent } from './Components/User/product/product.component';
 import { RegisterComponent } from './Components/User/register/register.component';
 import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
 import { AdminGuard } from './Guards/admin.guard';
+import { ExpirationGuard } from './Guards/expiration.guard';
 import { SecurityGuard } from './Guards/security.guard';
 
 const routes: Routes = [
@@ -25,14 +26,14 @@ const routes: Routes = [
   {path:"forgotpassword",component:ForgotpasswordComponent},
   {path:"resetpassword/:key",component:ResetpasswordComponent},
   //Admin Panels
-  {path:"admindashboard/home",component:AdminDashboardComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/home",component:AdminDashboardComponent,canActivate:[AdminGuard,ExpirationGuard]},
   // {path:"admindashboard/:section",component:AdminDashboardComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/adminproducts",component:AdminProductsComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[AdminGuard]},
+  {path:"admindashboard/adminproducts",component:AdminProductsComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
   // {path:"categories",component:CategoryComponent},
 ];
 
