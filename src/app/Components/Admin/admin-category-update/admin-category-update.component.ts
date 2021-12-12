@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/Models/category';
 import { CategoryService } from 'src/app/Services/category.service';
+declare var $:any;
 
 @Component({
   selector: 'app-admin-category-update',
@@ -66,7 +67,8 @@ export class AdminCategoryUpdateComponent implements OnInit {
   }
 
   deleteCategory() {
-    this.isOk = false;
+    if(confirm("Silmek istediğinizden emin misiniz?")){
+      this.isOk = false;
     this.categoryService.deleteCategory(this.category.id).subscribe(response => {
       if (response.isSuccess) {
         this.toastrService.success("Marka başarıyla silindi");
@@ -77,6 +79,9 @@ export class AdminCategoryUpdateComponent implements OnInit {
       console.log(responseErr);
       this.isOk = true;
     })
+    }else{
+      this.toastrService.info("Silme işlemi iptal edildi")
+    }
   }
 
 }
