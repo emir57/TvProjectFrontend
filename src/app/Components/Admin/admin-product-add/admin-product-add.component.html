@@ -126,7 +126,8 @@
           </div>
         </form>
         <!-- Form End -->
-        <button (click)="addProduct()" [disabled]="!productAddForm.valid" class="btn btn-primary col-12">
+        <button [disabled]="!isOk" (click)="addProduct()" [disabled]="!productAddForm.valid" class="btn btn-primary col-12">
+          <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           Kaydet
         </button>
       </div>

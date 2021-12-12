@@ -47,6 +47,7 @@ export class AdminCategoryAddComponent implements OnInit {
           this.toastrService.error(response.message);
         }
       })
+
     }
   }
 

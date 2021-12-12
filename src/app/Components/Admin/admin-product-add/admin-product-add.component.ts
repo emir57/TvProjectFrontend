@@ -14,6 +14,7 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class AdminProductAddComponent implements OnInit {
 
+  isOk=true;
   productAddForm:FormGroup
   categories:Category[]=[]
   constructor(
@@ -48,16 +49,20 @@ export class AdminProductAddComponent implements OnInit {
 
   addProduct(){
     if(this.productAddForm.valid){
+      this.isOk=false;
       this.productAddForm.get("brandId").setValue(+this.productAddForm.get("brandId").value)
       let productModel:Product = Object.assign({},this.productAddForm.value);
       this.productService.addProduct(productModel).subscribe(response=>{
         if(response.isSuccess){
           this.toastrService.success(response.message);
           this.productAddForm.reset;
+          this.isOk=true;
         }
       },responseErr=>{
         this.toastrService.error(responseErr.error.Message)
+        this.isOk=true;
       })
+
     }
   }
 
