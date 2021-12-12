@@ -43,7 +43,6 @@ export class AdminUploadimageComponent implements OnInit {
         }
         this.isOk=true;
       })
-      console.log(photoModel)
     }
   }
 
@@ -52,7 +51,6 @@ export class AdminUploadimageComponent implements OnInit {
     this.productService.getProducts().subscribe(response => {
       if (response.isSuccess) {
         this.products = response.data;
-
       }
     })
   }
