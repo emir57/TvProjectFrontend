@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { AuthService } from '../Services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Observable } from 'rxjs';
 export class ExpirationGuard implements CanActivate {
   constructor(
     private router:Router,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private authService:AuthService
   ){}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -18,6 +20,7 @@ export class ExpirationGuard implements CanActivate {
       let expiration = localStorage.getItem("expiration");
       if(expiration){
           if(now.getTime() > +expiration){
+            this.authService.isLogin=false;
             this.toastrService.info("Oturum Süreniz Doldu Giriş Sayfasına Yönlendiriliyorsunuz.")
             this.router.navigate(["login"]);
             return false;
