@@ -19,10 +19,11 @@ export class ExpirationGuard implements CanActivate {
       let now = new Date;
       let expiration = localStorage.getItem("expiration");
       if(expiration){
-          if(now.getTime() > +expiration){
+          if(now<new Date(expiration)){
             this.authService.isLogin=false;
             this.toastrService.info("Oturum Süreniz Doldu Giriş Sayfasına Yönlendiriliyorsunuz.")
             this.router.navigate(["login"]);
+            localStorage.removeItem("expiration")
             return false;
           }
       }

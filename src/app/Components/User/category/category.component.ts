@@ -13,7 +13,6 @@ export class CategoryComponent implements OnInit {
 
   categories: Category[] = [];
   currentCategory: Category=null;
-  currentUrl =this.activatedRoute.snapshot.url;
   constructor(
     private categoryService: CategoryService,
     private activatedRoute:ActivatedRoute
@@ -46,7 +45,7 @@ export class CategoryComponent implements OnInit {
 
 
   getAllCategoryClass(){
-    if(this.currentUrl[0].path=="products"){
+    if(this.currentCategory==null){
       return "list-group-item active";
     }else{
       return "list-group-item"
