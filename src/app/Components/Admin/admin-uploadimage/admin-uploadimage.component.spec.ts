@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminUploadimageComponent } from './admin-uploadimage.component';
 
-describe('AdminUploaimageComponent', () => {
+describe('AdminUploadimageComponent', () => {
   let component: AdminUploadimageComponent;
   let fixture: ComponentFixture<AdminUploadimageComponent>;
 

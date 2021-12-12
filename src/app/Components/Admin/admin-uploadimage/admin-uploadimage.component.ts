@@ -6,7 +6,7 @@ import { PhotoService } from 'src/app/Services/photo.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
-  selector: 'app-admin-uploaimage',
+  selector: 'app-admin-uploadimage',
   templateUrl: './admin-uploadimage.component.html',
   styleUrls: ['./admin-uploadimage.component.css']
 })
