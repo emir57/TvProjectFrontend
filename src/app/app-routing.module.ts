@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminBrandsComponent } from './Components/Admin/admin-brands/admin-brands.component';
+import { AdminCategoryAddComponent } from './Components/Admin/admin-category-add/admin-category-add.component';
+import { AdminCategoryUpdateComponent } from './Components/Admin/admin-category-update/admin-category-update.component';
 import { AdminCustomersComponent } from './Components/Admin/admin-customers/admin-customers.component';
 import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
 import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orders.component';
@@ -33,10 +35,15 @@ const routes: Routes = [
   {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[AdminGuard,ExpirationGuard]},
   {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard,ExpirationGuard]},
   {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard,ExpirationGuard]},
+
   {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[AdminGuard,ExpirationGuard]},
   {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/categoryupdate/:category",component:AdminProductUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
+
+  {path:"admindashboard/categoryupdate/:category",component:AdminCategoryUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/categoryadd",component:AdminCategoryAddComponent,canActivate:[AdminGuard,ExpirationGuard]},
+
   {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[AdminGuard,ExpirationGuard]},
+
   // {path:"categories",component:CategoryComponent},
 ];
 
