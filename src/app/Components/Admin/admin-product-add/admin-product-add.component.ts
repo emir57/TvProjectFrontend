@@ -31,10 +31,6 @@ export class AdminProductAddComponent implements OnInit {
     })
     this.createAddproductForm();
   }
-  onSelectedFile(fileInput:any){
-    this.selectedFile = <File>fileInput.target.files[0];
-  }
-  selectedFile:File=null
   createAddproductForm(){
     this.productAddForm = this.formBuilder.group({
       productName:['',[Validators.required,Validators.maxLength(50),Validators.minLength(5)]],
@@ -47,14 +43,12 @@ export class AdminProductAddComponent implements OnInit {
       discount:[,[]],
       isDiscount:[false,[]],
       stock:['',[Validators.required,Validators.min(1),Validators.max(255)]],
-      photo:[]
     })
   }
 
   addProduct(){
     if(this.productAddForm.valid){
       this.productAddForm.get("brandId").setValue(+this.productAddForm.get("brandId").value)
-      this.productAddForm.get("photo").setValue(this.selectedFile)
       let productModel:Product = Object.assign({},this.productAddForm.value);
       this.productService.addProduct(productModel).subscribe(response=>{
         if(response.isSuccess){

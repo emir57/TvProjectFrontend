@@ -113,11 +113,6 @@
                 <span *ngIf="productAddForm.get('stock').errors.max" class="text-danger">En fazla 255 olabilir</span>
               </div>
             </div>
-            <!-- Photo -->
-            <div class="form-group col-12 mb-3">
-              <label for="photo">Ürün Fotoğrafı</label>
-              <input formControlName="photo" (change)="onSelectedFile($event)" id="photo" type="file" class="form-control" placeholder='3'>
-            </div>
             <!-- Is Discount ?-->
             <div class="form-group col-6 mb-3">
               <div class="form-check">
