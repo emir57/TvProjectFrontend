@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminUploaimageComponent implements OnInit {
 
+  isOk=true;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  uploadImage(){
+
   }
 
 }
