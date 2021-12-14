@@ -41,5 +41,8 @@ export class UserOrdersComponent implements OnInit {
   getCount(){
     return this.orders.length
   }
+  deleteOrder(order:OrderModel){
+
+  }
 
 }
