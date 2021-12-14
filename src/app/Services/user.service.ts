@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
+import { ChangePasswordModel } from '../Models/changePasswordModel';
 import { ResponseModel } from '../Models/responseModel';
 import { UpdateUserModel } from '../Models/updateUserModel';
 @Injectable({
@@ -17,6 +18,11 @@ export class UserService {
   updateUser(updateUserModel:UpdateUserModel):Observable<ResponseModel>{
     let newPath = `${this.apiUrl}/api/users/update`;
     return this.httpClient.post<ResponseModel>(newPath,updateUserModel);
+  }
+
+  changePassword(changePasswordModel:ChangePasswordModel):Observable<ResponseModel>{
+    let newPath = `${this.apiUrl}/api/users/changepassword`;
+    return this.httpClient.post<ResponseModel>(newPath,changePasswordModel);
   }
 
 }

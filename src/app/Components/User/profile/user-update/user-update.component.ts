@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user';
+import { AuthService } from 'src/app/Services/auth.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class UserUpdateComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private userService:UserService
+    private userService:UserService,
+    private authService:AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class UserUpdateComponent implements OnInit {
   }
   createresetPasswordForm() {
     this.resetPasswordForm = this.formBuilder.group({
+      userId:[this.user.id],
       oldPassword: ['', [Validators.required, Validators.maxLength(50)]],
       newPassword: ['', [Validators.required, Validators.maxLength(50)]],
     })
@@ -64,6 +67,17 @@ export class UserUpdateComponent implements OnInit {
   resetPassword() {
     if (this.resetPasswordForm.valid) {
       this.isOk=false;
+      let changePasswordModel = Object.assign({},this.resetPasswordForm.value)
+      this.userService.changePassword(changePasswordModel).subscribe(response=>{
+        if(response.isSuccess){
+          this.toastrService.success(response.message);
+          this.authService.isLogin=false;
+          this.router.navigate(["login"]);
+        }else{
+          this.toastrService.error(response.message)
+        }
+        this.isOk=true;
+      })
     }
   }
 

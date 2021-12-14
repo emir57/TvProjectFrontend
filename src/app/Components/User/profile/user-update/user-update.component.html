@@ -40,7 +40,7 @@
               <input formControlName="newPassword" type="password" id="newPassword" class="form-control">
             </div>
           </form>
-          <button (click)="resetPassword()" [disabled]="!isOk" [disabled]="!userUpdateForm.valid" class="btn btn-primary">
+          <button (click)="resetPassword()" [disabled]="!isOk" [disabled]="!resetPasswordForm.valid" class="btn btn-primary">
             <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             Sıfırla
           </button>
