@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  user:User;
   constructor(
     private userService:AuthService
   ) { }
@@ -17,8 +16,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getLoginUser().subscribe(response=>{
       if(response.isSuccess){
-        this.user = response.data;
-        console.log(this.user)
+        sessionStorage.setItem("userInfo",JSON.stringify(response.data))
       }
     })
   }
