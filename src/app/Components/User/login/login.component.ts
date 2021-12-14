@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  isOk=true;
   loginForm: FormGroup
   constructor(
     private formBuilder: FormBuilder,
@@ -34,9 +35,11 @@ export class LoginComponent implements OnInit {
 
   async login() {
     if (this.loginForm.valid) {
+      this.isOk=false;
       let rememberMe=this.loginForm.get("rememberMe").value;
       let loginModel = Object.assign({}, this.loginForm.value);
       await this.authService.login(loginModel,rememberMe)
+      this.isOk=true;
     }
   }
 

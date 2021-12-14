@@ -1,9 +1,22 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
+import { ApiUrl } from '../Models/apiUrl';
+import { ResponseModel } from '../Models/responseModel';
+import { UpdateUserModel } from '../Models/updateUserModel';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  apiUrl=`${ApiUrl}`
+  constructor(
+    private httpClient:HttpClient
+  ) { }
+
+  updateUser(updateUserModel:UpdateUserModel):Observable<ResponseModel>{
+    let newPath = `${this.apiUrl}/api/users/update`;
+    return this.httpClient.post<ResponseModel>(newPath,updateUserModel);
+  }
+
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-user-update',
@@ -18,7 +19,8 @@ export class UserUpdateComponent implements OnInit {
   constructor(
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService:UserService
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,15 @@ export class UserUpdateComponent implements OnInit {
   updateUserInfo() {
     if (this.userUpdateForm.valid) {
       this.isOk=false;
+      let updateUserModel = Object.assign({},this.userUpdateForm.value)
+      this.userService.updateUser(updateUserModel).subscribe(response=>{
+        if(response.isSuccess){
+          this.toastrService.success(response.message);
+        }else{
+          this.toastrService.error(response.message)
+        }
+        this.isOk=true;
+      })
     }
   }
   resetPassword() {
