@@ -14,6 +14,7 @@ import { CategoryComponent } from './Components/User/category/category.component
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './Components/User/login/login.component';
 import { ProductComponent } from './Components/User/product/product.component';
+import { ProfileComponent } from './Components/User/profile/profile.component';
 import { RegisterComponent } from './Components/User/register/register.component';
 import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
 import { AdminGuard } from './Guards/admin.guard';
@@ -43,6 +44,8 @@ const routes: Routes = [
   {path:"admindashboard/categoryadd",component:AdminCategoryAddComponent,canActivate:[AdminGuard,ExpirationGuard]},
 
   {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  //User Panels
+  {path:"profile",component:ProfileComponent,canActivate:[SecurityGuard,ExpirationGuard]},
 
   // {path:"categories",component:CategoryComponent},
 ];
