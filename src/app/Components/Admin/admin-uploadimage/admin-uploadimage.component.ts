@@ -42,6 +42,8 @@ export class AdminUploadimageComponent implements OnInit {
           this.toastrService.error(response.message)
         }
         this.isOk=true;
+      },responseErr=>{
+        this.isOk=true;
       })
     }
   }
