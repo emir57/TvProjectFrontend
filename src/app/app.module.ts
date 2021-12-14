@@ -35,6 +35,7 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { AdminCategoryUpdateComponent } from './Components/Admin/admin-category-update/admin-category-update.component';
 import { AdminCategoryAddComponent } from './Components/Admin/admin-category-add/admin-category-add.component';
 import { ProfileComponent } from './Components/User/profile/profile.component';
+import { UserLeftPanelComponent } from './Components/User/profile/user-left-panel/user-left-panel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +63,7 @@ import { ProfileComponent } from './Components/User/profile/profile.component';
     AdminCategoryUpdateComponent,
     AdminCategoryAddComponent,
     ProfileComponent,
+    UserLeftPanelComponent,
   ],
   imports: [
     BrowserModule,
