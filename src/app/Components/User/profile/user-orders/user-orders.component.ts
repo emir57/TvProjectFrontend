@@ -43,7 +43,7 @@ export class UserOrdersComponent implements OnInit {
   }
   deleteOrder(order:OrderModel){
     if(confirm(`
-      Bu siparişi iptal etmek istediğinizden eminmisiniz\n
+      Bu siparişi iptal etmek istediğinizden emin misiniz?\n
       ${order.tv.productName} ${order.tv.screenInch} ${order.tv.screenType}
     `)){
       this.orderService.deleteOrder(order.id).subscribe(response=>{
