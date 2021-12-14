@@ -15,6 +15,10 @@ import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgot
 import { LoginComponent } from './Components/User/login/login.component';
 import { ProductComponent } from './Components/User/product/product.component';
 import { ProfileComponent } from './Components/User/profile/profile.component';
+import { UserAddressComponent } from './Components/User/profile/user-address/user-address.component';
+import { UserCreditcardsComponent } from './Components/User/profile/user-creditcards/user-creditcards.component';
+import { UserOrdersComponent } from './Components/User/profile/user-orders/user-orders.component';
+import { UserUpdateComponent } from './Components/User/profile/user-update/user-update.component';
 import { RegisterComponent } from './Components/User/register/register.component';
 import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
 import { AdminGuard } from './Guards/admin.guard';
@@ -46,6 +50,10 @@ const routes: Routes = [
   {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   //User Panels
   {path:"profile/home",component:ProfileComponent,canActivate:[SecurityGuard,ExpirationGuard]},
+  {path:"profile/update",component:UserUpdateComponent,canActivate:[SecurityGuard,ExpirationGuard]},
+  {path:"profile/myorders",component:UserOrdersComponent,canActivate:[SecurityGuard,ExpirationGuard]},
+  {path:"profile/mycreditcards",component:UserCreditcardsComponent,canActivate:[SecurityGuard,ExpirationGuard]},
+  {path:"profile/myadresses",component:UserAddressComponent,canActivate:[SecurityGuard,ExpirationGuard]},
 
   // {path:"categories",component:CategoryComponent},
 ];
