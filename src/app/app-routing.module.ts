@@ -32,18 +32,18 @@ const routes: Routes = [
   //Admin Panels
   {path:"admindashboard/home",component:AdminDashboardComponent,canActivate:[AdminGuard,ExpirationGuard]},
   // {path:"admindashboard/:section",component:AdminDashboardComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/adminproducts",component:AdminProductsComponent,canActivate:[AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/adminproducts",component:AdminProductsComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
-  {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
-  {path:"admindashboard/categoryupdate/:category",component:AdminCategoryUpdateComponent,canActivate:[AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/categoryadd",component:AdminCategoryAddComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/categoryupdate/:category",component:AdminCategoryUpdateComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/categoryadd",component:AdminCategoryAddComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
-  {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   //User Panels
   {path:"profile",component:ProfileComponent,canActivate:[SecurityGuard,ExpirationGuard]},
 
