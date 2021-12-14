@@ -13,13 +13,13 @@
         <div class="card-body">
           <h5 class="card-title text-muted" *ngIf="order.tv.isDiscount"><del>{{order.tv.unitPrice |currency:"TRY"}}</del></h5>
           <h5 class="card-title">{{order.tv.unitPrice | discount:order.tv.discount:order.tv.isDiscount | currency:"TRY"}}</h5>
-          <p class="card-text">{{order.addressText}}</p>
+          <p class="card-text"><i>Adres: </i>{{order.addressText}}</p>
           <p>
             <img src="{{getApiUrl()}}{{order.tv.imageUrl}}" alt="">
           </p>
         </div>
         <div class="card-footer text-muted">
-          {{order.shippedDate}}
+          <i>Alma Tarihi: </i>{{order.shippedDate}}
         </div>
       </div>
       <!-- Order End -->
