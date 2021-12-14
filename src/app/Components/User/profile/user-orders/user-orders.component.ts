@@ -42,7 +42,14 @@ export class UserOrdersComponent implements OnInit {
     return this.orders.length
   }
   deleteOrder(order:OrderModel){
+    if(confirm(`
+      Bu siparişi iptal etmek istediğinizden eminmisiniz\n
+      ${order.tv.productName} ${order.tv.screenInch} ${order.tv.screenType}
+    `)){
 
+    }else{
+      this.toastrService.info("Vazgeçildi")
+    }
   }
 
 }

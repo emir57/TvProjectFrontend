@@ -14,7 +14,7 @@
       <div class="card text-center mb-3" *ngFor="let order of orders">
         <div class="card-header">
           {{order.tv.productName}} {{order.tv.screenInch}} {{order.tv.screenType}}
-          <a (click)="deleteOrder(order)" href="" class="text-danger" style="position: absolute;right: 0;top: 0;text-decoration: none; margin: 5px;"><i>İptal Et</i></a>
+          <a (click)="deleteOrder(order)" class="text-danger" style="position: absolute;right: 0;top: 0;text-decoration: none; margin: 5px;cursor: pointer;"><i>İptal Et</i></a>
         </div>
         <div class="card-body">
           <p>
