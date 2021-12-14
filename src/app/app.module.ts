@@ -38,6 +38,7 @@ import { ProfileComponent } from './Components/User/profile/profile.component';
 import { UserLeftPanelComponent } from './Components/User/profile/user-left-panel/user-left-panel.component';
 import { UserUpdateComponent } from './Components/User/profile/user-update/user-update.component';
 import { UserOrdersComponent } from './Components/User/profile/user-orders/user-orders.component';
+import { UserCreditcardsComponent } from './Components/User/profile/user-creditcards/user-creditcards.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,7 @@ import { UserOrdersComponent } from './Components/User/profile/user-orders/user-
     UserLeftPanelComponent,
     UserUpdateComponent,
     UserOrdersComponent,
+    UserCreditcardsComponent,
   ],
   imports: [
     BrowserModule,
