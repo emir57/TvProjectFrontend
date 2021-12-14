@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AdminPanelItem } from 'src/app/Models/adminPanelItem';
-import { AdminPanelItems } from 'src/app/Models/adminPanelItems';
-import { AdminPanelOperationItems } from 'src/app/Models/adminPanelOperationItems';
+import { PanelItem } from 'src/app/Models/adminPanelItem';
+import { AdminPanelItems } from 'src/app/Models/adminItems/adminPanelItems';
+import { AdminPanelOperationItems } from 'src/app/Models/adminItems/adminPanelOperationItems';
 
 @Component({
   selector: 'app-admin-leftnav',
@@ -11,8 +11,8 @@ import { AdminPanelOperationItems } from 'src/app/Models/adminPanelOperationItem
 })
 export class AdminLeftnavComponent implements OnInit {
 
-  items: AdminPanelItem[] = [];
-  operationItems:AdminPanelItem[]=[]
+  items: PanelItem[] = [];
+  operationItems:PanelItem[]=[]
   constructor(
     private activatedRoute: ActivatedRoute
   ) { }
@@ -22,7 +22,7 @@ export class AdminLeftnavComponent implements OnInit {
     this.operationItems=AdminPanelOperationItems
   }
 
-  getItemClass(item:AdminPanelItem) {
+  getItemClass(item:PanelItem) {
     let currentPath = this.activatedRoute.snapshot.url[1].path;
     if(!currentPath){
       return "nav-link active"

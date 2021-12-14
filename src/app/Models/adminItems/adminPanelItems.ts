@@ -1,6 +1,6 @@
-import { AdminPanelItem } from "./adminPanelItem";
+import { PanelItem } from "../adminPanelItem";
 
-export const AdminPanelItems:AdminPanelItem[]=[
+export const AdminPanelItems:PanelItem[]=[
   {id:1,displayName:"<i class='fas fa-home'></i> Ana Sayfa",link:"/admindashboard/home"},
   {id:2,displayName:"<i class='far fa-file'></i> Siparişler",link:"/admindashboard/adminorders"},
   {id:3,displayName:"<i class='fas fa-shopping-cart'></i> Ürünler",link:"/admindashboard/adminproducts"},

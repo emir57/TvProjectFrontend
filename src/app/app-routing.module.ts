@@ -45,7 +45,7 @@ const routes: Routes = [
 
   {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   //User Panels
-  {path:"profile",component:ProfileComponent,canActivate:[SecurityGuard,ExpirationGuard]},
+  {path:"profile/home",component:ProfileComponent,canActivate:[SecurityGuard,ExpirationGuard]},
 
   // {path:"categories",component:CategoryComponent},
 ];
