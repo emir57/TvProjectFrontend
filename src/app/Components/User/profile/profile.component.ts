@@ -14,11 +14,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.getLoginUser().subscribe(response=>{
-      if(response.isSuccess){
-        sessionStorage.setItem("userInfo",JSON.stringify(response.data))
-      }
-    })
+
   }
 
 }

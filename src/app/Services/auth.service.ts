@@ -40,6 +40,7 @@ export class AuthService {
             sessionStorage.setItem("token", response.data.accessToken.token)
             sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
           }
+          sessionStorage.setItem("userInfo",JSON.stringify(response.data.user))
           //Expiration
           let will = new Date;
           will.setMinutes(+response.data.accessToken.expiration.substring(11,19).split(":")[1])
