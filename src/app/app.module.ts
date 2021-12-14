@@ -36,6 +36,8 @@ import { AdminCategoryUpdateComponent } from './Components/Admin/admin-category-
 import { AdminCategoryAddComponent } from './Components/Admin/admin-category-add/admin-category-add.component';
 import { ProfileComponent } from './Components/User/profile/profile.component';
 import { UserLeftPanelComponent } from './Components/User/profile/user-left-panel/user-left-panel.component';
+import { UserUpdateComponent } from './Components/User/profile/user-update/user-update.component';
+import { UserOrdersComponent } from './Components/User/profile/user-orders/user-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +66,8 @@ import { UserLeftPanelComponent } from './Components/User/profile/user-left-pane
     AdminCategoryAddComponent,
     ProfileComponent,
     UserLeftPanelComponent,
+    UserUpdateComponent,
+    UserOrdersComponent,
   ],
   imports: [
     BrowserModule,
