@@ -46,7 +46,14 @@ export class UserOrdersComponent implements OnInit {
       Bu siparişi iptal etmek istediğinizden eminmisiniz\n
       ${order.tv.productName} ${order.tv.screenInch} ${order.tv.screenType}
     `)){
-
+      this.orderService.deleteOrder(order.id).subscribe(response=>{
+        if(response.isSuccess){
+          this.toastrService.success(response.message);
+          this.getOrders();
+        }else{
+          this.toastrService.error(response.message)
+        }
+      })
     }else{
       this.toastrService.info("Vazgeçildi")
     }
