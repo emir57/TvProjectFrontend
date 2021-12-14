@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
 import { OrderModel } from '../Models/orderModel';
 import { ResponseListModel } from '../Models/responseListModel';
+import { ResponseModel } from '../Models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class OrderService {
   getOrdersByUser(id:number):Observable<ResponseListModel<OrderModel>>{
     let newPath = `${this.apiUrl}/api/orders/getbyid/?id=${id}`;
     return this.httpClient.get<ResponseListModel<OrderModel>>(newPath);
+  }
+  deleteOrder(id:number):Observable<ResponseModel>{
+    let newPath = `${this.apiUrl}/api/orders/delete/?id=${id}`;
+    return this.httpClient.delete<ResponseModel>(newPath);
   }
 }
