@@ -38,5 +38,8 @@ export class UserOrdersComponent implements OnInit {
   getApiUrl(){
     return ApiUrl
   }
+  getCount(){
+    return this.orders.length
+  }
 
 }
