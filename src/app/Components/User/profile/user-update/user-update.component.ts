@@ -32,8 +32,10 @@ export class UserUpdateComponent implements OnInit {
 
   createUserUpdateForm() {
     this.userUpdateForm = this.formBuilder.group({
+      userId:[this.user.id],
       firstName: [this.user.firstName, [Validators.required, Validators.maxLength(50)]],
       lastName: [this.user.lastName, [Validators.required, Validators.maxLength(50)]],
+      password:['',[Validators.required]]
     })
   }
   createresetPasswordForm() {
