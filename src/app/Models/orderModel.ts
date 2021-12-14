@@ -1,9 +1,10 @@
 import { Product } from "./product";
+import { ProductAndPhoto } from "./productAndPhoto";
 import { User } from "./user";
 
 export interface OrderModel{
   user:User;
-  tv:Product;
+  tv:ProductAndPhoto;
   shippedDate:Date;
   totalPrice:number;
   addressText:string;

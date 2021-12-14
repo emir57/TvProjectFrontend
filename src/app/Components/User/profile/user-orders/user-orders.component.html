@@ -5,7 +5,24 @@
       <app-user-left-panel></app-user-left-panel>
     </div>
     <main class="col-9 ms-sm-auto col-lg-10 px-md-4 p-3">
-
+      <!-- Order Start -->
+      <div class="card text-center" *ngFor="let order of orders">
+        <div class="card-header">
+          {{order.tv.productName}} {{order.tv.screenInch}} {{order.tv.screenType}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-muted" *ngIf="order.tv.isDiscount"><del>{{order.tv.unitPrice |currency:"TRY"}}</del></h5>
+          <h5 class="card-title">{{order.tv.unitPrice | discount:order.tv.discount:order.tv.isDiscount | currency:"TRY"}}</h5>
+          <p class="card-text">{{order.addressText}}</p>
+          <p>
+            <img src="{{getApiUrl()}}{{order.tv.imageUrl}}" alt="">
+          </p>
+        </div>
+        <div class="card-footer text-muted">
+          {{order.shippedDate}}
+        </div>
+      </div>
+      <!-- Order End -->
     </main>
   </div>
 </div>
