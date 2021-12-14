@@ -39,6 +39,7 @@ import { UserLeftPanelComponent } from './Components/User/profile/user-left-pane
 import { UserUpdateComponent } from './Components/User/profile/user-update/user-update.component';
 import { UserOrdersComponent } from './Components/User/profile/user-orders/user-orders.component';
 import { UserCreditcardsComponent } from './Components/User/profile/user-creditcards/user-creditcards.component';
+import { UserAddressComponent } from './Components/User/profile/user-address/user-address.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,7 @@ import { UserCreditcardsComponent } from './Components/User/profile/user-creditc
     UserUpdateComponent,
     UserOrdersComponent,
     UserCreditcardsComponent,
+    UserAddressComponent,
   ],
   imports: [
     BrowserModule,
