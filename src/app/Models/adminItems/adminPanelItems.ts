@@ -6,6 +6,6 @@ export const AdminPanelItems:PanelItem[]=[
   {id:3,displayName:"<i class='fas fa-shopping-cart'></i> Ürünler",link:"/admindashboard/adminproducts"},
   {id:4,displayName:"<i class='fas fa-users'></i> Müşteriler",link:"/admindashboard/admincustomers"},
   {id:5,displayName:"<i class='far fa-copyright'></i> Markalar",link:"/admindashboard/adminbrands"},
-  {id:6,displayName:"<i class='far fa-chart-bar'></i> Raporlar",link:""},
+  {id:6,displayName:"<i class='fas fa-user-tag'></i> Roller",link:"/admindashboard/adminroles"},
   {id:7,displayName:"<i class='fas fa-layer-group'></i> Entegrasyonlar",link:""}
 ]
