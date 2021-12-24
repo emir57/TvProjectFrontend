@@ -20,4 +20,8 @@ export class AdminRolesComponent implements OnInit {
     })
   }
 
+  goUpdatePage(role:Role){
+
+  }
+
 }
