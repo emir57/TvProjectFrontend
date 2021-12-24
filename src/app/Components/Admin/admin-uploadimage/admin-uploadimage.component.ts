@@ -59,7 +59,8 @@ export class AdminUploadimageComponent implements OnInit {
   createPhotoUploadForm() {
     this.photoUploadForm = this.formBuilder.group({
       tvId: [0, [Validators.required]],
-      isMain: [false]
+      isMain: [false],
+      file:[,[Validators.required]]
     })
   }
   setFile(files:FileList){
