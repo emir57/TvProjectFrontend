@@ -52,5 +52,14 @@ export class AdminRoleUpdateComponent implements OnInit {
       })
     }
   }
+  delete(){
+    this.roleService.deleteRole(this.role).subscribe(response=>{
+      if(response.isSuccess){
+        this.toastrService.success(response.message);
+      }
+    },responseErr=>{
+      console.log(responseErr)
+    })
+  }
 
 }
