@@ -49,6 +49,7 @@ const routes: Routes = [
   {path:"admindashboard/categoryadd",component:AdminCategoryAddComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
   {path:"admindashboard/adminroles",component:AdminRolesComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/roleupdate/:role",component:AdminRolesComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
   {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   //User Panels
