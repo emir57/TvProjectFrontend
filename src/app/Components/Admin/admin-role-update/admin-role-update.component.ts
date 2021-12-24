@@ -28,7 +28,8 @@ export class AdminRoleUpdateComponent implements OnInit {
       if(!param["role"]){
         this.router.navigate(["admindashboard/adminroles"])
       }
-      this.role = param["role"]
+      this.role = JSON.parse(param["role"])
+
     })
     this.createUpdateForm();
   }
