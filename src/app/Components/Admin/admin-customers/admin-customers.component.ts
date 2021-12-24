@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/Models/user';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-admin-customers',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCustomersComponent implements OnInit {
 
-  constructor() { }
+  users:User[]=[]
+  constructor(
+    private userService:UserService
+  ) { }
 
   ngOnInit(): void {
+    this.userService.getUsers().subscribe(response=>{
+      this.users=response.data;
+    })
+  }
+
+  goUpdatePage(user:User){
+
   }
 
 }

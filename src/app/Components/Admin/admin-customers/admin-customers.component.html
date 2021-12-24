@@ -9,6 +9,30 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 display-4">Müşteriler</h1>
       </div>
+      <!-- Table -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>Eposta</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}} </td>
+            <td>{{user.email}}</td>
+            <td>
+              <a class="edit" (click)="goUpdatePage(user)"><i class="far fa-edit"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Table End -->
     </main>
   </div>
 </div>
