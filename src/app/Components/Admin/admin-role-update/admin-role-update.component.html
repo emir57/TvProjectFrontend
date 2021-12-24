@@ -1,1 +1,51 @@
-<p>admin-role-update works!</p>
+<app-admin-navbar></app-admin-navbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <app-admin-leftnav></app-admin-leftnav>
+    </div>
+    <main class="col-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2 display-4">Rol Güncelle</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminroles">Geri
+              Gel</button>
+          </div>
+          <button [disabled]="!isOk" (click)="delete()" type="button" class="btn btn-sm btn-outline-danger">
+            <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Bu Rolü Sil
+          </button>
+        </div>
+      </div>
+      <div class="col-6">
+        <!-- Form Start -->
+        <form [formGroup]="updateForm" class="">
+          <div class="row">
+            <!-- Category Name -->
+            <div class="form-group col-6 mb-3">
+              <label for="name">Ürün İsmi</label>
+              <input formControlName="name" id="name" type="text" class="form-control" placeholder="Philips">
+              <div
+                *ngIf="(updateForm.get('name').dirty || updateForm.get('name').touched) && updateForm.get('name').errors">
+                <span *ngIf="updateForm.get('name').errors.required" class="text-danger">Rol ismi gerekli
+                </span>
+                <span *ngIf="updateForm.get('name').errors.maxlength" class="text-danger">Rol ismi 15
+                  karakteri geçemez </span>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- Form End -->
+        <button [disabled]="!isOk" [disabled]="!updateForm.valid" (click)="update()"
+          class="btn btn-primary col-12">
+          <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Kaydet
+        </button>
+      </div>
+    </main>
+  </div>
+</div>
+
