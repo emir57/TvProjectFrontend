@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Role } from 'src/app/Models/role';
+import { RoleService } from 'src/app/Services/role.service';
 
 @Component({
   selector: 'app-admin-roles',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminRolesComponent implements OnInit {
 
-  constructor() { }
+  roles:Role[]=[]
+  constructor(
+    private roleService:RoleService
+  ) { }
 
   ngOnInit(): void {
+    this.roleService.getRoles().subscribe(response=>{
+      this.roles=response.data;
+    })
   }
 
 }
