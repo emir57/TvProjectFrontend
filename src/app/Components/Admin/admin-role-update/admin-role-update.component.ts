@@ -56,6 +56,7 @@ export class AdminRoleUpdateComponent implements OnInit {
     this.roleService.deleteRole(this.role).subscribe(response=>{
       if(response.isSuccess){
         this.toastrService.success(response.message);
+        this.router.navigate(["admindashboard/adminroles"])
       }
     },responseErr=>{
       console.log(responseErr)
