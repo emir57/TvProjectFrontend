@@ -24,4 +24,8 @@ export class AdminCustomersComponent implements OnInit {
 
   }
 
+  goRoleUpdatePage(user:User){
+
+  }
+
 }
