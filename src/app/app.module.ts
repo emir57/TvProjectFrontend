@@ -40,6 +40,7 @@ import { UserUpdateComponent } from './Components/User/profile/user-update/user-
 import { UserOrdersComponent } from './Components/User/profile/user-orders/user-orders.component';
 import { UserCreditcardsComponent } from './Components/User/profile/user-creditcards/user-creditcards.component';
 import { UserAddressComponent } from './Components/User/profile/user-address/user-address.component';
+import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +73,7 @@ import { UserAddressComponent } from './Components/User/profile/user-address/use
     UserOrdersComponent,
     UserCreditcardsComponent,
     UserAddressComponent,
+    AdminRolesComponent,
   ],
   imports: [
     BrowserModule,
