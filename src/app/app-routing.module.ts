@@ -9,6 +9,7 @@ import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orde
 import { AdminProductAddComponent } from './Components/Admin/admin-product-add/admin-product-add.component';
 import { AdminProductUpdateComponent } from './Components/Admin/admin-product-update/admin-product-update.component';
 import { AdminProductsComponent } from './Components/Admin/admin-products/admin-products.component';
+import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.component';
 import { AdminUploadimageComponent } from './Components/Admin/admin-uploadimage/admin-uploadimage.component';
 import { CategoryComponent } from './Components/User/category/category.component';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
@@ -46,6 +47,8 @@ const routes: Routes = [
 
   {path:"admindashboard/categoryupdate/:category",component:AdminCategoryUpdateComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   {path:"admindashboard/categoryadd",component:AdminCategoryAddComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+
+  {path:"admindashboard/adminroles",component:AdminRolesComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
   {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   //User Panels
