@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Role } from 'src/app/Models/role';
 import { RoleService } from 'src/app/Services/role.service';
 
@@ -11,7 +12,8 @@ export class AdminRolesComponent implements OnInit {
 
   roles:Role[]=[]
   constructor(
-    private roleService:RoleService
+    private roleService:RoleService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -21,7 +23,7 @@ export class AdminRolesComponent implements OnInit {
   }
 
   goUpdatePage(role:Role){
-
+    this.router.navigate(["admindashboard/roleupdate",JSON.stringify(role)])
   }
 
 }
