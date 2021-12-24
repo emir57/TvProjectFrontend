@@ -12,6 +12,7 @@ import { RoleService } from 'src/app/Services/role.service';
 })
 export class AdminRoleUpdateComponent implements OnInit {
 
+  isOk=true;
   role:Role
   updateForm:FormGroup
   constructor(
@@ -41,25 +42,31 @@ export class AdminRoleUpdateComponent implements OnInit {
 
   update(){
     if(this.updateForm.valid){
+      this.isOk=false;
       let role = Object.assign({},this.updateForm.value);
       this.roleService.updateRole(role).subscribe(response=>{
         if(response.isSuccess){
           this.toastrService.success(response.message);
           this.router.navigate(["admindashboard/adminroles"])
+          this.isOk=true;
         }else{
           this.toastrService.error(response.message);
+          this.isOk=true;
         }
       })
     }
   }
   delete(){
+    this.isOk=false;
     this.roleService.deleteRole(this.role).subscribe(response=>{
       if(response.isSuccess){
         this.toastrService.success(response.message);
         this.router.navigate(["admindashboard/adminroles"])
+        this.isOk=true;
       }
     },responseErr=>{
       console.log(responseErr)
+      this.isOk=true;
     })
   }
 
