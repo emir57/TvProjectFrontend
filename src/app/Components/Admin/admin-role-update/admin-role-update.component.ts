@@ -12,20 +12,20 @@ import { RoleService } from 'src/app/Services/role.service';
 })
 export class AdminRoleUpdateComponent implements OnInit {
 
-  isOk=true;
-  role:Role
-  updateForm:FormGroup
+  isOk = true;
+  role: Role
+  updateForm: FormGroup
   constructor(
-    private roleService:RoleService,
-    private activatedRoute:ActivatedRoute,
-    private router:Router,
-    private formBuilder:FormBuilder,
-    private toastrService:ToastrService
+    private roleService: RoleService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(param=>{
-      if(!param["role"]){
+    this.activatedRoute.params.subscribe(param => {
+      if (!param["role"]) {
         this.router.navigate(["admindashboard/adminroles"])
       }
       this.role = JSON.parse(param["role"])
@@ -34,41 +34,46 @@ export class AdminRoleUpdateComponent implements OnInit {
     this.createUpdateForm();
   }
 
-  createUpdateForm(){
+  createUpdateForm() {
     this.updateForm = this.formBuilder.group({
-      id:[this.role.id],
-      name:[this.role.name,[Validators.required,Validators.maxLength(15)]]
+      id: [this.role.id],
+      name: [this.role.name, [Validators.required, Validators.maxLength(15)]]
     })
   }
 
-  update(){
-    if(this.updateForm.valid){
-      this.isOk=false;
-      let role = Object.assign({},this.updateForm.value);
-      this.roleService.updateRole(role).subscribe(response=>{
-        if(response.isSuccess){
+  update() {
+    if (this.updateForm.valid) {
+      this.isOk = false;
+      let role = Object.assign({}, this.updateForm.value);
+      this.roleService.updateRole(role).subscribe(response => {
+        if (response.isSuccess) {
           this.toastrService.success(response.message);
           this.router.navigate(["admindashboard/adminroles"])
-          this.isOk=true;
-        }else{
+          this.isOk = true;
+        } else {
           this.toastrService.error(response.message);
-          this.isOk=true;
+          this.isOk = true;
         }
       })
     }
   }
-  delete(){
-    this.isOk=false;
-    this.roleService.deleteRole(this.role).subscribe(response=>{
-      if(response.isSuccess){
-        this.toastrService.success(response.message);
-        this.router.navigate(["admindashboard/adminroles"])
-        this.isOk=true;
-      }
-    },responseErr=>{
-      this.toastrService.error(responseErr.error.message);
-      this.isOk=true;
-    })
+  delete() {
+    if (confirm(`${this.role.name} rolünü silmek istediğinizden emin misiniz?`)) {
+      this.isOk = false;
+      this.roleService.deleteRole(this.role).subscribe(response => {
+        if (response.isSuccess) {
+          this.toastrService.success(response.message);
+          this.router.navigate(["admindashboard/adminroles"])
+          this.isOk = true;
+        }
+      }, responseErr => {
+        this.toastrService.error(responseErr.error.message);
+        this.isOk = true;
+      })
+    }else{
+      this.toastrService.info("Silme işlemi iptal edildi");
+    }
+
   }
 
 }
