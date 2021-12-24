@@ -24,4 +24,8 @@ export class RoleService {
     let newPath = `${this.apiUrl}/api/roles/update`;
     return this.httpClient.put<ResponseModel>(newPath,role);
   }
+  deleteRole(role:Role):Observable<ResponseModel>{
+    let newPath = `${this.apiUrl}/api/roles/delete?roleId=${role.id}`;
+    return this.httpClient.delete<ResponseModel>(newPath);
+  }
 }
