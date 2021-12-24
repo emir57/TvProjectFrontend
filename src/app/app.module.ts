@@ -41,6 +41,7 @@ import { UserOrdersComponent } from './Components/User/profile/user-orders/user-
 import { UserCreditcardsComponent } from './Components/User/profile/user-creditcards/user-creditcards.component';
 import { UserAddressComponent } from './Components/User/profile/user-address/user-address.component';
 import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.component';
+import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/admin-role-update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +75,7 @@ import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.
     UserCreditcardsComponent,
     UserAddressComponent,
     AdminRolesComponent,
+    AdminRoleUpdateComponent,
   ],
   imports: [
     BrowserModule,
