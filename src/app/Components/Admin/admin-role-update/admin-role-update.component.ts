@@ -36,7 +36,7 @@ export class AdminRoleUpdateComponent implements OnInit {
   createUpdateForm(){
     this.updateForm = this.formBuilder.group({
       id:[this.role.id],
-      name:[this.role.name,[Validators.required]]
+      name:[this.role.name,[Validators.required,Validators.maxLength(15)]]
     })
   }
 
