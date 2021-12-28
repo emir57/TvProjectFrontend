@@ -5,7 +5,23 @@
       <app-user-left-panel></app-user-left-panel>
     </div>
     <main class="col-9 ms-sm-auto col-lg-10 px-md-4 p-3">
-
+      <!-- Card -->
+      <div class="card mb-3" *ngFor="let address of addresses">
+        <div class="card-header">
+          {{address.addressName}}
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{address.addressText}}</p>
+            <footer class="blockquote-footer"><cite title="Source Title">{{address.cityName}}</cite></footer>
+            <p>
+              <button class="btn btn-primary" routerLink=""><i class="far fa-edit"></i></button>
+              <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <!-- Card End -->
     </main>
   </div>
 </div>
