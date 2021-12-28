@@ -9,6 +9,30 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 display-4">Siparişler</h1>
       </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Ürün Adı</th>
+              <th>Ürün Kodu</th>
+              <th>Ekran Tipi</th>
+              <th>Ekran Inch</th>
+              <th>Ekstra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td>{{order.id}}</td>
+              <td>{{order.userId}}</td>
+              <td>{{order.tvId}}</td>
+              <td>{{order.shippedDate}}</td>
+              <td>{{order.totalPrice | currency:'TRY'}}</td>
+              <td>{{order.addressId}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
+import { Order } from '../Models/order';
 import { OrderModel } from '../Models/orderModel';
 import { ResponseListModel } from '../Models/responseListModel';
 import { ResponseModel } from '../Models/responseModel';
@@ -16,9 +17,9 @@ export class OrderService {
     private httpClient:HttpClient
   ) { }
 
-  getOrders():Observable<ResponseListModel<OrderModel>>{
+  getOrders():Observable<ResponseListModel<Order>>{
     let newPath = `${this.apiUrl}/api/orders/getall`;
-    return this.httpClient.get<ResponseListModel<OrderModel>>(newPath);
+    return this.httpClient.get<ResponseListModel<Order>>(newPath);
   }
 
   getOrdersByUser(id:number):Observable<ResponseListModel<OrderModel>>{
