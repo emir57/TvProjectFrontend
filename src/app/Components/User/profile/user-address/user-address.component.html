@@ -13,14 +13,21 @@
           </div>
           <div class="col-5 mb-3">
             <label class="form-label" for="addressText">Açık Adres</label>
-            <textarea class="form-control" formControlName="addressText" style="max-height: 100px;" type="text" name="addressText" id="addressText"></textarea>
+            <textarea class="form-control" formControlName="addressText" style="max-height: 100px;" type="text"
+              name="addressText" id="addressText"></textarea>
           </div>
           <div class="col-4 mb-3">
             <select class="form-control" name="cityId" id="cityId" formControlName="cityId">
               <option value="0">Şehir Seçiniz</option>
+              <option *ngFor="let city of cities" [value]="city.id">{{city.cityName}}</option>
             </select>
           </div>
         </form>
+        <div class="col-4">
+          <button (click)="addAddress()" [disabled]="!addForm.valid" class="btn btn-primary">
+            Ekle
+          </button>
+        </div>
       </div>
 
       <hr>

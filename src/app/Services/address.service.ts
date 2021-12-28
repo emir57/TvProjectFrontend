@@ -30,6 +30,10 @@ export class AddressService {
     let newPath = `${this.apiUrl}/api/addresses/getbyid?id=${id}`;
     return this.httpClient.get<ResponseSingleModel<UserAddressCityModel>>(newPath);
   }
+  addAddress(address:UserAddress):Observable<ResponseModel>{
+    let newPath = `${this.apiUrl}/api/addresses/add`;
+    return this.httpClient.post<ResponseModel>(newPath,address);
+  }
   updateAddress(address:UserAddress):Observable<ResponseModel>{
     let newPath = `${this.apiUrl}/api/addresses/update`;
     return this.httpClient.put<ResponseModel>(newPath,address);
