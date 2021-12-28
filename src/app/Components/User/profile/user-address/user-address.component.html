@@ -16,7 +16,7 @@
             <footer class="blockquote-footer"><cite title="Source Title">{{address.cityName}}</cite></footer>
             <p>
               <button class="btn btn-primary" routerLink=""><i class="far fa-edit"></i></button>
-              <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+              <button class="btn btn-danger" (click)="deleteAddress(address)"><i class="far fa-trash-alt"></i></button>
             </p>
           </blockquote>
         </div>
