@@ -43,7 +43,9 @@
                 <td>{{product.unitPrice | currency:"TRY"}}</td>
                 <td>{{product.discount}}</td>
                 <td>
-                  <span [class]="isDiscount(product)">{{product.isDiscount}}</span>
+                  <span [class]="isDiscount(product)">
+                    <span [innerText]="checkDiscount(product)"></span>
+                  </span>
                 </td>
                 <td>
                   <a class="edit" title="{{product.productName}} ürününü düzenle" (click)="goUpdatePage(product)"><i class="far fa-edit"></i></a>

@@ -36,4 +36,11 @@ export class AdminProductsComponent implements OnInit {
     // routerLink="/admindashboard/productupdate/{{product}}"
   }
 
+  checkDiscount(product:Product){
+    if(product.isDiscount){
+      return "Evet";
+    }
+    return "Hayır"
+  }
+
 }
