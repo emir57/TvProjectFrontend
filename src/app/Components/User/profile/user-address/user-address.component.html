@@ -5,6 +5,25 @@
       <app-user-left-panel></app-user-left-panel>
     </div>
     <main class="col-9 ms-sm-auto col-lg-10 px-md-4 p-3">
+      <div class="row">
+        <form [formGroup]="addForm">
+          <div class="col-4 mb-3">
+            <label class="form-label" for="addressName">Adres Adı</label>
+            <input class="form-control" formControlName="addressName" type="text" name="addressName" id="addressName">
+          </div>
+          <div class="col-5 mb-3">
+            <label class="form-label" for="addressText">Açık Adres</label>
+            <textarea class="form-control" formControlName="addressText" style="max-height: 100px;" type="text" name="addressText" id="addressText"></textarea>
+          </div>
+          <div class="col-4 mb-3">
+            <select class="form-control" name="cityId" id="cityId" formControlName="cityId">
+              <option value="0">Şehir Seçiniz</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <hr>
       <!-- Card -->
       <div class="card mb-3" *ngFor="let address of addresses">
         <div class="card-header">
