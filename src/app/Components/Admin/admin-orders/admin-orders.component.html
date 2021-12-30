@@ -14,11 +14,12 @@
           <thead>
             <tr>
               <th>Id</th>
-              <th>Ürün Adı</th>
-              <th>Ürün Kodu</th>
-              <th>Ekran Tipi</th>
-              <th>Ekran Inch</th>
-              <th>Ekstra</th>
+              <th>Kullanıcı</th>
+              <th>Ürün</th>
+              <th>Sipariş Tarihi</th>
+              <th>Toplam Tutar</th>
+              <th>Adres</th>
+              <th>Şehir</th>
             </tr>
           </thead>
           <tbody>
@@ -28,7 +29,8 @@
               <td>{{order.tvId}}</td>
               <td>{{order.shippedDate}}</td>
               <td>{{order.totalPrice | currency:'TRY'}}</td>
-              <td>{{order.addressId}}</td>
+              <td>{{order.addressText}}</td>
+              <td>{{order.city}}</td>
             </tr>
           </tbody>
         </table>

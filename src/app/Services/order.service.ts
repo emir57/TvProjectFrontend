@@ -17,9 +17,9 @@ export class OrderService {
     private httpClient:HttpClient
   ) { }
 
-  getOrders():Observable<ResponseListModel<Order>>{
+  getOrders():Observable<ResponseListModel<OrderModel>>{
     let newPath = `${this.apiUrl}/api/orders/getall`;
-    return this.httpClient.get<ResponseListModel<Order>>(newPath);
+    return this.httpClient.get<ResponseListModel<OrderModel>>(newPath);
   }
 
   getOrdersByUser(id:number):Observable<ResponseListModel<OrderModel>>{

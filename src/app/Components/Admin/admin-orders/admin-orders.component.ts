@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/Models/order';
+import { OrderModel } from 'src/app/Models/orderModel';
 import { OrderService } from 'src/app/Services/order.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { OrderService } from 'src/app/Services/order.service';
 })
 export class AdminOrdersComponent implements OnInit {
 
-  orders:Order[]=[]
+  orders:OrderModel[]=[]
   constructor(
     private orderService:OrderService,
   ) { }
