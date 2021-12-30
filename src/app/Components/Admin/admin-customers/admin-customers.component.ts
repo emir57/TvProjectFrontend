@@ -9,6 +9,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AdminCustomersComponent implements OnInit {
 
+  searchString:string='';
   users:User[]=[]
   constructor(
     private userService:UserService

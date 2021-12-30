@@ -9,6 +9,11 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 display-4">Müşteriler</h1>
       </div>
+      <div class="row">
+        <div class="col-4">
+          Müşteri Ara<input type="text" [(ngModel)]="searchString" class="form-control">
+        </div>
+      </div>
       <!-- Table -->
       <table class="table table-striped">
         <thead>
@@ -21,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users">
+          <tr *ngFor="let user of users | userSearch:searchString">
             <td>{{user.id}}</td>
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}} </td>
