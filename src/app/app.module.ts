@@ -43,6 +43,7 @@ import { UserAddressComponent } from './Components/User/profile/user-address/use
 import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.component';
 import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/admin-role-update.component';
 import { BrandSearchPipe } from './pipes/brand-search.pipe';
+import { UserSearchPipe } from './pipes/user-search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +79,7 @@ import { BrandSearchPipe } from './pipes/brand-search.pipe';
     AdminRolesComponent,
     AdminRoleUpdateComponent,
     BrandSearchPipe,
+    UserSearchPipe,
   ],
   imports: [
     BrowserModule,
