@@ -10,6 +10,7 @@ import { CategoryService } from 'src/app/Services/category.service';
 })
 export class AdminBrandsComponent implements OnInit {
 
+  searchString:string='';
   categories:Category[]=[];
   constructor(
     private categoryService:CategoryService,

@@ -9,6 +9,11 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 display-4">Markalar</h1>
       </div>
+      <div class="row">
+        <div class="col-4">
+          Marka Ara<input type="text" [(ngModel)]="searchString" class="form-control">
+        </div>
+      </div>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -20,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let category of categories">
+          <tr *ngFor="let category of categories | brandSearch:searchString">
             <td>{{category.id}}</td>
             <td>{{category.name}}</td>
             <td>{{category.phoneNumber}} <small *ngIf="!category.phoneNumber" class="text-muted">Belirtilmedi</small></td>
