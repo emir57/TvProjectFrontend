@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class AdminProductsComponent implements OnInit {
 
+  searchString:string="";
   products:Product[]=[];
   constructor(
     private productService:ProductService,
