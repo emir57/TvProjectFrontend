@@ -11,7 +11,8 @@ export class ProductSearchPipe implements PipeTransform {
     return value.filter(
       product=>product.productName.toLocaleLowerCase().indexOf(searchString)!==-1 ||
       product.screenInch.indexOf(searchString)!==-1 ||
-      product.extras.toLocaleLowerCase().indexOf(searchString)!==-1
+      product.extras.toLocaleLowerCase().indexOf(searchString)!==-1 ||
+      product.screenType.toLocaleLowerCase().indexOf(searchString)!=-1
         )
   }
 
