@@ -42,6 +42,7 @@ import { UserCreditcardsComponent } from './Components/User/profile/user-creditc
 import { UserAddressComponent } from './Components/User/profile/user-address/user-address.component';
 import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.component';
 import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/admin-role-update.component';
+import { BrandSearchPipe } from './pipes/brand-search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +77,7 @@ import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/a
     UserAddressComponent,
     AdminRolesComponent,
     AdminRoleUpdateComponent,
+    BrandSearchPipe,
   ],
   imports: [
     BrowserModule,
