@@ -17,7 +17,7 @@ export class ExpirationGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       let now = new Date;
-      let expiration = localStorage.getItem("expiration");
+      let expiration = new Date(localStorage.getItem("expiration"));
       if(expiration){
           if(now>new Date(expiration)){
             this.authService.isLogin=false;
