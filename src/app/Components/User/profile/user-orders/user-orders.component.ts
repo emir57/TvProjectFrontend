@@ -6,6 +6,7 @@ import { Photo } from 'src/app/Models/photo';
 import { User } from 'src/app/Models/user';
 import { OrderService } from 'src/app/Services/order.service';
 import $ from 'jquery';
+import { Order } from 'src/app/Models/order';
 
 @Component({
   selector: 'app-user-orders',
@@ -16,6 +17,7 @@ export class UserOrdersComponent implements OnInit {
 
   user: User;
   orders: OrderModel[] = []
+  selectedOrder: OrderModel;
   constructor(
     private orderService: OrderService,
     private toastrService: ToastrService
@@ -29,8 +31,8 @@ export class UserOrdersComponent implements OnInit {
       $("#deleteBox").fadeOut();
       $("#deleteBoxBackground").fadeOut();
     })
-  }
 
+  }
   getOrders() {
     this.orderService.getOrdersByUser(this.user.id).subscribe(response => {
       if (response.isSuccess) {
@@ -47,27 +49,27 @@ export class UserOrdersComponent implements OnInit {
   getCount() {
     return this.orders.length
   }
-  deleteOrder(order: OrderModel) {
-    if (confirm(`
-      Bu siparişi iptal etmek istediğinizden emin misiniz?\n
-      ${order.tv.productName} ${order.tv.screenInch} ${order.tv.screenType}
-    `)) {
-      this.orderService.deleteOrder(order.id).subscribe(response => {
-        if (response.isSuccess) {
-          this.toastrService.success(response.message);
-          this.getOrders();
-        } else {
-          this.toastrService.error(response.message)
-        }
-      })
-    } else {
-      this.toastrService.info("Vazgeçildi")
-    }
+  deleteOrder() {
+    this.orderService.deleteOrder(this.selectedOrder.id).subscribe(response => {
+      if (response.isSuccess) {
+        this.toastrService.success(response.message);
+        this.getOrders();
+      } else {
+        this.toastrService.error(response.message)
+      }
+    })
   }
 
-  showAlertBox() {
+  showAlertBox(order: OrderModel) {
+    this.selectedOrder = order;
     $("#deleteBox").fadeIn();
     $("#deleteBoxBackground").fadeIn();
+    let text = `
+    ${order.tv.productName}
+    <br>
+    Bu siparişi iptal etmek istediğinizden emin misiniz?
+    `
+    $("#deleteBoxText").html(text)
   }
 
 }

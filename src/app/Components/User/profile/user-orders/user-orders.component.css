@@ -15,8 +15,10 @@
   padding:10px;
 }
 #deleteBoxButtons{
+  position: absolute;
   padding-right: 3px;
-  float: right;
+  right: 1%;
+  bottom: 1%;
 }
 #deleteBoxBackground{
   z-index: 200;

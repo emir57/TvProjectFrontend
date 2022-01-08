@@ -3,11 +3,11 @@
     <i class="fas fa-times"></i>
   </a>
   <div id="deleteBoxText">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dignissimos amet deleniti ipsum debitis. Consequatur, quod repellendus? Fugit dolorum iste cum! Maiores voluptatum enim magni, ad dolore ut quae quam.
+
   </div>
   <div id="deleteBoxButtons">
     <button class="" class="btn btn-secondary me-1 deleteBoxClose">Vazgeç</button>
-    <button id="deleteOrder" class="btn btn-danger">İptal Et</button>
+    <button (click)="deleteOrder()" id="deleteOrder" class="btn btn-danger">İptal Et</button>
   </div>
 </div>
 <div id="deleteBoxBackground"></div>
@@ -28,7 +28,7 @@
       <div class="card text-center mb-3" *ngFor="let order of orders">
         <div class="card-header">
           {{order.tv.productName}} {{order.tv.screenInch}} {{order.tv.screenType}}
-          <a (click)="showAlertBox()" class="text-danger" style="position: absolute;right: 0;top: 0;text-decoration: none; margin: 5px;cursor: pointer;"><i>İptal Et</i></a>
+          <a (click)="showAlertBox(order)" class="text-danger" style="position: absolute;right: 0;top: 0;text-decoration: none; margin: 5px;cursor: pointer;"><i>İptal Et</i></a>
         </div>
         <div class="card-body">
           <p>
