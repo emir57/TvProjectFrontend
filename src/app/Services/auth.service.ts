@@ -36,6 +36,7 @@ export class AuthService {
           if (rememberMe) {
             localStorage.setItem("token", response.data.accessToken.token)
             localStorage.setItem("user", JSON.stringify(response.data.user.id))
+            sessionStorage.setItem("user",response.data.user.id+"")
           } else {
             sessionStorage.setItem("token", response.data.accessToken.token)
             sessionStorage.setItem("user", JSON.stringify(response.data.user.id))

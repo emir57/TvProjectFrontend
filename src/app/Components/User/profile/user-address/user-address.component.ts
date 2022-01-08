@@ -30,6 +30,7 @@ export class UserAddressComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.userId)
     this.getCities();
     this.getAddress();
     this.createAddForm();
@@ -128,11 +129,14 @@ export class UserAddressComponent implements OnInit {
         if (responseCity.isSuccess) {
           this.addForm.get("cityId").setValue(+cityId)
           let address = Object.assign({ cityName: responseCity.data.cityName }, this.addForm.value)
+          console.log(address)
           this.addressService.addAddress(address).subscribe(response => {
             if (response.isSuccess) {
               this.toastrService.success(`${address.addressName} başarıyla eklendi`);
               this.addresses.push(address);
             }
+          },responseErr=>{
+            this.toastrService.error("Bilinmeyen bir hata oluştu")
           })
         }
       })
