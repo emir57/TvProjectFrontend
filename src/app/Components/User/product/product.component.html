@@ -35,13 +35,7 @@
       </div>
       <!-- Filter Options End -->
       <!-- Categories -->
-      <div class="form-check" *ngFor="let category of categories" (click)="addList(category)">
-        <input class="form-check-input" type="checkbox" value="" [id]="category.id">
-        <label class="form-check-label" [for]="category.id">
-          {{category.name}}
-        </label>
-      </div>
-      <button (click)="getProductsByCategories()" class="btn btn-primary"> Seçili Kategorilere Göre Getir</button>
+      <app-category></app-category>
       <!-- Categories End -->
     </div>
     <!-- Left Panel End -->

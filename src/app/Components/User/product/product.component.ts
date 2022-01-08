@@ -18,7 +18,6 @@ export class ProductComponent implements OnInit {
   searchString = "";
   products: ProductAndPhoto[] = [];
   categories: Category[] = [];
-  selectList: number[] = []
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -39,19 +38,16 @@ export class ProductComponent implements OnInit {
       })
   }
   getProducts() {
-    this.productService.getProducts().subscribe(response => {
-      this.products = response.data;
+    this.activatedRoute.params.subscribe(param => {
+      if(param["categoryId"]) {
+        this.productService.getProductsByCategory(param["categoryId"])
+          .subscribe(response => {
+            this.products = response.data;
+          })
+      } else {
+        this.getAllProducts();
+      }
     })
-    // this.activatedRoute.params.subscribe(param => {
-    //   if(param["categoryId"]) {
-    //     this.productService.getProductsByCategory(param["categoryId"])
-    //       .subscribe(response => {
-    //         this.products = response.data;
-    //       })
-    //   } else {
-    //     this.getAllProducts();
-    //   }
-    // })
   }
   getCategories() {
     this.categoryService.getCategories().subscribe(response => {
@@ -59,33 +55,6 @@ export class ProductComponent implements OnInit {
         this.categories = response.data;
       }
     })
-  }
-
-  addList(category: Category) {
-    this.selectList.push(category.id);
-  }
-
-  getProductsByCategories() {
-    if(this.selectList.length>=1){
-      this.products = [];
-      this.productService.getProducts().subscribe(response => {
-        if (response.isSuccess) {
-          this.selectList.forEach(brandId => {
-            response.data.forEach(product => {
-              if (brandId === product.brandId) {
-                this.products.push(product);
-              }
-            })
-          });
-        }
-      })
-    }else {
-      this.productService.getProducts().subscribe(response => {
-        if(response.isSuccess){
-          this.products = response.data;
-        }
-      })
-    }
   }
   getImageUrl() {
     return this.apiUrl;
