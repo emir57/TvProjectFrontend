@@ -26,12 +26,6 @@ export class UserOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem("userInfo"));
     this.getOrders();
-
-    $(".deleteBoxClose").click(function () {
-      $("#deleteBox").fadeOut();
-      $("#deleteBoxBackground").fadeOut();
-    })
-
   }
   getOrders() {
     this.orderService.getOrdersByUser(this.user.id).subscribe(response => {
@@ -70,6 +64,16 @@ export class UserOrdersComponent implements OnInit {
     Bu siparişi iptal etmek istediğinizden emin misiniz?
     `
     $("#deleteBoxText").html(text)
+
+
+    $(".deleteBoxClose").click(function () {
+      $("#deleteBox").fadeOut();
+      $("#deleteBoxBackground").fadeOut();
+    })
+    $("#deleteBoxBackground").click(function () {
+      $("#deleteBox").fadeOut();
+      $("#deleteBoxBackground").fadeOut();
+    })
   }
 
 }
