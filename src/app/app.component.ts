@@ -19,10 +19,12 @@ export class AppComponent implements OnInit{
       let userId = JSON.parse(localStorage.getItem('user'))
       this.authService.userCheck(userId)
       this.authService.isLogin=true;
+      sessionStorage.setItem("user",userId)
     }else if(sessionStorage.getItem('user')){
       let userId = JSON.parse(sessionStorage.getItem('user'))
       this.authService.userCheck(userId)
       this.authService.isLogin=true;
+      sessionStorage.setItem("user",userId)
     }
   }
 
