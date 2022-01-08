@@ -38,6 +38,16 @@
         <div class="text text-danger" *ngIf="(registerForm.get('password').errors.minlength)">Şifre en az 5 karakter olabilir</div>
       </div>
     </div>
+    <div class="form-floating">
+      <input formControlName="rePassword" type="password" class="form-control" id="password" placeholder="Repassword">
+      <label for="rePassword">Şifre Tekrar</label>
+      <div *ngIf="(registerForm.get('rePassword').dirty ||registerForm.get('rePassword').touched) && registerForm.get('rePassword').errors">
+        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.maxlength)">Şifre tekrarı en fazla 30 karakter olabilir</div>
+        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.required)">Şifre tekrarı gerekli</div>
+        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.minlength)">Şifre tekrarı en az 5 karakter olabilir</div>
+        <div class="text text-danger" *ngIf="(registerForm)">Şifre tekrarı en az 5 karakter olabilir</div>
+      </div>
+    </div>
 
     <div class="checkbox mb-3">
       <label id="sozlesme">
