@@ -24,6 +24,9 @@
           <input [(ngModel)]="searchString" placeholder="Ürün Ara" type="text" class="form-control mb-1">
         </div>
         <div class="col-12">
+          <a (click)="getProducts()" class="filterOptionsButton"><i class="fas fa-redo"></i> Sıfırla</a>
+        </div>
+        <div class="col-12">
           <a (click)="increasedPrice()" class="filterOptionsButton"><i class="fas fa-chevron-up"></i> Artan Fiyat</a>
         </div>
         <div class="col-12">
