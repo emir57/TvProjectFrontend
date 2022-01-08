@@ -48,7 +48,7 @@
           <div [id]="getCarouselId(product)" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div *ngFor="let photo of product.photos" [class]="photocheck(photo)">
-                <img src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
+                <img width="100%" src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="{{getCarouselButtonId(product)}}" data-bs-slide="prev">
