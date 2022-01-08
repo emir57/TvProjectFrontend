@@ -52,6 +52,8 @@ export class UserOrdersComponent implements OnInit {
         this.toastrService.error(response.message)
       }
     })
+    $("#deleteBox").fadeOut();
+    $("#deleteBoxBackground").fadeOut();
   }
 
   showAlertBox(order: OrderModel) {
