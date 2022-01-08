@@ -134,6 +134,8 @@ export class UserAddressComponent implements OnInit {
             if (response.isSuccess) {
               this.toastrService.success(`${address.addressName} başarıyla eklendi`);
               this.addresses.push(address);
+            }else{
+              this.toastrService.error(response.message);
             }
           },responseErr=>{
             this.toastrService.error("Bilinmeyen bir hata oluştu")
