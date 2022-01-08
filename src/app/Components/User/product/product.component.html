@@ -24,10 +24,10 @@
           <input [(ngModel)]="searchString" placeholder="Ürün Ara" type="text" class="form-control mb-1">
         </div>
         <div class="col12">
-          <a class="filterOptionsButton"><i class="fas fa-chevron-up"></i> Artan Fiyat</a>
+          <a (click)="increasedPrice()" class="filterOptionsButton"><i class="fas fa-chevron-up"></i> Artan Fiyat</a>
         </div>
         <div class="col12">
-          <a class="filterOptionsButton"><i class="fas fa-chevron-down"></i> Azalan Fiyat</a>
+          <a (click)="decreasingPrice()" class="filterOptionsButton"><i class="fas fa-chevron-down"></i> Azalan Fiyat</a>
         </div>
       </div>
       <!-- Filter Options End -->
@@ -51,11 +51,11 @@
                 <img src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
               </div>
             </div>
-            <button (click)="click(product)" class="carousel-control-prev" type="button" data-bs-target="{{getCarouselButtonId(product)}}" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="{{getCarouselButtonId(product)}}" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Geri</span>
             </button>
-            <button (click)="click(product)" class="carousel-control-next" type="button" data-bs-target="{{getCarouselButtonId(product)}}" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="{{getCarouselButtonId(product)}}" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">İleri</span>
             </button>
