@@ -1,0 +1,35 @@
+#deleteBox{
+  width: 30%;
+  height: 32%;
+  top: 10%;
+  position: fixed;
+  background-color: white;
+  right: 35%;
+  left: 35%;
+  z-index: 201;
+  border-radius: 2%;
+}
+#deleteBoxText{
+  margin-top: 5%;
+  padding:10px;
+}
+#deleteBoxButtons{
+  padding-right: 3px;
+  float: right;
+}
+#deleteBoxBackground{
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: black;
+  opacity: 0.7;
+}
+.closeButton{
+  position: absolute;
+  right: 2%;
+  top: 0;
+  font-size: x-large;
+  color: black;
+  opacity: 0.8;
+}
