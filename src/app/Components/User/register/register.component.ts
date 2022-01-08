@@ -30,8 +30,9 @@ export class RegisterComponent implements OnInit {
       lastName: ['', [Validators.required,Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email,Validators.maxLength(40)]],
       password: ['', [Validators.required, Validators.minLength(5),Validators.maxLength(30)]],
+      rePassword: ['', [Validators.required, Validators.minLength(5),Validators.maxLength(30)]],
       agreement:[false]
-    })
+    },{validators:this.checkPasswords})
   }
 
   register(){
@@ -53,6 +54,12 @@ export class RegisterComponent implements OnInit {
           console.log(responseErr)
         })
     }
+  }
+
+  checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
+    let pass = group.get('password').value;
+    let confirmPass = group.get('rePassword').value
+    return pass === confirmPass ? null : { notSame: true }
   }
 
 }

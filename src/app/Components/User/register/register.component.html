@@ -45,8 +45,8 @@
         <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.maxlength)">Şifre tekrarı en fazla 30 karakter olabilir</div>
         <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.required)">Şifre tekrarı gerekli</div>
         <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.minlength)">Şifre tekrarı en az 5 karakter olabilir</div>
-        <div class="text text-danger" *ngIf="(registerForm)">Şifre tekrarı en az 5 karakter olabilir</div>
       </div>
+      <div class="text text-danger" *ngIf="(registerForm.hasError('notSame'))">Şifreler uyuşmuyor</div>
     </div>
 
     <div class="checkbox mb-3">
