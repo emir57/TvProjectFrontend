@@ -76,6 +76,8 @@ export class UserAddressComponent implements OnInit {
         let deletedAddress = this.addresses.findIndex(x => x.id == this.selectedAddress.id)
         this.addresses.splice(deletedAddress, 1)
         this.toastrService.success("Silme Başarılı");
+        $("#deleteBox").fadeOut();
+        $("#deleteBoxBackground").fadeOut();
       }
     })
   }
@@ -142,9 +144,17 @@ export class UserAddressComponent implements OnInit {
     }
   }
   showdeleteBox(address: UserAddressCityModel) {
+    this.selectedAddress = address;
     $("#deleteBox").fadeIn();
     $("#deleteBoxBackground").fadeIn();
-
+    let text = `
+    ${address.addressName}
+    <br>
+    ${address.addressText.substring(0, 30)}...
+    <br>
+    Bu adresi silmek istediğinizden emin misiniz?
+    `
+    $("#deleteBoxText").html(text);
 
     $(".deleteBoxClose").click(function () {
       $("#deleteBox").fadeOut();
