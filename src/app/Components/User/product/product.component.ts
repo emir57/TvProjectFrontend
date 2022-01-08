@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiUrl } from 'src/app/Models/apiUrl';
+import { Category } from 'src/app/Models/category';
 import { Photo } from 'src/app/Models/photo';
 import { Product } from 'src/app/Models/product';
 import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
+import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 @Component({
   selector: 'app-product',
@@ -13,15 +15,19 @@ import { ProductService } from 'src/app/Services/product.service';
 export class ProductComponent implements OnInit {
 
   apiUrl = ApiUrl
-  searchString="";
+  searchString = "";
   products: ProductAndPhoto[] = [];
+  categories: Category[] = [];
+  selectList: number[] = []
   constructor(
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit(): void {
     this.getProducts();
+    this.getCategories();
   }
 
   getAllProducts() {
@@ -33,51 +39,86 @@ export class ProductComponent implements OnInit {
       })
   }
   getProducts() {
-    this.activatedRoute.params.subscribe(param => {
-
-      if(param["categoryId"]) {
-        this.productService.getProductsByCategory(param["categoryId"])
-          .subscribe(response => {
-            this.products = response.data;
-          })
-      } else {
-        this.getAllProducts();
+    this.productService.getProducts().subscribe(response => {
+      this.products = response.data;
+    })
+    // this.activatedRoute.params.subscribe(param => {
+    //   if(param["categoryId"]) {
+    //     this.productService.getProductsByCategory(param["categoryId"])
+    //       .subscribe(response => {
+    //         this.products = response.data;
+    //       })
+    //   } else {
+    //     this.getAllProducts();
+    //   }
+    // })
+  }
+  getCategories() {
+    this.categoryService.getCategories().subscribe(response => {
+      if (response.isSuccess) {
+        this.categories = response.data;
       }
     })
   }
 
-  getImageUrl(){
+  addList(category: Category) {
+    this.selectList.push(category.id);
+  }
+
+  getProductsByCategories() {
+    if(this.selectList.length>=1){
+      this.products = [];
+      this.productService.getProducts().subscribe(response => {
+        if (response.isSuccess) {
+          this.selectList.forEach(brandId => {
+            response.data.forEach(product => {
+              if (brandId === product.brandId) {
+                this.products.push(product);
+              }
+            })
+          });
+        }
+      })
+    }else {
+      this.productService.getProducts().subscribe(response => {
+        if(response.isSuccess){
+          this.products = response.data;
+        }
+      })
+    }
+  }
+  getImageUrl() {
     return this.apiUrl;
   }
 
-  photocheck(photo:Photo){
-    if(photo.isMain==true){
+  photocheck(photo: Photo) {
+    if (photo.isMain == true) {
       return "carousel-item active"
-    }else{
+    } else {
       return "carousel-item"
     }
   }
 
-  getCarouselId(product:Product){
+  getCarouselId(product: Product) {
     return `carousel${product.id}`
   }
-  getCarouselButtonId(product:Product){
+  getCarouselButtonId(product: Product) {
     return `#carousel${product.id}`
   }
 
-  getImages(photos:Photo[]){
-    let photosUrl:string[]=[]
-    photos.forEach(photo=>photosUrl.push(`${this.apiUrl}${photo.imageUrl}`))
+  getImages(photos: Photo[]) {
+    let photosUrl: string[] = []
+    photos.forEach(photo => photosUrl.push(`${this.apiUrl}${photo.imageUrl}`))
     console.log(photosUrl)
     return photosUrl;
   }
 
-  increasedPrice(){
+  increasedPrice() {
     console.log("artan")
-    this.products = this.products.sort((x,y)=>x.unitPrice-y.unitPrice);
+    this.products = this.products.sort((x, y) => x.unitPrice - y.unitPrice);
   }
-  decreasingPrice (){
-    this.products = this.products.sort((x,y)=>y.unitPrice-x.unitPrice);
+  decreasingPrice() {
+    this.products = this.products.sort((x, y) => y.unitPrice - x.unitPrice);
   }
 
 
