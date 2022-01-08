@@ -1,3 +1,17 @@
+<div id="deleteBox">
+  <a class="deleteCloseButton deleteBoxClose">
+    <i class="fas fa-times"></i>
+  </a>
+  <div id="deleteBoxText">
+
+  </div>
+  <div id="deleteBoxButtons">
+    <button class="" class="btn btn-secondary me-1 deleteBoxClose">Vazgeç</button>
+    <button (click)="deleteAddress()" id="deleteOrder" class="btn btn-danger">İptal Et</button>
+  </div>
+</div>
+<div id="deleteBoxBackground"></div>
+
 <!-- Update Form -->
 <div id="updateDiv" style="display: none;">
   <a id="closeBtn">
@@ -78,7 +92,7 @@
             <footer class="blockquote-footer"><cite title="Source Title">{{address.cityName}}</cite></footer>
             <p>
               <button class="btn btn-primary" (click)="ShowUpdateAddress(address)"><i class="far fa-edit"></i></button>
-              <button class="btn btn-danger" (click)="deleteAddress(address)"><i class="far fa-trash-alt"></i></button>
+              <button class="btn btn-danger" (click)="showdeleteBox(address)"><i class="far fa-trash-alt"></i></button>
             </p>
           </blockquote>
         </div>

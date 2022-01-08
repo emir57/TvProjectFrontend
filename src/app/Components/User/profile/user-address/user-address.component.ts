@@ -21,6 +21,7 @@ export class UserAddressComponent implements OnInit {
   updateForm: FormGroup
   cities: City[] = []
   addresses: UserAddressCityModel[] = []
+  selectedAddress: UserAddressCityModel;
   userId: number = +sessionStorage.getItem("user")
   constructor(
     private addressService: AddressService,
@@ -69,18 +70,14 @@ export class UserAddressComponent implements OnInit {
     })
   }
 
-  deleteAddress(address: UserAddressCityModel) {
-    if (confirm(`${address.addressName} bu adresi silmek istediğinizden emin misiniz?`)) {
-      this.addressService.deleteAddress(address.id).subscribe(response => {
-        if (response.isSuccess) {
-          let deletedAddress = this.addresses.findIndex(x => x.id == address.id)
-          this.addresses.splice(deletedAddress, 1)
-          this.toastrService.success("Silme Başarılı");
-        }
-      })
-    } else {
-      this.toastrService.info("Silme işlemi iptal edildi");
-    }
+  deleteAddress() {
+    this.addressService.deleteAddress(this.selectedAddress.id).subscribe(response => {
+      if (response.isSuccess) {
+        let deletedAddress = this.addresses.findIndex(x => x.id == this.selectedAddress.id)
+        this.addresses.splice(deletedAddress, 1)
+        this.toastrService.success("Silme Başarılı");
+      }
+    })
   }
 
   ShowUpdateAddress(address: UserAddress) {
@@ -134,14 +131,28 @@ export class UserAddressComponent implements OnInit {
             if (response.isSuccess) {
               this.toastrService.success(`${address.addressName} başarıyla eklendi`);
               this.addresses.push(address);
-            }else{
+            } else {
               this.toastrService.error(response.message);
             }
-          },responseErr=>{
+          }, responseErr => {
             this.toastrService.error("Bilinmeyen bir hata oluştu")
           })
         }
       })
     }
+  }
+  showdeleteBox(address: UserAddressCityModel) {
+    $("#deleteBox").fadeIn();
+    $("#deleteBoxBackground").fadeIn();
+
+
+    $(".deleteBoxClose").click(function () {
+      $("#deleteBox").fadeOut();
+      $("#deleteBoxBackground").fadeOut();
+    })
+    $("#deleteBoxBackground").click(function () {
+      $("#deleteBox").fadeOut();
+      $("#deleteBoxBackground").fadeOut();
+    })
   }
 }
