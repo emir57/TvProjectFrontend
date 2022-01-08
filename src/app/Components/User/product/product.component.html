@@ -13,11 +13,27 @@
 
 <div class="container mt-3">
   <div class="row">
+    <!-- Left Panel -->
     <div class="col-2">
-      <h6 class="display-6">Ürün Ara</h6>
-      <input [(ngModel)]="searchString" type="text" class="form-control mb-1">
+      <!-- Filter Options -->
+      <div class="row">
+        <div class="col-12">
+          <h6 class="display-6"><i class="fas fa-filter"></i> Filtrele</h6>
+        </div>
+        <div class="col-12">
+          <input [(ngModel)]="searchString" placeholder="Ürün Ara" type="text" class="form-control mb-1">
+        </div>
+        <div class="col12">
+          <a class="filterOptionsButton"><i class="fas fa-chevron-up"></i> Artan Fiyat</a>
+        </div>
+        <div class="col12">
+          <a class="filterOptionsButton"><i class="fas fa-chevron-down"></i> Azalan Fiyat</a>
+        </div>
+      </div>
+      <!-- Filter Options End -->
       <app-category></app-category>
     </div>
+    <!-- Left Panel End -->
     <div class="col-10">
       <div class="row">
         <div class="alert alert-info" align="center" *ngIf="products.length==0">
