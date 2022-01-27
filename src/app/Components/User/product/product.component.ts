@@ -7,6 +7,9 @@ import { Product } from 'src/app/Models/product';
 import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
 import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
+
+import $ from 'jquery';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -24,9 +27,21 @@ export class ProductComponent implements OnInit {
     private categoryService: CategoryService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getProducts();
     this.getCategories();
+
+    setTimeout(() => {
+      this.products.forEach(product => {
+        product.photos.forEach(photo => {
+          if (photo.isMain) {
+            $(`#photo${photo.id}`).show()
+          }
+        })
+      })
+    }, 1000);
+
+
   }
 
   getAllProducts() {
@@ -37,9 +52,10 @@ export class ProductComponent implements OnInit {
         console.log(responseErr)
       })
   }
+
   getProducts() {
     this.activatedRoute.params.subscribe(param => {
-      if(param["categoryId"]) {
+      if (param["categoryId"]) {
         this.productService.getProductsByCategory(param["categoryId"])
           .subscribe(response => {
             this.products = response.data;
