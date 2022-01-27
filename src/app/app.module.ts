@@ -44,6 +44,7 @@ import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/a
 import { BrandSearchPipe } from './pipes/brand-search.pipe';
 import { UserSearchPipe } from './pipes/user-search.pipe';
 import { AdminEditcustomerComponent } from './Components/Admin/admin-editcustomer/admin-editcustomer.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +90,7 @@ import { AdminEditcustomerComponent } from './Components/Admin/admin-editcustome
     ReactiveFormsModule,
     HttpClientModule,
     SliderModule,
+    NgImageSliderModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"

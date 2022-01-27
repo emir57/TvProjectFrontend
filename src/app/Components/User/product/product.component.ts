@@ -30,18 +30,6 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategories();
-
-    setTimeout(() => {
-      this.products.forEach(product => {
-        product.photos.forEach(photo => {
-          if (photo.isMain) {
-            $(`#photo${photo.id}`).show()
-          }
-        })
-      })
-    }, 1000);
-
-
   }
 
   getAllProducts() {
@@ -74,6 +62,18 @@ export class ProductComponent implements OnInit {
   }
   getImageUrl() {
     return this.apiUrl;
+  }
+  getImagesForSlider(photos: Photo[]) {
+    let returnPhotos: Array<object> = [];
+    photos.forEach(photo => {
+      returnPhotos.push({
+        image: `${this.apiUrl}${photo.imageUrl}`,
+        thumbImage: `${this.apiUrl}${photo.imageUrl}`,
+        alt: 'Image 1',
+        title: 'Image 1'
+      })
+    })
+    return returnPhotos;
   }
 
   photocheck(photo: Photo) {
