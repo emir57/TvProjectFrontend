@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-admin-editcustomer',
@@ -9,7 +12,12 @@ import { FormGroup } from '@angular/forms';
 export class AdminEditcustomerComponent implements OnInit {
 
   updateForm:FormGroup
-  constructor() { }
+  constructor(
+    private formBuilder:FormBuilder,
+    private router:Router,
+    private toastrService:ToastrService,
+    private userService:UserService
+  ) { }
 
   ngOnInit(): void {
   }
