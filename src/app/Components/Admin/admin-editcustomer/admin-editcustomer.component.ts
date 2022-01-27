@@ -19,6 +19,9 @@ export class AdminEditcustomerComponent implements OnInit {
   user:User;
   allRoles:Role[]=[];
   userRoles:Role[]=[];
+
+  addedRoles:Role[]=[];
+  removeRoles:Role[]=[];
   constructor(
     private formBuilder:FormBuilder,
     private router:Router,
@@ -32,7 +35,6 @@ export class AdminEditcustomerComponent implements OnInit {
     this.getUser();
     this.getAllRoles();
     this.getUserRoles();
-
     this.createUpdateForm();
   }
   getUser(){
@@ -54,6 +56,7 @@ export class AdminEditcustomerComponent implements OnInit {
     this.roleService.getUserRoles(this.user.id).subscribe(response=>{
       if(response.isSuccess){
         this.userRoles = response.data;
+        this.addedRoles = response.data;
       }
     })
   }
@@ -70,12 +73,13 @@ export class AdminEditcustomerComponent implements OnInit {
 
   update(){
     if(this.updateForm.valid){
-      let user = Object.assign({userRoles:this.userRoles},this.updateForm.value);
-      this.userService.updateUser(user).subscribe(response=>{
-        if(response.isSuccess){
-          this.toastrService.success(response.message)
-        }
-      })
+      let user = Object.assign({addedRoles:this.addedRoles,removeRoles:this.removeRoles},this.updateForm.value);
+      console.log(user)
+      // this.userService.updateUser(user).subscribe(response=>{
+      //   if(response.isSuccess){
+      //     this.toastrService.success(response.message)
+      //   }
+      // })
     }
   }
   checkRole(role:Role){
@@ -88,14 +92,22 @@ export class AdminEditcustomerComponent implements OnInit {
     return status;
   }
   setRole(role:Role){
-    let index = this.userRoles.findIndex(x=>x.id==role.id);
-    if(index == -1){
-      this.userRoles.push(role);
+    let indexAdded = this.addedRoles.findIndex(x=>x.id==role.id);
+    let indexRemoved = this.removeRoles.findIndex(x=>x.id==role.id);
+    if(indexAdded == -1){
+      this.addedRoles.push(role);
     }
-    else{
-      this.userRoles.splice(index,1);
+    else if(indexRemoved == -1){
+      this.removeRoles.push(role);
     }
-    console.log(this.userRoles)
+    if(indexAdded !=-1){
+      this.addedRoles.splice(indexAdded,1);
+    }
+    else if(indexRemoved != -1){
+      this.removeRoles.splice(indexAdded,1);
+    }
+    console.log(this.addedRoles)
+    console.log(this.removeRoles)
   }
 
 }
