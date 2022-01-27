@@ -20,6 +20,10 @@ export class RoleService {
     let newPath = `${this.apiUrl}/api/roles/getall`;
     return this.httpClient.get<ResponseListModel<Role>>(newPath);
   }
+  getUserRoles(userId:number):Observable<ResponseListModel<Role>>{
+    let newPath = `${this.apiUrl}/api/roles/getuserroles?userId=${userId}`;
+    return this.httpClient.get<ResponseListModel<Role>>(newPath);
+  }
   updateRole(role:Role):Observable<ResponseModel>{
     let newPath = `${this.apiUrl}/api/roles/update`;
     return this.httpClient.put<ResponseModel>(newPath,role);
