@@ -43,7 +43,7 @@ const routes: Routes = [
   {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/editcustomer:customer",component:AdminEditcustomerComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/editcustomer/:customer",component:AdminEditcustomerComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
   {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},

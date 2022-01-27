@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/Models/user';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -12,7 +13,8 @@ export class AdminCustomersComponent implements OnInit {
   searchString:string='';
   users:User[]=[]
   constructor(
-    private userService:UserService
+    private userService:UserService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class AdminCustomersComponent implements OnInit {
   }
 
   goUpdatePage(user:User){
-
+    this.router.navigate(["admindashboard/editcustomer",JSON.stringify(user)])
   }
 
   goRoleUpdatePage(user:User){
