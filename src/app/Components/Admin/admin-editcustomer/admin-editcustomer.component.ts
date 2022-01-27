@@ -77,6 +77,9 @@ export class AdminEditcustomerComponent implements OnInit {
       this.userService.updateUser(user).subscribe(response=>{
         if(response.isSuccess){
           this.toastrService.success(response.message)
+          setTimeout(() => {
+            this.router.navigate(["admindashboard/admincustomers"])
+          }, 500);
         }else{
           this.toastrService.error(response.message)
         }
