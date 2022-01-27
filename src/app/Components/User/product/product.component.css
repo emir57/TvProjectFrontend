@@ -7,6 +7,15 @@
   top: 0;
   z-index: 100;
   font-size: 85%;
+  opacity: 0.9;
+}
+.stock1{
+  position: absolute;
+  right: 0;
+  top: 6%;
+  z-index: 100;
+  font-size: 85%;
+  opacity: 0.9;
 }
 
 .filterOptionsButton{
