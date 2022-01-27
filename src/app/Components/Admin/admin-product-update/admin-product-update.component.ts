@@ -38,6 +38,18 @@ export class AdminProductUpdateComponent implements OnInit {
       this.product = JSON.parse(param["product"])
     })
     this.createproductUpdateForm();
+
+    var bgDiv = $("#backgroundDiv");
+    var deleteDiv = $("#deleteDiv");
+    var deleteButton = $("#deleteButton");
+    bgDiv.click(function(){
+      deleteDiv.fadeOut(500);
+      bgDiv.fadeOut(900);
+    })
+    deleteButton.click(function(){
+      deleteDiv.fadeIn(500);
+      bgDiv.fadeIn(900);
+    })
   }
 
 

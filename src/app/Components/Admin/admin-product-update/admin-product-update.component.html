@@ -1,5 +1,12 @@
 <div id="deleteDiv">
-sadasd
+
+  <div id="bottomBar">
+    <button [disabled]="!isOk" [disabled]="!product" (click)="deleteProduct()" type="button"
+      class="btn btn-sm btn-danger">
+      <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Bu Ürünü Sil
+    </button>
+  </div>
 </div>
 <div id="backgroundDiv">
 
@@ -19,9 +26,7 @@ sadasd
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary"
               routerLink="/admindashboard/adminproducts">Geri Gel</button>
-            <button [disabled]="!isOk" [disabled]="!product" (click)="deleteProduct()" type="button"
-              class="btn btn-sm btn-outline-danger">
-              <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <button id="deleteButton" class="btn btn-sm btn-outline-danger" [disabled]="!isOk" [disabled]="!product" type="button">
               Bu Ürünü Sil
             </button>
           </div>
