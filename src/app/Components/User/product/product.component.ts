@@ -34,9 +34,8 @@ export class ProductComponent implements OnInit {
 
     setTimeout(() => {
       this.products.forEach(product=>{
-
-        let i = 1;
         var photos = $(`.photoProduct${product.id}`);
+        let i = 1;
         for (let i = 0; i < photos.length; i++) {
           photos[i].style.display="none"
         }
@@ -46,6 +45,8 @@ export class ProductComponent implements OnInit {
           }
         })
         $(`#productNextBtn${product.id}`).click(function(){
+          i++;
+          console.log(i)
           for (let j = 1; j < photos.length; j++) {
             photos[j].style.display="none"
           }
@@ -53,9 +54,19 @@ export class ProductComponent implements OnInit {
             i=0;
           }
           photos[i].style.display="block";
-          i++;
-
         })
+        $(`#productPrevBtn${product.id}`).click(function(){
+          i--;
+          if(i < 0){
+            i = photos.length-1;
+          }
+          console.log(i)
+          for (let j = 1; j < photos.length; j++) {
+            photos[j].style.display="none"
+          }
+          photos[i].style.display="block";
+        })
+
       })
     }, 1000);
   }
