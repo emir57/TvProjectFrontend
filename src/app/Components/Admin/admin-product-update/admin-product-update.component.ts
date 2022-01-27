@@ -89,6 +89,9 @@ export class AdminProductUpdateComponent implements OnInit {
         this.router.navigate(["admindashboard/adminproducts"])
       }
     })
+
+  }
+  cancelDelete(){
     this.toastrService.info("Silme işlemi iptal edildi.")
   }
   createproductUpdateForm() {
