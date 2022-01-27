@@ -1,7 +1,9 @@
+import { getLocaleExtraDayPeriodRules } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Role } from 'src/app/Models/role';
 import { User } from 'src/app/Models/user';
 import { RoleService } from 'src/app/Services/role.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -15,6 +17,8 @@ export class AdminEditcustomerComponent implements OnInit {
 
   updateForm:FormGroup
   user:User;
+  allRoles:Role[]=[];
+  userRoles:Role[]=[];
   constructor(
     private formBuilder:FormBuilder,
     private router:Router,
@@ -26,6 +30,9 @@ export class AdminEditcustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    this.getAllRoles();
+    this.getUserRoles();
+
     this.createUpdateForm();
   }
   getUser(){
@@ -35,6 +42,22 @@ export class AdminEditcustomerComponent implements OnInit {
       }
     })
   }
+
+  getAllRoles(){
+    this.roleService.getRoles().subscribe(response=>{
+      if(response.isSuccess){
+        this.allRoles = response.data;
+      }
+    })
+  }
+  getUserRoles(){
+    this.roleService.getUserRoles(this.user.id).subscribe(response=>{
+      if(response.isSuccess){
+        this.userRoles = response.data;
+      }
+    })
+  }
+
 
   createUpdateForm(){
     this.updateForm = this.formBuilder.group({
