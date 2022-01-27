@@ -47,10 +47,10 @@ export class ProductComponent implements OnInit {
         $(`#productNextBtn${product.id}`).click(function(){
           i++;
           console.log(i)
-          for (let j = 1; j < photos.length; j++) {
+          for (let j = 0; j < photos.length; j++) {
             photos[j].style.display="none"
           }
-          if(i == photos.length){
+          if(i > photos.length-1){
             i=0;
           }
           photos[i].style.display="block";
@@ -61,7 +61,7 @@ export class ProductComponent implements OnInit {
             i = photos.length-1;
           }
           console.log(i)
-          for (let j = 1; j < photos.length; j++) {
+          for (let j = 0; j < photos.length; j++) {
             photos[j].style.display="none"
           }
           photos[i].style.display="block";

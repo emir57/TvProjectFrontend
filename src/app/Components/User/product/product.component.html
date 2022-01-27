@@ -57,11 +57,11 @@
                 <img width="100%" src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" id="productPrevBtn{{product.id}}">
+            <button *ngIf="product.photos.length!=1" class="carousel-control-prev" type="button" id="productPrevBtn{{product.id}}">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Geri</span>
             </button>
-            <button class="carousel-control-next" type="button" id="productNextBtn{{product.id}}">
+            <button *ngIf="product.photos.length!=1" class="carousel-control-next" type="button" id="productNextBtn{{product.id}}">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">İleri</span>
             </button>
