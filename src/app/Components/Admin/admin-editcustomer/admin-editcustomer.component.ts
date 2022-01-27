@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-editcustomer',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminEditcustomerComponent implements OnInit {
 
+  updateForm:FormGroup
   constructor() { }
 
   ngOnInit(): void {
