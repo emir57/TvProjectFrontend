@@ -1,0 +1,39 @@
+.creditCard{
+  width: 626px;
+  height: 184px;
+  position: relative;
+}
+.creditCardFront {
+  width: 313px;
+  height: 184px;
+  background-image: url("../../../../../assets/creditCard.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.creditCardBackGround {
+  width: 313px;
+  height: 184px;
+  background-image: url("../../../../../assets/creditCardBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.creditCardCvv{
+  position: absolute;
+  margin-top: 27%;
+  margin-left: 55%;
+}
+
+.creditCardNumber {
+  position: absolute;
+  margin-top: 25%;
+  margin-left: 5%;
+}
+
+.creditCardUserName {
+  position: absolute;
+  bottom: 15%;
+  margin-left: 5%;
+}
