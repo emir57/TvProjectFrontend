@@ -46,7 +46,6 @@ export class ProductComponent implements OnInit {
         })
         $(`#productNextBtn${product.id}`).click(function(){
           i++;
-          console.log(i)
           for (let j = 0; j < photos.length; j++) {
             photos[j].style.display="none"
           }
@@ -60,7 +59,6 @@ export class ProductComponent implements OnInit {
           if(i < 0){
             i = photos.length-1;
           }
-          console.log(i)
           for (let j = 0; j < photos.length; j++) {
             photos[j].style.display="none"
           }
