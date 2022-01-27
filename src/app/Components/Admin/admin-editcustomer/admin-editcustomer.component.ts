@@ -21,7 +21,7 @@ export class AdminEditcustomerComponent implements OnInit {
   userRoles:Role[]=[];
 
   addedRoles:Role[]=[];
-  removeRoles:Role[]=[];
+  removedRoles:Role[]=[];
   constructor(
     private formBuilder:FormBuilder,
     private router:Router,
@@ -73,7 +73,7 @@ export class AdminEditcustomerComponent implements OnInit {
 
   update(){
     if(this.updateForm.valid){
-      let user = Object.assign({addedRoles:this.addedRoles,removeRoles:this.removeRoles},this.updateForm.value);
+      let user = Object.assign({addedRoles:this.addedRoles,removeRoles:this.removedRoles},this.updateForm.value);
       console.log(user)
       // this.userService.updateUser(user).subscribe(response=>{
       //   if(response.isSuccess){
@@ -93,21 +93,19 @@ export class AdminEditcustomerComponent implements OnInit {
   }
   setRole(role:Role){
     let indexAdded = this.addedRoles.findIndex(x=>x.id==role.id);
-    let indexRemoved = this.removeRoles.findIndex(x=>x.id==role.id);
+    let indexRemoved = this.removedRoles.findIndex(x=>x.id==role.id);
     if(indexAdded == -1){
       this.addedRoles.push(role);
     }
     else if(indexRemoved == -1){
-      this.removeRoles.push(role);
+      this.removedRoles.push(role);
     }
     if(indexAdded !=-1){
       this.addedRoles.splice(indexAdded,1);
     }
     else if(indexRemoved != -1){
-      this.removeRoles.splice(indexAdded,1);
+      this.removedRoles.splice(indexAdded,1);
     }
-    console.log(this.addedRoles)
-    console.log(this.removeRoles)
   }
 
 }
