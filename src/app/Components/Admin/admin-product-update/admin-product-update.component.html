@@ -1,6 +1,14 @@
 <div id="deleteDiv">
-
+  <a class="cancelBtn" id="closeBtn" (click)="cancelDelete()">
+    &times;
+  </a>
+  <div id="topBar">
+    Bu ürünü silmek istediğinizden eminmisiniz?
+  </div>
   <div id="bottomBar">
+    <button class="btn btn-sm btn-secondary cancelBtn" (click)="cancelDelete()">
+      Vazgeç
+    </button>
     <button [disabled]="!isOk" [disabled]="!product" (click)="deleteProduct()" type="button"
       class="btn btn-sm btn-danger">
       <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

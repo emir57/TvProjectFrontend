@@ -1,20 +1,51 @@
-#deleteDiv{
+#deleteDiv {
   position: absolute;
   width: 30%;
   left: 35%;
   right: 35%;
-  height: 30%;
+  height: 20%;
   background-color: white;
   z-index: 301;
   margin-top: 12%;
   border-radius: 5%;
   padding: 1%;
 }
-#backgroundDiv{
+
+#backgroundDiv {
   position: fixed;
   width: 100%;
   height: 100%;
   background-color: black;
   opacity: 0.6;
   z-index: 300;
+}
+
+#topBar {
+  padding-top: 3%;
+  float: left;
+  width: 100%;
+  height: 80%;
+}
+
+#bottomBar {
+  bottom: 0;
+  height: 20%;
+  width: auto;
+  float: right;
+}
+.cancelBtn{
+
+}
+#closeBtn{
+  position: absolute;
+  right: 5px;
+  top: -5%;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: xx-large;
+  color: #283747;
+  transition: 0.5s;
+}
+#closeBtn:hover{
+  color: #34495E;
 }

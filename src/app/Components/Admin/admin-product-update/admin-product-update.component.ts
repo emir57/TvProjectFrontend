@@ -42,7 +42,12 @@ export class AdminProductUpdateComponent implements OnInit {
     var bgDiv = $("#backgroundDiv");
     var deleteDiv = $("#deleteDiv");
     var deleteButton = $("#deleteButton");
+    var cancelBtn = $(".cancelBtn");
     bgDiv.click(function () {
+      deleteDiv.fadeOut(500);
+      bgDiv.fadeOut(900);
+    })
+    cancelBtn.click(function () {
       deleteDiv.fadeOut(500);
       bgDiv.fadeOut(900);
     })
@@ -50,6 +55,7 @@ export class AdminProductUpdateComponent implements OnInit {
       deleteDiv.fadeIn(500);
       bgDiv.fadeIn(900);
     })
+
   }
 
 
