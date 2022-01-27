@@ -44,6 +44,7 @@ import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.
 import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/admin-role-update.component';
 import { BrandSearchPipe } from './pipes/brand-search.pipe';
 import { UserSearchPipe } from './pipes/user-search.pipe';
+import { AdminEditcustomerComponent } from './Components/Admin/admin-editcustomer/admin-editcustomer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +81,7 @@ import { UserSearchPipe } from './pipes/user-search.pipe';
     AdminRoleUpdateComponent,
     BrandSearchPipe,
     UserSearchPipe,
+    AdminEditcustomerComponent,
   ],
   imports: [
     BrowserModule,
