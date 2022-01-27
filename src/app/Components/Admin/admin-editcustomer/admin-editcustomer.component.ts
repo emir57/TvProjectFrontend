@@ -63,8 +63,24 @@ export class AdminEditcustomerComponent implements OnInit {
     this.updateForm = this.formBuilder.group({
       firstName:[this.user.firstName,[Validators.required,Validators.maxLength(20)]],
       lastName:[this.user.lastName,[Validators.required,Validators.maxLength(20)]],
-      email: [this.user.email, [Validators.required, Validators.email,Validators.maxLength(40)]],
+      email: [this.user.email, [Validators.required, Validators.email,Validators.maxLength(40)]]
     })
+  }
+
+  update(){
+    if(this.updateForm.valid){
+      let user = Object.assign({},this.updateForm.value);
+      console.log(user)
+    }
+  }
+  checkRole(role:Role){
+    let status = false;
+    this.userRoles.forEach(usrRole=>{
+      if(usrRole.id==role.id){
+        status = true;
+      }
+    })
+    return status;
   }
 
 }
