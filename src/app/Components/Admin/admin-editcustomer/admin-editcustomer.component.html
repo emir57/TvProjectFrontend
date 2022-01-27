@@ -6,22 +6,29 @@
       <app-admin-leftnav></app-admin-leftnav>
     </div>
     <main class="col-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 display-4">Kullanıcı Düzenle</h1>
       </div>
       <div class="row">
-        <div class="col-4">
-          <form [formGroup]="updateForm">
+        <form [formGroup]="updateForm">
+          <div class="col-6">
             <div class="row">
               <div class="col-6">
                 <label for="firstName">Ad</label>
-                <input type="text" id="firstName" class="fomr-control">
+                <input type="text" formControlName="firstName" id="firstName" class="form-control">
+              </div>
+              <div class="col-6">
+                <label for="lastName">Soyad</label>
+                <input type="text" formControlName="lastName" id="lastName" class="form-control">
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+          <div class="col-4">
 
+          </div>
+        </form>
       </div>
-    </main>
-  </div>
+  </main>
+</div>
 </div>
