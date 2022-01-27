@@ -42,11 +42,11 @@ export class AdminProductUpdateComponent implements OnInit {
     var bgDiv = $("#backgroundDiv");
     var deleteDiv = $("#deleteDiv");
     var deleteButton = $("#deleteButton");
-    bgDiv.click(function(){
+    bgDiv.click(function () {
       deleteDiv.fadeOut(500);
       bgDiv.fadeOut(900);
     })
-    deleteButton.click(function(){
+    deleteButton.click(function () {
       deleteDiv.fadeIn(500);
       bgDiv.fadeIn(900);
     })
@@ -76,18 +76,14 @@ export class AdminProductUpdateComponent implements OnInit {
     }
   }
   deleteProduct() {
-    if (confirm("Silmek istediğinizden emin misiniz?")) {
-      this.isOk = false;
-      this.productService.deleteProduct(this.product).subscribe(response => {
-        if (response.isSuccess) {
-          this.toastrService.success(response.message);
-          this.router.navigate(["admindashboard/adminproducts"])
-        }
-      })
-    } else {
-      this.toastrService.info("Silme işlemi iptal edildi.")
-    }
-
+    this.isOk = false;
+    this.productService.deleteProduct(this.product).subscribe(response => {
+      if (response.isSuccess) {
+        this.toastrService.success(response.message);
+        this.router.navigate(["admindashboard/adminproducts"])
+      }
+    })
+    this.toastrService.info("Silme işlemi iptal edildi.")
   }
   createproductUpdateForm() {
     this.productUpdateForm = this.formBuilder.group({
