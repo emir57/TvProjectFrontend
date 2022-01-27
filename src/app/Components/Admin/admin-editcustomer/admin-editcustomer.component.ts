@@ -77,7 +77,11 @@ export class AdminEditcustomerComponent implements OnInit {
       this.userService.updateUser(user).subscribe(response=>{
         if(response.isSuccess){
           this.toastrService.success(response.message)
+        }else{
+          this.toastrService.error(response.message)
         }
+      },responseErr=>{
+        this.toastrService.error(responseErr.error)
       })
     }
   }
