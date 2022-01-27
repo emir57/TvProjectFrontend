@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+
 <img width="100%" src="{{getImageUrl()}}/images/main-home-page.png" alt="">
 
 <!-- <div class="row">
@@ -51,18 +52,19 @@
           <!-- Carousel Start -->
           <div [id]="getCarouselId(product)" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <div style="display:none" *ngFor="let photo of product.photos" [class]="photocheck(photo)" id="photo{{photo.id}}">
+              <div *ngFor="let photo of product.photos" [class]="photocheck(photo)" id="photo{{photo.id}}">
                 <img width="100%" src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" (click)="prevImage(product)">
+            <button class="carousel-control-prev" type="button"  data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Geri</span>
             </button>
-            <button class="carousel-control-next" type="button" (click)="nextImage(product)" >
+            <button class="carousel-control-next" type="button" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">İleri</span>
             </button>
+
           </div>
           <!-- Carousel End -->
           <!-- Body -->
@@ -76,7 +78,7 @@
           <!-- Footer -->
           <div class="card-footer">
             <p class="card-text"><span class="text-muted"><del *ngIf="product.isDiscount">{{product.unitPrice | currency:'TRY'}}</del></span> {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} </p>
-            <a class="btn btn-primary">Hemen Satın Al</a>
+            <a href="#" class="btn btn-primary">Hemen Satın Al</a>
           </div>
           <!-- Footer End -->
         </div>
