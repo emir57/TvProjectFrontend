@@ -1,8 +1,25 @@
-.creditCard{
+.creditCard {
   width: 626px;
   height: 184px;
   position: relative;
 }
+
+.font {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  word-spacing: 1.4px;
+  color: #fefefe;
+  font-weight: 400;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: italic;
+  font-variant: normal;
+  text-transform: uppercase;
+}
+.black{
+  color: black;
+}
+
 .creditCardFront {
   width: 313px;
   height: 184px;
@@ -20,7 +37,8 @@
   background-size: cover;
   position: relative;
 }
-.creditCardCvv{
+
+.creditCardCvv {
   position: absolute;
   margin-top: 27%;
   margin-left: 55%;
@@ -29,11 +47,12 @@
 .creditCardNumber {
   position: absolute;
   margin-top: 25%;
-  margin-left: 5%;
+  margin-left: 8%;
+
 }
 
 .creditCardUserName {
   position: absolute;
   bottom: 15%;
-  margin-left: 5%;
+  margin-left: 8%;
 }
