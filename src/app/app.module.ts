@@ -31,7 +31,6 @@ import { AdminProductAddComponent } from './Components/Admin/admin-product-add/a
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { AdminProductUpdateComponent } from './Components/Admin/admin-product-update/admin-product-update.component';
 import { AdminUploadimageComponent } from './Components/Admin/admin-uploadimage/admin-uploadimage.component';
-import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { AdminCategoryUpdateComponent } from './Components/Admin/admin-category-update/admin-category-update.component';
 import { AdminCategoryAddComponent } from './Components/Admin/admin-category-add/admin-category-add.component';
 import { ProfileComponent } from './Components/User/profile/profile.component';
@@ -91,7 +90,6 @@ import { AdminEditcustomerComponent } from './Components/Admin/admin-editcustome
     HttpClientModule,
     SliderModule,
     BrowserAnimationsModule,
-    AngularFileUploaderModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })
