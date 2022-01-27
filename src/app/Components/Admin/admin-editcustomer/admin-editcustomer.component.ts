@@ -69,7 +69,7 @@ export class AdminEditcustomerComponent implements OnInit {
 
   update(){
     if(this.updateForm.valid){
-      let user = Object.assign({},this.updateForm.value);
+      let user = Object.assign({userRoles:this.userRoles},this.updateForm.value);
       console.log(user)
     }
   }
@@ -81,6 +81,16 @@ export class AdminEditcustomerComponent implements OnInit {
       }
     })
     return status;
+  }
+  setRole(role:Role){
+    let index = this.userRoles.findIndex(x=>x.id==role.id);
+    if(index == -1){
+      this.userRoles.push(role);
+    }
+    else{
+      this.userRoles.splice(index,1);
+    }
+    console.log(this.userRoles)
   }
 
 }

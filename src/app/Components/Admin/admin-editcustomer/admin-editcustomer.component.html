@@ -31,7 +31,7 @@
           </div>
           <div class="col-4">
             <div class="form-check" *ngFor="let role of allRoles">
-              <input class="form-check-input" [checked]="checkRole(role)" type="checkbox" [value]="role.id" [id]="role.id">
+              <input class="form-check-input" (click)="setRole(role)" [checked]="checkRole(role)" type="checkbox" [value]="role.id" [id]="role.id">
               <label class="form-check-label" [for]="role.id">
                 {{role.name}}
               </label>
