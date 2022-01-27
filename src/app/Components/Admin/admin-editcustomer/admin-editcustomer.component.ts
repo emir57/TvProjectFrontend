@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user';
+import { RoleService } from 'src/app/Services/role.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class AdminEditcustomerComponent implements OnInit {
     private router:Router,
     private toastrService:ToastrService,
     private userService:UserService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private roleService:RoleService
   ) { }
 
   ngOnInit(): void {
