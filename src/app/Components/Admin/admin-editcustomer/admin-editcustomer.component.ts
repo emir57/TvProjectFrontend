@@ -70,7 +70,11 @@ export class AdminEditcustomerComponent implements OnInit {
   update(){
     if(this.updateForm.valid){
       let user = Object.assign({userRoles:this.userRoles},this.updateForm.value);
-      console.log(user)
+      this.userService.updateUser(user).subscribe(response=>{
+        if(response.isSuccess){
+          this.toastrService.success(response.message)
+        }
+      })
     }
   }
   checkRole(role:Role){
