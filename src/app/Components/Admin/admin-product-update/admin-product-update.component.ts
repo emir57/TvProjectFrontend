@@ -7,7 +7,7 @@ import { Category } from 'src/app/Models/category';
 import { Product } from 'src/app/Models/product';
 import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
-
+import $ from 'jquery';
 @Component({
   selector: 'app-admin-product-update',
   templateUrl: './admin-product-update.component.html',
