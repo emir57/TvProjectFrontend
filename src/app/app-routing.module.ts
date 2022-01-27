@@ -5,6 +5,7 @@ import { AdminCategoryAddComponent } from './Components/Admin/admin-category-add
 import { AdminCategoryUpdateComponent } from './Components/Admin/admin-category-update/admin-category-update.component';
 import { AdminCustomersComponent } from './Components/Admin/admin-customers/admin-customers.component';
 import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
+import { AdminEditcustomerComponent } from './Components/Admin/admin-editcustomer/admin-editcustomer.component';
 import { AdminOrdersComponent } from './Components/Admin/admin-orders/admin-orders.component';
 import { AdminProductAddComponent } from './Components/Admin/admin-product-add/admin-product-add.component';
 import { AdminProductUpdateComponent } from './Components/Admin/admin-product-update/admin-product-update.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {path:"admindashboard/editcustomer:customer",component:AdminEditcustomerComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
   {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
