@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 import $ from 'jquery';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-product',
@@ -30,6 +31,33 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategories();
+
+    setTimeout(() => {
+      this.products.forEach(product=>{
+
+        let i = 1;
+        var photos = $(`.photoProduct${product.id}`);
+        for (let i = 0; i < photos.length; i++) {
+          photos[i].style.display="none"
+        }
+        product.photos.forEach(photo=>{
+          if(photo.isMain){
+            $(`#photo${photo.id}`).show();
+          }
+        })
+        $(`#productNextBtn${product.id}`).click(function(){
+          for (let j = 1; j < photos.length; j++) {
+            photos[j].style.display="none"
+          }
+          if(i == photos.length){
+            i=0;
+          }
+          photos[i].style.display="block";
+          i++;
+
+        })
+      })
+    }, 1000);
   }
 
   getAllProducts() {
@@ -76,11 +104,11 @@ export class ProductComponent implements OnInit {
     return returnPhotos;
   }
 
-  photocheck(photo: Photo) {
+  photocheck(photo: Photo,product:Product) {
     if (photo.isMain == true) {
-      return "carousel-item active"
+      return `carousel-item active photoProduct${product.id}`
     } else {
-      return "carousel-item"
+      return `carousel-item photoProduct${product.id}`
     }
   }
 
