@@ -9,7 +9,8 @@ export class UserCreditcardsComponent implements OnInit {
 
   creditCardNumber:string="5555555555555555";
   cvv:string="555";
-  nameSurname:String="Emir Gürbüz"
+  name:String="Emir"
+  surname:String="Gürbüz"
   constructor() { }
 
   ngOnInit(): void {
