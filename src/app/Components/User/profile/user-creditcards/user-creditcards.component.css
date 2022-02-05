@@ -86,3 +86,9 @@
   top: 0;
   z-index: 100;
 }
+.checkVisa{
+  position: absolute;
+}
+.checkMasterCard{
+position: absolute;
+}

@@ -23,13 +23,22 @@ export class UserCreditcardsComponent implements OnInit {
   ngOnInit(): void {
     this.createAddForm();
     var creditCardNumber = $("#creditCardNumber");
+    let status = false;
     $("#creditCardNumber").change(function(){
-      let first4 = creditCardNumber.val().substring(0,4);
-      let second4 = creditCardNumber.val().substring(4,8);
-      let third4 = creditCardNumber.val().substring(8,12);
-      let fourth4 = creditCardNumber.val().substring(12,16);
-      let completeNumber = first4+" "+second4+" "+third4+" "+fourth4
-      creditCardNumber.val(completeNumber)
+      if(creditCardNumber.val()==""){
+        status = false;
+        return;
+      }
+      if(!status){
+        let first4 = creditCardNumber.val().substring(0,4);
+        let second4 = creditCardNumber.val().substring(4,8);
+        let third4 = creditCardNumber.val().substring(8,12);
+        let fourth4 = creditCardNumber.val().substring(12,16);
+        let completeNumber = first4+" "+second4+" "+third4+" "+fourth4
+        creditCardNumber.val(completeNumber)
+      }
+
+      status=true;
     })
 
   }

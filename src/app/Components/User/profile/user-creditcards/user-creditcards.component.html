@@ -16,8 +16,8 @@
           </div>
           <div class="col-6">
             <div *ngIf="addForm.get('creditCardNumber').value">
-              <div *ngIf="addForm.get('creditCardNumber').value.startsWith('4')" class="creditCardTypeVisa"></div>
-              <div *ngIf="addForm.get('creditCardNumber').value.startsWith('5')" class="creditCardTypeMasterCard"></div>
+              <div *ngIf="addForm.get('creditCardNumber').value.startsWith('4')" class="creditCardTypeVisa checkVisa"></div>
+              <div *ngIf="addForm.get('creditCardNumber').value.startsWith('5')" class="creditCardTypeMasterCard checkMasterCard"></div>
             </div>
           </div>
           <div class="col-3">
