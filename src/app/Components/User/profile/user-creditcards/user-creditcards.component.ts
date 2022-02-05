@@ -57,11 +57,33 @@ export class UserCreditcardsComponent implements OnInit {
   createAddForm(){
 
     this.addForm = this.formBuilder.group({
-      creditCardNumber:[,[Validators.required,Validators.maxLength(19),Validators.minLength(18)]],
+      creditCardNumber:[,[Validators.required,Validators.maxLength(19),Validators.minLength(16)]],
       cvv:[,[Validators.required,Validators.maxLength(3),Validators.minLength(2)]],
       day:[,[Validators.required,Validators.max(31),Validators.min(1)]],
       year:[,[Validators.required,Validators.min(this.cYear)]]
     })
+  }
+
+  addCreditCard(){
+    if(this.addForm.valid){
+      let creditCardNumber = this.addForm.get("creditCardNumber").value;
+      let trimNumber = "";
+      for (let i = 0; i < creditCardNumber.length; i++) {
+        const c = creditCardNumber[i];
+        if(c != " ") trimNumber+=c;
+      }
+      let day = this.addForm.get("day").value;
+      if(+day >=1 && +day<=9){
+        day = "0"+day
+      }
+      let year = this.addForm.get("year").value;
+      let date = day+"/"+year;
+      this.addForm.get("creditCardNumber").setValue(trimNumber)
+      let creditCard = Object.assign({
+        date:date
+      },this.addForm.value)
+      console.log(creditCard);
+    }
   }
 
 }

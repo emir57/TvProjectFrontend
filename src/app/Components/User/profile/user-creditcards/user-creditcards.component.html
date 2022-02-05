@@ -38,7 +38,7 @@
           </div>
         </div>
       </form>
-      <button [disabled]="addForm.invalid" class="btn btn-primary mt-1">
+      <button [disabled]="addForm.invalid" (click)="addCreditCard()" class="btn btn-primary mt-1">
         Kredi kartını ekle
       </button>
       <!-- Add Form End -->
