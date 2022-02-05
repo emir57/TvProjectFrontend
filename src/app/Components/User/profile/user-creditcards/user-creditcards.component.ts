@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCreditcardsComponent implements OnInit {
 
+  creditCardNumber:string="5555555555555555";
+  cvv:string="555";
+  nameSurname:String="Emir Gürbüz"
   constructor() { }
 
   ngOnInit(): void {
