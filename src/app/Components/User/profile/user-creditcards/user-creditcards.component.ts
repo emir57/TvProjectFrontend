@@ -25,7 +25,6 @@ export class UserCreditcardsComponent implements OnInit {
   ngOnInit(): void {
     this.createAddForm();
     var creditCardNumber = $("#creditCardNumber");
-    var date = $("#date");
     let creditStatus = false;
     creditCardNumber.change(function(){
       let trimNumber = "";
@@ -51,13 +50,6 @@ export class UserCreditcardsComponent implements OnInit {
       }
       creditStatus=true;
     })
-    date.changed(function(){
-      if(date.val().length!="5"){
-        console.log("geçersiz tarih")
-      }
-    })
-
-
   }
 
   createAddForm(){
