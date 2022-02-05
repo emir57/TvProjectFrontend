@@ -9,6 +9,8 @@ import $ from 'jquery';
 })
 export class UserCreditcardsComponent implements OnInit {
 
+  today = new Date;
+  cYear = +this.today.getFullYear().toString().substring(2,4);
   creditCardNumber: string = "4555555555555555";
   cvv: string = "555";
   name: String = "Emir";
@@ -53,13 +55,12 @@ export class UserCreditcardsComponent implements OnInit {
   }
 
   createAddForm(){
-    let today = new Date;
-    var year = today.getFullYear().toString().substring(2,4);
+
     this.addForm = this.formBuilder.group({
-      creditCardNumber:[,[Validators.required,Validators.maxLength(16),Validators.minLength(16)]],
-      cvv:[,[Validators.required,Validators.maxLength(3),Validators.minLength(3)]],
+      creditCardNumber:[,[Validators.required,Validators.maxLength(19),Validators.minLength(18)]],
+      cvv:[,[Validators.required,Validators.maxLength(3),Validators.minLength(2)]],
       day:[,[Validators.required,Validators.max(31),Validators.min(1)]],
-      year:[,[Validators.required,Validators.min(+year)]]
+      year:[,[Validators.required,Validators.min(this.cYear)]]
     })
   }
 

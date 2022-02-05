@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-6">
             <label for="creditCardNumber" class="form-label">Kredi Kartı Numarası</label>
-            <input type="text" pattern="([0-9])" formControlName="creditCardNumber" id="creditCardNumber"
+            <input type="text" formControlName="creditCardNumber" id="creditCardNumber"
               class="form-control">
           </div>
           <div class="col-6" style="position: relative;">
@@ -38,6 +38,9 @@
           </div>
         </div>
       </form>
+      <button [disabled]="addForm.invalid" class="btn btn-primary mt-1">
+        Kredi kartını ekle
+      </button>
       <!-- Add Form End -->
       <h3 class="display-5 mt-2">Kredi Kartlarım</h3>
       <hr>
