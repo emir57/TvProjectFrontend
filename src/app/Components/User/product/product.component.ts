@@ -35,7 +35,7 @@ export class ProductComponent implements OnInit {
     setTimeout(() => {
       this.products.forEach(product=>{
         var photos = $(`.photoProduct${product.id}`);
-        let i = 1;
+        let i = 0;
         for (let i = 0; i < photos.length; i++) {
           photos[i].style.display="none"
         }
