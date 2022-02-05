@@ -25,8 +25,8 @@ export class UserCreditcardsComponent implements OnInit {
   ngOnInit(): void {
     this.createAddForm();
     var creditCardNumber = $("#creditCardNumber");
-    let status = false;
-    $("#creditCardNumber").change(function(){
+    let creditStatus = false;
+    creditCardNumber.change(function(){
       let trimNumber = "";
       for (let i = 0; i < creditCardNumber.val().length; i++) {
         const c = creditCardNumber.val()[i];
@@ -34,10 +34,10 @@ export class UserCreditcardsComponent implements OnInit {
       }
       console.log(trimNumber)
       if(creditCardNumber.val()==""){
-        status = false;
+        creditStatus = false;
         return;
       }
-      if(!status){
+      if(!creditStatus){
         let first4 = trimNumber.substring(0,4);
         let second4 = trimNumber.substring(4,8);
         let third4 = trimNumber.substring(8,12);
@@ -48,7 +48,7 @@ export class UserCreditcardsComponent implements OnInit {
       if(creditCardNumber.val().length!=19){
         console.log("geçersiz")
       }
-      status=true;
+      creditStatus=true;
     })
 
   }
