@@ -57,6 +57,11 @@
   bottom: 15%;
   margin-left: 8%;
 }
+.creditCardDate{
+  position: absolute;
+  bottom: 30%;
+  margin-left: 8%;
+}
 
 .creditCardTypeVisa {
   background-image: url("../../../../../assets/visa.png");

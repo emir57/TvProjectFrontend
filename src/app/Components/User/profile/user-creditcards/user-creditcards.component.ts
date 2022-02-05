@@ -11,8 +11,10 @@ export class UserCreditcardsComponent implements OnInit {
 
   creditCardNumber: string = "4555555555555555";
   cvv: string = "555";
-  name: String = "Emir"
-  surname: String = "Gürbüz"
+  name: String = "Emir";
+  surname: String = "Gürbüz";
+  day:string="01";
+  year:string="22"
   addForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
