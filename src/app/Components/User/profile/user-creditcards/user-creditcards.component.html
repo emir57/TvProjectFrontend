@@ -11,8 +11,8 @@
             <div class="creditCardFront">
               <div class="creditCardNumber font">{{creditCardNumber.substring(0,4)}} **** **** ****</div>
               <div class="creditCardUserName font">{{name.substring(0,1)}}*** {{surname.substring(0,1)}}***</div>
-              <div class="creditCardTypeVisa"></div>
-              <div class="creditCardTypeMasterCard"></div>
+              <div *ngIf="creditCardNumber.startsWith('4')" class="creditCardTypeVisa"></div>
+              <div *ngIf="creditCardNumber.startsWith('5')" class="creditCardTypeMasterCard"></div>
             </div>
           </div>
           <div class="col-6">

@@ -57,18 +57,22 @@
   margin-left: 8%;
 }
 .creditCardTypeVisa{
-  width: 235px;
-  height: 91px;
+  width: 105px;
+  height: 37px;
   background-image: url("../../../../../assets/visa.png");
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  position: absolute;
+  bottom:12%;
+  right: 0;
 }
 .creditCardTypeMasterCard{
-  width: 235px;
-  height: 91px;
+  width: 115px;
+  height: 45px;
   background-image: url("../../../../../assets/mastercard.png");
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  position: absolute;
+  bottom:10%;
+  right: 0;
 }
