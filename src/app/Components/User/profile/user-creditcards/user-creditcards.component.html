@@ -7,14 +7,18 @@
     <main class="col-9 ms-sm-auto col-lg-10 px-md-4 p-3">
 
       <!-- Add Form -->
-      <form [formGroupName]="addForm">
+      <form [formGroup]="addForm">
         <div class="row">
           <div class="col-6">
             <label for="creditCardNumber" class="form-label">Kredi Kartı Numarası</label>
-            <input type="text" formControlName="creditCardNumber" id="creditCardNumber" class="form-control">
+            <input type="text" pattern="([0-9])" formControlName="creditCardNumber" id="creditCardNumber"
+              class="form-control">
           </div>
           <div class="col-6">
-
+            <div *ngIf="addForm.get('creditCardNumber').value">
+              <div *ngIf="addForm.get('creditCardNumber').value.startsWith('4')" class="creditCardTypeVisa"></div>
+              <div *ngIf="addForm.get('creditCardNumber').value.startsWith('5')" class="creditCardTypeMasterCard"></div>
+            </div>
           </div>
           <div class="col-3">
             <label for="cvv" class="form-label">CVV</label>
