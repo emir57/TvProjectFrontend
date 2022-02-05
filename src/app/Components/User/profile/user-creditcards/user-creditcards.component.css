@@ -16,7 +16,8 @@
   font-variant: normal;
   text-transform: uppercase;
 }
-.black{
+
+.black {
   color: black;
 }
 
@@ -56,39 +57,54 @@
   bottom: 15%;
   margin-left: 8%;
 }
-.creditCardTypeVisa{
-  width: 105px;
-  height: 37px;
+
+.creditCardTypeVisa {
   background-image: url("../../../../../assets/visa.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.creditCardTypeMasterCard{
-  width: 115px;
-  height: 45px;
+
+.creditCardTypeMasterCard {
   background-image: url("../../../../../assets/mastercard.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.visaPosition{
+
+.visaPosition {
+  width: 105px;
+  height: 37px;
   position: absolute;
-  bottom:12%;
+  bottom: 12%;
   right: 0;
 }
-.masterCardPosition{
+
+.masterCardPosition {
+  width: 115px;
+  height: 45px;
   position: absolute;
-  bottom:10%;
+  bottom: 10%;
   right: 0;
 }
-.deleteBtn{
+
+.deleteBtn {
   position: absolute;
   right: -8%;
   top: 0;
   z-index: 100;
 }
-.checkVisa{
+
+.checkVisa {
+  width: 70px;
+  height: 30px;
   position: absolute;
+  bottom: 9%;
+  left: 0;
 }
-.checkMasterCard{
-position: absolute;
+
+.checkMasterCard {
+  width: 85px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  bottom: 5%;
 }

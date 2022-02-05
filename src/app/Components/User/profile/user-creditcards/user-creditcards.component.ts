@@ -25,19 +25,27 @@ export class UserCreditcardsComponent implements OnInit {
     var creditCardNumber = $("#creditCardNumber");
     let status = false;
     $("#creditCardNumber").change(function(){
+      let trimNumber = "";
+      for (let i = 0; i < creditCardNumber.val().length; i++) {
+        const c = creditCardNumber.val()[i];
+        if(c != " ") trimNumber+=c;
+      }
+      console.log(trimNumber)
       if(creditCardNumber.val()==""){
         status = false;
         return;
       }
       if(!status){
-        let first4 = creditCardNumber.val().substring(0,4);
-        let second4 = creditCardNumber.val().substring(4,8);
-        let third4 = creditCardNumber.val().substring(8,12);
-        let fourth4 = creditCardNumber.val().substring(12,16);
+        let first4 = trimNumber.substring(0,4);
+        let second4 = trimNumber.substring(4,8);
+        let third4 = trimNumber.substring(8,12);
+        let fourth4 = trimNumber.substring(12,16);
         let completeNumber = first4+" "+second4+" "+third4+" "+fourth4
         creditCardNumber.val(completeNumber)
       }
-
+      if(creditCardNumber.val().length!=19){
+        console.log("geçersiz")
+      }
       status=true;
     })
 

@@ -14,7 +14,7 @@
             <input type="text" pattern="([0-9])" formControlName="creditCardNumber" id="creditCardNumber"
               class="form-control">
           </div>
-          <div class="col-6">
+          <div class="col-6" style="position: relative;">
             <div *ngIf="addForm.get('creditCardNumber').value">
               <div *ngIf="addForm.get('creditCardNumber').value.startsWith('4')" class="creditCardTypeVisa checkVisa"></div>
               <div *ngIf="addForm.get('creditCardNumber').value.startsWith('5')" class="creditCardTypeMasterCard checkMasterCard"></div>
