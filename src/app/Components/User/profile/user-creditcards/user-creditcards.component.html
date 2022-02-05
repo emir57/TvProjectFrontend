@@ -5,6 +5,28 @@
       <app-user-left-panel></app-user-left-panel>
     </div>
     <main class="col-9 ms-sm-auto col-lg-10 px-md-4 p-3">
+
+      <!-- Add Form -->
+      <form [formGroupName]="addForm">
+        <div class="row">
+          <div class="col-6">
+            <label for="creditCardNumber" class="form-label">Kredi Kartı Numarası</label>
+            <input type="text" formControlName="creditCardNumber" id="creditCardNumber" class="form-control">
+          </div>
+          <div class="col-6">
+
+          </div>
+          <div class="col-3">
+            <label for="cvv" class="form-label">CVV</label>
+            <input type="text" formControlName="cvv" id="cvv" class="form-control">
+          </div>
+          <div class="col-3">
+            <label for="date" class="form-label">Tarih</label>
+            <input type="text" formControlName="date" id="date" class="form-control" placeholder="01/22">
+          </div>
+        </div>
+      </form>
+      <!-- Add Form End -->
       <h3 class="display-5 mt-2">Kredi Kartlarım</h3>
       <hr>
       <div class="creditCard">

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-creditcards',
@@ -11,7 +13,12 @@ export class UserCreditcardsComponent implements OnInit {
   cvv:string="555";
   name:String="Emir"
   surname:String="Gürbüz"
-  constructor() { }
+  addForm:FormGroup;
+  constructor(
+    private formBuilder:FormBuilder,
+    private toastrService:ToastrService,
+
+  ) { }
 
   ngOnInit(): void {
   }
