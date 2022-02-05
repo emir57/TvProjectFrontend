@@ -61,10 +61,13 @@ export class UserCreditcardsComponent implements OnInit {
   }
 
   createAddForm(){
+    let today = new Date;
+    var year = today.getFullYear().toString().substring(2,4);
     this.addForm = this.formBuilder.group({
       creditCardNumber:[,[Validators.required,Validators.maxLength(16),Validators.minLength(16)]],
       cvv:[,[Validators.required,Validators.maxLength(3),Validators.minLength(3)]],
-      date:[,[Validators.required]]
+      day:[,[Validators.required,Validators.max(31),Validators.min(1)]],
+      year:[,[Validators.required,Validators.min(+year)]]
     })
   }
 
