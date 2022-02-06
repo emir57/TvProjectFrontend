@@ -34,9 +34,6 @@ export class UserCreditcardsComponent implements OnInit {
     this.createAddForm();
     this.getCreditCards();
     this.creditCardFormat();
-
-
-
   }
 
   getCreditCards(){
@@ -81,6 +78,10 @@ export class UserCreditcardsComponent implements OnInit {
       }
       creditStatus=true;
     })
+  }
+
+  showDeleteModal(){
+
   }
 
   addCreditCard(){
