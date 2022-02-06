@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import $ from 'jquery';
 import { CreditCardService } from 'src/app/Services/credit-card.service';
 import { User } from 'src/app/Models/user';
+import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
 @Component({
   selector: 'app-user-creditcards',
   templateUrl: './user-creditcards.component.html',
@@ -19,8 +20,10 @@ export class UserCreditcardsComponent implements OnInit {
   surname: String = "Gürbüz";
   day:string="01";
   year:string="22"
+
   addForm: FormGroup;
   userId: number = +sessionStorage.getItem("user")
+  userCreditCards:CreditCardWithUser[]=[]
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
@@ -29,6 +32,7 @@ export class UserCreditcardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.createAddForm();
+    this.getCreditCards();
     var creditCardNumber = $("#creditCardNumber");
     let creditStatus = false;
     creditCardNumber.change(function(){
@@ -57,8 +61,14 @@ export class UserCreditcardsComponent implements OnInit {
     })
   }
 
+  getCreditCards(){
+    this.creditCardService.getUserCreditCards(this.userId).subscribe(response=>{
+      if(response.isSuccess){
+        this.userCreditCards = response.data;
+      }
+    })
+  }
   createAddForm(){
-
     this.addForm = this.formBuilder.group({
       creditCardNumber:[,[Validators.required,Validators.maxLength(19),Validators.minLength(16)]],
       cvv:[,[Validators.required,Validators.maxLength(3),Validators.minLength(2)]],
