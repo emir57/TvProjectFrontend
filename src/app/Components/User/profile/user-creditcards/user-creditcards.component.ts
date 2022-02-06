@@ -87,6 +87,7 @@ export class UserCreditcardsComponent implements OnInit {
       deleteModal.fadeOut(500);
       bgDiv.fadeOut(1000);
     })
+
   }
   showDeleteModal(card:CreditCardWithUser){
     var html = `
@@ -102,7 +103,11 @@ export class UserCreditcardsComponent implements OnInit {
     var deleteModal = $("#deleteDiv");
     bgDiv.fadeIn(500);
     deleteModal.fadeIn(1000);
-    deleteModal.html(html)
+    deleteModal.html(deleteModal.html()+html)
+    $("#closeBtn").click(function(){
+      deleteModal.fadeOut(500);
+      bgDiv.fadeOut(1000);
+    })
 
   }
 
