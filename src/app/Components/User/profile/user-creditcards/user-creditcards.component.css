@@ -116,6 +116,7 @@
 }
 
 #deleteDiv {
+  display: none;
   position: fixed;
   z-index: 200;
   background-color: white;
@@ -127,6 +128,7 @@
 }
 
 #backgroundDiv {
+  display: none;
   position: fixed;
   z-index: 199;
   background-color: black;

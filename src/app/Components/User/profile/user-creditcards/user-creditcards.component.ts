@@ -89,7 +89,21 @@ export class UserCreditcardsComponent implements OnInit {
     })
   }
   showDeleteModal(card:CreditCardWithUser){
-    console.log(card)
+    var html = `
+    <div class="creditCardFront mt-2" align="center">
+      <div class="creditCardNumber font">${this.getCreditCardNumber(card.creditCardNumber)}</div>
+      <div class="creditCardUserName font">${this.getFirstName(card.firstName)} ${this.getLastName(card.lastName)}</div>
+      <div class="creditCardDate font">${this.getDay(card.date)}/${this.getYear(card.date)}</div>
+      <div *ngIf="${card.creditCardNumber.startsWith('4')}" class="creditCardTypeVisa visaPosition"></div>
+      <div *ngIf="${card.creditCardNumber.startsWith('5')}" class="creditCardTypeMasterCard masterCardPosition"></div>
+    </div>
+    `
+    var bgDiv = $("#backgroundDiv");
+    var deleteModal = $("#deleteDiv");
+    bgDiv.fadeIn(500);
+    deleteModal.fadeIn(1000);
+    deleteModal.html(html)
+
   }
 
   addCreditCard(){
