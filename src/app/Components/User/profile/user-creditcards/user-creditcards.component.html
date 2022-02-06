@@ -1,3 +1,5 @@
+<div id="deleteDiv"></div>
+<div id="backgroundDiv"></div>
 <app-navbar></app-navbar>
 <div class="container-fluid">
   <div class="row">
@@ -45,7 +47,7 @@
       <h3 class="display-5 mt-2">Kredi Kartlarım</h3>
       <hr>
       <div class="creditCard mb-2" *ngFor="let card of userCreditCards">
-        <button class="btn btn-sm btn-outline-danger" (click)="showDeleteModal()">Sil</button>
+        <button class="btn btn-sm btn-outline-danger deleteBtn" (click)="showDeleteModal(card)">Sil</button>
         <div class="row">
           <div class="col-6">
             <div class="creditCardFront">

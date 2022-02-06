@@ -80,8 +80,8 @@ export class UserCreditcardsComponent implements OnInit {
     })
   }
 
-  showDeleteModal(){
-
+  showDeleteModal(card:CreditCardWithUser){
+    console.log(card)
   }
 
   addCreditCard(){
