@@ -128,5 +128,8 @@ export class UserCreditcardsComponent implements OnInit {
   getCvv(cvv:string){
     return cvv.substring(0,1)+"**";
   }
+  getCreditCardNumber(number:string){
+    return number.substring(0,4)+" "+"**** ****"+" "+number.substring(14,16);
+  }
 
 }
