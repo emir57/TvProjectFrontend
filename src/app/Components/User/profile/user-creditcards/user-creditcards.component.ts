@@ -125,5 +125,8 @@ export class UserCreditcardsComponent implements OnInit {
   getLastName(lastName:string){
     return lastName.substring(0,1)+"***";
   }
+  getCvv(cvv:string){
+    return cvv.substring(0,1)+"**";
+  }
 
 }
