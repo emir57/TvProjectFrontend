@@ -21,6 +21,7 @@ export class UserCreditcardsComponent implements OnInit {
   day:string="";
   year:string=""
 
+  selectedCardId:number;
   addForm: FormGroup;
   userId: number = +sessionStorage.getItem("user")
   userCreditCards:CreditCardWithUser[]=[]
@@ -90,6 +91,7 @@ export class UserCreditcardsComponent implements OnInit {
 
   }
   showDeleteModal(card:CreditCardWithUser){
+    this.selectedCardId = card.id;
     var html = `
     <div class="creditCardFront mt-2" align="center">
       <div class="creditCardNumber font">${this.getCreditCardNumber(card.creditCardNumber)}</div>
@@ -150,7 +152,7 @@ export class UserCreditcardsComponent implements OnInit {
     }
   }
   deleteCard(){
-    
+    this.creditCardService.delete()
   }
   getYear(date:string){
     let year = date.split("/")[1];
