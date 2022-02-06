@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
+import { ResponseListModel } from '../Models/responseListModel';
 import { ResponseModel } from '../Models/responseModel';
 import { UserCreditCard } from '../Models/userCreditCard';
 
@@ -14,6 +15,9 @@ export class CreditCardService {
   constructor(
     private httpClient:HttpClient
   ) { }
+  getUserCreditCards(userId:number):Observable<ResponseListModel<>>{
+
+  }
   add(creditCardModel:UserCreditCard):Observable<ResponseModel>{
     let newPath = `${this.apiUrl}/api/creditcards/add`;
     return this.httpClient.post<ResponseModel>(newPath,creditCardModel);
