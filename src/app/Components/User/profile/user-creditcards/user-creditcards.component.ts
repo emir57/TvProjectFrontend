@@ -161,6 +161,7 @@ export class UserCreditcardsComponent implements OnInit {
 
     //   }
     // })
+    this.selectedCardId=-1;
   }
   getYear(date:string){
     let year = date.split("/")[1];
