@@ -51,14 +51,14 @@
             <div class="creditCardFront">
               <div class="creditCardNumber font">{{card.creditCardNumber.substring(0,4)}} **** **** **{{card.creditCardNumber.substring(14,16)}}</div>
               <div class="creditCardUserName font">{{card.firstName.substring(0,1)}}*** {{card.lastName.substring(0,1)}}***</div>
-              <div class="creditCardDate font">{{card.day.substring(0,1)}}*/{{card.year.substring(0,1)}}*</div>
+              <div class="creditCardDate font">{{getDay(card.date)}}*/{{getYear(card.date)}}*</div>
               <div *ngIf="card.creditCardNumber.startsWith('4')" class="creditCardTypeVisa visaPosition"></div>
               <div *ngIf="card.creditCardNumber.startsWith('5')" class="creditCardTypeMasterCard masterCardPosition"></div>
             </div>
           </div>
           <div class="col-6">
             <div class="creditCardBackGround font black">
-              <div class="creditCardCvv">{{card.cVV.substring(0,1)}}**</div>
+              <div class="creditCardCvv">{{card.cvv.substring(0,1)}}**</div>
             </div>
           </div>
         </div>
