@@ -119,6 +119,10 @@
   position: fixed;
   z-index: 200;
   background-color: white;
+  width: 40%;
+  height: 30%;
+  left:30%;
+  right: 30%;
 }
 
 #backgroundDiv {
@@ -126,4 +130,6 @@
   z-index: 199;
   background-color: black;
   opacity: 0.6;
+  width: 100%;
+  height: 100%;
 }
