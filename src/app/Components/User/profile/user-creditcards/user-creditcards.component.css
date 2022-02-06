@@ -123,6 +123,7 @@
   height: 30%;
   left:30%;
   right: 30%;
+  border-radius: 10px;
 }
 
 #backgroundDiv {
