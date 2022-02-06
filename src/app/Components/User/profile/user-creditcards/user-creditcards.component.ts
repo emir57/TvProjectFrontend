@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import $ from 'jquery';
+import { CreditCardService } from 'src/app/Services/credit-card.service';
+import { User } from 'src/app/Models/user';
 @Component({
   selector: 'app-user-creditcards',
   templateUrl: './user-creditcards.component.html',
@@ -18,10 +20,11 @@ export class UserCreditcardsComponent implements OnInit {
   day:string="01";
   year:string="22"
   addForm: FormGroup;
+  userId: number = +sessionStorage.getItem("user")
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
-
+    private creditCardService:CreditCardService
   ) { }
 
   ngOnInit(): void {
@@ -80,9 +83,20 @@ export class UserCreditcardsComponent implements OnInit {
       let date = day+"/"+year;
       this.addForm.get("creditCardNumber").setValue(trimNumber)
       let creditCard = Object.assign({
+        userId:this.userId,
         date:date
       },this.addForm.value)
-      console.log(creditCard);
+      this.creditCardService.add(creditCard).subscribe(response=>{
+        if(response.isSuccess){
+          this.toastrService.success(response.message);
+        }
+        else{
+          this.toastrService.error(response.message);
+        }
+      },responseErr=>{
+        console.log(responseErr)
+        this.toastrService.error(responseErr.error.Message)
+      })
     }
   }
 
