@@ -152,16 +152,20 @@ export class UserCreditcardsComponent implements OnInit {
     }
   }
   deleteCard(){
-    let index =this.userCreditCards.findIndex(x=>x.id==this.selectedCardId);
-    this.userCreditCards.splice(index,1);
-    // this.creditCardService.delete(this.selectedCardId).subscribe(response=>{
-    //   if(response.isSuccess){
-    //     this.toastrService.success(response.message);
 
+    this.creditCardService.delete(this.selectedCardId).subscribe(response=>{
+      if(response.isSuccess){
+        this.toastrService.success(response.message);
+        let index =this.userCreditCards.findIndex(x=>x.id==this.selectedCardId);
+        this.userCreditCards.splice(index,1);
+        $("#deleteDiv").fadeOut(500);
+        $("#backgroundDiv").fadeOut(1000);
+        this.selectedCardId=-1;
+      }
+    },responseErr=>{
+      this.toastrService.error(responseErr.error.message)
+    })
 
-    //   }
-    // })
-    this.selectedCardId=-1;
   }
   getYear(date:string){
     let year = date.split("/")[1];
