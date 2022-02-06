@@ -152,7 +152,15 @@ export class UserCreditcardsComponent implements OnInit {
     }
   }
   deleteCard(){
-    this.creditCardService.delete()
+    let index =this.userCreditCards.findIndex(x=>x.id==this.selectedCardId);
+    this.userCreditCards.splice(index,1);
+    // this.creditCardService.delete(this.selectedCardId).subscribe(response=>{
+    //   if(response.isSuccess){
+    //     this.toastrService.success(response.message);
+
+
+    //   }
+    // })
   }
   getYear(date:string){
     let year = date.split("/")[1];
