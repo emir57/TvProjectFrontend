@@ -97,13 +97,15 @@ export class UserCreditcardsComponent implements OnInit {
       <div class="creditCardDate font">${this.getDay(card.date)}/${this.getYear(card.date)}</div>
       <div *ngIf="${card.creditCardNumber.startsWith('4')}" class="creditCardTypeVisa visaPosition"></div>
       <div *ngIf="${card.creditCardNumber.startsWith('5')}" class="creditCardTypeMasterCard masterCardPosition"></div>
-    </div>
+
+      </div>
     `
     var bgDiv = $("#backgroundDiv");
     var deleteModal = $("#deleteDiv");
+    var grid = $("#grid");
     bgDiv.fadeIn(500);
     deleteModal.fadeIn(1000);
-    deleteModal.html(deleteModal.html()+html)
+    grid.html(html)
     $("#closeBtn").click(function(){
       deleteModal.fadeOut(500);
       bgDiv.fadeOut(1000);
@@ -142,6 +144,9 @@ export class UserCreditcardsComponent implements OnInit {
         this.toastrService.error(responseErr.error.Message)
       })
     }
+  }
+  deleteCard(){
+    console.log("a");
   }
   getYear(date:string){
     let year = date.split("/")[1];
