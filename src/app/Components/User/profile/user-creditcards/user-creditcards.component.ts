@@ -106,6 +106,10 @@ export class UserCreditcardsComponent implements OnInit {
     bgDiv.fadeIn(500);
     deleteModal.fadeIn(1000);
     grid.html(html)
+    $(".cancelBtn").click(function(){
+      deleteModal.fadeOut(500);
+      bgDiv.fadeOut(1000);
+    })
     $("#closeBtn").click(function(){
       deleteModal.fadeOut(500);
       bgDiv.fadeOut(1000);
@@ -146,7 +150,7 @@ export class UserCreditcardsComponent implements OnInit {
     }
   }
   deleteCard(){
-    console.log("a");
+    
   }
   getYear(date:string){
     let year = date.split("/")[1];

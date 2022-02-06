@@ -121,10 +121,11 @@
   z-index: 200;
   background-color: white;
   width: 40%;
-  height: 30%;
+  height: 25%;
   left:30%;
   right: 30%;
   border-radius: 10px;
+  margin-top: 15%;
 }
 
 #backgroundDiv {
