@@ -109,5 +109,13 @@ export class UserCreditcardsComponent implements OnInit {
       })
     }
   }
+  getYear(date:string){
+    let year = date.split("/")[1];
+    return year;
+  }
+  getDay(date:string){
+    let day = date.split("/")[0];
+    return day;
+  }
 
 }
