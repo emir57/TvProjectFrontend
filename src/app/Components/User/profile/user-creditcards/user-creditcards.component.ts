@@ -119,5 +119,11 @@ export class UserCreditcardsComponent implements OnInit {
     day = day.substring(0,1)+"*"
     return day;
   }
+  getFirstName(firstName:string){
+    return firstName.substring(0,1)+"***";
+  }
+  getLastName(lastName:string){
+    return lastName.substring(0,1)+"***";
+  }
 
 }
