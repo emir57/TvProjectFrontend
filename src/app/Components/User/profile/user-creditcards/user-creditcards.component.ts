@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import $ from 'jquery';
 import { CreditCardService } from 'src/app/Services/credit-card.service';
-import { User } from 'src/app/Models/user';
 import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
+import $ from 'jquery';
+
 @Component({
   selector: 'app-user-creditcards',
   templateUrl: './user-creditcards.component.html',
@@ -14,12 +14,12 @@ export class UserCreditcardsComponent implements OnInit {
 
   today = new Date;
   cYear = +this.today.getFullYear().toString().substring(2,4);
-  creditCardNumber: string = "5649032678194032";
-  cvv: string = "555";
-  name: String = "Emir";
-  surname: String = "Gürbüz";
-  day:string="01";
-  year:string="22"
+  creditCardNumber: string = "";
+  cvv: string = "";
+  name: String = "";
+  surname: String = "";
+  day:string="";
+  year:string=""
 
   addForm: FormGroup;
   userId: number = +sessionStorage.getItem("user")
@@ -33,6 +33,28 @@ export class UserCreditcardsComponent implements OnInit {
   ngOnInit(): void {
     this.createAddForm();
     this.getCreditCards();
+    this.creditCardFormat();
+
+
+
+  }
+
+  getCreditCards(){
+    this.creditCardService.getUserCreditCards(this.userId).subscribe(response=>{
+      if(response.isSuccess){
+        this.userCreditCards = response.data;
+      }
+    })
+  }
+  createAddForm(){
+    this.addForm = this.formBuilder.group({
+      creditCardNumber:[,[Validators.required,Validators.maxLength(19),Validators.minLength(16)]],
+      cvv:[,[Validators.required,Validators.maxLength(3),Validators.minLength(2)]],
+      day:[,[Validators.required,Validators.max(31),Validators.min(1)]],
+      year:[,[Validators.required,Validators.min(this.cYear)]]
+    })
+  }
+  creditCardFormat(){
     var creditCardNumber = $("#creditCardNumber");
     let creditStatus = false;
     creditCardNumber.change(function(){
@@ -58,22 +80,6 @@ export class UserCreditcardsComponent implements OnInit {
         console.log("geçersiz kredi kartı numarası")
       }
       creditStatus=true;
-    })
-  }
-
-  getCreditCards(){
-    this.creditCardService.getUserCreditCards(this.userId).subscribe(response=>{
-      if(response.isSuccess){
-        this.userCreditCards = response.data;
-      }
-    })
-  }
-  createAddForm(){
-    this.addForm = this.formBuilder.group({
-      creditCardNumber:[,[Validators.required,Validators.maxLength(19),Validators.minLength(16)]],
-      cvv:[,[Validators.required,Validators.maxLength(3),Validators.minLength(2)]],
-      day:[,[Validators.required,Validators.max(31),Validators.min(1)]],
-      year:[,[Validators.required,Validators.min(this.cYear)]]
     })
   }
 

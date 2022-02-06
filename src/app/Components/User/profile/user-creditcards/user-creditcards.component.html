@@ -45,7 +45,7 @@
       <h3 class="display-5 mt-2">Kredi Kartlarım</h3>
       <hr>
       <div class="creditCard mb-2" *ngFor="let card of userCreditCards">
-        <button class="btn btn-sm btn-outline-danger deleteBtn">Sil</button>
+        <button class="btn btn-sm btn-outline-danger deleteBtn" [value]="card.id">Sil</button>
         <div class="row">
           <div class="col-6">
             <div class="creditCardFront">
