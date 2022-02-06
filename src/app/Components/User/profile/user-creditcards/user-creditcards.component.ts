@@ -11,7 +11,7 @@ export class UserCreditcardsComponent implements OnInit {
 
   today = new Date;
   cYear = +this.today.getFullYear().toString().substring(2,4);
-  creditCardNumber: string = "4555555555555555";
+  creditCardNumber: string = "5649032678194032";
   cvv: string = "555";
   name: String = "Emir";
   surname: String = "Gürbüz";
