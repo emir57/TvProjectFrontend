@@ -1,7 +1,9 @@
-import { User } from "./user";
-import { UserCreditCard } from "./userCreditCard";
-
 export interface CreditCardWithUser{
-  userCreditCard:UserCreditCard;
-  user:User;
+  id:number;
+  userId:number;
+  creditCardNumber:string;
+  cVV:string;
+  date:string;
+  firstName:string;
+  lastName:string;
 }

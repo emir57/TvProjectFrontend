@@ -44,21 +44,21 @@
       <!-- Add Form End -->
       <h3 class="display-5 mt-2">Kredi Kartlarım</h3>
       <hr>
-      <div class="creditCard">
+      <div class="creditCard" *ngFor="let card of userCreditCards">
         <button class="btn btn-sm btn-outline-danger deleteBtn">Sil</button>
         <div class="row">
           <div class="col-6">
             <div class="creditCardFront">
-              <div class="creditCardNumber font">{{creditCardNumber.substring(0,4)}} **** **** **{{creditCardNumber.substring(14,16)}}</div>
-              <div class="creditCardUserName font">{{name.substring(0,1)}}*** {{surname.substring(0,1)}}***</div>
+              <div class="creditCardNumber font">{{card.userCreditCard.creditCardNumber.substring(0,4)}} **** **** **{{card.userCreditCard.creditCardNumber.substring(14,16)}}</div>
+              <div class="creditCardUserName font">{{card.user.firstName.substring(0,1)}}*** {{card.user.lastName.substring(0,1)}}***</div>
               <div class="creditCardDate font">{{day.substring(0,1)}}*/{{year.substring(0,1)}}*</div>
-              <div *ngIf="creditCardNumber.startsWith('4')" class="creditCardTypeVisa visaPosition"></div>
-              <div *ngIf="creditCardNumber.startsWith('5')" class="creditCardTypeMasterCard masterCardPosition"></div>
+              <div *ngIf="card.userCreditCard.creditCardNumber.startsWith('4')" class="creditCardTypeVisa visaPosition"></div>
+              <div *ngIf="card.userCreditCard.creditCardNumber.startsWith('5')" class="creditCardTypeMasterCard masterCardPosition"></div>
             </div>
           </div>
           <div class="col-6">
             <div class="creditCardBackGround font black">
-              <div class="creditCardCvv">{{cvv.substring(0,1)}}**</div>
+              <div class="creditCardCvv">{{card.userCreditCard.cVV.substring(0,1)}}**</div>
             </div>
           </div>
         </div>
