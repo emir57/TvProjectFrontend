@@ -34,6 +34,7 @@ export class UserCreditcardsComponent implements OnInit {
     this.createAddForm();
     this.getCreditCards();
     this.creditCardFormat();
+    this.deleteModalSettings();
   }
 
   getCreditCards(){
@@ -79,7 +80,14 @@ export class UserCreditcardsComponent implements OnInit {
       creditStatus=true;
     })
   }
-
+  deleteModalSettings(){
+    var bgDiv = $("#backgroundDiv");
+    var deleteModal = $("#deleteDiv");
+    bgDiv.click(function(){
+      deleteModal.fadeOut(500);
+      bgDiv.fadeOut(1000);
+    })
+  }
   showDeleteModal(card:CreditCardWithUser){
     console.log(card)
   }
