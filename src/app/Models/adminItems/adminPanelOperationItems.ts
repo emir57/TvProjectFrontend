@@ -1,4 +1,4 @@
-import { PanelItem } from "../adminPanelItem";
+import { PanelItem } from "../panelItem";
 
 export const AdminPanelOperationItems:PanelItem[]=[
   {id:1,displayName:"<i class='fas fa-plus'></i> Ürün Ekle",link:"/admindashboard/productadd"},

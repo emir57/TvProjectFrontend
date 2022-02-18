@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PanelItem } from 'src/app/Models/adminPanelItem';
+import { PanelItem } from 'src/app/Models/panelItem';
 import { AdminPanelItems } from 'src/app/Models/adminItems/adminPanelItems';
 import { AdminPanelOperationItems } from 'src/app/Models/adminItems/adminPanelOperationItems';
 

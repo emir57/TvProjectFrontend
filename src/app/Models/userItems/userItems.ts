@@ -1,4 +1,4 @@
-import { PanelItem } from "../adminPanelItem";
+import { PanelItem } from "../panelItem";
 
 export const UserPanelItems:PanelItem[]=[
   {id:1,displayName:"<i class='far fa-user'></i> Profilimi Güncelle",link:"/profile/update"},

@@ -1,4 +1,4 @@
-import { PanelItem } from "../adminPanelItem";
+import { PanelItem } from "../panelItem";
 
 export const AdminPanelItems:PanelItem[]=[
   {id:1,displayName:"<i class='fas fa-home'></i> Ana Sayfa",link:"/admindashboard/home"},
