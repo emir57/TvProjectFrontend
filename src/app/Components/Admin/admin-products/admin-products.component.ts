@@ -18,7 +18,7 @@ export class AdminProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.productService.getProducts(1).subscribe(response=>{
+    this.productService.getProducts(-1).subscribe(response=>{
       if(response.isSuccess){
         this.products = response.data;
       }
