@@ -101,12 +101,12 @@
               <a class="page-link">Önceki Sayfa</a>
             </li>
 
-            <li class="page-item active" aria-current="page">
-              <a class="page-link" href="#">2</a>
+            <li *ngFor="let page of totalPage" class="page-item" [class]="{'active':page+1==currentPage}" aria-current="page" (click)="getProductsByPage(page+1)">
+              <a class="page-link">{{page+1}}</a>
             </li>
 
             <li class="page-item">
-              <a class="page-link" href="#">Sonraki Sayfa</a>
+              <a class="page-link">Sonraki Sayfa</a>
             </li>
           </ul>
         </nav>

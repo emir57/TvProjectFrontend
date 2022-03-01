@@ -50,7 +50,7 @@ export class AdminUploadimageComponent implements OnInit {
 
 
   getProducts() {
-    this.productService.getProducts().subscribe(response => {
+    this.productService.getProducts(1).subscribe(response => {
       if (response.isSuccess) {
         this.products = response.data;
       }

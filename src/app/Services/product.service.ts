@@ -20,8 +20,8 @@ export class ProductService {
       let newPath = `${this.apiUrl}/api/tvs/get/?id=${id}`;
       return this.httpClient.get<ResponseSingleModel<Product>>(newPath);
     }
-    getProducts():Observable<ResponseListModel<ProductAndPhoto>>{
-      let newPath = `${this.apiUrl}/api/tvs/gettvdetail`;
+    getProducts(page:number):Observable<ResponseListModel<ProductAndPhoto>>{
+      let newPath = `${this.apiUrl}/api/tvs/gettvdetail?page=${page}`;
       return this.httpClient.get<ResponseListModel<ProductAndPhoto>>(newPath);
     }
     getProductsByCategory(id:number):Observable<ResponseListModel<ProductAndPhoto>>{
