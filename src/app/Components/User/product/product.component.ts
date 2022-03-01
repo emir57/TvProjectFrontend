@@ -33,12 +33,15 @@ export class ProductComponent implements OnInit {
     this.getCategories();
 
     setTimeout(() => {
-      this.products.forEach(product=>{
-        var photos = $(`.photoProduct${product.id}`);
-        let i = 0;
+      function photosDisplayNone(photos){
         for (let i = 0; i < photos.length; i++) {
           photos[i].style.display="none"
         }
+      }
+      this.products.forEach(product=>{
+        var photos = $(`.photoProduct${product.id}`);
+        let i = 0;
+        photosDisplayNone(photos);
         product.photos.forEach(photo=>{
           if(photo.isMain){
             $(`#photo${photo.id}`).show();
@@ -46,9 +49,7 @@ export class ProductComponent implements OnInit {
         })
         $(`#productNextBtn${product.id}`).click(function(){
           i++;
-          for (let j = 0; j < photos.length; j++) {
-            photos[j].style.display="none"
-          }
+          photosDisplayNone(photos);
           if(i > photos.length-1){
             i=0;
           }
@@ -59,9 +60,7 @@ export class ProductComponent implements OnInit {
           if(i < 0){
             i = photos.length-1;
           }
-          for (let j = 0; j < photos.length; j++) {
-            photos[j].style.display="none"
-          }
+          photosDisplayNone(photos);
           photos[i].style.display="block";
         })
 
