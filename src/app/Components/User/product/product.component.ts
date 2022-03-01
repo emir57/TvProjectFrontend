@@ -18,6 +18,8 @@ import { style } from '@angular/animations';
 })
 export class ProductComponent implements OnInit {
 
+  currentPage = 1;
+  totalPage =0;
   apiUrl = ApiUrl
   searchString = "";
   products: ProductAndPhoto[] = [];
@@ -31,7 +33,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategories();
-
+    console.log(this.totalPage)
     setTimeout(() => {
       function photosDisplayNone(photos){
         for (let i = 0; i < photos.length; i++) {
@@ -72,6 +74,7 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts()
       .subscribe(response => {
         this.products = response.data;
+        this.totalPage = response.totalPage
       }, responseErr => {
         console.log(responseErr)
       })
