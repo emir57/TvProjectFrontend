@@ -87,7 +87,7 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts(page)
     .subscribe(response => {
       this.products = response.data;
-      window.scrollTo(0,250)
+      window.scrollTo(0,350)
     }, responseErr => {
       console.log(responseErr)
     })
