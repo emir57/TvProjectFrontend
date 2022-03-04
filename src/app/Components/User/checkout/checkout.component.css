@@ -5,11 +5,20 @@
 .addressDeActive{
   background-color: rgb(156, 156, 202);
 }
+.cardActive{
+  background-color: rgb(33, 228, 108);
+  border-radius: 10px;
+}
+.cardDeActive{
+  background-color: rgb(156, 156, 202);
+  border-radius: 10px;
+}
 
 
 
 .creditCard {
-  width: 626px;
+  /* width: 626px; */
+  width: 313px;
   height: 184px;
   position: relative;
 }
@@ -38,6 +47,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  margin-left: 5px;
 }
 
 .creditCardBackGround {

@@ -77,9 +77,9 @@ export class CheckoutComponent implements OnInit {
   }
   getCreditCardClass(card:CreditCardWithUser){
     if(this.selectedCreditCard == card){
-      return "addressActive";
+      return "cardActive";
     }else{
-      return "addressDeActive";
+      return "cardDeActive";
     }
   }
 
