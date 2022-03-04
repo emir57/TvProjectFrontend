@@ -41,7 +41,10 @@ export class AdminProductUpdateComponent implements OnInit {
     })
     this.createproductUpdateForm();
     this.deleteDiv();
-    this.imageSlide();
+    setTimeout(() => {
+      this.imageSlide();
+    }, 500);
+
 
 
   }
@@ -106,15 +109,6 @@ export class AdminProductUpdateComponent implements OnInit {
       return `carousel-item photoProduct`
     }
   }
-  prevBtn(){
-
-  }
-  nextBtn(){
-    let photos = $(".photoProduct");
-    this.i++;
-    photos[this.i-1].fadeOut();
-    photos[this.i].fadeIn();
-  }
   imageSlide() {
     var nextBtn = $("#NextBtn");
     var prevBtn = $("#PrevBtn");
@@ -127,6 +121,10 @@ export class AdminProductUpdateComponent implements OnInit {
         let i = index;
       }
       else $("#photo" + photo.id).fadeOut()
+    })
+    nextBtn.click(function(){
+      i++;
+      photos[i].style.display = "block";
     })
   }
   deleteDiv(){
