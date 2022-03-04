@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiUrl } from 'src/app/Models/apiUrl';
 import { Category } from 'src/app/Models/category';
 import { Photo } from 'src/app/Models/photo';
@@ -27,7 +27,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -168,6 +169,8 @@ export class ProductComponent implements OnInit {
     $("#spinnerDiv").fadeOut();
     $("#spinnerBgDiv").fadeOut();
   }
-
+  goCheckout(product:Product){
+    this.router.navigate(["checkout",product.id])
+  }
 
 }
