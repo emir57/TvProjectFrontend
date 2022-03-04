@@ -177,7 +177,7 @@
               </div>
             </div>
             <button *ngIf="product.photos.length!=1" class="carousel-control-prev" type="button"
-              id="PrevBtn">
+              id="PrevBtn" (click)="prevBtn()">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Geri</span>
             </button>

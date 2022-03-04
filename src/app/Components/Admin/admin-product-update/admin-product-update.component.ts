@@ -16,6 +16,7 @@ import { Photo } from 'src/app/Models/photo';
 })
 export class AdminProductUpdateComponent implements OnInit {
 
+  i=0;
   apiUrl = ApiUrl
   isOk = true;
   productUpdateForm: FormGroup;
@@ -40,8 +41,8 @@ export class AdminProductUpdateComponent implements OnInit {
     })
     this.createproductUpdateForm();
     this.deleteDiv();
-
     this.imageSlide();
+
 
   }
 
@@ -105,6 +106,15 @@ export class AdminProductUpdateComponent implements OnInit {
       return `carousel-item photoProduct`
     }
   }
+  prevBtn(){
+
+  }
+  nextBtn(){
+    let photos = $(".photoProduct");
+    this.i++;
+    photos[this.i-1].fadeOut();
+    photos[this.i].fadeIn();
+  }
   imageSlide() {
     var nextBtn = $("#NextBtn");
     var prevBtn = $("#PrevBtn");
@@ -117,14 +127,6 @@ export class AdminProductUpdateComponent implements OnInit {
         let i = index;
       }
       else $("#photo" + photo.id).fadeOut()
-    })
-    prevBtn.click(function(){
-      console.log("prev")
-    })
-    nextBtn.click(function(){
-      i++;
-      photos[i-1].fadeOut();
-      photos[i].fadeIn();
     })
   }
   deleteDiv(){
