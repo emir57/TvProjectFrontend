@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Address } from 'cluster';
 import { Product } from 'src/app/Models/product';
+import { UserAddressCityModel } from 'src/app/Models/userAddressCity';
+import { AddressService } from 'src/app/Services/address.service';
+import { CreditCardService } from 'src/app/Services/credit-card.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -10,22 +14,40 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  product:Product;
+  userId: number = +sessionStorage.getItem("user")
+  product: Product;
+  addresses: UserAddressCityModel[];
   constructor(
-    private activatedRoute:ActivatedRoute,
-    private productService:ProductService
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductService,
+    private addressService: AddressService,
+    private creditCardService: CreditCardService
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(param=>{
-      if(param["productId"]){
-        this.productService.getProduct(param["productId"]).subscribe(response=>{
-          if(response.isSuccess){
+    this.getProduct();
+    this.getAddresses();
+  }
+
+  getProduct() {
+    this.activatedRoute.params.subscribe(param => {
+      if (param["productId"]) {
+        this.productService.getProduct(param["productId"]).subscribe(response => {
+          if (response.isSuccess) {
             this.product = response.data;
           }
         })
       }
     })
   }
+  getAddresses(){
+    this.addressService.getAddressesByUserId(this.userId).subscribe(response=>{
+      if(response.isSuccess){
+        this.addresses = response.data;
+      }
+    })
+  }
+
+
 
 }
