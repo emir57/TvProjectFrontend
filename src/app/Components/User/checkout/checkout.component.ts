@@ -74,26 +74,22 @@ export class CheckoutComponent implements OnInit {
 
 
   getYear(date:string){
-    let year = date.split("/")[1];
-    year = "*"+year.substring(1,2)
-    return year;
+    return this.creditCardService.getYear(date);
   }
   getDay(date:string){
-    let day = date.split("/")[0];
-    day = day.substring(0,1)+"*"
-    return day;
+    return this.creditCardService.getDay(date);
   }
   getFirstName(firstName:string){
-    return firstName.substring(0,1)+"***";
+    return this.creditCardService.getFirstName(firstName);
   }
   getLastName(lastName:string){
-    return lastName.substring(0,1)+"***";
+    return this.creditCardService.getLastName(lastName);
   }
   getCvv(cvv:string){
-    return cvv.substring(0,1)+"**";
+    return this.creditCardService.getCvv(cvv);
   }
   getCreditCardNumber(number:string){
-    return number.substring(0,4)+" "+"**** **** **"+number.substring(14,16);
+    return this.creditCardService.getCreditCardNumber(number);
   }
 
 
