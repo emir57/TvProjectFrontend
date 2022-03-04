@@ -7,6 +7,8 @@ import { AddressService } from 'src/app/Services/address.service';
 import { CreditCardService } from 'src/app/Services/credit-card.service';
 import { ProductService } from 'src/app/Services/product.service';
 import $ from "jquery"
+import { UserCreditCard } from 'src/app/Models/userCreditCard';
+import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
 
 @Component({
   selector: 'app-checkout',
@@ -19,6 +21,7 @@ export class CheckoutComponent implements OnInit {
   userId: number = +sessionStorage.getItem("user")
   product: Product;
   addresses: UserAddressCityModel[];
+  userCreditCards:CreditCardWithUser[];
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
@@ -29,6 +32,7 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct();
     this.getAddresses();
+    this.getCreditCards();
   }
 
   getProduct() {
@@ -46,6 +50,13 @@ export class CheckoutComponent implements OnInit {
     this.addressService.getAddressesByUserId(this.userId).subscribe(response=>{
       if(response.isSuccess){
         this.addresses = response.data;
+      }
+    })
+  }
+  getCreditCards(){
+    this.creditCardService.getUserCreditCards(this.userId).subscribe(response=>{
+      if(response.isSuccess){
+        this.userCreditCards = response.data;
       }
     })
   }
