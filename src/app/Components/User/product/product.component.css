@@ -39,3 +39,13 @@
   text-decoration: none;
   margin: 7px;
 }
+#spinnerDiv{
+  text-align: center;
+  position: fixed;
+  width: 6%;
+  left: 45%;
+  right: 45%;
+  background: #fff;
+  opacity: .8;
+  z-index: 999;
+}
