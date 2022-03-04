@@ -19,7 +19,7 @@ import { style } from '@angular/animations';
 export class ProductComponent implements OnInit {
 
   currentPage = 1;
-  totalPage =[];
+  totalPage = [];
   apiUrl = ApiUrl
   searchString = "";
   products: ProductAndPhoto[] = [];
@@ -48,23 +48,27 @@ export class ProductComponent implements OnInit {
         console.log(responseErr)
       })
   }
-  getProductsByPage(page:number){
+  getProductsByPage(page: number) {
     this.currentPage = page;
     this.productService.getProducts(page)
-    .subscribe(response => {
-      this.products = response.data;
-      window.scrollTo(0,350)
-    }, responseErr => {
-      console.log(responseErr)
-    })
+      .subscribe(response => {
+        this.products = response.data;
+        window.scrollTo(0, 350)
+      }, responseErr => {
+        console.log(responseErr)
+      })
   }
 
   getProducts() {
+    $("#spinnerDiv").fadeIn();
+    $("#spinnerBgDiv").fadeIn();
     this.activatedRoute.params.subscribe(param => {
       if (param["categoryId"]) {
         this.productService.getProductsByCategory(param["categoryId"])
           .subscribe(response => {
             this.products = response.data;
+            $("#spinnerDiv").fadeOut();
+            $("#spinnerBgDiv").fadeOut();
           })
       } else {
         this.getAllProducts();
@@ -94,7 +98,7 @@ export class ProductComponent implements OnInit {
     return returnPhotos;
   }
 
-  photocheck(photo: Photo,product:Product) {
+  photocheck(photo: Photo, product: Product) {
     if (photo.isMain == true) {
       return `carousel-item active photoProduct${product.id}`
     } else {
@@ -124,39 +128,39 @@ export class ProductComponent implements OnInit {
     this.products = this.products.sort((x, y) => y.unitPrice - x.unitPrice);
   }
 
-  ImageSlide(){
-    $("#spinnerDiv").fadeIn();
-    $("#spinnerBgDiv").fadeIn();
+  ImageSlide() {
+    // $("#spinnerDiv").fadeIn();
+    // $("#spinnerBgDiv").fadeIn();
     setTimeout(() => {
-      function photosDisplayNone(photos){
+      function photosDisplayNone(photos) {
         for (let i = 0; i < photos.length; i++) {
-          photos[i].style.display="none"
+          photos[i].style.display = "none"
         }
       }
-      this.products.forEach(product=>{
+      this.products.forEach(product => {
         var photos = $(`.photoProduct${product.id}`);
         let i = 0;
         photosDisplayNone(photos);
-        product.photos.forEach(photo=>{
-          if(photo.isMain){
+        product.photos.forEach(photo => {
+          if (photo.isMain) {
             $(`#photo${photo.id}`).show();
           }
         })
-        $(`#productNextBtn${product.id}`).click(function(){
+        $(`#productNextBtn${product.id}`).click(function () {
           i++;
           photosDisplayNone(photos);
-          if(i > photos.length-1){
-            i=0;
+          if (i > photos.length - 1) {
+            i = 0;
           }
-          photos[i].style.display="block";
+          photos[i].style.display = "block";
         })
-        $(`#productPrevBtn${product.id}`).click(function(){
+        $(`#productPrevBtn${product.id}`).click(function () {
           i--;
-          if(i < 0){
-            i = photos.length-1;
+          if (i < 0) {
+            i = photos.length - 1;
           }
           photosDisplayNone(photos);
-          photos[i].style.display="block";
+          photos[i].style.display = "block";
         })
 
       })
