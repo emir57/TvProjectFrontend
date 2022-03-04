@@ -35,73 +35,75 @@
       </form>
     </div>
     <div class="col-md-7 col-lg-8">
-      <h4 class="mb-3">Adreslerim</h4>
-      <!-- Address Check -->
-      <div>
-        <h5 class="display-3" style="font-size: large;">
-          <span *ngIf="userCreditCards.length == 0">
-            Adresiniz Bulunmamaktadır Yok Eklemek için
-          </span>
-          <span *ngIf="userCreditCards.length != 0">
-            Adreslerinizi Düzenlemek için
-          </span>
-          <a routerLink="/profile/myadresses" style="text-decoration: none;">Tıklayınız.</a>
-        </h5>
-      </div>
-      <!-- Address Check End -->
-      <!-- Address -->
-      <div class="card mb-3" [class]="getAddressClass(address)" *ngFor="let address of addresses"
-        id="address{{address.id}}">
-        <div class="card-header">
-          <input (change)="activedAddress(address)" type="radio" name="address" id="address{{address.id}}"
-            [value]="address.id"> {{address.addressName}}
+      <form>
+        <h4 class="mb-3">Adreslerim</h4>
+        <!-- Address Check -->
+        <div>
+          <h5 class="display-3" style="font-size: large;">
+            <span *ngIf="userCreditCards.length == 0">
+              Adresiniz Bulunmamaktadır Yok Eklemek için
+            </span>
+            <span *ngIf="userCreditCards.length != 0">
+              Adreslerinizi Düzenlemek için
+            </span>
+            <a routerLink="/profile/myadresses" style="text-decoration: none;">Tıklayınız.</a>
+          </h5>
         </div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>{{address.addressText}}</p>
-            <footer class="blockquote-footer"><cite title="Source Title">{{address.cityName}}</cite></footer>
-          </blockquote>
+        <!-- Address Check End -->
+        <!-- Address -->
+        <div class="card mb-3" [class]="getAddressClass(address)" *ngFor="let address of addresses"
+          id="address{{address.id}}">
+          <div class="card-header">
+            <input (change)="activedAddress(address)" type="radio" name="address" id="address{{address.id}}"
+              [value]="address.id"> {{address.addressName}}
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{address.addressText}}</p>
+              <footer class="blockquote-footer"><cite title="Source Title">{{address.cityName}}</cite></footer>
+            </blockquote>
+          </div>
         </div>
-      </div>
-      <!-- Address End -->
-      <hr>
-      <h4 class="mb-3">Kredi Kartlarım</h4>
-      <!-- Credit Card Check -->
-      <div>
-        <h5 class="display-3" style="font-size: large;">
-          <span *ngIf="userCreditCards.length == 0">
-            Kredi Kartınız Bulunmamaktadır Eklemek için
-          </span>
-          <span *ngIf="userCreditCards.length != 0">
-            Kredi Kartlarınızı Düzenlemek için
-          </span>
-          <a routerLink="/profile/mycreditcards" style="text-decoration: none;">Tıklayınız.</a>
-        </h5>
-      </div>
-      <!-- Credit Card Check End -->
-      <!-- Credit Cards Start -->
-      <div class="creditCard mt-2 mb-2" *ngFor="let card of userCreditCards">
-        <div class="row">
-          <div class="col-6">
-            <div class="creditCardFront">
-              <input (change)="activedCreditCard(card)" type="radio" name="card" id="card{{card.id}}"
-                [value]="card.id">
-              <div class="creditCardNumber font">{{getCreditCardNumber(card.creditCardNumber)}}</div>
-              <div class="creditCardUserName font">{{getFirstName(card.firstName)}} {{getLastName(card.lastName)}}</div>
-              <div class="creditCardDate font">{{getDay(card.date)}}/{{getYear(card.date)}}</div>
-              <div *ngIf="card.creditCardNumber.startsWith('4')" class="creditCardTypeVisa visaPosition"></div>
-              <div *ngIf="card.creditCardNumber.startsWith('5')" class="creditCardTypeMasterCard masterCardPosition">
+        <!-- Address End -->
+        <hr>
+        <h4 class="mb-3">Kredi Kartlarım</h4>
+        <!-- Credit Card Check -->
+        <div>
+          <h5 class="display-3" style="font-size: large;">
+            <span *ngIf="userCreditCards.length == 0">
+              Kredi Kartınız Bulunmamaktadır Eklemek için
+            </span>
+            <span *ngIf="userCreditCards.length != 0">
+              Kredi Kartlarınızı Düzenlemek için
+            </span>
+            <a routerLink="/profile/mycreditcards" style="text-decoration: none;">Tıklayınız.</a>
+          </h5>
+        </div>
+        <!-- Credit Card Check End -->
+        <!-- Credit Cards Start -->
+        <div class="creditCard mt-2 mb-2" *ngFor="let card of userCreditCards">
+          <div class="row">
+            <div class="col-6">
+              <div class="creditCardFront">
+                <input (change)="activedCreditCard(card)" type="radio" name="card" id="card{{card.id}}"
+                  [value]="card.id">
+                <div class="creditCardNumber font">{{getCreditCardNumber(card.creditCardNumber)}}</div>
+                <div class="creditCardUserName font">{{getFirstName(card.firstName)}} {{getLastName(card.lastName)}}</div>
+                <div class="creditCardDate font">{{getDay(card.date)}}/{{getYear(card.date)}}</div>
+                <div *ngIf="card.creditCardNumber.startsWith('4')" class="creditCardTypeVisa visaPosition"></div>
+                <div *ngIf="card.creditCardNumber.startsWith('5')" class="creditCardTypeMasterCard masterCardPosition">
+                </div>
               </div>
             </div>
+            <!-- <div class="col-6">
+              <div class="creditCardBackGround font black">
+                <div class="creditCardCvv">{{getCvv(card.cvv)}}</div>
+              </div>
+            </div> -->
           </div>
-          <!-- <div class="col-6">
-            <div class="creditCardBackGround font black">
-              <div class="creditCardCvv">{{getCvv(card.cvv)}}</div>
-            </div>
-          </div> -->
         </div>
-      </div>
-      <!-- Creidt Cards End -->
+        <!-- Credit Cards End -->
+      </form>
       <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
     </div>
   </div>
