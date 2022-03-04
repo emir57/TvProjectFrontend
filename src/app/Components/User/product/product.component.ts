@@ -33,7 +33,8 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategories();
-
+    $("#spinnerDiv").fadeIn();
+    $("#spinnerBgDiv").fadeIn();
     setTimeout(() => {
       function photosDisplayNone(photos){
         for (let i = 0; i < photos.length; i++) {
@@ -67,7 +68,9 @@ export class ProductComponent implements OnInit {
         })
 
       })
-    }, 1000);
+    }, 500);
+    $("#spinnerDiv").fadeOut();
+    $("#spinnerBgDiv").fadeOut();
   }
 
   getAllProducts() {
