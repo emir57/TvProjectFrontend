@@ -60,8 +60,8 @@
       <!-- Credit Cards Start -->
       <div *ngIf="userCreditCards.length == 0">
         <h5 class="display-4" style="font-size: large;">
-          Ekli Kredi Kartının Yok Ekleme için
-          <a routerLink="" style="text-decoration: none;">Tıklayınız</a>
+          Ekli Kredi Kartının Yok Eklemek için
+          <a routerLink="/profile/mycreditcards" style="text-decoration: none;">Tıklayınız</a>
         </h5>
       </div>
       <div class="creditCard mb-2" *ngFor="let card of userCreditCards">
