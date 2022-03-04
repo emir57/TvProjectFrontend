@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CreditCardService } from 'src/app/Services/credit-card.service';
 import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
 import $ from 'jquery';
+import { User } from 'src/app/Models/user';
 
 @Component({
   selector: 'app-user-creditcards',
@@ -12,6 +13,7 @@ import $ from 'jquery';
 })
 export class UserCreditcardsComponent implements OnInit {
 
+  user:User
   today = new Date;
   cYear = +this.today.getFullYear().toString().substring(2,4);
   creditCardNumber: string = "";
@@ -32,6 +34,7 @@ export class UserCreditcardsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
     this.createAddForm();
     this.getCreditCards();
     this.creditCardFormat();
@@ -136,11 +139,14 @@ export class UserCreditcardsComponent implements OnInit {
       this.addForm.get("creditCardNumber").setValue(trimNumber)
       let creditCard = Object.assign({
         userId:this.userId,
-        date:date
+        date:date,
+        firstName:this.user.firstName,
+        lastName:this.user.lastName,
       },this.addForm.value)
       this.creditCardService.add(creditCard).subscribe(response=>{
         if(response.isSuccess){
           this.toastrService.success(response.message);
+          this.userCreditCards.push(creditCard)
         }
         else{
           this.toastrService.error(response.message);
