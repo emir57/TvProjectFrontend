@@ -33,44 +33,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategories();
-    $("#spinnerDiv").fadeIn();
-    $("#spinnerBgDiv").fadeIn();
-    setTimeout(() => {
-      function photosDisplayNone(photos){
-        for (let i = 0; i < photos.length; i++) {
-          photos[i].style.display="none"
-        }
-      }
-      this.products.forEach(product=>{
-        var photos = $(`.photoProduct${product.id}`);
-        let i = 0;
-        photosDisplayNone(photos);
-        product.photos.forEach(photo=>{
-          if(photo.isMain){
-            $(`#photo${photo.id}`).show();
-          }
-        })
-        $(`#productNextBtn${product.id}`).click(function(){
-          i++;
-          photosDisplayNone(photos);
-          if(i > photos.length-1){
-            i=0;
-          }
-          photos[i].style.display="block";
-        })
-        $(`#productPrevBtn${product.id}`).click(function(){
-          i--;
-          if(i < 0){
-            i = photos.length-1;
-          }
-          photosDisplayNone(photos);
-          photos[i].style.display="block";
-        })
-
-      })
-    }, 500);
-    $("#spinnerDiv").fadeOut();
-    $("#spinnerBgDiv").fadeOut();
+    this.ImageSlide();
   }
 
   getAllProducts() {
@@ -161,7 +124,46 @@ export class ProductComponent implements OnInit {
     this.products = this.products.sort((x, y) => y.unitPrice - x.unitPrice);
   }
 
+  ImageSlide(){
+    $("#spinnerDiv").fadeIn();
+    $("#spinnerBgDiv").fadeIn();
+    setTimeout(() => {
+      function photosDisplayNone(photos){
+        for (let i = 0; i < photos.length; i++) {
+          photos[i].style.display="none"
+        }
+      }
+      this.products.forEach(product=>{
+        var photos = $(`.photoProduct${product.id}`);
+        let i = 0;
+        photosDisplayNone(photos);
+        product.photos.forEach(photo=>{
+          if(photo.isMain){
+            $(`#photo${photo.id}`).show();
+          }
+        })
+        $(`#productNextBtn${product.id}`).click(function(){
+          i++;
+          photosDisplayNone(photos);
+          if(i > photos.length-1){
+            i=0;
+          }
+          photos[i].style.display="block";
+        })
+        $(`#productPrevBtn${product.id}`).click(function(){
+          i--;
+          if(i < 0){
+            i = photos.length-1;
+          }
+          photosDisplayNone(photos);
+          photos[i].style.display="block";
+        })
 
+      })
+    }, 500);
+    $("#spinnerDiv").fadeOut();
+    $("#spinnerBgDiv").fadeOut();
+  }
 
 
 }
