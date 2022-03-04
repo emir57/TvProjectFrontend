@@ -8,6 +8,7 @@ import { Product } from 'src/app/Models/product';
 import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 import $ from 'jquery';
+import { Photo } from 'src/app/Models/photo';
 @Component({
   selector: 'app-admin-product-update',
   templateUrl: './admin-product-update.component.html',
@@ -55,6 +56,7 @@ export class AdminProductUpdateComponent implements OnInit {
       deleteDiv.fadeIn(500);
       bgDiv.fadeIn(900);
     })
+    this.imageSlide();
 
   }
 
@@ -91,7 +93,7 @@ export class AdminProductUpdateComponent implements OnInit {
     })
 
   }
-  cancelDelete(){
+  cancelDelete() {
     this.toastrService.info("Silme işlemi iptal edildi.")
   }
   createproductUpdateForm() {
@@ -111,4 +113,34 @@ export class AdminProductUpdateComponent implements OnInit {
     })
   }
 
+  photocheck(photo: Photo, product: Product) {
+    if (photo.isMain == true) {
+      return `carousel-item active photoProduct`
+    } else {
+      return `carousel-item photoProduct`
+    }
+  }
+  imageSlide() {
+    var nextBtn = $("#NextBtn");
+    var prevBtn = $("#PrevBtn");
+    let photos = $(".photoProduct");
+    let length = photos.length;
+    let i = 0;
+    this.product.photos.forEach((photo,index) => {
+      if (photo.isMain) {
+        $("#photo" + photo.id).fadeIn();
+        let i = index;
+      }
+      else $("#photo" + photo.id).fadeOut()
+    })
+    prevBtn.click(function(){
+      console.log("prev")
+    })
+    nextBtn.click(function(){
+      i++;
+      photos[i-1].fadeOut();
+      photos[i].fadeIn();
+    })
+
+  }
 }

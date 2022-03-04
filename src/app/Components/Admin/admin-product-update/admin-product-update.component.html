@@ -169,21 +169,22 @@
         </div>
         <div class="col-6">
           <!-- Carousel Start -->
-          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel slide">
             <div class="carousel-inner">
-              <div *ngFor="let photo of product.photos" class="carousel-item active">
-                <img src="{{apiUrl}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
+              <div *ngFor="let photo of product.photos" [class]="photocheck(photo,product)" id="photo{{photo.id}}">
+                <img width="100%" src="{{apiUrl}}{{photo.imageUrl}}" class="d-block w-100"
+                  alt="{{product.productName}}">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-              data-bs-slide="prev">
+            <button *ngIf="product.photos.length!=1" class="carousel-control-prev" type="button"
+              id="PrevBtn">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+              <span class="visually-hidden">Geri</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-              data-bs-slide="next">
+            <button *ngIf="product.photos.length!=1" class="carousel-control-next" type="button"
+              id="NextBtn">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+              <span class="visually-hidden">İleri</span>
             </button>
           </div>
           <!-- Carousel End -->
