@@ -57,7 +57,7 @@ export class CheckoutComponent implements OnInit {
     if(this.selectedAddress == address){
       return "addressActive";
     }else{
-      return "";
+      return "addressDeActive";
     }
   }
 

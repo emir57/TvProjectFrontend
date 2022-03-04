@@ -1,6 +1,7 @@
 .addressActive{
-  background-color: red;
+  background-color: rgb(33, 228, 108);
+  color: white;
 }
 .addressDeActive{
-  background-color: red;
+  background-color: rgb(156, 156, 202);
 }
