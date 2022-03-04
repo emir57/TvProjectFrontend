@@ -6,6 +6,7 @@ import { UserAddressCityModel } from 'src/app/Models/userAddressCity';
 import { AddressService } from 'src/app/Services/address.service';
 import { CreditCardService } from 'src/app/Services/credit-card.service';
 import { ProductService } from 'src/app/Services/product.service';
+import $ from "jquery"
 
 @Component({
   selector: 'app-checkout',
@@ -14,6 +15,7 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  selectedAddress:UserAddressCityModel;
   userId: number = +sessionStorage.getItem("user")
   product: Product;
   addresses: UserAddressCityModel[];
@@ -48,6 +50,16 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  activedAddress(address:UserAddressCityModel){
+    this.selectedAddress = address;
+  }
+  getAddressClass(address:UserAddressCityModel){
+    if(this.selectedAddress == address){
+      return "addressActive";
+    }else{
+      return "";
+    }
+  }
 
 
 }
