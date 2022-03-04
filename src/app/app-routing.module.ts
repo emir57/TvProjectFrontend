@@ -14,6 +14,7 @@ import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/a
 import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.component';
 import { AdminUploadimageComponent } from './Components/Admin/admin-uploadimage/admin-uploadimage.component';
 import { CategoryComponent } from './Components/User/category/category.component';
+import { CheckoutComponent } from './Components/User/checkout/checkout.component';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './Components/User/login/login.component';
 import { ProductComponent } from './Components/User/product/product.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"forgotpassword",component:ForgotpasswordComponent},
+  {path:"checkout/:productId",component:CheckoutComponent},
   {path:"resetpassword/:key",component:ResetpasswordComponent},
   //Admin Panels
   {path:"admindashboard/home",component:AdminDashboardComponent,canActivate:[AdminGuard,ExpirationGuard]},
