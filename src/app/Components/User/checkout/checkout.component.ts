@@ -83,6 +83,20 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
+  completeCheckOut(){
+    console.log(this.selectedAddress)
+    console.log(this.selectedCreditCard)
+  }
+
+  checkSelected(){
+    if(this.selectedAddress && this.selectedCreditCard){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
 
   getYear(date:string){
     return this.creditCardService.getYear(date);
