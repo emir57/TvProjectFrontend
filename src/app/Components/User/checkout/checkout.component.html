@@ -36,7 +36,7 @@
     </div>
     <div class="col-md-7 col-lg-8">
       <h4 class="mb-3">Adreslerim</h4>
-      <!-- Credit Card Check -->
+      <!-- Address Check -->
       <div>
         <h5 class="display-3" style="font-size: large;">
           <span *ngIf="userCreditCards.length == 0">
@@ -48,7 +48,7 @@
           <a routerLink="/profile/myadresses" style="text-decoration: none;">Tıklayınız.</a>
         </h5>
       </div>
-      <!-- Credit Card Check End -->
+      <!-- Address Check End -->
       <!-- Address -->
       <div class="card mb-3" [class]="getAddressClass(address)" *ngFor="let address of addresses"
         id="address{{address.id}}">
@@ -60,10 +60,6 @@
           <blockquote class="blockquote mb-0">
             <p>{{address.addressText}}</p>
             <footer class="blockquote-footer"><cite title="Source Title">{{address.cityName}}</cite></footer>
-            <p>
-              <button class="btn btn-primary" (click)="ShowUpdateAddress(address)"><i class="far fa-edit"></i></button>
-              <button class="btn btn-danger" (click)="showdeleteBox(address)"><i class="far fa-trash-alt"></i></button>
-            </p>
           </blockquote>
         </div>
       </div>
