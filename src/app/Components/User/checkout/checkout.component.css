@@ -5,3 +5,122 @@
 .addressDeActive{
   background-color: rgb(156, 156, 202);
 }
+
+
+
+.creditCard {
+  width: 626px;
+  height: 184px;
+  position: relative;
+}
+
+.font {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  word-spacing: 1.4px;
+  color: #fefefe;
+  font-weight: 400;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: italic;
+  font-variant: normal;
+  text-transform: uppercase;
+}
+
+.black {
+  color: black;
+}
+
+.creditCardFront {
+  width: 313px;
+  height: 184px;
+  background-image: url("../../../../assets/creditCard.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.creditCardBackGround {
+  width: 313px;
+  height: 184px;
+  background-image: url("../../../../assets/creditCardBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.creditCardCvv {
+  position: absolute;
+  margin-top: 27%;
+  margin-left: 55%;
+}
+
+.creditCardNumber {
+  position: absolute;
+  margin-top: 25%;
+  margin-left: 8%;
+
+}
+
+.creditCardUserName {
+  position: absolute;
+  bottom: 25%;
+  margin-left: 8%;
+}
+
+.creditCardDate {
+  position: absolute;
+  bottom: 7%;
+  margin-left: 8%;
+}
+
+.creditCardTypeVisa {
+  background-image: url("../../../../assets/visa.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.creditCardTypeMasterCard {
+  background-image: url("../../../../assets/mastercard.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.visaPosition {
+  width: 105px;
+  height: 37px;
+  position: absolute;
+  bottom: 12%;
+  right: 0;
+}
+
+.masterCardPosition {
+  width: 115px;
+  height: 45px;
+  position: absolute;
+  bottom: 10%;
+  right: 0;
+}
+
+.deleteBtn {
+  position: absolute;
+  right: -8%;
+  top: 0;
+  z-index: 100;
+}
+
+.checkVisa {
+  width: 70px;
+  height: 30px;
+  position: absolute;
+  bottom: 9%;
+  left: 0;
+}
+
+.checkMasterCard {
+  width: 85px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  bottom: 5%;
+}
