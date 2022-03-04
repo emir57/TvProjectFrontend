@@ -39,23 +39,8 @@ export class AdminProductUpdateComponent implements OnInit {
       this.product = JSON.parse(param["product"])
     })
     this.createproductUpdateForm();
+    this.deleteDiv();
 
-    var bgDiv = $("#backgroundDiv");
-    var deleteDiv = $("#deleteDiv");
-    var deleteButton = $("#deleteButton");
-    var cancelBtn = $(".cancelBtn");
-    bgDiv.click(function () {
-      deleteDiv.fadeOut(500);
-      bgDiv.fadeOut(900);
-    })
-    cancelBtn.click(function () {
-      deleteDiv.fadeOut(500);
-      bgDiv.fadeOut(900);
-    })
-    deleteButton.click(function () {
-      deleteDiv.fadeIn(500);
-      bgDiv.fadeIn(900);
-    })
     this.imageSlide();
 
   }
@@ -141,6 +126,23 @@ export class AdminProductUpdateComponent implements OnInit {
       photos[i-1].fadeOut();
       photos[i].fadeIn();
     })
-
+  }
+  deleteDiv(){
+    var bgDiv = $("#backgroundDiv");
+    var deleteDiv = $("#deleteDiv");
+    var deleteButton = $("#deleteButton");
+    var cancelBtn = $(".cancelBtn");
+    bgDiv.click(function () {
+      deleteDiv.fadeOut(500);
+      bgDiv.fadeOut(900);
+    })
+    cancelBtn.click(function () {
+      deleteDiv.fadeOut(500);
+      bgDiv.fadeOut(900);
+    })
+    deleteButton.click(function () {
+      deleteDiv.fadeIn(500);
+      bgDiv.fadeIn(900);
+    })
   }
 }
