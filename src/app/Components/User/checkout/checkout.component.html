@@ -36,6 +36,19 @@
     </div>
     <div class="col-md-7 col-lg-8">
       <h4 class="mb-3">Adreslerim</h4>
+      <!-- Credit Card Check -->
+      <div>
+        <h5 class="display-3" style="font-size: large;">
+          <span *ngIf="userCreditCards.length == 0">
+            Adresiniz Bulunmamaktadır Yok Eklemek için
+          </span>
+          <span *ngIf="userCreditCards.length != 0">
+            Adreslerinizi Düzenlemek için
+          </span>
+          <a routerLink="/profile/myadresses" style="text-decoration: none;">Tıklayınız.</a>
+        </h5>
+      </div>
+      <!-- Credit Card Check End -->
       <!-- Address -->
       <div class="card mb-3" [class]="getAddressClass(address)" *ngFor="let address of addresses"
         id="address{{address.id}}">
@@ -57,11 +70,11 @@
       <!-- Address End -->
       <hr>
       <h4 class="mb-3">Kredi Kartlarım</h4>
-      <!-- Credit Cards Start -->
+      <!-- Credit Card Check -->
       <div>
         <h5 class="display-3" style="font-size: large;">
           <span *ngIf="userCreditCards.length == 0">
-            Ekli Kredi Kartınız Yok Eklemek için
+            Kredi Kartınız Bulunmamaktadır Eklemek için
           </span>
           <span *ngIf="userCreditCards.length != 0">
             Kredi Kartlarınızı Düzenlemek için
@@ -69,6 +82,8 @@
           <a routerLink="/profile/mycreditcards" style="text-decoration: none;">Tıklayınız.</a>
         </h5>
       </div>
+      <!-- Credit Card Check End -->
+      <!-- Credit Cards Start -->
       <div class="creditCard mt-2 mb-2" *ngFor="let card of userCreditCards">
         <div class="row">
           <div class="col-6">
