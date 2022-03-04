@@ -58,6 +58,12 @@
       <hr>
       <h4 class="mb-3">Kredi Kartlarım</h4>
       <!-- Credit Cards Start -->
+      <div *ngIf="userCreditCards.length == 0">
+        <h5 class="display-4" style="font-size: large;">
+          Ekli Kredi Kartının Yok Ekleme için
+          <a routerLink="" style="text-decoration: none;">Tıklayınız</a>
+        </h5>
+      </div>
       <div class="creditCard mb-2" *ngFor="let card of userCreditCards">
         <div class="row">
           <div class="col-6">

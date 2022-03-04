@@ -78,12 +78,14 @@
   background-image: url("../../../../assets/visa.png");
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .creditCardTypeMasterCard {
   background-image: url("../../../../assets/mastercard.png");
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .visaPosition {
