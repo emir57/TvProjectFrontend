@@ -36,7 +36,7 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"forgotpassword",component:ForgotpasswordComponent},
-  {path:"checkout/:productId",component:CheckoutComponent},
+  {path:"checkout/:productId",component:CheckoutComponent,canActivate:[ExpirationGuard]},
   {path:"resetpassword/:key",component:ResetpasswordComponent},
   //Admin Panels
   {path:"admindashboard/home",component:AdminDashboardComponent,canActivate:[AdminGuard,ExpirationGuard]},
