@@ -84,6 +84,8 @@
         <div class="row">
           <div class="col-6">
             <div class="creditCardFront">
+              <input (change)="activedCreditCard(card)" type="radio" name="card" id="card{{card.id}}"
+                [value]="card.id">
               <div class="creditCardNumber font">{{getCreditCardNumber(card.creditCardNumber)}}</div>
               <div class="creditCardUserName font">{{getFirstName(card.firstName)}} {{getLastName(card.lastName)}}</div>
               <div class="creditCardDate font">{{getDay(card.date)}}/{{getYear(card.date)}}</div>
