@@ -81,7 +81,7 @@
         </div>
         <!-- Credit Card Check End -->
         <!-- Credit Cards Start -->
-        <div class="creditCard mt-2 mb-2" *ngFor="let card of userCreditCards">
+        <div class="creditCard mt-2 mb-2" [Class]="getCreditCardClass(card)" *ngFor="let card of userCreditCards">
           <div class="row">
             <div class="col-6">
               <div class="creditCardFront">

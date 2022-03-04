@@ -18,6 +18,7 @@ import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
 export class CheckoutComponent implements OnInit {
 
   selectedAddress:UserAddressCityModel;
+  selectedCreditCard:CreditCardWithUser;
   userId: number = +sessionStorage.getItem("user")
   product: Product;
   addresses: UserAddressCityModel[];
@@ -66,6 +67,16 @@ export class CheckoutComponent implements OnInit {
   }
   getAddressClass(address:UserAddressCityModel){
     if(this.selectedAddress == address){
+      return "addressActive";
+    }else{
+      return "addressDeActive";
+    }
+  }
+  activedCreditCard(card:CreditCardWithUser){
+    this.selectedCreditCard = card;
+  }
+  getCreditCardClass(card:CreditCardWithUser){
+    if(this.selectedCreditCard == card){
       return "addressActive";
     }else{
       return "addressDeActive";
