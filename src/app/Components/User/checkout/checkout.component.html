@@ -58,13 +58,18 @@
       <hr>
       <h4 class="mb-3">Kredi Kartlarım</h4>
       <!-- Credit Cards Start -->
-      <div *ngIf="userCreditCards.length == 0">
-        <h5 class="display-4" style="font-size: large;">
-          Ekli Kredi Kartınız Yok Eklemek için
-          <a routerLink="/profile/mycreditcards" style="text-decoration: none;">Tıklayınız</a>
+      <div>
+        <h5 class="display-3" style="font-size: large;">
+          <span *ngIf="userCreditCards.length == 0">
+            Ekli Kredi Kartınız Yok Eklemek için
+          </span>
+          <span *ngIf="userCreditCards.length != 0">
+            Kredi Kartlarınızı Düzenlemek için
+          </span>
+          <a routerLink="/profile/mycreditcards" style="text-decoration: none;">Tıklayınız.</a>
         </h5>
       </div>
-      <div class="creditCard mb-2" *ngFor="let card of userCreditCards">
+      <div class="creditCard mt-2 mb-2" *ngFor="let card of userCreditCards">
         <div class="row">
           <div class="col-6">
             <div class="creditCardFront">
@@ -76,11 +81,11 @@
               </div>
             </div>
           </div>
-          <div class="col-6">
+          <!-- <div class="col-6">
             <div class="creditCardBackGround font black">
               <div class="creditCardCvv">{{getCvv(card.cvv)}}</div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- Creidt Cards End -->
