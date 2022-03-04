@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/Models/product';
+import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
   selector: 'app-checkout',
@@ -8,14 +10,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CheckoutComponent implements OnInit {
 
+  product:Product;
   constructor(
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private productService:ProductService
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(param=>{
       if(param["productId"]){
-        console.log(param["productId"])
+        this.productService.getProduct(param["productId"]).subscribe(response=>{
+          if(response.isSuccess){
+            this.product = response.data;
+          }
+        })
       }
     })
   }
