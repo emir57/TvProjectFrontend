@@ -16,7 +16,6 @@ import { Photo } from 'src/app/Models/photo';
 })
 export class AdminProductUpdateComponent implements OnInit {
 
-  i=0;
   apiUrl = ApiUrl
   isOk = true;
   productUpdateForm: FormGroup;
@@ -110,24 +109,40 @@ export class AdminProductUpdateComponent implements OnInit {
     }
   }
   imageSlide() {
+
     var nextBtn = $("#NextBtn");
     var prevBtn = $("#PrevBtn");
     let photos = $(".photoProduct");
     let length = photos.length;
     let i = 0;
-    this.product.photos.forEach((photo,index) => {
+    function photosDisplayNone(photos) {
+      for (let i = 0; i < photos.length; i++) {
+        photos[i].style.display = "none"
+      }
+    }
+    this.product.photos.forEach((photo, index) => {
       if (photo.isMain) {
         $("#photo" + photo.id).fadeIn();
         let i = index;
       }
       else $("#photo" + photo.id).fadeOut()
     })
-    nextBtn.click(function(){
+    nextBtn.click(function () {
       i++;
+      if (i > photos.length - 1) i = 0;
+      photosDisplayNone(photos);
+      photos[i].style.display = "block";
+    })
+    prevBtn.click(function () {
+      i--;
+      if (i < 0) {
+        i = photos.length - 1;
+      }
+      photosDisplayNone(photos);
       photos[i].style.display = "block";
     })
   }
-  deleteDiv(){
+  deleteDiv() {
     var bgDiv = $("#backgroundDiv");
     var deleteDiv = $("#deleteDiv");
     var deleteButton = $("#deleteButton");
