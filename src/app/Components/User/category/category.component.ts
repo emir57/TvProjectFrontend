@@ -13,13 +13,22 @@ export class CategoryComponent implements OnInit {
 
   categories: Category[] = [];
   currentCategory: Category;
+  currentParam = 0;
   constructor(
     private categoryService: CategoryService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.getCategories();
+    this.activatedRoute.params.subscribe(param => {
+      if(!param["categoryId"]){
+        this.currentParam = 0;
+      }else{
+        this.currentParam = param["categoryId"];
+      }
+
+    })
   }
   getCategories() {
     this.categoryService.getCategories()
@@ -28,7 +37,7 @@ export class CategoryComponent implements OnInit {
       })
   }
   getCurrentCategoryClass(category: Category) {
-    if (this.currentCategory==category) {
+    if (this.currentParam == category.id) {
       return "list-group-item active";
     }
     else {
@@ -39,15 +48,15 @@ export class CategoryComponent implements OnInit {
     this.currentCategory = category;
   }
 
-  clearCategory(){
-    this.currentCategory=null;
+  clearCategory() {
+    this.currentCategory = null;
   }
 
 
-  getAllCategoryClass(){
-    if(this.currentCategory==null){
+  getAllCategoryClass() {
+    if (this.currentParam == 0) {
       return "list-group-item active";
-    }else{
+    } else {
       return "list-group-item"
     }
   }

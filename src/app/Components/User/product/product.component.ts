@@ -72,6 +72,7 @@ export class ProductComponent implements OnInit {
           })
       } else {
         this.getAllProducts();
+        this.productsIsLoad = true;
       }
     })
   }
