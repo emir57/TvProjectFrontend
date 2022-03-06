@@ -18,6 +18,7 @@ import { style } from '@angular/animations';
 })
 export class ProductComponent implements OnInit {
 
+  productsIsLoad = true;
   currentPage = 1;
   totalPage = [];
   apiUrl = ApiUrl
@@ -44,7 +45,7 @@ export class ProductComponent implements OnInit {
         for (let i = 0; i < response.totalPage; i++) {
           this.totalPage.push(i);
         }
-        response.totalPage
+        this.productsIsLoad = true;
       }, responseErr => {
         console.log(responseErr)
       })
@@ -61,15 +62,13 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts() {
-    $("#spinnerDiv").fadeIn();
-    $("#spinnerBgDiv").fadeIn();
+    this.productsIsLoad = false;
     this.activatedRoute.params.subscribe(param => {
       if (param["categoryId"]) {
         this.productService.getProductsByCategory(param["categoryId"])
           .subscribe(response => {
             this.products = response.data;
-            $("#spinnerDiv").fadeOut();
-            $("#spinnerBgDiv").fadeOut();
+            this.productsIsLoad = true;
           })
       } else {
         this.getAllProducts();
@@ -166,8 +165,7 @@ export class ProductComponent implements OnInit {
 
       })
     }, 500);
-    $("#spinnerDiv").fadeOut();
-    $("#spinnerBgDiv").fadeOut();
+
   }
   goCheckout(product:Product){
     this.router.navigate(["checkout",product.id])
