@@ -121,6 +121,7 @@ export class ProductComponent implements OnInit {
     return photosUrl;
   }
 
+
   increasedPrice() {
     console.log("artan")
     this.products = this.products.sort((x, y) => x.unitPrice - y.unitPrice);
