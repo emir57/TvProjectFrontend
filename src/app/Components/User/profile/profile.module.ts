@@ -7,18 +7,25 @@ import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { NavbarModule } from '../navbar/navbar.module';
 import { ProfileComponent } from './profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    UserLeftPanelComponent
+    UserLeftPanelComponent,
+    UserUpdateComponent,
+    UserOrdersComponent,
+    UserLeftPanelComponent,
+    UserCreditcardsComponent,
+    UserAddressComponent
   ],
   imports: [
     CommonModule,
     NavbarModule,
-
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ProfileModule { }
