@@ -31,6 +31,7 @@ import { BrandSearchPipe } from './pipes/brand-search.pipe';
 import { UserSearchPipe } from './pipes/user-search.pipe';
 import { AdminEditcustomerComponent } from './Components/Admin/admin-editcustomer/admin-editcustomer.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { UserModule } from './Components/User/user.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     AdminEditcustomerComponent,
   ],
   imports: [
+    UserModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 
@@ -8,6 +9,7 @@ import { ProductComponent } from './product.component';
   declarations: [],
   imports: [
     CommonModule,
+    NavbarModule
   ]
 })
 export class ProductModule { }

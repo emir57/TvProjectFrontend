@@ -30,6 +30,18 @@ import { ResetpasswordModule } from './resetpassword/resetpassword.module';
     ProfileModule,
     RegisterModule,
     ResetpasswordModule
+  ], exports: [
+    CategoryModule,
+    CheckoutModule,
+    FooterModule,
+    ForgotpasswordModule,
+    HomeModule,
+    LoginModule,
+    NavbarModule,
+    ProductModule,
+    ProfileModule,
+    RegisterModule,
+    ResetpasswordModule
   ]
 })
 export class UserModule { }
