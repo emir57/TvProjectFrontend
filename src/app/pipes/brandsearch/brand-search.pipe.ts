@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Category } from '../Models/category';
+import { Category } from '../../Models/category';
 
 @Pipe({
   name: 'brandSearch'

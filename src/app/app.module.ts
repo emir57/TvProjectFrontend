@@ -27,8 +27,8 @@ import { AdminCategoryUpdateComponent } from './Components/Admin/admin-category-
 import { AdminCategoryAddComponent } from './Components/Admin/admin-category-add/admin-category-add.component';
 import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.component';
 import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/admin-role-update.component';
-import { BrandSearchPipe } from './pipes/brand-search.pipe';
-import { UserSearchPipe } from './pipes/user-search.pipe';
+import { BrandSearchPipe } from './pipes/brandsearch/brand-search.pipe';
+import { UserSearchPipe } from './pipes/usersearch/user-search.pipe';
 import { AdminEditcustomerComponent } from './Components/Admin/admin-editcustomer/admin-editcustomer.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { UserModule } from './Components/User/user.module';
