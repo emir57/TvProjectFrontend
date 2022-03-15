@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { DiscountPipe } from './pipes/discount.pipe';
+import { DiscountPipe } from './pipes/discount/discount.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +35,6 @@ import { UserModule } from './Components/User/user.module';
 @NgModule({
   declarations: [
     AppComponent,
-    DiscountPipe,
     AdminDashboardComponent,
     AdminLeftnavComponent,
     AdminNavbarComponent,
