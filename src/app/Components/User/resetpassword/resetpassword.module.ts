@@ -5,7 +5,9 @@ import { ResetpasswordComponent } from './resetpassword.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ResetpasswordComponent
+  ],
   imports: [
     CommonModule,
   ]

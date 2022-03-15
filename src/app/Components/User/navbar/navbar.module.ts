@@ -10,6 +10,8 @@ import { NavbarComponent } from './navbar.component';
   ],
   imports: [
     CommonModule,
+  ],exports:[
+    NavbarComponent
   ]
 })
 export class NavbarModule { }
