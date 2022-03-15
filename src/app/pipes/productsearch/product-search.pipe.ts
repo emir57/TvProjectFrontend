@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from '../Models/product';
+import { Product } from '../../Models/product';
 
 @Pipe({
   name: 'productSearch'

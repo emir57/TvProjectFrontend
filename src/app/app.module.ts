@@ -10,7 +10,7 @@ import { DiscountPipe } from './pipes/discount.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ProductSearchPipe } from './pipes/product-search.pipe';
+import { ProductSearchPipe } from './pipes/productsearch/product-search.pipe';
 import { SliderModule } from 'angular-image-slider';
 import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
 import { AdminLeftnavComponent } from './Components/Admin/admin-leftnav/admin-leftnav.component';
@@ -36,7 +36,6 @@ import { UserModule } from './Components/User/user.module';
   declarations: [
     AppComponent,
     DiscountPipe,
-    ProductSearchPipe,
     AdminDashboardComponent,
     AdminLeftnavComponent,
     AdminNavbarComponent,
@@ -51,8 +50,6 @@ import { UserModule } from './Components/User/user.module';
     AdminCategoryAddComponent,
     AdminRolesComponent,
     AdminRoleUpdateComponent,
-    BrandSearchPipe,
-    UserSearchPipe,
     AdminEditcustomerComponent,
   ],
   imports: [
