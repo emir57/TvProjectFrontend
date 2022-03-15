@@ -15,8 +15,9 @@ import { ProductService } from 'src/app/Services/product.service';
 export class AdminProductAddComponent implements OnInit {
 
   isOk=true;
-  productAddForm:FormGroup
-  categories:Category[]=[]
+  productAddForm:FormGroup;
+  categories:Category[]=[];
+  selectedCategory:Category;
   constructor(
     private formBuilder:FormBuilder,
     private productService:ProductService,
@@ -46,22 +47,33 @@ export class AdminProductAddComponent implements OnInit {
       stock:['',[Validators.required,Validators.min(1),Validators.max(255)]],
     })
   }
+  selectCategory(brandId:any){
+    console.log(brandId.value)
+    this.categoryService.getCategories().subscribe(response=>{
+      response.data.forEach(category=>{
+        if(category.id == brandId.value){
+          this.selectedCategory = category;
+        }
+      })
+    })
+  }
 
   addProduct(){
     if(this.productAddForm.valid){
       this.isOk=false;
       this.productAddForm.get("brandId").setValue(+this.productAddForm.get("brandId").value)
       let productModel:Product = Object.assign({},this.productAddForm.value);
-      this.productService.addProduct(productModel).subscribe(response=>{
-        if(response.isSuccess){
-          this.toastrService.success(response.message);
-          this.productAddForm.reset;
-          this.isOk=true;
-        }
-      },responseErr=>{
-        this.toastrService.error(responseErr.error.Message)
-        this.isOk=true;
-      })
+      console.log(productModel);
+      // this.productService.addProduct(productModel).subscribe(response=>{
+      //   if(response.isSuccess){
+      //     this.toastrService.success(response.message);
+      //     this.productAddForm.reset;
+      //     this.isOk=true;
+      //   }
+      // },responseErr=>{
+      //   this.toastrService.error(responseErr.error.Message)
+      //   this.isOk=true;
+      // })
 
     }
   }

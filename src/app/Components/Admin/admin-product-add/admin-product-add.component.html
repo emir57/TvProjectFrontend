@@ -76,10 +76,12 @@
             </div>
             <!-- Brand -->
             <div class="form-group col-12 mb-3">
-              <select formControlName="brandId" id="brandId" class="form-control">
-                <option [value]="productAddForm.get('brandId').value">Marka Seçiniz</option>
+              <select (click)="selectCategory(productAddForm.get('brandId'))" formControlName="brandId" id="brandId" class="form-control">
+                <option *ngIf="!selectedCategory" [value]="productAddForm.get('brandId').value">Marka Seçiniz</option>
+                <option *ngIf="selectedCategory" [value]="productAddForm.get('brandId').value">{{selectedCategory.name}}</option>
                 <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
               </select>
+              <span *ngIf="selectedCategory"><span class="text-primary">{{selectedCategory.name}}</span> Seçildi</span>
               <div
                 *ngIf="(productAddForm.get('brandId').dirty || productAddForm.get('brandId').touched) && productAddForm.get('brandId').errors">
                 <span *ngIf="productAddForm.get('brandId').errors.required" class="text-danger">Marka gerekli </span>
