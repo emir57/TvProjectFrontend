@@ -5,13 +5,20 @@ import { UserCreditcardsComponent } from './user-creditcards/user-creditcards.co
 import { UserLeftPanelComponent } from './user-left-panel/user-left-panel.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
+import { NavbarModule } from '../navbar/navbar.module';
+import { ProfileComponent } from './profile.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ProfileComponent,
+    UserLeftPanelComponent
+  ],
   imports: [
     CommonModule,
+    NavbarModule,
+
   ]
 })
 export class ProfileModule { }
