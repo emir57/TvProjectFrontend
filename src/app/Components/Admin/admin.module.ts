@@ -16,6 +16,9 @@ import { AdminRoleUpdateComponent } from './admin-role-update/admin-role-update.
 import { AdminRolesComponent } from './admin-roles/admin-roles.component';
 import { AdminUploadimageComponent } from './admin-uploadimage/admin-uploadimage.component';
 import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsersearchModule } from 'src/app/pipes/usersearch/usersearch.module';
+import { BrandsearchModule } from 'src/app/pipes/brandsearch/brandsearch.module';
 
 
 
@@ -39,7 +42,11 @@ import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.m
   ],
   imports: [
     CommonModule,
-    ProductsearchModule
+    ReactiveFormsModule,
+    FormsModule,
+    ProductsearchModule,
+    UsersearchModule,
+    BrandsearchModule
   ]
 })
 export class AdminModule { }
