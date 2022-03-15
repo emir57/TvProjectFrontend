@@ -25,18 +25,26 @@ export class AdminCategoryUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCategory();
-    this.createCategoryUpdateForm();
-  }
-
-
-  getCategory() {
     this.activatedRoute.params.subscribe(param => {
       if (!param["category"]) {
         this.router.navigate(["admindashboard/adminbrands"]);
       }
       this.category = JSON.parse(param["category"]);
+      this.categoryService.getCategories().subscribe(response=>{
+        response.data.forEach(category=>{
+          if(category.id == param["category"]){
+            this.category = category
+            this.createCategoryUpdateForm();
+          }
+        })
+      })
     })
+    this.createCategoryUpdateForm();
+  }
+
+
+  getCategory() {
+
   }
 
   createCategoryUpdateForm() {

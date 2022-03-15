@@ -29,7 +29,8 @@ export class AdminBrandsComponent implements OnInit {
     })
   }
   goUpdatePage(category:Category){
-    this.router.navigate(["admindashboard/categoryupdate",JSON.stringify(category)])
+    this.router.navigate(["admindashboard/categoryupdate",category.id])
+    // this.router.navigate(["admindashboard/categoryupdate",JSON.stringify(category)])
   }
 
 }
