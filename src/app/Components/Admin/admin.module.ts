@@ -19,6 +19,7 @@ import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.m
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersearchModule } from 'src/app/pipes/usersearch/usersearch.module';
 import { BrandsearchModule } from 'src/app/pipes/brandsearch/brandsearch.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -46,7 +47,8 @@ import { BrandsearchModule } from 'src/app/pipes/brandsearch/brandsearch.module'
     FormsModule,
     ProductsearchModule,
     UsersearchModule,
-    BrandsearchModule
+    BrandsearchModule,
+    AppRoutingModule
   ]
 })
 export class AdminModule { }
