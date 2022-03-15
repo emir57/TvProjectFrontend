@@ -6,7 +6,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FooterModule } from '../footer/footer.module';
 import { ProductSearchPipe } from 'src/app/pipes/productsearch/product-search.pipe';
 import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryModule } from '../category/category.module';
 
 
@@ -18,6 +18,7 @@ import { CategoryModule } from '../category/category.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     NavbarModule,
     FooterModule,
     ProductsearchModule,
