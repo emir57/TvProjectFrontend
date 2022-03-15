@@ -23,7 +23,8 @@ export class AdminRolesComponent implements OnInit {
   }
 
   goUpdatePage(role:Role){
-    this.router.navigate(["admindashboard/roleupdate",JSON.stringify(role)])
+    this.router.navigate(["admindashboard/roleupdate",role.id])
+    // this.router.navigate(["admindashboard/roleupdate",JSON.stringify(role)])
   }
 
 }
