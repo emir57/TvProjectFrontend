@@ -9,6 +9,7 @@ import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.m
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryModule } from '../category/category.module';
 import { DiscountModule } from 'src/app/pipes/discount/discount.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -24,8 +25,8 @@ import { DiscountModule } from 'src/app/pipes/discount/discount.module';
     FooterModule,
     ProductsearchModule,
     DiscountModule,
-    CategoryModule
-
+    CategoryModule,
+    AppRoutingModule
   ]
 })
 export class ProductModule { }
