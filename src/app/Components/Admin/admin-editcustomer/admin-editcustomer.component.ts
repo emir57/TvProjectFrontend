@@ -15,46 +15,50 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AdminEditcustomerComponent implements OnInit {
 
-  updateForm:FormGroup
-  user:User;
-  allRoles:Role[]=[];
-  userRoles:Role[]=[];
+  updateForm: FormGroup
+  user: User;
+  allRoles: Role[] = [];
+  userRoles: Role[] = [];
 
-  addedRoles:Role[]=[];
-  removedRoles:Role[]=[];
+  addedRoles: Role[] = [];
+  removedRoles: Role[] = [];
   constructor(
-    private formBuilder:FormBuilder,
-    private router:Router,
-    private toastrService:ToastrService,
-    private userService:UserService,
-    private activatedRoute:ActivatedRoute,
-    private roleService:RoleService
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private toastrService: ToastrService,
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
+    private roleService: RoleService
   ) { }
 
   ngOnInit(): void {
-    this.getUser();
-    this.getAllRoles();
-    this.getUserRoles();
-    this.createUpdateForm();
-  }
-  getUser(){
-    this.activatedRoute.params.subscribe(param=>{
-      if(param["customer"]){
+    this.activatedRoute.params.subscribe(param => {
+      if (param["customer"]) {
         this.user = JSON.parse(param["customer"])
+        this.userService.getUsers().subscribe(response => {
+          response.data.forEach(user => {
+            if (user.id == param["customer"]) {
+              this.user = user;
+              this.getAllRoles();
+              this.getUserRoles();
+              this.createUpdateForm();
+            }
+          })
+        })
       }
     })
+    this.createUpdateForm();
   }
-
-  getAllRoles(){
-    this.roleService.getRoles().subscribe(response=>{
-      if(response.isSuccess){
+  getAllRoles() {
+    this.roleService.getRoles().subscribe(response => {
+      if (response.isSuccess) {
         this.allRoles = response.data;
       }
     })
   }
-  getUserRoles(){
-    this.roleService.getUserRoles(this.user.id).subscribe(response=>{
-      if(response.isSuccess){
+  getUserRoles() {
+    this.roleService.getUserRoles(this.user.id).subscribe(response => {
+      if (response.isSuccess) {
         this.userRoles = response.data;
         this.addedRoles = response.data;
       }
@@ -62,55 +66,55 @@ export class AdminEditcustomerComponent implements OnInit {
   }
 
 
-  createUpdateForm(){
+  createUpdateForm() {
     this.updateForm = this.formBuilder.group({
-      id:[this.user.id],
-      firstName:[this.user.firstName,[Validators.required,Validators.maxLength(20)]],
-      lastName:[this.user.lastName,[Validators.required,Validators.maxLength(20)]],
-      email: [this.user.email, [Validators.required, Validators.email,Validators.maxLength(40)]]
+      id: [this.user.id],
+      firstName: [this.user.firstName, [Validators.required, Validators.maxLength(20)]],
+      lastName: [this.user.lastName, [Validators.required, Validators.maxLength(20)]],
+      email: [this.user.email, [Validators.required, Validators.email, Validators.maxLength(40)]]
     })
   }
 
-  update(){
-    if(this.updateForm.valid){
-      let user = Object.assign({addedRoles:this.addedRoles,removedRoles:this.removedRoles},this.updateForm.value);
-      this.userService.updateUser(user).subscribe(response=>{
-        if(response.isSuccess){
+  update() {
+    if (this.updateForm.valid) {
+      let user = Object.assign({ addedRoles: this.addedRoles, removedRoles: this.removedRoles }, this.updateForm.value);
+      this.userService.updateUser(user).subscribe(response => {
+        if (response.isSuccess) {
           this.toastrService.success(response.message)
           setTimeout(() => {
             this.router.navigate(["admindashboard/admincustomers"])
           }, 500);
-        }else{
+        } else {
           this.toastrService.error(response.message)
         }
-      },responseErr=>{
+      }, responseErr => {
         this.toastrService.error(responseErr.error)
       })
     }
   }
-  checkRole(role:Role){
+  checkRole(role: Role) {
     let status = false;
-    this.userRoles.forEach(usrRole=>{
-      if(usrRole.id==role.id){
+    this.userRoles.forEach(usrRole => {
+      if (usrRole.id == role.id) {
         status = true;
       }
     })
     return status;
   }
-  setRole(role:Role){
-    let indexAdded = this.addedRoles.findIndex(x=>x.id==role.id);
-    let indexRemoved = this.removedRoles.findIndex(x=>x.id==role.id);
-    if(indexAdded == -1){
+  setRole(role: Role) {
+    let indexAdded = this.addedRoles.findIndex(x => x.id == role.id);
+    let indexRemoved = this.removedRoles.findIndex(x => x.id == role.id);
+    if (indexAdded == -1) {
       this.addedRoles.push(role);
     }
-    else if(indexRemoved == -1){
+    else if (indexRemoved == -1) {
       this.removedRoles.push(role);
     }
-    if(indexAdded !=-1){
-      this.addedRoles.splice(indexAdded,1);
+    if (indexAdded != -1) {
+      this.addedRoles.splice(indexAdded, 1);
     }
-    else if(indexRemoved != -1){
-      this.removedRoles.splice(indexAdded,1);
+    else if (indexRemoved != -1) {
+      this.removedRoles.splice(indexAdded, 1);
     }
   }
 

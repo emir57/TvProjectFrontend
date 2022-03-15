@@ -24,7 +24,8 @@ export class AdminCustomersComponent implements OnInit {
   }
 
   goUpdatePage(user:User){
-    this.router.navigate(["admindashboard/editcustomer",JSON.stringify(user)])
+    this.router.navigate(["admindashboard/editcustomer",user.id])
+    // this.router.navigate(["admindashboard/editcustomer",JSON.stringify(user)])
   }
 
   goRoleUpdatePage(user:User){
