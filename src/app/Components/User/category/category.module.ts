@@ -5,9 +5,13 @@ import { CategoryComponent } from './category.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CategoryComponent
+  ],
   imports: [
     CommonModule,
+  ],exports:[
+    CategoryComponent
   ]
 })
 export class CategoryModule { }
