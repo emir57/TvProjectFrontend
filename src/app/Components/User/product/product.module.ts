@@ -8,6 +8,7 @@ import { ProductSearchPipe } from 'src/app/pipes/productsearch/product-search.pi
 import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryModule } from '../category/category.module';
+import { DiscountModule } from 'src/app/pipes/discount/discount.module';
 
 
 
@@ -22,6 +23,7 @@ import { CategoryModule } from '../category/category.module';
     NavbarModule,
     FooterModule,
     ProductsearchModule,
+    DiscountModule,
     CategoryModule
 
   ]

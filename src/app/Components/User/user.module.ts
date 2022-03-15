@@ -12,6 +12,8 @@ import { ProductModule } from './product/product.module';
 import { ProfileModule } from './profile/profile.module';
 import { RegisterModule } from './register/register.module';
 import { ResetpasswordModule } from './resetpassword/resetpassword.module';
+import { DiscountModule } from 'src/app/pipes/discount/discount.module';
+import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.module';
 
 
 
@@ -29,7 +31,7 @@ import { ResetpasswordModule } from './resetpassword/resetpassword.module';
     ProductModule,
     ProfileModule,
     RegisterModule,
-    ResetpasswordModule
+    ResetpasswordModule,
   ], exports: [
     CategoryModule,
     CheckoutModule,
