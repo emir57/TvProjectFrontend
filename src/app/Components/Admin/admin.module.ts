@@ -1,12 +1,45 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AdminBrandsComponent } from './admin-brands/admin-brands.component';
+import { AdminCategoryAddComponent } from './admin-category-add/admin-category-add.component';
+import { AdminCategoryUpdateComponent } from './admin-category-update/admin-category-update.component';
+import { AdminCustomersComponent } from './admin-customers/admin-customers.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminEditcustomerComponent } from './admin-editcustomer/admin-editcustomer.component';
+import { AdminLeftnavComponent } from './admin-leftnav/admin-leftnav.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { AdminProductAddComponent } from './admin-product-add/admin-product-add.component';
+import { AdminProductUpdateComponent } from './admin-product-update/admin-product-update.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { AdminRoleUpdateComponent } from './admin-role-update/admin-role-update.component';
+import { AdminRolesComponent } from './admin-roles/admin-roles.component';
+import { AdminUploadimageComponent } from './admin-uploadimage/admin-uploadimage.component';
+import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AdminBrandsComponent,
+    AdminCategoryAddComponent,
+    AdminCategoryUpdateComponent,
+    AdminCustomersComponent,
+    AdminDashboardComponent,
+    AdminEditcustomerComponent,
+    AdminLeftnavComponent,
+    AdminNavbarComponent,
+    AdminOrdersComponent,
+    AdminProductAddComponent,
+    AdminProductUpdateComponent,
+    AdminProductsComponent,
+    AdminRoleUpdateComponent,
+    AdminRolesComponent,
+    AdminUploadimageComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProductsearchModule
   ]
 })
 export class AdminModule { }
