@@ -14,11 +14,15 @@ import { RegisterModule } from './register/register.module';
 import { ResetpasswordModule } from './resetpassword/resetpassword.module';
 import { DiscountModule } from 'src/app/pipes/discount/discount.module';
 import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.module';
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     CategoryModule,

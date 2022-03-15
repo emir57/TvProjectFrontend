@@ -13,24 +13,23 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { UserModule } from './Components/User/user.module';
 import { AdminModule } from './Components/Admin/admin.module';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    UserModule,
-    AdminModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     SliderModule,
     NgImageSliderModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
-    })
+    }),
+    UserModule,
+    AdminModule,
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
