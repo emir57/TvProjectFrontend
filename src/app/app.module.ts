@@ -5,12 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { DiscountPipe } from './pipes/discount/discount.pipe';
-
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ProductSearchPipe } from './pipes/productsearch/product-search.pipe';
 import { SliderModule } from 'angular-image-slider';
 import { AdminDashboardComponent } from './Components/Admin/admin-dashboard/admin-dashboard.component';
 import { AdminLeftnavComponent } from './Components/Admin/admin-leftnav/admin-leftnav.component';
@@ -27,8 +24,6 @@ import { AdminCategoryUpdateComponent } from './Components/Admin/admin-category-
 import { AdminCategoryAddComponent } from './Components/Admin/admin-category-add/admin-category-add.component';
 import { AdminRolesComponent } from './Components/Admin/admin-roles/admin-roles.component';
 import { AdminRoleUpdateComponent } from './Components/Admin/admin-role-update/admin-role-update.component';
-import { BrandSearchPipe } from './pipes/brandsearch/brand-search.pipe';
-import { UserSearchPipe } from './pipes/usersearch/user-search.pipe';
 import { AdminEditcustomerComponent } from './Components/Admin/admin-editcustomer/admin-editcustomer.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { UserModule } from './Components/User/user.module';
