@@ -176,12 +176,12 @@
                   alt="{{product.productName}}">
               </div>
             </div>
-            <button *ngIf="product.photos.length!=1" class="carousel-control-prev" type="button"
+            <button *ngIf="product.photos" class="carousel-control-prev" type="button"
               id="PrevBtn">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Geri</span>
             </button>
-            <button *ngIf="product.photos.length!=1" class="carousel-control-next" type="button"
+            <button *ngIf="product.photos" class="carousel-control-next" type="button"
               id="NextBtn">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">İleri</span>

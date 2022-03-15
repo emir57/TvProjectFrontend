@@ -33,7 +33,8 @@ export class AdminProductsComponent implements OnInit {
     }
   }
   goUpdatePage(product:Product){
-    this.router.navigate(["admindashboard/productupdate",JSON.stringify(product)])
+    this.router.navigate(["admindashboard/productupdate",product.id])
+    // this.router.navigate(["admindashboard/productupdate",JSON.stringify(product)])
     // routerLink="/admindashboard/productupdate/{{product}}"
   }
 

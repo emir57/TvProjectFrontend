@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 import $ from 'jquery';
 import { Photo } from 'src/app/Models/photo';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-admin-product-update',
   templateUrl: './admin-product-update.component.html',
@@ -30,25 +31,24 @@ export class AdminProductUpdateComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getCategories();
     this.activatedRoute.params.subscribe(param => {
       if (!param["product"]) {
         this.router.navigate(["/admindashboard/home"])
       }
       this.product = JSON.parse(param["product"])
+      this.productService.getProduct(param["product"]).subscribe(async response => {
+        this.product = response.data;
+        this.createproductUpdateForm();
+      })
     })
     this.createproductUpdateForm();
     this.deleteDiv();
     setTimeout(() => {
       this.imageSlide();
     }, 500);
-
-
-
   }
-
-
   getCategories() {
     this.categoryService.getCategories().subscribe(response => {
       if (response.isSuccess) {
@@ -64,7 +64,7 @@ export class AdminProductUpdateComponent implements OnInit {
         if (response.isSuccess) {
           this.toastrService.success(response.message);
           this.isOk = true;
-          this.router.navigate(["admindashboard/productupdate", JSON.stringify(productModel)])
+          this.router.navigate(["admindashboard/productupdate", productModel.id])
         }
       }, responseErr => {
         this.toastrService.error(responseErr.error.Message)
@@ -84,7 +84,7 @@ export class AdminProductUpdateComponent implements OnInit {
   cancelDelete() {
     this.toastrService.info("Silme işlemi iptal edildi.")
   }
-  createproductUpdateForm() {
+  async createproductUpdateForm() {
     this.productUpdateForm = this.formBuilder.group({
       id: [this.product.id, []],
       productName: [this.product.productName, [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],
