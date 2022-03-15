@@ -8,7 +8,6 @@ import { ResetpasswordComponent } from './resetpassword.component';
   declarations: [],
   imports: [
     CommonModule,
-    ResetpasswordComponent
   ]
 })
 export class ResetpasswordModule { }

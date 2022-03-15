@@ -8,7 +8,6 @@ import { CategoryComponent } from './category.component';
   declarations: [],
   imports: [
     CommonModule,
-    CategoryComponent
   ]
 })
 export class CategoryModule { }

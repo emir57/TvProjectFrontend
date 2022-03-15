@@ -8,7 +8,6 @@ import { CheckoutComponent } from './checkout.component';
   declarations: [],
   imports: [
     CommonModule,
-    CheckoutComponent
   ]
 })
 export class CheckoutModule { }

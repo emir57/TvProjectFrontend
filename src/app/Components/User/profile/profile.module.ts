@@ -12,11 +12,6 @@ import { UserUpdateComponent } from './user-update/user-update.component';
   declarations: [],
   imports: [
     CommonModule,
-    UserAddressComponent,
-    UserCreditcardsComponent,
-    UserLeftPanelComponent,
-    UserOrdersComponent,
-    UserUpdateComponent
   ]
 })
 export class ProfileModule { }
