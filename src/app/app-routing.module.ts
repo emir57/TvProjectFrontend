@@ -30,39 +30,39 @@ import { ExpirationGuard } from './Guards/expiration.guard';
 import { SecurityGuard } from './Guards/security.guard';
 
 const routes: Routes = [
-  {path:"",component:ProductComponent},
-  {path:"products",component:ProductComponent},
-  {path:"products/category/:categoryId",component:ProductComponent},
-  {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-  {path:"forgotpassword",component:ForgotpasswordComponent},
-  {path:"checkout/:productId",component:CheckoutComponent,canActivate:[ExpirationGuard]},
-  {path:"resetpassword/:key",component:ResetpasswordComponent},
+  { path: "", component: ProductComponent },
+  { path: "products", component: ProductComponent },
+  { path: "products/category/:categoryId", component: ProductComponent },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "forgotpassword", component: ForgotpasswordComponent },
+  { path: "checkout/:productId", component: CheckoutComponent, canActivate: [ExpirationGuard] },
+  { path: "resetpassword/:key", component: ResetpasswordComponent },
   //Admin Panels
-  {path:"admindashboard/home",component:AdminDashboardComponent,canActivate:[AdminGuard,ExpirationGuard]},
-  // {path:"admindashboard/:section",component:AdminDashboardComponent,canActivate:[AdminGuard]},
-  {path:"admindashboard/adminproducts",component:AdminProductsComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/adminorders",component:AdminOrdersComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/admincustomers",component:AdminCustomersComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/adminbrands",component:AdminBrandsComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/editcustomer/:customer",component:AdminEditcustomerComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
+  {
+    path: "admindashboard", component: AdminDashboardComponent, canActivate: [AdminGuard, ExpirationGuard], children: [
+      { path: "adminproducts", component: AdminProductsComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "adminorders", component: AdminOrdersComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "admincustomers", component: AdminCustomersComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "adminbrands", component: AdminBrandsComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "editcustomer/:customer", component: AdminEditcustomerComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "productadd", component: AdminProductAddComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "productupdate/:product", component: AdminProductUpdateComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "categoryupdate/:category", component: AdminCategoryUpdateComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "categoryadd", component: AdminCategoryAddComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "adminroles", component: AdminRolesComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "roleupdate/:role", component: AdminRoleUpdateComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+      { path: "uploadimage", component: AdminUploadimageComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
+    ]
+  },
 
-  {path:"admindashboard/productadd",component:AdminProductAddComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/productupdate/:product",component:AdminProductUpdateComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
 
-  {path:"admindashboard/categoryupdate/:category",component:AdminCategoryUpdateComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/categoryadd",component:AdminCategoryAddComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-
-  {path:"admindashboard/adminroles",component:AdminRolesComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-  {path:"admindashboard/roleupdate/:role",component:AdminRoleUpdateComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
-
-  {path:"admindashboard/uploadimage",component:AdminUploadimageComponent,canActivate:[SecurityGuard,AdminGuard,ExpirationGuard]},
   //User Panels
-  {path:"profile/home",component:ProfileComponent,canActivate:[SecurityGuard,ExpirationGuard]},
-  {path:"profile/update",component:UserUpdateComponent,canActivate:[SecurityGuard,ExpirationGuard]},
-  {path:"profile/myorders",component:UserOrdersComponent,canActivate:[SecurityGuard,ExpirationGuard]},
-  {path:"profile/mycreditcards",component:UserCreditcardsComponent,canActivate:[SecurityGuard,ExpirationGuard]},
-  {path:"profile/myadresses",component:UserAddressComponent,canActivate:[SecurityGuard,ExpirationGuard]},
+  { path: "profile/home", component: ProfileComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+  { path: "profile/update", component: UserUpdateComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+  { path: "profile/myorders", component: UserOrdersComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+  { path: "profile/mycreditcards", component: UserCreditcardsComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+  { path: "profile/myadresses", component: UserAddressComponent, canActivate: [SecurityGuard, ExpirationGuard] },
 
   // {path:"categories",component:CategoryComponent},
 ];

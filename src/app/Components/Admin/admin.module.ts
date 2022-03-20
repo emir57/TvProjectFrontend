@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersearchModule } from 'src/app/pipes/usersearch/usersearch.module';
 import { BrandsearchModule } from 'src/app/pipes/brandsearch/brandsearch.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -42,6 +43,9 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     AdminUploadimageComponent
   ],
   imports: [
+    RouterModule.forChild([
+      {path:"",component:AdminDashboardComponent}
+    ]),
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
