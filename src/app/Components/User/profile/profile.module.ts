@@ -8,6 +8,7 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { NavbarModule } from '../navbar/navbar.module';
 import { ProfileComponent } from './profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -22,6 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserAddressComponent
   ],
   imports: [
+    RouterModule.forChild([
+      {path:"",component:ProfileComponent}
+    ]),
     CommonModule,
     NavbarModule,
     ReactiveFormsModule,
