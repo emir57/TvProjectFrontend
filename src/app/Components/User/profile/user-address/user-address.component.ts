@@ -31,7 +31,6 @@ export class UserAddressComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.userId)
     this.getCities();
     this.getAddress();
     this.createAddForm();
