@@ -41,7 +41,7 @@
             <strong *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</strong>
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser2">
-            <li *ngIf="isInRoleAdmin()"><a class="dropdown-item" routerLink="/admindashboard/home">Admin Paneli</a></li>
+            <li *ngIf="isInRoleAdmin()"><a class="dropdown-item" routerLink="/admindashboard">Admin Paneli</a></li>
             <li><a class="dropdown-item" routerLink="/profile/home">Profilim</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item text-danger" href="#" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
