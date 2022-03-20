@@ -20,9 +20,9 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   getOrders(){
-    this.orderService.getOrders().subscribe(responsive=>{
-      if(responsive.isSuccess){
-        this.orders = responsive.data;
+    this.orderService.getOrders().subscribe(response=>{
+      if(response.isSuccess){
+        this.orders = response.data;
       }
     })
   }
