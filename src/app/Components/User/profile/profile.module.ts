@@ -9,6 +9,7 @@ import { NavbarModule } from '../navbar/navbar.module';
 import { ProfileComponent } from './profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DiscountModule } from 'src/app/pipes/discount/discount.module';
 
 
 
@@ -29,7 +30,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     NavbarModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DiscountModule,
+
   ]
 })
 export class ProfileModule { }
