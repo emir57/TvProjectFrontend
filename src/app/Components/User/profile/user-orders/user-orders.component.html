@@ -38,7 +38,7 @@
           <p>{{order.tv.extras}}</p>
           <hr>
           <h5 class="card-title text-muted" *ngIf="order.tv.isDiscount">
-            <del>{{order.tv.unitPrice |currency:"TRY"}}</del></h5>
+            <del class="text-danger">{{order.tv.unitPrice |currency:"TRY"}}</del></h5>
           <h5 class="card-title">
             {{order.tv.unitPrice | discount:order.tv.discount:order.tv.isDiscount | currency:"TRY"}}</h5>
           <p class="card-text"><i>Adres: </i>{{order.addressText}}</p>
