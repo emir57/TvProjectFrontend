@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: "resetpassword/:key", component: ResetpasswordComponent },
   //Admin Panels
   {
-    path: "admindashboard", component: AdminDashboardComponent, canActivate: [AdminGuard, ExpirationGuard], children: [
+    path: "admindashboard/home", component:AdminDashboardComponent, canActivate: [AdminGuard, ExpirationGuard], children: [
       { path: "adminproducts", component: AdminProductsComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
       { path: "adminorders", component: AdminOrdersComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
       { path: "admincustomers", component: AdminCustomersComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
