@@ -39,11 +39,11 @@
         <h4 class="mb-3">Adreslerim</h4>
         <!-- Address Check -->
         <div>
-          <h5 class="display-3" style="font-size: large;">
-            <span *ngIf="userCreditCards.length == 0">
+          <h5 *ngIf="addresses" class="display-3" style="font-size: large;">
+            <span *ngIf="addresses.length == 0">
               Adresiniz Bulunmamaktadır Yok Eklemek için
             </span>
-            <span *ngIf="userCreditCards.length != 0">
+            <span *ngIf="addresses.length != 0">
               Adreslerinizi Düzenlemek için
             </span>
             <a routerLink="/profile/myadresses" style="text-decoration: none;">Tıklayınız.</a>
@@ -69,7 +69,7 @@
         <h4 class="mb-3">Kredi Kartlarım</h4>
         <!-- Credit Card Check -->
         <div>
-          <h5 class="display-3" style="font-size: large;">
+          <h5 *ngIf="userCreditCards" class="display-3" style="font-size: large;">
             <span *ngIf="userCreditCards.length == 0">
               Kredi Kartınız Bulunmamaktadır Eklemek için
             </span>
