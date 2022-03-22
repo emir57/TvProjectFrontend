@@ -33,6 +33,7 @@ export class AdminOrdersComponent implements OnInit {
     let year = date.getFullYear();
     let hour = date.getHours();
     let minutes = date.getMinutes();
+    return `${day}.${month}.${year} ${hour}:${minutes}`
   }
 
 }
