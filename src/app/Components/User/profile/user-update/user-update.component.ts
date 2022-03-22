@@ -27,8 +27,12 @@ export class UserUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     let sessionUser = sessionStorage.getItem("userInfo")
+    let localUser = localStorage.getItem("userInfo")
     if (sessionUser) {
       this.user = JSON.parse(sessionUser);
+    }
+    if (localUser) {
+      this.user = JSON.parse(localUser);
     }
     this.createUserUpdateForm();
     this.createresetPasswordForm();
