@@ -26,8 +26,13 @@ export class AdminOrdersComponent implements OnInit {
       }
     })
   }
-  getDate(dateString:string){
+  getDate(dateString:string):string{
     let date = new Date(dateString);
+    let day = date.getDate().toLocaleString();
+    let month = date.getMonth().toLocaleString()
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
   }
 
 }
