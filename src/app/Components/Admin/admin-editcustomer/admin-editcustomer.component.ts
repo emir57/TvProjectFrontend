@@ -78,7 +78,7 @@ export class AdminEditcustomerComponent implements OnInit {
   update() {
     if (this.updateForm.valid) {
       let user = Object.assign({ addedRoles: this.addedRoles, removedRoles: this.removedRoles }, this.updateForm.value);
-      this.userService.updateUser(user).subscribe(response => {
+      this.userService.updateUserAdmin(user).subscribe(response => {
         if (response.isSuccess) {
           this.toastrService.success(response.message)
           setTimeout(() => {
