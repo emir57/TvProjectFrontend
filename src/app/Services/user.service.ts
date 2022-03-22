@@ -18,6 +18,10 @@ export class UserService {
   ) { }
 
   updateUser(updateUserModel:UpdateUserModel):Observable<ResponseModel>{
+    let newPath = `${this.apiUrl}/api/users/update`;
+    return this.httpClient.post<ResponseModel>(newPath,updateUserModel);
+  }
+  updateUserAdmin(updateUserModel:UpdateUserModel):Observable<ResponseModel>{
     let newPath = `${this.apiUrl}/api/users/updateAdmin`;
     return this.httpClient.post<ResponseModel>(newPath,updateUserModel);
   }
