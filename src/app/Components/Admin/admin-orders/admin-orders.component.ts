@@ -26,5 +26,8 @@ export class AdminOrdersComponent implements OnInit {
       }
     })
   }
+  getDate(dateString:string){
+    let date = new Date(dateString);
+  }
 
 }
