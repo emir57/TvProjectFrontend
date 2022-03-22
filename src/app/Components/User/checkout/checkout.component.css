@@ -1,3 +1,9 @@
+.addressstate{
+  position: absolute;
+  width: 1%;
+  height: 100%;
+  background-color: red;
+}
 .addressActive{
   background-color: rgb(33, 228, 108);
   color: white;

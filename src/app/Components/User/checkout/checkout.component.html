@@ -51,8 +51,9 @@
         </div>
         <!-- Address Check End -->
         <!-- Address -->
-        <div class="card mb-3" [class]="getAddressClass(address)" *ngFor="let address of addresses"
+        <div class="card mb-3" *ngFor="let address of addresses"
           id="address{{address.id}}">
+          <div class="addressstate" [class]="getAddressClass(address)"></div>
           <div class="card-header">
             <input (change)="activedAddress(address)" type="radio" name="address" id="address{{address.id}}"
               [value]="address.id"> {{address.addressName}}
