@@ -59,7 +59,7 @@ export class UserCreditcardsComponent implements OnInit {
   creditCardFormat(){
     var creditCardNumber = $("#creditCardNumber");
     let creditStatus = false;
-    creditCardNumber.change(function(){
+    creditCardNumber.blur(function(){
       let trimNumber = "";
       for (let i = 0; i < creditCardNumber.val().length; i++) {
         const c = creditCardNumber.val()[i];
@@ -70,7 +70,7 @@ export class UserCreditcardsComponent implements OnInit {
         creditStatus = false;
         return;
       }
-      if(!creditStatus){
+      if(creditStatus){
         let first4 = trimNumber.substring(0,4);
         let second4 = trimNumber.substring(4,8);
         let third4 = trimNumber.substring(8,12);
