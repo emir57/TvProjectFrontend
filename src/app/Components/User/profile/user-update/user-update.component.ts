@@ -61,7 +61,12 @@ export class UserUpdateComponent implements OnInit {
       this.userService.updateUser(updateUserModel).subscribe(response=>{
         if(response.isSuccess){
           this.toastrService.success(response.message);
-          sessionStorage.setItem("userInfo",JSON.stringify(Object.assign({id:updateUserModel.userId},updateUserModel)))
+          if(Boolean(localStorage.getItem("remember"))){
+            localStorage.setItem("userInfo",JSON.stringify(Object.assign({id:updateUserModel.userId},updateUserModel)))
+          }else{
+            sessionStorage.setItem("userInfo",JSON.stringify(Object.assign({id:updateUserModel.userId},updateUserModel)))
+          }
+
           this.userUpdateForm.get("password").setValue("")
         }else{
           this.toastrService.error(response.message)

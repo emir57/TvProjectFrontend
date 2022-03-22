@@ -33,6 +33,7 @@ export class AuthService {
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
         if (response.isSuccess) {
+          localStorage.setItem("remember",JSON.stringify(rememberMe))
           if (rememberMe) {
             localStorage.setItem("token", response.data.accessToken.token)
             localStorage.setItem("user", JSON.stringify(response.data.user.id))
