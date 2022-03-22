@@ -72,6 +72,8 @@ export class UserUpdateComponent implements OnInit {
           this.toastrService.error(response.message)
         }
         this.isOk=true;
+      },err=>{
+        this.toastrService.error(err.error)
       })
     }
   }
