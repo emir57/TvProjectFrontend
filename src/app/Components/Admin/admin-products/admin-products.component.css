@@ -1,6 +1,7 @@
 #updatePage{
   z-index: 999;
   position: fixed;
+  top: 5%;
   width: 80%;
   left: 10%;
   right: 10%;
