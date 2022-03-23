@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -21,7 +21,7 @@ export class AdminProductUpdateComponent implements OnInit {
   isOk = true;
   productUpdateForm: FormGroup;
   categories: Category[] = [];
-  product: Product;
+  @Input() product: Product;
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
@@ -33,16 +33,16 @@ export class AdminProductUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.getCategories();
-    this.activatedRoute.params.subscribe(param => {
-      if (!param["product"]) {
-        this.router.navigate(["/admindashboard/home"])
-      }
-      this.product = JSON.parse(param["product"])
-      this.productService.getProduct(param["product"]).subscribe(async response => {
-        this.product = response.data;
-        this.createproductUpdateForm();
-      })
-    })
+    // this.activatedRoute.params.subscribe(param => {
+    //   if (!param["product"]) {
+    //     this.router.navigate(["/admindashboard/home"])
+    //   }
+    //   this.product = JSON.parse(param["product"])
+    //   this.productService.getProduct(param["product"]).subscribe(async response => {
+    //     this.product = response.data;
+    //     this.createproductUpdateForm();
+    //   })
+    // })
     this.createproductUpdateForm();
     this.deleteDiv();
     setTimeout(() => {

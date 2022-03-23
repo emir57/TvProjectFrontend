@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { ProductService } from 'src/app/Services/product.service';
-
+import $ from "jquery";
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
@@ -12,6 +12,7 @@ export class AdminProductsComponent implements OnInit {
 
   searchString:string="";
   products:Product[]=[];
+  selectedProduct:Product;
   constructor(
     private productService:ProductService,
     private router:Router
@@ -33,7 +34,8 @@ export class AdminProductsComponent implements OnInit {
     }
   }
   goUpdatePage(product:Product){
-    this.router.navigate(["admindashboard/productupdate",product.id])
+    this.selectedProduct = product;
+    //this.router.navigate(["admindashboard/productupdate",product.id])
     // this.router.navigate(["admindashboard/productupdate",JSON.stringify(product)])
     // routerLink="/admindashboard/productupdate/{{product}}"
   }
