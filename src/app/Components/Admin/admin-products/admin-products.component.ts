@@ -34,14 +34,14 @@ export class AdminProductsComponent implements OnInit {
     }
   }
   goUpdatePage(product:Product){
-    this.selectedProduct = product;
-    $("#updatePage").fadeIn();
-    $("#updatePageBackground").fadeIn();
-    $("#updatePageBackground").click(function(){
-      $("#updatePageBackground").fadeOut();
-      $("#updatePage").fadeOut();
-    })
-    //this.router.navigate(["admindashboard/productupdate",product.id])
+    // this.selectedProduct = product;
+    // $("#updatePage").fadeIn();
+    // $("#updatePageBackground").fadeIn();
+    // $("#updatePageBackground").click(function(){
+    //   $("#updatePageBackground").fadeOut();
+    //   $("#updatePage").fadeOut();
+    // })
+    this.router.navigate(["admindashboard/productupdate",product.id])
     // this.router.navigate(["admindashboard/productupdate",JSON.stringify(product)])
     // routerLink="/admindashboard/productupdate/{{product}}"
   }
