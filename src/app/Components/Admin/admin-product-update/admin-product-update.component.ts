@@ -64,7 +64,7 @@ export class AdminProductUpdateComponent implements OnInit {
         if (response.isSuccess) {
           this.toastrService.success(response.message);
           this.isOk = true;
-          this.router.navigate(["admindashboard/productupdate", productModel.id])
+          // this.router.navigate(["admindashboard/productupdate", productModel.id])
         }
       }, responseErr => {
         this.toastrService.error(responseErr.error.Message)
@@ -76,7 +76,7 @@ export class AdminProductUpdateComponent implements OnInit {
     this.productService.deleteProduct(this.product).subscribe(response => {
       if (response.isSuccess) {
         this.toastrService.success(response.message);
-        this.router.navigate(["admindashboard/adminproducts"])
+        // this.router.navigate(["admindashboard/adminproducts"])
       }
     })
 

@@ -1,0 +1,9 @@
+#updatePage{
+  z-index: 999;
+  position: fixed;
+  width: 80%;
+  left: 10%;
+  right: 10%;
+  height: auto;
+  background-color: #fff;
+}
