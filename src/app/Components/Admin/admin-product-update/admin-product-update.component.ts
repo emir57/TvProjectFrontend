@@ -45,6 +45,7 @@ export class AdminProductUpdateComponent implements OnInit {
     // })
     this.createproductUpdateForm();
     this.deleteDiv();
+    this.imageSlide();
     setTimeout(() => {
       this.imageSlide();
     }, 500);
