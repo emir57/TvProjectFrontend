@@ -66,7 +66,7 @@ export class AdminCategoryUpdateComponent implements OnInit {
         if (response.isSuccess) {
           this.toastrService.success(response.message);
           this.isOk = true;
-          this.router.navigate(["admindashboard/categoryupdate", JSON.stringify(categoryModel)]);
+          this.router.navigate(["admindashboard/categoryupdate", categoryModel.id]);
         }
       }, responseErr => {
         console.log(responseErr);
