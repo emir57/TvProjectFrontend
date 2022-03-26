@@ -31,19 +31,17 @@ export class AdminProductUpdateComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getCategories();
-    this.activatedRoute.params.subscribe(param => {
+    this.activatedRoute.params.subscribe(async param => {
       if (!param["product"]) {
         this.router.navigate(["/admindashboard/home"])
       }
-      this.product = JSON.parse(param["product"])
-      this.productService.getProduct(param["product"]).subscribe(async response => {
-        this.product = response.data;
-        this.createproductUpdateForm();
-      })
+      let result = await this.productService.getProduct(param["product"]).toPromise();
+      this.product = result.data;
+      this.createproductUpdateForm();
     })
-    this.createproductUpdateForm();
+    // this.createproductUpdateForm();
     this.deleteDiv();
     setTimeout(() => {
       this.imageSlide();
