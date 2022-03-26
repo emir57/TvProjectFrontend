@@ -29,7 +29,7 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -68,11 +68,15 @@ export class ProductComponent implements OnInit {
         this.productService.getProductsByCategory(param["categoryId"])
           .subscribe(response => {
             this.products = response.data;
-            this.productsIsLoad = true;
+            setTimeout(() => {
+              this.productsIsLoad = true;
+            }, 500);
           })
       } else {
         this.getAllProducts();
-        this.productsIsLoad = true;
+        setTimeout(() => {
+          this.productsIsLoad = true;
+        }, 500);
       }
     })
   }
@@ -162,13 +166,11 @@ export class ProductComponent implements OnInit {
           photosDisplayNone(photos);
           photos[i].style.display = "block";
         })
-
       })
     }, 500);
-
   }
-  goCheckout(product:Product){
-    this.router.navigate(["checkout",product.id])
+  goCheckout(product: Product) {
+    this.router.navigate(["checkout", product.id])
   }
 
 }
