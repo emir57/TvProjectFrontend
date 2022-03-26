@@ -23,23 +23,15 @@ export class AdminRoleUpdateComponent implements OnInit {
     private toastrService: ToastrService
   ) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(param => {
+  async ngOnInit() {
+    this.activatedRoute.params.subscribe(async param => {
       if (!param["role"]) {
         this.router.navigate(["admindashboard/adminroles"])
       }
-      this.role = JSON.parse(param["role"])
-      this.roleService.getRoles().subscribe(response=>{
-        response.data.forEach(role=>{
-          if(role.id == param["role"]){
-            this.role = role;
-            this.createUpdateForm();
-          }
-        })
-      })
-
+      let result = await this.roleService.getById(param["role"]).toPromise();
+      this.role = result.data;
+      this.createUpdateForm();
     })
-    this.createUpdateForm();
   }
 
   createUpdateForm() {

@@ -20,7 +20,7 @@
           </button>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-6" *ngIf="role">
         <!-- Form Start -->
         <form [formGroup]="updateForm" class="">
           <div class="row">
