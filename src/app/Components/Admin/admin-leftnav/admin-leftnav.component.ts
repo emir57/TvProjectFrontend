@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PanelItem } from 'src/app/Models/panelItem';
-import { AdminPanelItems } from 'src/app/Models/adminItems/adminPanelItems';
-import { AdminPanelOperationItems } from 'src/app/Models/adminItems/adminPanelOperationItems';
+import { PanelItem } from 'src/app/Models/PanelItems/panelItem';
+import { AdminPanelItems } from 'src/app/Models/PanelItems/adminItems/adminPanelItems';
+import { AdminPanelOperationItems } from 'src/app/Models/PanelItems/adminItems/adminPanelOperationItems';
 
 @Component({
   selector: 'app-admin-leftnav',

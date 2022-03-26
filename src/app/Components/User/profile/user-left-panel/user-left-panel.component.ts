@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PanelItem } from 'src/app/Models/panelItem';
-import { UserPanelItems } from 'src/app/Models/userItems/userItems';
+import { PanelItem } from 'src/app/Models/PanelItems/panelItem';
+import { UserPanelItems } from 'src/app/Models/PanelItems/userItems/userItems';
 
 @Component({
   selector: 'app-user-left-panel',
