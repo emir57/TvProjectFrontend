@@ -4,6 +4,7 @@ import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarModule } from '../navbar/navbar.module';
 import { FooterModule } from '../footer/footer.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,6 +15,7 @@ import { FooterModule } from '../footer/footer.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     FormsModule,
     NavbarModule,
     FooterModule
