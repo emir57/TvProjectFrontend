@@ -94,10 +94,11 @@
           <!-- Body End -->
           <!-- Footer -->
           <div class="card-footer">
-            <p class="card-text"><span class="text-muted"><del
-                  *ngIf="product.isDiscount">{{product.unitPrice | currency:'TRY'}}</del></span>
+            <p class="card-text"><span class="text-muted"><del *ngIf="product.isDiscount">{{product.unitPrice |
+                  currency:'TRY'}}</del></span>
               {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} </p>
-            <button [disabled]="!product.stock" (click)="goCheckout(product)" class="btn btn-primary">Hemen Satın Al</button>
+            <button [disabled]="!product.stock" (click)="goCheckout(product)" class="btn btn-primary">Hemen Satın
+              Al</button>
           </div>
           <!-- Footer End -->
         </div>
