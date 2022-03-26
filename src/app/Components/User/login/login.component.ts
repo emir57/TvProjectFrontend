@@ -43,4 +43,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  getYear(){
+    let date = new Date();
+    return date.getFullYear();
+  }
+
 }
