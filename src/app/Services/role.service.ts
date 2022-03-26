@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
 import { ResponseListModel } from '../Models/responseListModel';
 import { ResponseModel } from '../Models/responseModel';
+import { ResponseSingleModel } from '../Models/responseSingleModel';
 import { Role } from '../Models/role';
 
 @Injectable({
@@ -19,6 +20,10 @@ export class RoleService {
   getRoles():Observable<ResponseListModel<Role>>{
     let newPath = `${this.apiUrl}/api/roles/getall`;
     return this.httpClient.get<ResponseListModel<Role>>(newPath);
+  }
+  getById(id:number):Observable<ResponseSingleModel<Role>>{
+    let newPath = `${this.apiUrl}/api/roles/getbyid?id=${id}`;
+    return this.httpClient.get<ResponseSingleModel<Role>>(newPath);
   }
   getUserRoles(userId:number):Observable<ResponseListModel<Role>>{
     let newPath = `${this.apiUrl}/api/roles/getuserroles?userId=${userId}`;
