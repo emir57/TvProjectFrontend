@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
-import { ResponseListModel } from '../Models/responseListModel';
-import { ResponseModel } from '../Models/responseModel';
-import { ResponseSingleModel } from '../Models/responseSingleModel';
+import { ResponseListModel } from '../Models/response/responseListModel';
+import { ResponseModel } from '../Models/response/responseModel';
+import { ResponseSingleModel } from '../Models/response/responseSingleModel';
 import { Role } from '../Models/role';
 
 @Injectable({

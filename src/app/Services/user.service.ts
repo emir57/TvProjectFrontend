@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
 import { ChangePasswordModel } from '../Models/changePasswordModel';
-import { ResponseListModel } from '../Models/responseListModel';
-import { ResponseModel } from '../Models/responseModel';
-import { ResponseSingleModel } from '../Models/responseSingleModel';
+import { ResponseListModel } from '../Models/response/responseListModel';
+import { ResponseModel } from '../Models/response/responseModel';
+import { ResponseSingleModel } from '../Models/response/responseSingleModel';
 import { UpdateUserModel } from '../Models/updateUserModel';
 import { User } from '../Models/user';
 @Injectable({
@@ -13,30 +13,30 @@ import { User } from '../Models/user';
 })
 export class UserService {
 
-  apiUrl=`${ApiUrl}`
+  apiUrl = `${ApiUrl}`
   constructor(
-    private httpClient:HttpClient
+    private httpClient: HttpClient
   ) { }
 
-  updateUser(updateUserModel:UpdateUserModel):Observable<ResponseModel>{
+  updateUser(updateUserModel: UpdateUserModel): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/users/update`;
-    return this.httpClient.post<ResponseModel>(newPath,updateUserModel);
+    return this.httpClient.post<ResponseModel>(newPath, updateUserModel);
   }
-  updateUserAdmin(updateUserModel:UpdateUserModel):Observable<ResponseModel>{
+  updateUserAdmin(updateUserModel: UpdateUserModel): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/users/updateAdmin`;
-    return this.httpClient.post<ResponseModel>(newPath,updateUserModel);
+    return this.httpClient.post<ResponseModel>(newPath, updateUserModel);
   }
 
-  changePassword(changePasswordModel:ChangePasswordModel):Observable<ResponseModel>{
+  changePassword(changePasswordModel: ChangePasswordModel): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/users/changepassword`;
-    return this.httpClient.post<ResponseModel>(newPath,changePasswordModel);
+    return this.httpClient.post<ResponseModel>(newPath, changePasswordModel);
   }
 
-  getUsers():Observable<ResponseListModel<User>>{
+  getUsers(): Observable<ResponseListModel<User>> {
     let newPath = `${this.apiUrl}/api/users/get`;
     return this.httpClient.get<ResponseListModel<User>>(newPath);
   }
-  getUserById(id:number):Observable<ResponseSingleModel<User>>{
+  getUserById(id: number): Observable<ResponseSingleModel<User>> {
     let newPath = `${this.apiUrl}/api/users/getbyid?id=${id}`;
     return this.httpClient.get<ResponseSingleModel<User>>(newPath);
   }

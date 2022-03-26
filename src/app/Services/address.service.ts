@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
-import { ResponseListModel } from '../Models/responseListModel';
-import { ResponseModel } from '../Models/responseModel';
-import { ResponseSingleModel } from '../Models/responseSingleModel';
+import { ResponseListModel } from '../Models/response/responseListModel';
+import { ResponseModel } from '../Models/response/responseModel';
+import { ResponseSingleModel } from '../Models/response/responseSingleModel';
 import { UserAddress } from '../Models/userAddress';
 import { UserAddressCityModel } from '../Models/userAddressCity';
 
@@ -13,29 +13,29 @@ import { UserAddressCityModel } from '../Models/userAddressCity';
 })
 export class AddressService {
 
-  apiUrl=ApiUrl
+  apiUrl = ApiUrl
   constructor(
-    private httpClient:HttpClient
+    private httpClient: HttpClient
   ) { }
 
-  getAddressesByUserId(userId:number):Observable<ResponseListModel<UserAddressCityModel>>{
+  getAddressesByUserId(userId: number): Observable<ResponseListModel<UserAddressCityModel>> {
     let newPath = `${this.apiUrl}/api/addresses/getall?userId=${userId}`;
     return this.httpClient.get<ResponseListModel<UserAddressCityModel>>(newPath);
   }
-  deleteAddress(id:number):Observable<ResponseModel>{
+  deleteAddress(id: number): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/addresses/delete?id=${id}`;
     return this.httpClient.delete<ResponseModel>(newPath);
   }
-  getAddress(id:number):Observable<ResponseSingleModel<UserAddressCityModel>>{
+  getAddress(id: number): Observable<ResponseSingleModel<UserAddressCityModel>> {
     let newPath = `${this.apiUrl}/api/addresses/getbyid?id=${id}`;
     return this.httpClient.get<ResponseSingleModel<UserAddressCityModel>>(newPath);
   }
-  addAddress(address:UserAddress):Observable<ResponseModel>{
+  addAddress(address: UserAddress): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/addresses/add`;
-    return this.httpClient.post<ResponseModel>(newPath,address);
+    return this.httpClient.post<ResponseModel>(newPath, address);
   }
-  updateAddress(address:UserAddress):Observable<ResponseModel>{
+  updateAddress(address: UserAddress): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/addresses/update`;
-    return this.httpClient.put<ResponseModel>(newPath,address);
+    return this.httpClient.put<ResponseModel>(newPath, address);
   }
 }

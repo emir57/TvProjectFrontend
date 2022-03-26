@@ -3,36 +3,36 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
 import { City } from '../Models/city';
-import { ResponseListModel } from '../Models/responseListModel';
-import { ResponseModel } from '../Models/responseModel';
-import { ResponseSingleModel } from '../Models/responseSingleModel';
+import { ResponseListModel } from '../Models/response/responseListModel';
+import { ResponseModel } from '../Models/response/responseModel';
+import { ResponseSingleModel } from '../Models/response/responseSingleModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
 
-  apiUrl=ApiUrl
+  apiUrl = ApiUrl
   constructor(
-    private httpClient:HttpClient
+    private httpClient: HttpClient
   ) { }
-  getCities():Observable<ResponseListModel<City>>{
+  getCities(): Observable<ResponseListModel<City>> {
     let newPath = `${this.apiUrl}/api/cities/getall`;
     return this.httpClient.get<ResponseListModel<City>>(newPath);
   }
-  getCity(id:number):Observable<ResponseSingleModel<City>>{
+  getCity(id: number): Observable<ResponseSingleModel<City>> {
     let newPath = `${this.apiUrl}/api/cities/getbyId?id=${id}`;
     return this.httpClient.get<ResponseSingleModel<City>>(newPath);
   }
-  updateCity(city:City):Observable<ResponseModel>{
+  updateCity(city: City): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/cities/update`;
-    return this.httpClient.put<ResponseModel>(newPath,city);
+    return this.httpClient.put<ResponseModel>(newPath, city);
   }
-  addCity(city:City):Observable<ResponseModel>{
+  addCity(city: City): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/cities/add`;
-    return this.httpClient.post<ResponseModel>(newPath,city);
+    return this.httpClient.post<ResponseModel>(newPath, city);
   }
-  deleteCity(id:number):Observable<ResponseModel>{
+  deleteCity(id: number): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/cities/delete?cityId=${id}`;
     return this.httpClient.delete<ResponseModel>(newPath);
   }

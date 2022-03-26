@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
-import { AuthResponseModel } from '../Models/authResponseModel';
+import { AuthResponseModel } from '../Models/response/authResponseModel';
 import { LoginModel } from '../Models/loginModel';
 import { RegisterModel } from '../Models/registerModel';
 import { ResetPasswordModel } from '../Models/resetPasswordModel';
-import { ResponseListModel } from '../Models/responseListModel';
-import { ResponseModel } from '../Models/responseModel';
-import { ResponseSingleModel } from '../Models/responseSingleModel';
+import { ResponseListModel } from '../Models/response/responseListModel';
+import { ResponseModel } from '../Models/response/responseModel';
+import { ResponseSingleModel } from '../Models/response/responseSingleModel';
 import { Role } from '../Models/role';
 import { SendMailModel } from '../Models/sendMailModel';
 import { User } from '../Models/user';
@@ -33,20 +33,20 @@ export class AuthService {
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
         if (response.isSuccess) {
-          localStorage.setItem("remember",JSON.stringify(rememberMe))
+          localStorage.setItem("remember", JSON.stringify(rememberMe))
           if (rememberMe) {
             localStorage.setItem("token", response.data.accessToken.token)
             localStorage.setItem("user", JSON.stringify(response.data.user.id))
             localStorage.setItem("userInfo", JSON.stringify(response.data.user))
-            sessionStorage.setItem("user",response.data.user.id+"")
+            sessionStorage.setItem("user", response.data.user.id + "")
           } else {
             sessionStorage.setItem("token", response.data.accessToken.token)
             sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
           }
-          sessionStorage.setItem("userInfo",JSON.stringify(response.data.user))
+          sessionStorage.setItem("userInfo", JSON.stringify(response.data.user))
 
           //Expiration
-          localStorage.setItem("expiration",response.data.accessToken.expiration)
+          localStorage.setItem("expiration", response.data.accessToken.expiration)
 
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
@@ -99,7 +99,7 @@ export class AuthService {
   }
 
   getLoginUser(): Observable<ResponseSingleModel<User>> {
-    if(!this.isAuthenticated()){
+    if (!this.isAuthenticated()) {
       return;
     }
     let path = `${this.apiUrl}/api/auth/getuser/?id=`;
