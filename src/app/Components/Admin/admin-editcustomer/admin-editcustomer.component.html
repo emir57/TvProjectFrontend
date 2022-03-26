@@ -11,8 +11,7 @@
         <h1 class="h2 display-4">Kullanıcı Düzenle</h1>
         <button routerLink="/admindashboard/admincustomers" class="btn btn-outline-secondary">Geri Dön</button>
       </div>
-
-      <form [formGroup]="updateForm">
+      <form *ngIf="user && allRoles && userRoles" [formGroup]="updateForm">
         <div class="row">
           <div class="col-6">
             <div class="row">

@@ -31,23 +31,26 @@ export class AdminEditcustomerComponent implements OnInit {
     private roleService: RoleService
   ) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(param => {
+  async ngOnInit() {
+    this.activatedRoute.params.subscribe(async param => {
       if (param["customer"]) {
-        this.user = JSON.parse(param["customer"])
-        this.userService.getUsers().subscribe(response => {
-          response.data.forEach(user => {
-            if (user.id == param["customer"]) {
-              this.user = user;
-              this.getAllRoles();
-              this.getUserRoles();
-              this.createUpdateForm();
-            }
-          })
-        })
+        // this.userService.getUsers().subscribe(response => {
+        //   response.data.forEach(user => {
+        //     if (user.id == param["customer"]) {
+        //       this.user = user;
+        //       this.getAllRoles();
+        //       this.getUserRoles();
+        //       this.createUpdateForm();
+        //     }
+        //   })
+        // })
+        let result = await this.userService.getUserById(param["customer"]).toPromise();
+        this.user = result.data;
+        this.getAllRoles();
+        this.getUserRoles();
+        this.createUpdateForm();
       }
     })
-    this.createUpdateForm();
   }
   getAllRoles() {
     this.roleService.getRoles().subscribe(response => {
