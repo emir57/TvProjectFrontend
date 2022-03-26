@@ -24,22 +24,24 @@ export class AdminCategoryUpdateComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(param => {
+  async ngOnInit() {
+    this.activatedRoute.params.subscribe(async param => {
       if (!param["category"]) {
         this.router.navigate(["admindashboard/adminbrands"]);
       }
-      this.category = JSON.parse(param["category"]);
-      this.categoryService.getCategories().subscribe(response=>{
-        response.data.forEach(category=>{
-          if(category.id == param["category"]){
-            this.category = category
-            this.createCategoryUpdateForm();
-          }
-        })
-      })
+      // this.categoryService.getCategories().subscribe(response => {
+      //   response.data.forEach(category => {
+      //     if (category.id == param["category"]) {
+      //       this.category = category
+      //       this.createCategoryUpdateForm();
+      //     }
+      //   })
+      // })
+      let result = await this.categoryService.getCategoryById(param["category"]).toPromise();
+      this.category = result.data;
+      this.createCategoryUpdateForm();
     })
-    this.createCategoryUpdateForm();
+
   }
 
 
