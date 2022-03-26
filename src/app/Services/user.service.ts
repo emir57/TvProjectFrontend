@@ -5,6 +5,7 @@ import { ApiUrl } from '../Models/apiUrl';
 import { ChangePasswordModel } from '../Models/changePasswordModel';
 import { ResponseListModel } from '../Models/responseListModel';
 import { ResponseModel } from '../Models/responseModel';
+import { ResponseSingleModel } from '../Models/responseSingleModel';
 import { UpdateUserModel } from '../Models/updateUserModel';
 import { User } from '../Models/user';
 @Injectable({
@@ -34,6 +35,10 @@ export class UserService {
   getUsers():Observable<ResponseListModel<User>>{
     let newPath = `${this.apiUrl}/api/users/get`;
     return this.httpClient.get<ResponseListModel<User>>(newPath);
+  }
+  getUserById(id:number):Observable<ResponseSingleModel<User>>{
+    let newPath = `${this.apiUrl}/api/users/getbyid?id=${id}`;
+    return this.httpClient.get<ResponseSingleModel<User>>(newPath);
   }
 
 }
