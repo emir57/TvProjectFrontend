@@ -5,6 +5,7 @@ import { ApiUrl } from '../Models/apiUrl';
 import { Category } from '../Models/category';
 import { ResponseListModel } from '../Models/responseListModel';
 import { ResponseModel } from '../Models/responseModel';
+import { ResponseSingleModel } from '../Models/responseSingleModel';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class CategoryService {
   getCategories():Observable<ResponseListModel<Category>>{
     let newPath = `${this.apiUrl}/api/tvbrands/getall`;
     return this.httpClient.get<ResponseListModel<Category>>(newPath);
+  }
+  getCategoryById(id:number):Observable<ResponseSingleModel<Category>>{
+    let newPath = `${this.apiUrl}/api/tvbrands/getbyid?id=${id}`;
+    return this.httpClient.get<ResponseSingleModel<Category>>(newPath);
   }
   addCategory(categoryModel:Category):Observable<ResponseModel>{
     let newPath = `${this.apiUrl}/api/tvbrands/add`;
