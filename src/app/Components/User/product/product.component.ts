@@ -35,7 +35,6 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategories();
-    this.ImageSlide();
   }
 
   getAllProducts() {
@@ -48,6 +47,8 @@ export class ProductComponent implements OnInit {
         this.productsIsLoad = true;
       }, responseErr => {
         console.log(responseErr)
+      }, () => {
+        this.ImageSlide();
       })
   }
   getProductsByPage(page: number) {
@@ -71,7 +72,10 @@ export class ProductComponent implements OnInit {
             setTimeout(() => {
               this.productsIsLoad = true;
             }, 500);
-          })
+          }, err => {},
+            () => {
+              this.ImageSlide();
+            })
       } else {
         this.getAllProducts();
         setTimeout(() => {
