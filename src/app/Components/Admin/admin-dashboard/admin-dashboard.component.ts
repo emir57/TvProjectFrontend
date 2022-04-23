@@ -32,7 +32,7 @@ export class AdminDashboardComponent implements OnInit {
         labels: this.categories.map(c=>c.name),
         datasets: [{
           label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          data: this.categories.map(c=>c.count),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -66,6 +66,7 @@ export class AdminDashboardComponent implements OnInit {
     this.categoryService.getAllWithCount().subscribe(response => {
       if (response.isSuccess) {
         this.categories = response.data;
+        console.log(this.categories)
       }
     })
   }
