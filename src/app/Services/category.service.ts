@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
 import { Category } from '../Models/category';
 import { CategoryWithCount } from '../Models/categoryWithCount';
+import { CategoryWithPriceAverage } from '../Models/categoryWithPriceAverage';
 import { ResponseListModel } from '../Models/response/responseListModel';
 import { ResponseModel } from '../Models/response/responseModel';
 import { ResponseSingleModel } from '../Models/response/responseSingleModel';
@@ -25,6 +26,10 @@ export class CategoryService {
   getAllWithCount(): Observable<ResponseListModel<CategoryWithCount>> {
     let newPath = `${this.apiUrl}/api/tvbrands/getallwithcount`;
     return this.httpClient.get<ResponseListModel<CategoryWithCount>>(newPath);
+  }
+  getAllWithPriceAverage(): Observable<ResponseListModel<CategoryWithPriceAverage>> {
+    let newPath = `${this.apiUrl}/api/tvbrands/getallwithpriceaverage`;
+    return this.httpClient.get<ResponseListModel<CategoryWithPriceAverage>>(newPath);
   }
   getCategoryById(id: number): Observable<ResponseSingleModel<Category>> {
     let newPath = `${this.apiUrl}/api/tvbrands/getbyid?id=${id}`;
