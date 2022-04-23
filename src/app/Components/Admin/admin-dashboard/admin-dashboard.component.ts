@@ -16,11 +16,11 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit() {
     Chart.register(...registerables);
     setTimeout(() => {
-      this.createCanv1();
+      this.createCategoryProductCountCanv();
     }, 0);
   }
 
-  createCanv1() {
+  createCategoryProductCountCanv() {
     const ctx = (document.getElementById('categoryProductCountCanv') as HTMLCanvasElement).getContext('2d');
     const myChart = new Chart(ctx, {
       type: 'bar',
