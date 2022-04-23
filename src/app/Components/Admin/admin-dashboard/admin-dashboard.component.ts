@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Chart,registerables } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
+import { Category } from 'src/app/Models/category';
+import { CategoryService } from 'src/app/Services/category.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,11 +11,13 @@ import { Chart,registerables } from 'chart.js';
 })
 export class AdminDashboardComponent implements OnInit {
 
+  categories: Category[]
   constructor(
-
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit() {
+    this.getCategories();
     Chart.register(...registerables);
     setTimeout(() => {
       this.createCategoryProductCountCanv();
@@ -23,9 +27,9 @@ export class AdminDashboardComponent implements OnInit {
   createCategoryProductCountCanv() {
     const ctx = (document.getElementById('categoryProductCountCanv') as HTMLCanvasElement).getContext('2d');
     const myChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'doughnut',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: this.categories.map(c=>c.name),
         datasets: [{
           label: '# of Votes',
           data: [12, 19, 3, 5, 2, 3],
@@ -58,4 +62,11 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+  getCategories() {
+    this.categoryService.getCategories().subscribe(response => {
+      if (response.isSuccess) {
+        this.categories = response.data;
+      }
+    })
+  }
 }
