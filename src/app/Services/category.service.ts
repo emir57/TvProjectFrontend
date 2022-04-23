@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiUrl } from '../Models/apiUrl';
 import { Category } from '../Models/category';
+import { CategoryWithCount } from '../Models/categoryWithCount';
 import { ResponseListModel } from '../Models/response/responseListModel';
 import { ResponseModel } from '../Models/response/responseModel';
 import { ResponseSingleModel } from '../Models/response/responseSingleModel';
@@ -20,6 +21,10 @@ export class CategoryService {
   getCategories(): Observable<ResponseListModel<Category>> {
     let newPath = `${this.apiUrl}/api/tvbrands/getall`;
     return this.httpClient.get<ResponseListModel<Category>>(newPath);
+  }
+  getAllWithCount(): Observable<ResponseListModel<CategoryWithCount>> {
+    let newPath = `${this.apiUrl}/api/tvbrands/getallwithcount`;
+    return this.httpClient.get<ResponseListModel<CategoryWithCount>>(newPath);
   }
   getCategoryById(id: number): Observable<ResponseSingleModel<Category>> {
     let newPath = `${this.apiUrl}/api/tvbrands/getbyid?id=${id}`;
