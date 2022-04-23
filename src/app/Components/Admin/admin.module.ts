@@ -21,6 +21,7 @@ import { UsersearchModule } from 'src/app/pipes/usersearch/usersearch.module';
 import { BrandsearchModule } from 'src/app/pipes/brandsearch/brandsearch.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -44,7 +45,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     RouterModule.forChild([
-      {path:"",component:AdminDashboardComponent}
+      { path: "", component: AdminDashboardComponent }
     ]),
     CommonModule,
     ReactiveFormsModule,
@@ -52,7 +53,8 @@ import { RouterModule } from '@angular/router';
     ProductsearchModule,
     UsersearchModule,
     BrandsearchModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgChartsModule
   ]
 })
 export class AdminModule { }
