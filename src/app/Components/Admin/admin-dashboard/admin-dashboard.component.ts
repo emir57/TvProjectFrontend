@@ -11,13 +11,13 @@ import { CategoryService } from 'src/app/Services/category.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  categories: CategoryWithCount[]
+  categoriesWithCount: CategoryWithCount[]
   constructor(
     private categoryService: CategoryService
   ) { }
 
   ngOnInit() {
-    this.getCategories();
+    this.getCategoriesWithCount();
     Chart.register(...registerables);
     setTimeout(() => {
       this.createCategoryProductCountCanv();
@@ -29,10 +29,10 @@ export class AdminDashboardComponent implements OnInit {
     const myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: this.categories.map(c=>c.name),
+        labels: this.categoriesWithCount.map(c=>c.name),
         datasets: [{
           label: '# of Votes',
-          data: this.categories.map(c=>c.count),
+          data: this.categoriesWithCount.map(c=>c.count),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -62,11 +62,10 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  getCategories() {
+  getCategoriesWithCount() {
     this.categoryService.getAllWithCount().subscribe(response => {
       if (response.isSuccess) {
-        this.categories = response.data;
-        console.log(this.categories)
+        this.categoriesWithCount = response.data;
       }
     })
   }
