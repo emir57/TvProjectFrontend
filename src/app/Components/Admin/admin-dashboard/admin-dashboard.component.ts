@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
-import { Category } from 'src/app/Models/category';
+import { CategoryWithCount } from 'src/app/Models/categoryWithCount';
 import { CategoryService } from 'src/app/Services/category.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { CategoryService } from 'src/app/Services/category.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  categories: Category[]
+  categories: CategoryWithCount[]
   constructor(
     private categoryService: CategoryService
   ) { }
@@ -63,7 +63,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getCategories() {
-    this.categoryService.getCategories().subscribe(response => {
+    this.categoryService.getAllWithCount().subscribe(response => {
       if (response.isSuccess) {
         this.categories = response.data;
       }
