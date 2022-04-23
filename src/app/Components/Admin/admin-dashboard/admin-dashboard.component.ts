@@ -21,7 +21,7 @@ export class AdminDashboardComponent implements OnInit {
     Chart.register(...registerables);
     setTimeout(() => {
       this.createCategoryProductCountCanv();
-    }, 0);
+    }, 1000);
   }
 
   createCategoryProductCountCanv() {
