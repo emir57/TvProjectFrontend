@@ -21,8 +21,6 @@ import { UsersearchModule } from 'src/app/pipes/usersearch/usersearch.module';
 import { BrandsearchModule } from 'src/app/pipes/brandsearch/brandsearch.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
-import { NgChartsModule } from 'ng2-charts';
-
 
 
 @NgModule({
@@ -53,8 +51,7 @@ import { NgChartsModule } from 'ng2-charts';
     ProductsearchModule,
     UsersearchModule,
     BrandsearchModule,
-    AppRoutingModule,
-    NgChartsModule
+    AppRoutingModule
   ]
 })
 export class AdminModule { }
