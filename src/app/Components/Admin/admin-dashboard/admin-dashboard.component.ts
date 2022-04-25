@@ -72,7 +72,7 @@ export class AdminDashboardComponent implements OnInit {
       data: {
         labels: this.categoriesWithPriceAverage.map(c => c.name),
         datasets: [{
-          label: '# of Votes',
+          label: 'Fiyat Ortalaması',
           data: this.categoriesWithPriceAverage.map(c => c.priceAverage),
           borderWidth: 1
         }]
