@@ -18,7 +18,6 @@ import { ImageSlideComponent } from './image-slide/image-slide.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ImageSlideComponent,
   ],
   imports: [
     BrowserModule,

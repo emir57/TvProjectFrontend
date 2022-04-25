@@ -24,18 +24,18 @@ export class ImageSlideComponent implements OnInit {
   getImageUrl() {
     return this.apiUrl;
   }
-  photocheck(photo: Photo, productId: number) {
+  photocheck(photo: Photo) {
     if (photo.isMain == true) {
-      return `carousel-item active photoProduct${productId}`
+      return `carousel-item active photoProduct${this.productId}`
     } else {
-      return `carousel-item photoProduct${productId}`
+      return `carousel-item photoProduct${this.productId}`
     }
   }
-  getCarouselId(productId: number) {
-    return `carousel${productId}`
+  getCarouselId() {
+    return `carousel${this.productId}`
   }
-  getCarouselButtonId(productId: number) {
-    return `#carousel${productId}`
+  getCarouselButtonId() {
+    return `#carousel${this.productId}`
   }
 
   ImageSlide() {

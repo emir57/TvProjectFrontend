@@ -63,7 +63,8 @@
           <span *ngIf="product.stock==1" class="badge rounded-pill bg-warning me-0 stock1">Stokta 1 Adet</span>
           <!-- <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl"> -->
           <!-- Carousel Start -->
-          <div [id]="getCarouselId(product)" class="carousel slide">
+          <app-image-slide [photos]="product.photos" [productId]="product.id"></app-image-slide>
+          <!-- <div [id]="getCarouselId(product)" class="carousel slide">
             <div class="carousel-inner">
               <div *ngFor="let photo of product.photos" [class]="photocheck(photo,product)" id="photo{{photo.id}}">
                 <img width="100%" src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block"
@@ -80,8 +81,8 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">İleri</span>
             </button>
+          </div> -->
 
-          </div>
           <!-- Carousel End -->
           <!-- Body -->
           <div class="card-body">

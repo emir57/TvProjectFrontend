@@ -1,1 +1,18 @@
-<p>image-slide works!</p>
+<div [id]="getCarouselId()" class="carousel slide">
+  <div class="carousel-inner">
+    <div *ngFor="let photo of photos" [class]="photocheck(photo)" id="photo{{photo.id}}">
+      <img width="100%" src="{{getImageUrl()}}{{photo.imageUrl}}" class="d-block"
+        alt="{{productId}}">
+    </div>
+  </div>
+  <button *ngIf="photos.length!=1" class="carousel-control-prev" type="button"
+    id="productPrevBtn{{productId}}">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Geri</span>
+  </button>
+  <button *ngIf="photos.length!=1" class="carousel-control-next" type="button"
+    id="productNextBtn{{productId}}">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">İleri</span>
+  </button>
+</div>
