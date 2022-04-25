@@ -12,7 +12,7 @@ export class ImageSlideComponent implements OnInit {
 
   @Input() carouselId: string;
   @Input() photos: Photo[] = [];
-  @Input() productId: number;
+  @Input() product: Product;
   apiUrl = ApiUrl;
   constructor() { }
 
@@ -26,16 +26,16 @@ export class ImageSlideComponent implements OnInit {
   }
   photocheck(photo: Photo) {
     if (photo.isMain == true) {
-      return `carousel-item active photoProduct${this.productId}`
+      return `carousel-item active photoProduct${this.product.id}`
     } else {
-      return `carousel-item photoProduct${this.productId}`
+      return `carousel-item photoProduct${this.product.id}`
     }
   }
   getCarouselId() {
-    return `carousel${this.productId}`
+    return `carousel${this.product.id}`
   }
   getCarouselButtonId() {
-    return `#carousel${this.productId}`
+    return `#carousel${this.product.id}`
   }
 
   ImageSlide() {
@@ -45,7 +45,7 @@ export class ImageSlideComponent implements OnInit {
           photos[i].style.display = "none"
         }
       }
-      var photos = $(`.photoProduct${this.productId}`);
+      var photos = $(`.photoProduct${this.product.id}`);
       let i = 0;
       photosDisplayNone(photos);
       this.photos.forEach(photo => {
@@ -53,7 +53,7 @@ export class ImageSlideComponent implements OnInit {
           $(`#photo${photo.id}`).show();
         }
       })
-      $(`#productNextBtn${this.productId}`).click(function () {
+      $(`#productNextBtn${this.product.id}`).click(function () {
         i++;
         photosDisplayNone(photos);
         if (i > photos.length - 1) {
@@ -61,7 +61,7 @@ export class ImageSlideComponent implements OnInit {
         }
         photos[i].style.display = "block";
       })
-      $(`#productPrevBtn${this.productId}`).click(function () {
+      $(`#productPrevBtn${this.product.id}`).click(function () {
         i--;
         if (i < 0) {
           i = photos.length - 1;

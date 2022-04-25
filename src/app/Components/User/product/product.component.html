@@ -63,7 +63,7 @@
           <span *ngIf="product.stock==1" class="badge rounded-pill bg-warning me-0 stock1">Stokta 1 Adet</span>
           <!-- <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl"> -->
           <!-- Carousel Start -->
-          <app-image-slide [photos]="product.photos" [productId]="product.id"></app-image-slide>
+          <app-image-slide [photos]="product.photos" [product]="product"></app-image-slide>
           <!-- <div [id]="getCarouselId(product)" class="carousel slide">
             <div class="carousel-inner">
               <div *ngFor="let photo of product.photos" [class]="photocheck(photo,product)" id="photo{{photo.id}}">
