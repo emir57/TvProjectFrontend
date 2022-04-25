@@ -48,7 +48,6 @@ export class ProductComponent implements OnInit {
       }, responseErr => {
         console.log(responseErr)
       }, () => {
-        this.ImageSlide();
       })
   }
   getProductsByPage(page: number) {
@@ -74,7 +73,6 @@ export class ProductComponent implements OnInit {
             }, 500);
           }, err => {},
             () => {
-              this.ImageSlide();
             })
       } else {
         this.getAllProducts();
@@ -106,30 +104,6 @@ export class ProductComponent implements OnInit {
     })
     return returnPhotos;
   }
-
-  photocheck(photo: Photo, product: Product) {
-    if (photo.isMain == true) {
-      return `carousel-item active photoProduct${product.id}`
-    } else {
-      return `carousel-item photoProduct${product.id}`
-    }
-  }
-
-  getCarouselId(product: Product) {
-    return `carousel${product.id}`
-  }
-  getCarouselButtonId(product: Product) {
-    return `#carousel${product.id}`
-  }
-
-  getImages(photos: Photo[]) {
-    let photosUrl: string[] = []
-    photos.forEach(photo => photosUrl.push(`${this.apiUrl}${photo.imageUrl}`))
-    console.log(photosUrl)
-    return photosUrl;
-  }
-
-
   increasedPrice() {
     console.log("artan")
     this.products = this.products.sort((x, y) => x.unitPrice - y.unitPrice);
@@ -138,41 +112,6 @@ export class ProductComponent implements OnInit {
     this.products = this.products.sort((x, y) => y.unitPrice - x.unitPrice);
   }
 
-  ImageSlide() {
-    setTimeout(() => {
-      function photosDisplayNone(photos) {
-        for (let i = 0; i < photos.length; i++) {
-          photos[i].style.display = "none"
-        }
-      }
-      this.products.forEach(product => {
-        var photos = $(`.photoProduct${product.id}`);
-        let i = 0;
-        photosDisplayNone(photos);
-        product.photos.forEach(photo => {
-          if (photo.isMain) {
-            $(`#photo${photo.id}`).show();
-          }
-        })
-        $(`#productNextBtn${product.id}`).click(function () {
-          i++;
-          photosDisplayNone(photos);
-          if (i > photos.length - 1) {
-            i = 0;
-          }
-          photos[i].style.display = "block";
-        })
-        $(`#productPrevBtn${product.id}`).click(function () {
-          i--;
-          if (i < 0) {
-            i = photos.length - 1;
-          }
-          photosDisplayNone(photos);
-          photos[i].style.display = "block";
-        })
-      })
-    }, 500);
-  }
   goCheckout(product: Product) {
     this.router.navigate(["checkout", product.id])
   }
