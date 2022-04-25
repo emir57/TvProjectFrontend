@@ -101,7 +101,7 @@ export class UserAddressComponent implements OnInit {
 
   updateAddress() {
     if (this.updateForm.valid) {
-      let cityId = this.addForm.get("cityId").value;
+      let cityId = this.updateForm.get("cityId").value;
       this.addForm.get("cityId").setValue(+cityId)
       this.cityService.getCity(cityId).subscribe(responseCity => {
         if (responseCity.isSuccess) {
