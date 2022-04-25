@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Photo } from '../Models/photo';
 
 @Component({
   selector: 'app-image-slide',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageSlideComponent implements OnInit {
 
+  @Input() carouselId: string;
+  @Input() photos: Photo[] = [];
+  @Input() productId: number;
   constructor() { }
 
   ngOnInit(): void {
