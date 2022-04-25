@@ -17,6 +17,9 @@ export class ImageSlideComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.ImageSlide();
+    }, 0);
   }
   getImageUrl() {
     return this.apiUrl;
