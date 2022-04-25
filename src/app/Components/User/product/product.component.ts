@@ -71,7 +71,7 @@ export class ProductComponent implements OnInit {
             setTimeout(() => {
               this.productsIsLoad = true;
             }, 500);
-          }, err => {},
+          }, err => { },
             () => {
             })
       } else {
@@ -92,28 +92,27 @@ export class ProductComponent implements OnInit {
   getImageUrl() {
     return this.apiUrl;
   }
-  getImagesForSlider(photos: Photo[]) {
-    let returnPhotos: Array<object> = [];
-    photos.forEach(photo => {
-      returnPhotos.push({
-        image: `${this.apiUrl}${photo.imageUrl}`,
-        thumbImage: `${this.apiUrl}${photo.imageUrl}`,
-        alt: 'Image 1',
-        title: 'Image 1'
-      })
-    })
-    return returnPhotos;
-  }
   increasedPrice() {
-    console.log("artan")
+    this.setAnimations($("#productIncrease"),"text-warning");
     this.products = this.products.sort((x, y) => x.unitPrice - y.unitPrice);
   }
   decreasingPrice() {
+    this.setAnimations($("#productDecrease"),"text-warning");
     this.products = this.products.sort((x, y) => y.unitPrice - x.unitPrice);
   }
 
   goCheckout(product: Product) {
     this.router.navigate(["checkout", product.id])
   }
+
+  setAnimations(element: any, className: string){
+    element.addClass(className);
+    setTimeout(() => {
+      element.removeClass(className);
+    }, 1000);
+    setTimeout(() => {
+      this.setAnimations(element,className);
+    }, 1500);
+}
 
 }
