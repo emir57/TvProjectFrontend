@@ -4,10 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <br>
 <a href="https://github.com/emir57/TvProjectBackend">Backend</a>
 
-<img src="project_images/1.png"/>
 <img src="project_images/2.png"/>
 <img src="project_images/3.png"/>
 <img src="project_images/4.png"/>
+<img src="project_images/1.png"/>
 <img src="project_images/5.png"/>
 <img src="project_images/6.png"/>
 <img src="project_images/7.png"/>
