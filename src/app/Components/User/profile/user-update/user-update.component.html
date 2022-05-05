@@ -1,52 +1,42 @@
-<app-navbar></app-navbar>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <app-user-left-panel></app-user-left-panel>
-    </div>
-    <main class="col-9 ms-sm-auto col-lg-10 px-md-4 p-3">
-      <div class="row">
-        <div class="col-6">
-          <!-- User Update Form -->
-          <form [formGroup]="userUpdateForm">
-            <div class="form-group mb-3">
-              <label for="firstName">Ad</label>
-              <input formControlName="firstName" type="text" id="firstName" class="form-control">
-            </div>
-            <div class="form-group mb-3">
-              <label for="lastName">Soyad</label>
-              <input formControlName="lastName" type="text" id="lastName" class="form-control">
-            </div>
-            <div class="form-group mb-3">
-              <label for="password">Şifre</label>
-              <input formControlName="password" type="password" id="password" class="form-control">
-            </div>
-          </form>
-          <button (click)="updateUserInfo()" [disabled]="!isOk" [disabled]="!userUpdateForm.valid" class="btn btn-primary">
-            <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            Güncelle
-          </button>
-          <!-- User Update Form End-->
-        </div>
-        <div class="col-6">
-          <!-- Reset Password Form -->
-          <form [formGroup]="resetPasswordForm">
-            <div class="form-group mb-3">
-              <label for="oldPassword">Eski Şifre</label>
-              <input formControlName="oldPassword" type="password" id="oldPassword" class="form-control">
-            </div>
-            <div class="form-group mb-3">
-              <label for="newPassword">Yeni Şifre</label>
-              <input formControlName="newPassword" type="password" id="newPassword" class="form-control">
-            </div>
-          </form>
-          <button (click)="resetPassword()" [disabled]="!isOk" [disabled]="!resetPasswordForm.valid" class="btn btn-primary">
-            <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            Sıfırla
-          </button>
-          <!-- Reset Password Form End-->
-        </div>
+<div class="row">
+  <div class="col-6">
+    <!-- User Update Form -->
+    <form [formGroup]="userUpdateForm">
+      <div class="form-group mb-3">
+        <label for="firstName">Ad</label>
+        <input formControlName="firstName" type="text" id="firstName" class="form-control">
       </div>
-    </main>
+      <div class="form-group mb-3">
+        <label for="lastName">Soyad</label>
+        <input formControlName="lastName" type="text" id="lastName" class="form-control">
+      </div>
+      <div class="form-group mb-3">
+        <label for="password">Şifre</label>
+        <input formControlName="password" type="password" id="password" class="form-control">
+      </div>
+    </form>
+    <button (click)="updateUserInfo()" [disabled]="!isOk" [disabled]="!userUpdateForm.valid" class="btn btn-primary">
+      <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Güncelle
+    </button>
+    <!-- User Update Form End-->
+  </div>
+  <div class="col-6">
+    <!-- Reset Password Form -->
+    <form [formGroup]="resetPasswordForm">
+      <div class="form-group mb-3">
+        <label for="oldPassword">Eski Şifre</label>
+        <input formControlName="oldPassword" type="password" id="oldPassword" class="form-control">
+      </div>
+      <div class="form-group mb-3">
+        <label for="newPassword">Yeni Şifre</label>
+        <input formControlName="newPassword" type="password" id="newPassword" class="form-control">
+      </div>
+    </form>
+    <button (click)="resetPassword()" [disabled]="!isOk" [disabled]="!resetPasswordForm.valid" class="btn btn-primary">
+      <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Sıfırla
+    </button>
+    <!-- Reset Password Form End-->
   </div>
 </div>
