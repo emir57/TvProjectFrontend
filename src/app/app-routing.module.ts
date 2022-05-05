@@ -25,19 +25,23 @@ import { UserOrdersComponent } from './Components/User/profile/user-orders/user-
 import { UserUpdateComponent } from './Components/User/profile/user-update/user-update.component';
 import { RegisterComponent } from './Components/User/register/register.component';
 import { ResetpasswordComponent } from './Components/User/resetpassword/resetpassword.component';
+import { UserComponent } from './Components/User/user.component';
 import { AdminGuard } from './Guards/admin.guard';
 import { ExpirationGuard } from './Guards/expiration.guard';
 import { SecurityGuard } from './Guards/security.guard';
 
 const routes: Routes = [
-  { path: "", component: ProductComponent },
-  { path: "products", component: ProductComponent },
-  { path: "products/category/:categoryId", component: ProductComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "forgotpassword", component: ForgotpasswordComponent },
-  { path: "checkout/:productId", component: CheckoutComponent, canActivate: [ExpirationGuard] },
-  { path: "resetpassword/:key", component: ResetpasswordComponent },
+  {
+    path: "", component: UserComponent, children: [
+      { path: "", component: ProductComponent },
+      { path: "products/category/:categoryId", component: ProductComponent },
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent },
+      { path: "forgotpassword", component: ForgotpasswordComponent },
+      { path: "checkout/:productId", component: CheckoutComponent, canActivate: [ExpirationGuard] },
+      { path: "resetpassword/:key", component: ResetpasswordComponent },
+    ]
+  },
   //Admin Panels
   { path: "admindashboard/home", component: AdminDashboardComponent, canActivate: [AdminGuard, ExpirationGuard] },
   { path: "admindashboard/adminproducts", component: AdminProductsComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
