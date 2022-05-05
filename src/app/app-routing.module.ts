@@ -60,7 +60,7 @@ const routes: Routes = [
   //User Panels
   {
     path: "profile", component: ProfileComponent, children: [
-      { path: "home", component: ProfileComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+      { path: "", component: UserUpdateComponent, canActivate: [SecurityGuard, ExpirationGuard] },
       { path: "update", component: UserUpdateComponent, canActivate: [SecurityGuard, ExpirationGuard] },
       { path: "myorders", component: UserOrdersComponent, canActivate: [SecurityGuard, ExpirationGuard] },
       { path: "mycreditcards", component: UserCreditcardsComponent, canActivate: [SecurityGuard, ExpirationGuard] },
