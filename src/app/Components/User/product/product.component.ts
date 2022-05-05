@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/Services/product.service';
 
 import $ from 'jquery';
 import { style } from '@angular/animations';
+import { LoadingService } from 'src/app/Services/loading.service';
 
 @Component({
   selector: 'app-product',
@@ -27,7 +28,8 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
-    private router: Router
+    private router: Router,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
@@ -36,12 +38,14 @@ export class ProductComponent implements OnInit {
   }
 
   getAllProducts() {
+    this.loadingService.showLoading();
     this.productService.getProducts(1)
       .subscribe(response => {
         this.products = response.data;
         for (let i = 0; i < response.totalPage; i++) {
           this.totalPage.push(i);
         }
+        this.loadingService.closeLoading();
       }, responseErr => {
         console.log(responseErr)
       }, () => {
