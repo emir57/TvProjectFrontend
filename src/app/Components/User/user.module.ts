@@ -17,11 +17,14 @@ import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.m
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { UserComponent } from './user/user.component';
 
 
 
 @NgModule({
   declarations: [
+  
+    UserComponent
   ],
   imports: [
     CommonModule,
