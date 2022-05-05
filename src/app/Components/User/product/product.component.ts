@@ -89,11 +89,11 @@ export class ProductComponent implements OnInit {
     return this.apiUrl;
   }
   increasedPrice() {
-    this.setAnimations($("#productIncrease"), "text-warning");
+    let interval = this.setAnimations($("#productIncrease"), "text-warning");
     this.products = this.products.sort((x, y) => x.unitPrice - y.unitPrice);
   }
   decreasingPrice() {
-    this.setAnimations($("#productDecrease"), "text-warning");
+    let interval = this.setAnimations($("#productDecrease"), "text-warning");
     this.products = this.products.sort((x, y) => y.unitPrice - x.unitPrice);
   }
 
@@ -102,12 +102,17 @@ export class ProductComponent implements OnInit {
   }
 
   setAnimations(element: any, className: string) {
-    setInterval(() => {
+    let i = 0;
+    i++;
+    let interval = setInterval(() => {
       element.addClass(className);
       setTimeout(() => {
         element.removeClass(className);
       }, 500);
-    }, 1000)
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(interval);
+    }, 2000);
   }
 
 }
