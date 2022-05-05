@@ -63,11 +63,13 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts() {
+    this.loadingService.showLoading();
     this.activatedRoute.params.subscribe(param => {
       if (param["categoryId"]) {
         this.productService.getProductsByCategory(param["categoryId"])
           .subscribe(response => {
             this.products = response.data;
+            this.loadingService.closeLoading();
           }, err => { },
             () => {
             })
