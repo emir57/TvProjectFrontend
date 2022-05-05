@@ -35,6 +35,7 @@ import { UserComponent } from "./user.component";
     ProfileModule,
     RegisterModule,
     ResetpasswordModule,
+    RouterModule
   ], exports: [
     CategoryModule,
     CheckoutModule,
