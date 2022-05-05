@@ -102,13 +102,12 @@ export class ProductComponent implements OnInit {
   }
 
   setAnimations(element: any, className: string) {
-    element.addClass(className);
-    setTimeout(() => {
-      element.removeClass(className);
-    }, 1000);
-    setTimeout(() => {
-      this.setAnimations(element, className);
-    }, 1500);
+    setInterval(() => {
+      element.addClass(className);
+      setTimeout(() => {
+        element.removeClass(className);
+      }, 500);
+    }, 1000)
   }
 
 }
