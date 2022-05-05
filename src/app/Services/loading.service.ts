@@ -8,12 +8,13 @@ export class LoadingService {
 
   constructor() { }
 
-  showLoading(){
+  showLoading(message?: string) {
+    if (message) $("#spinnerDiv > span").html(message);
     $("#spinnerDiv").show();
     $("#spinnerBgDiv").show();
   }
 
-  closeLoading(){
+  closeLoading() {
     $("#spinnerDiv").hide();
     $("#spinnerBgDiv").hide();
   }
