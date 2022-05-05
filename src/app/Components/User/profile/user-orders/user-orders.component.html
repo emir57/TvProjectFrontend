@@ -12,43 +12,34 @@
 </div>
 <div id="deleteBoxBackground"></div>
 
-<app-navbar></app-navbar>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <app-user-left-panel></app-user-left-panel>
-    </div>
-    <main class="col-9 ms-sm-auto col-lg-10 px-md-4 p-3">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 display-4">Siparişlerim</h1>
-        <h5><i>Toplamda: <span class="text-primary">{{getCount()}}</span> Sipariş</i> </h5>
-      </div>
-      <!-- Order Start -->
-      <div class="card text-center mb-3" *ngFor="let order of orders">
-        <div class="card-header">
-          {{order.tv.productName}} {{order.tv.screenInch}} {{order.tv.screenType}}
-          <a (click)="showAlertBox(order)" class="text-danger" style="position: absolute;right: 0;top: 0;text-decoration: none; margin: 5px;cursor: pointer;"><i>İptal Et</i></a>
-        </div>
-        <div class="card-body">
-          <p>
-            <img src="{{getApiUrl()}}{{order.tv.imageUrl}}" alt="">
-          </p>
-          <i>Ürün Açıklaması: </i>
-          <p>{{order.tv.extras}}</p>
-          <hr>
-          <h5 class="card-title text-muted" *ngIf="order.tv.isDiscount">
-            <del class="text-danger">{{order.tv.unitPrice |currency:"TRY"}}</del></h5>
-          <h5 class="card-title text-primary">
-            {{order.tv.unitPrice | discount:order.tv.discount:order.tv.isDiscount | currency:"TRY"}}</h5>
-          <p class="card-text"><i>Adres: </i>{{order.addressText}}</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2 display-4">Siparişlerim</h1>
+  <h5><i>Toplamda: <span class="text-primary">{{getCount()}}</span> Sipariş</i> </h5>
+</div>
+<!-- Order Start -->
+<div class="card text-center mb-3" *ngFor="let order of orders">
+  <div class="card-header">
+    {{order.tv.productName}} {{order.tv.screenInch}} {{order.tv.screenType}}
+    <a (click)="showAlertBox(order)" class="text-danger"
+      style="position: absolute;right: 0;top: 0;text-decoration: none; margin: 5px;cursor: pointer;"><i>İptal Et</i></a>
+  </div>
+  <div class="card-body">
+    <p>
+      <img src="{{getApiUrl()}}{{order.tv.imageUrl}}" alt="">
+    </p>
+    <i>Ürün Açıklaması: </i>
+    <p>{{order.tv.extras}}</p>
+    <hr>
+    <h5 class="card-title text-muted" *ngIf="order.tv.isDiscount">
+      <del class="text-danger">{{order.tv.unitPrice |currency:"TRY"}}</del>
+    </h5>
+    <h5 class="card-title text-primary">
+      {{order.tv.unitPrice | discount:order.tv.discount:order.tv.isDiscount | currency:"TRY"}}</h5>
+    <p class="card-text"><i>Adres: </i>{{order.addressText}}</p>
 
-        </div>
-        <div class="card-footer text-muted">
-          <i>Alma Tarihi: </i>{{order.shippedDate}}
-        </div>
-      </div>
-      <!-- Order End -->
-    </main>
+  </div>
+  <div class="card-footer text-muted">
+    <i>Alma Tarihi: </i>{{order.shippedDate}}
   </div>
 </div>
+<!-- Order End -->
