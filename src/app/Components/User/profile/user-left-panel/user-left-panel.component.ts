@@ -20,7 +20,7 @@ export class UserLeftPanelComponent implements OnInit {
   }
 
   getItemClass(item:PanelItem) {
-    let currentPath = this.activatedRoute.snapshot.url[1].path;
+    let currentPath = this.activatedRoute.snapshot.children[0].routeConfig.path
     if(!currentPath){
       return "nav-link active"
     }
