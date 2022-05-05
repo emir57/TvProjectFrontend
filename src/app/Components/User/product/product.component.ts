@@ -17,8 +17,6 @@ import { style } from '@angular/animations';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-  productsIsLoad = true;
   currentPage = 1;
   totalPage = [];
   apiUrl = ApiUrl
@@ -44,7 +42,6 @@ export class ProductComponent implements OnInit {
         for (let i = 0; i < response.totalPage; i++) {
           this.totalPage.push(i);
         }
-        this.productsIsLoad = true;
       }, responseErr => {
         console.log(responseErr)
       }, () => {
@@ -62,23 +59,16 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts() {
-    this.productsIsLoad = false;
     this.activatedRoute.params.subscribe(param => {
       if (param["categoryId"]) {
         this.productService.getProductsByCategory(param["categoryId"])
           .subscribe(response => {
             this.products = response.data;
-            setTimeout(() => {
-              this.productsIsLoad = true;
-            }, 500);
           }, err => { },
             () => {
             })
       } else {
         this.getAllProducts();
-        setTimeout(() => {
-          this.productsIsLoad = true;
-        }, 500);
       }
     })
   }
@@ -93,11 +83,11 @@ export class ProductComponent implements OnInit {
     return this.apiUrl;
   }
   increasedPrice() {
-    this.setAnimations($("#productIncrease"),"text-warning");
+    this.setAnimations($("#productIncrease"), "text-warning");
     this.products = this.products.sort((x, y) => x.unitPrice - y.unitPrice);
   }
   decreasingPrice() {
-    this.setAnimations($("#productDecrease"),"text-warning");
+    this.setAnimations($("#productDecrease"), "text-warning");
     this.products = this.products.sort((x, y) => y.unitPrice - x.unitPrice);
   }
 
@@ -105,14 +95,14 @@ export class ProductComponent implements OnInit {
     this.router.navigate(["checkout", product.id])
   }
 
-  setAnimations(element: any, className: string){
+  setAnimations(element: any, className: string) {
     element.addClass(className);
     setTimeout(() => {
       element.removeClass(className);
     }, 1000);
     setTimeout(() => {
-      this.setAnimations(element,className);
+      this.setAnimations(element, className);
     }, 1500);
-}
+  }
 
 }
