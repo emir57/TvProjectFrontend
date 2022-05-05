@@ -7,4 +7,14 @@ declare var $: any;
 export class LoadingService {
 
   constructor() { }
+
+  showLoading(){
+    $("#spinnerDiv").show();
+    $("#spinnerBgDiv").show();
+  }
+
+  closeLoading(){
+    $("#spinnerDiv").hide();
+    $("#spinnerBgDiv").hide();
+  }
 }
