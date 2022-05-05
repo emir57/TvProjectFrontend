@@ -57,14 +57,16 @@ const routes: Routes = [
   { path: "admindashboard/roleupdate/:role", component: AdminRoleUpdateComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
   { path: "admindashboard/uploadimage", component: AdminUploadimageComponent, canActivate: [SecurityGuard, AdminGuard, ExpirationGuard] },
 
-
   //User Panels
-  { path: "profile/home", component: ProfileComponent, canActivate: [SecurityGuard, ExpirationGuard] },
-  { path: "profile/update", component: UserUpdateComponent, canActivate: [SecurityGuard, ExpirationGuard] },
-  { path: "profile/myorders", component: UserOrdersComponent, canActivate: [SecurityGuard, ExpirationGuard] },
-  { path: "profile/mycreditcards", component: UserCreditcardsComponent, canActivate: [SecurityGuard, ExpirationGuard] },
-  { path: "profile/myadresses", component: UserAddressComponent, canActivate: [SecurityGuard, ExpirationGuard] },
-
+  {
+    path: "profile", component: ProfileComponent, children: [
+      { path: "home", component: ProfileComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+      { path: "update", component: UserUpdateComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+      { path: "myorders", component: UserOrdersComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+      { path: "mycreditcards", component: UserCreditcardsComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+      { path: "myadresses", component: UserAddressComponent, canActivate: [SecurityGuard, ExpirationGuard] },
+    ]
+  },
   // {path:"categories",component:CategoryComponent},
 ];
 
