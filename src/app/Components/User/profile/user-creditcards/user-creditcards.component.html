@@ -7,71 +7,61 @@
   </div>
 </div>
 <div id="backgroundDiv"></div>
-<app-navbar></app-navbar>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <app-user-left-panel></app-user-left-panel>
-    </div>
-    <main class="col-9 ms-sm-auto col-lg-10 px-md-4 p-3">
 
-      <!-- Add Form -->
-      <form [formGroup]="addForm">
-        <div class="row">
-          <div class="col-6">
-            <label for="creditCardNumber" class="form-label">Kredi Kartı Numarası</label>
-            <input type="text" formControlName="creditCardNumber" id="creditCardNumber"
-              class="form-control">
-          </div>
-          <div class="col-6" style="position: relative;">
-            <div *ngIf="addForm.get('creditCardNumber').value">
-              <div *ngIf="addForm.get('creditCardNumber').value.startsWith('4')" class="creditCardTypeVisa checkVisa"></div>
-              <div *ngIf="addForm.get('creditCardNumber').value.startsWith('5')" class="creditCardTypeMasterCard checkMasterCard"></div>
-            </div>
-          </div>
-          <div class="col-3">
-            <label for="cvv" class="form-label">CVV</label>
-            <input type="text" formControlName="cvv" id="cvv" class="form-control">
-          </div>
-          <div class="col-3">
-            <label for="date" class="form-label">Tarih</label>
-            <div class="row">
-              <div class="col-5 p-0">
-                <input type="number" formControlName="day" id="day" class="form-control" placeholder="01">
-              </div>
-              <div class="col-2" style="font-size: x-large;">/</div>
-              <div class="col-5 p-0">
-                <input type="number" formControlName="year" id="year" class="form-control" placeholder="22">
-              </div>
-            </div>
-          </div>
+<!-- Add Form -->
+<form [formGroup]="addForm">
+  <div class="row">
+    <div class="col-6">
+      <label for="creditCardNumber" class="form-label">Kredi Kartı Numarası</label>
+      <input type="text" formControlName="creditCardNumber" id="creditCardNumber" class="form-control">
+    </div>
+    <div class="col-6" style="position: relative;">
+      <div *ngIf="addForm.get('creditCardNumber').value">
+        <div *ngIf="addForm.get('creditCardNumber').value.startsWith('4')" class="creditCardTypeVisa checkVisa"></div>
+        <div *ngIf="addForm.get('creditCardNumber').value.startsWith('5')"
+          class="creditCardTypeMasterCard checkMasterCard"></div>
+      </div>
+    </div>
+    <div class="col-3">
+      <label for="cvv" class="form-label">CVV</label>
+      <input type="text" formControlName="cvv" id="cvv" class="form-control">
+    </div>
+    <div class="col-3">
+      <label for="date" class="form-label">Tarih</label>
+      <div class="row">
+        <div class="col-5 p-0">
+          <input type="number" formControlName="day" id="day" class="form-control" placeholder="01">
         </div>
-      </form>
-      <button [disabled]="addForm.invalid" (click)="addCreditCard()" class="btn btn-primary mt-1">
-        Kredi kartını ekle
-      </button>
-      <!-- Add Form End -->
-      <h3 class="display-5 mt-2">Kredi Kartlarım</h3>
-      <hr>
-      <div class="creditCard mb-2" *ngFor="let card of userCreditCards">
-        <button class="btn btn-sm btn-outline-danger deleteBtn" (click)="showDeleteModal(card)">Sil</button>
-        <div class="row">
-          <div class="col-6">
-            <div class="creditCardFront">
-              <div class="creditCardNumber font">{{getCreditCardNumber(card.creditCardNumber)}}</div>
-              <div class="creditCardUserName font">{{getFirstName(card.firstName)}} {{getLastName(card.lastName)}}</div>
-              <div class="creditCardDate font">{{getDay(card.date)}}/{{getYear(card.date)}}</div>
-              <div *ngIf="card.creditCardNumber.startsWith('4')" class="creditCardTypeVisa visaPosition"></div>
-              <div *ngIf="card.creditCardNumber.startsWith('5')" class="creditCardTypeMasterCard masterCardPosition"></div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="creditCardBackGround font black">
-              <div class="creditCardCvv">{{getCvv(card.cvv)}}</div>
-            </div>
-          </div>
+        <div class="col-2" style="font-size: x-large;">/</div>
+        <div class="col-5 p-0">
+          <input type="number" formControlName="year" id="year" class="form-control" placeholder="22">
         </div>
       </div>
-    </main>
+    </div>
+  </div>
+</form>
+<button [disabled]="addForm.invalid" (click)="addCreditCard()" class="btn btn-primary mt-1">
+  Kredi kartını ekle
+</button>
+<!-- Add Form End -->
+<h3 class="display-5 mt-2">Kredi Kartlarım</h3>
+<hr>
+<div class="creditCard mb-2" *ngFor="let card of userCreditCards">
+  <button class="btn btn-sm btn-outline-danger deleteBtn" (click)="showDeleteModal(card)">Sil</button>
+  <div class="row">
+    <div class="col-6">
+      <div class="creditCardFront">
+        <div class="creditCardNumber font">{{getCreditCardNumber(card.creditCardNumber)}}</div>
+        <div class="creditCardUserName font">{{getFirstName(card.firstName)}} {{getLastName(card.lastName)}}</div>
+        <div class="creditCardDate font">{{getDay(card.date)}}/{{getYear(card.date)}}</div>
+        <div *ngIf="card.creditCardNumber.startsWith('4')" class="creditCardTypeVisa visaPosition"></div>
+        <div *ngIf="card.creditCardNumber.startsWith('5')" class="creditCardTypeMasterCard masterCardPosition"></div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="creditCardBackGround font black">
+        <div class="creditCardCvv">{{getCvv(card.cvv)}}</div>
+      </div>
+    </div>
   </div>
 </div>
