@@ -45,50 +45,48 @@
 <!-- Update Form End -->
 
 <div id="backgroundDiv" style="display: none;"></div>
-  <div class="row">
-      <!-- Add Form -->
-      <div class="row">
-        <form [formGroup]="addForm">
-          <div class="col-4 mb-3">
-            <label class="form-label" for="addressName">Adres Adı</label>
-            <input class="form-control" formControlName="addressName" type="text" name="addressName" id="addressName">
-          </div>
-          <div class="col-5 mb-3">
-            <label class="form-label" for="addressText">Açık Adres</label>
-            <textarea class="form-control" formControlName="addressText" style="max-height: 100px;" type="text"
-              name="addressText" id="addressText"></textarea>
-          </div>
-          <div class="col-4 mb-3">
-            <select class="form-control" name="cityId" id="cityId" formControlName="cityId">
-              <option value="0">Şehir Seçiniz</option>
-              <option *ngFor="let city of cities" [value]="city.id">{{city.cityName}}</option>
-            </select>
-          </div>
-        </form>
-        <div class="col-4">
-          <button (click)="addAddress()" [disabled]="!addForm.valid" class="btn btn-primary">
-            Ekle
-          </button>
-        </div>
-      </div>
-      <!-- Add Form End -->
-      <h3 class="display-5 mt-2">Adreslerim</h3>
-      <hr>
-      <!-- Card -->
-      <div class="card mb-3" *ngFor="let address of addresses">
-        <div class="card-header">
-          {{address.addressName}}
-        </div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>{{address.addressText}}</p>
-            <footer class="blockquote-footer"><cite title="Source Title">{{address.cityName}}</cite></footer>
-            <p>
-              <button class="btn btn-primary" (click)="ShowUpdateAddress(address)"><i class="far fa-edit"></i></button>
-              <button class="btn btn-danger" (click)="showdeleteBox(address)"><i class="far fa-trash-alt"></i></button>
-            </p>
-          </blockquote>
-        </div>
-      </div>
-      <!-- Card End -->
+<!-- Add Form -->
+<div class="row">
+  <form [formGroup]="addForm">
+    <div class="col-4 mb-3">
+      <label class="form-label" for="addressName">Adres Adı</label>
+      <input class="form-control" formControlName="addressName" type="text" name="addressName" id="addressName">
+    </div>
+    <div class="col-5 mb-3">
+      <label class="form-label" for="addressText">Açık Adres</label>
+      <textarea class="form-control" formControlName="addressText" style="max-height: 100px;" type="text"
+        name="addressText" id="addressText"></textarea>
+    </div>
+    <div class="col-4 mb-3">
+      <select class="form-control" name="cityId" id="cityId" formControlName="cityId">
+        <option value="0">Şehir Seçiniz</option>
+        <option *ngFor="let city of cities" [value]="city.id">{{city.cityName}}</option>
+      </select>
+    </div>
+  </form>
+  <div class="col-4">
+    <button (click)="addAddress()" [disabled]="!addForm.valid" class="btn btn-primary">
+      Ekle
+    </button>
+  </div>
 </div>
+<!-- Add Form End -->
+<h3 class="display-5 mt-2">Adreslerim</h3>
+<hr>
+<!-- Card -->
+<div class="card mb-3" *ngFor="let address of addresses">
+  <div class="card-header">
+    {{address.addressName}}
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{address.addressText}}</p>
+      <footer class="blockquote-footer"><cite title="Source Title">{{address.cityName}}</cite></footer>
+      <p>
+        <button class="btn btn-primary" (click)="ShowUpdateAddress(address)"><i class="far fa-edit"></i></button>
+        <button class="btn btn-danger" (click)="showdeleteBox(address)"><i class="far fa-trash-alt"></i></button>
+      </p>
+    </blockquote>
+  </div>
+</div>
+<!-- Card End -->
