@@ -10,24 +10,24 @@ import { UserPanelItems } from 'src/app/Models/PanelItems/userItems/userItems';
 })
 export class UserLeftPanelComponent implements OnInit {
 
-  items:PanelItem[]=[]
+  items: PanelItem[] = []
   constructor(
-    private activatedRoute:ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.items = UserPanelItems
   }
 
-  getItemClass(item:PanelItem) {
+  getItemClass(item: PanelItem) {
     let currentPath = this.activatedRoute.snapshot.children[0].routeConfig.path
-    if(!currentPath){
-      return "nav-link active"
+    let getPath = item.link.split('/')[2];
+    if (!currentPath && item.id == 1) {
+      return "nav-link active";
     }
-    let getPath = item.link.split('/')[2]
-    if (currentPath===getPath){
+    else if (currentPath === getPath) {
       return "nav-link active"
-    }else{
+    } else {
       return "nav-link"
     }
   }
