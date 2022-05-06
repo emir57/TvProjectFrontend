@@ -28,10 +28,15 @@ body {
   padding: 10px;
 }
 
-div#charts_main div:nth-child(odd) {
-  border-right: 1px solid black;
+div#charts_main>div {
+  width: 450px;
+  height: auto;
   padding: 10px;
 }
+
+div#charts_main div:nth-child(odd) {
+}
+
 div#charts_main div:nth-child(even) {
   padding-left: 15px;
 }
