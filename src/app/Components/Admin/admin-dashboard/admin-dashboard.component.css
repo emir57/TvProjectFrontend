@@ -38,8 +38,8 @@ div#charts_main div {
   background: #F4F6F6;
   border-radius: 10px;
 
-  -webkit-box-shadow: 7px 6px 22px -7px rgba(0,0,0,0.79);
-box-shadow: 7px 6px 22px -7px rgba(0,0,0,0.79);
+  -webkit-box-shadow: 4px 6px 22px -7px rgba(0,0,0,0.79);
+box-shadow: 4px 6px 22px -7px rgba(0,0,0,0.79);
 }
 
 div#charts_main div:nth-child(odd) {
