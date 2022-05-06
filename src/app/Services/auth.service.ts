@@ -36,7 +36,7 @@ export class AuthService {
   }
   isLogin = false;
 
-  async login(loginModel: LoginModel, rememberMe: boolean) {
+  async login(loginModel: LoginModel, rememberMe: boolean, errorCallBack?: (responseErr) => void, successCallBack?: () => void) {
     let newPath = `${this.apiUrl}/api/auth/login`;
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {

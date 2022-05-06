@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.isOk=false;
       let rememberMe=this.loginForm.get("rememberMe").value;
       let loginModel = Object.assign({}, this.loginForm.value);
-      await this.authService.login(loginModel,rememberMe)
+      this.authService.login(loginModel,rememberMe)
       this.isOk=true;
     }
   }
