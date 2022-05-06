@@ -33,7 +33,6 @@ export class AuthService {
       this.currentUser = response.data;
       this.getRoles();
     })
-    console.log(this.currentUser)
   }
   isLogin = false;
 
