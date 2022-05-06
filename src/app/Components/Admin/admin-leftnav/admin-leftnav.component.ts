@@ -23,10 +23,10 @@ export class AdminLeftnavComponent implements OnInit {
   }
 
   getItemClass(item:PanelItem) {
-    let currentPath = this.activatedRoute.snapshot.url[1].path;
+    let currentPath = this.activatedRoute.snapshot.children[0].url[0].path;
     let getPath = item.link.split('/')[2]
     if(!currentPath){
-      return "nav-link active"
+      return "nav-link"
     }
     else if (currentPath===getPath){
       return "nav-link active"
