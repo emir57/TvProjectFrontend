@@ -27,3 +27,7 @@ body {
   justify-content: start;
   padding: 10px;
 }
+
+#charts_main>div :nth-child(odd) {
+  background-color: red;
+}
