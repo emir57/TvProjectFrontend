@@ -50,6 +50,7 @@ export class AuthService {
           localStorage.setItem("expiration", response.data.accessToken.expiration)
           this.getLoginUser().subscribe(response => {
             this.currentUser = response.data;
+            console.log(this.currentUser)
           })
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)

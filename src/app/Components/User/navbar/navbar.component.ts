@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   userPhoto = `${ApiUrl}/images/user.png`
   isAdmin = false;
   ngOnInit(): void {
-
+    this.currentUser = this.authService.currentUser;
   }
   isLogin() {
     return this.authService.isAuthenticated();
