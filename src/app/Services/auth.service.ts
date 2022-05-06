@@ -26,7 +26,12 @@ export class AuthService {
     private httpClient: HttpClient,
     private toastrService: ToastrService,
     private router: Router
-  ) { }
+  ) {
+    this.getLoginUser().subscribe(response => {
+      this.currentUser = response.data;
+    })
+    console.log(this.currentUser)
+  }
   isLogin = false;
 
   async login(loginModel: LoginModel, rememberMe: boolean) {
@@ -107,9 +112,9 @@ export class AuthService {
     let sessionUser = sessionStorage.getItem("user");
     let localUser = localStorage.getItem("user");
 
-    if (!this.isAuthenticated()) {
-      return this.httpClient.get<ResponseSingleModel<User>>(path)
-    }
+    // if (!this.isAuthenticated()) {
+    //   return this.httpClient.get<ResponseSingleModel<User>>(path)
+    // }
     if (id) {
       path = `${path}${id}`
       return this.httpClient.get<ResponseSingleModel<User>>(path)

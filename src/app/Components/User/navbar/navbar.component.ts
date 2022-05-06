@@ -13,16 +13,13 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private toastrService: ToastrService
   ) {}
-
-  currentUser: User;
   roles: Role[] = []
   userPhoto = `${ApiUrl}/images/user.png`
   isAdmin = false;
   ngOnInit(): void {
-    this.currentUser = this.authService.currentUser;
   }
   isLogin() {
     return this.authService.isAuthenticated();
@@ -35,7 +32,7 @@ export class NavbarComponent implements OnInit {
   }
 
   getRoles() {
-    this.authService.getUserRoles(this.currentUser.id).subscribe(response => {
+    this.authService.getUserRoles(this.authService.currentUser.id).subscribe(response => {
       if (response.isSuccess) {
         this.roles = response.data
       }

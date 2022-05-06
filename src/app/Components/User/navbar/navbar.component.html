@@ -38,7 +38,7 @@
         <div class="dropdown" *ngIf="isLogin()">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{userPhoto}}" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.lastName}}</strong>
+            <strong *ngIf="authService.currentUser">{{authService.currentUser.firstName}} {{authService.currentUser.lastName}}</strong>
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser2">
             <li *ngIf="isInRoleAdmin()"><a class="dropdown-item" routerLink="/admindashboard/home">Admin Paneli</a></li>
