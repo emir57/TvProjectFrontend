@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private toastrService: ToastrService
-  ) { }
+  ) {}
 
   currentUser: User;
   roles: Role[] = []

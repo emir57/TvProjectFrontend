@@ -45,10 +45,9 @@ export class AuthService {
             sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
           }
           sessionStorage.setItem("userInfo", JSON.stringify(response.data.user))
-
           //Expiration
           localStorage.setItem("expiration", response.data.accessToken.expiration)
-          this.getLoginUser().subscribe(response => {
+          this.getLoginUser(response.data.user.id).subscribe(response => {
             this.currentUser = response.data;
             console.log(this.currentUser)
           })
@@ -102,7 +101,7 @@ export class AuthService {
     return this.httpClient.post<ResponseModel>(newPath, resetModel);
   }
 
-  getLoginUser(): Observable<ResponseSingleModel<User>> {
+  getLoginUser(id?: number): Observable<ResponseSingleModel<User>> {
     let path = `${this.apiUrl}/api/auth/getuser/?id=`;
     let sessionUser = sessionStorage.getItem("user");
     let localUser = localStorage.getItem("user");
@@ -110,8 +109,11 @@ export class AuthService {
     if (!this.isAuthenticated()) {
       return this.httpClient.get<ResponseSingleModel<User>>(path)
     }
-
-    if (sessionUser) {
+    if (id) {
+      path = `${path}${id}`
+      return this.httpClient.get<ResponseSingleModel<User>>(path)
+    }
+    else if (sessionUser) {
       path = `${path}${sessionUser}`
       return this.httpClient.get<ResponseSingleModel<User>>(path)
     } else if (localUser) {
