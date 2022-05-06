@@ -29,5 +29,9 @@ body {
 }
 
 div#charts_main div:nth-child(odd) {
-  border-right: 3px solid black;
+  border-right: 1px solid black;
+  padding: 10px;
+}
+div#charts_main div:nth-child(even) {
+  padding-left: 15px;
 }
