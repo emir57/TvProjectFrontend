@@ -99,12 +99,14 @@ export class AuthService {
   }
 
   getLoginUser(): Observable<ResponseSingleModel<User>> {
-    if (!this.isAuthenticated()) {
-      return;
-    }
     let path = `${this.apiUrl}/api/auth/getuser/?id=`;
     let sessionUser = sessionStorage.getItem("user");
     let localUser = localStorage.getItem("user");
+
+    if (!this.isAuthenticated()) {
+      return this.httpClient.get<ResponseSingleModel<User>>(path)
+    }
+
     if (sessionUser) {
       path = `${path}${sessionUser}`
       return this.httpClient.get<ResponseSingleModel<User>>(path)

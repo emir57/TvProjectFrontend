@@ -22,18 +22,14 @@ export class NavbarComponent implements OnInit {
   userPhoto = `${ApiUrl}/images/user.png`
   isAdmin = false;
   ngOnInit(): void {
-    if(this.authService.isAuthenticated()){
-      this.getUser().subscribe(response => {
-        this.currentUser = response.data;
-      }, responseErr => { }
-        , () => {
-          this.getRoles();
-          this.isAdmin = this.isInRoleAdmin();
-        })
-    }
-
+    this.getUser().subscribe(response => {
+      this.currentUser = response.data;
+    }, responseErr => { }
+      , () => {
+        this.getRoles();
+        this.isAdmin = this.isInRoleAdmin();
+      })
   }
-
   isLogin() {
     return this.authService.isAuthenticated();
   }
