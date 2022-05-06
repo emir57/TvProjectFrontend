@@ -30,7 +30,7 @@
       </label>
     </div>
     <button [disabled]="!isOk" [disabled]="!(loginForm.valid)" class="w-100 btn btn-lg btn-primary" (click)="login()">
-      <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;
       <span *ngIf="isOk">Giriş yap</span>
       <span *ngIf="!isOk">Giriş yapılıyor</span>
     </button>
