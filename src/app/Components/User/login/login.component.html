@@ -31,7 +31,8 @@
     </div>
     <button [disabled]="!isOk" [disabled]="!(loginForm.valid)" class="w-100 btn btn-lg btn-primary" (click)="login()">
       <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      Giriş yap
+      <span *ngIf="isOk">Giriş yap</span>
+      <span *ngIf="!isOk">Giriş yapılıyor</span>
     </button>
     <a class="linkButton" routerLink="/register">Hesabın yok mu? Hemen kayıt ol</a>
     <br>
