@@ -1,42 +1,31 @@
-<app-admin-navbar></app-admin-navbar>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <app-admin-leftnav></app-admin-leftnav>
-    </div>
-    <main class="col-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 display-4">Markalar</h1>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          Marka Ara<input type="text" [(ngModel)]="searchString" class="form-control">
-        </div>
-      </div>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Marka Adı</th>
-            <th>Telefon Numarası</th>
-            <th>Adres</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let category of categories | brandSearch:searchString">
-            <td>{{category.id}}</td>
-            <td>{{category.name}}</td>
-            <td>{{category.phoneNumber}} <small *ngIf="!category.phoneNumber" class="text-muted">Belirtilmedi</small></td>
-            <td>{{category.address}} <small *ngIf="!category.address" class="text-muted">Belirtilmedi</small></td>
-            <td>
-              <a class="edit" title="{{category.name}} markasını düzenle" (click)="goUpdatePage(category)"><i class="far fa-edit"></i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2 display-4">Markalar</h1>
+</div>
+<div class="row">
+  <div class="col-4">
+    Marka Ara<input type="text" [(ngModel)]="searchString" class="form-control">
   </div>
 </div>
-
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Marka Adı</th>
+      <th>Telefon Numarası</th>
+      <th>Adres</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories | brandSearch:searchString">
+      <td>{{category.id}}</td>
+      <td>{{category.name}}</td>
+      <td>{{category.phoneNumber}} <small *ngIf="!category.phoneNumber" class="text-muted">Belirtilmedi</small></td>
+      <td>{{category.address}} <small *ngIf="!category.address" class="text-muted">Belirtilmedi</small></td>
+      <td>
+        <a class="edit" title="{{category.name}} markasını düzenle" (click)="goUpdatePage(category)"><i
+            class="far fa-edit"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
