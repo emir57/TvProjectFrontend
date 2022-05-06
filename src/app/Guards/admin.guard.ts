@@ -52,7 +52,7 @@ export class AdminGuard implements CanActivate {
     }
   }
   isInRoleAdmin(): boolean {
-    return this.authService.isInRole(this.roles, this.pageRole);
+    return this.authService.isInRole(this.pageRole);
   }
 
 }

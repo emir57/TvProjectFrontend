@@ -20,7 +20,9 @@ import { NavbarComponent } from '../Components/User/navbar/navbar.component';
   providedIn: 'root'
 })
 export class AuthService {
+
   currentUser: User;
+  roles: Role[] = []
   apiUrl = ApiUrl
   constructor(
     private httpClient: HttpClient,
@@ -29,6 +31,7 @@ export class AuthService {
   ) {
     this.getLoginUser().subscribe(response => {
       this.currentUser = response.data;
+      this.getRoles();
     })
     console.log(this.currentUser)
   }
@@ -57,7 +60,8 @@ export class AuthService {
 
           this.getLoginUser(response.data.user.id).subscribe(response => {
             this.currentUser = response.data;
-          })
+            this.getRoles();
+          });
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
           this.router.navigate(["/"])
@@ -128,14 +132,21 @@ export class AuthService {
     }
   }
 
-  isInRole(roles: Role[], roleName: string): boolean {
+  isInRole(roleName: string): boolean {
     let inRole = false;
-    roles.forEach(role => {
+    this.roles.forEach(role => {
       if (role.name == roleName) {
         inRole = true;
       }
     });
     return inRole;
+  }
+  getRoles() {
+    this.getUserRoles(this.currentUser.id).subscribe(response => {
+      if (response.isSuccess) {
+        this.roles = response.data
+      }
+    })
   }
   getUserRoles(id: number): Observable<ResponseListModel<Role>> {
     let roles: Role[] = []
