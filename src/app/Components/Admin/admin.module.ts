@@ -21,6 +21,7 @@ import { UsersearchModule } from 'src/app/pipes/usersearch/usersearch.module';
 import { BrandsearchModule } from 'src/app/pipes/brandsearch/brandsearch.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { AdminComponent } from './admin.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { RouterModule } from '@angular/router';
     AdminProductsComponent,
     AdminRoleUpdateComponent,
     AdminRolesComponent,
-    AdminUploadimageComponent
+    AdminUploadimageComponent,
+    AdminComponent
   ],
   imports: [
     RouterModule.forChild([
