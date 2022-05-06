@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -14,12 +14,12 @@ import { ResponseSingleModel } from '../Models/response/responseSingleModel';
 import { Role } from '../Models/role';
 import { SendMailModel } from '../Models/sendMailModel';
 import { User } from '../Models/user';
+import { NavbarComponent } from '../Components/User/navbar/navbar.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   currentUser: User;
   apiUrl = ApiUrl
   constructor(
@@ -52,7 +52,6 @@ export class AuthService {
 
           this.getLoginUser(response.data.user.id).subscribe(response => {
             this.currentUser = response.data;
-            console.log(this.currentUser)
           })
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
