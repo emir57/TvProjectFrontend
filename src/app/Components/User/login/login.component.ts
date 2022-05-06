@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  isOk=true;
+  isOk = true;
   loginForm: FormGroup
   constructor(
     private formBuilder: FormBuilder,
@@ -28,22 +28,28 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
-      rememberMe:[false]
+      rememberMe: [false]
     })
 
   }
 
   async login() {
     if (this.loginForm.valid) {
-      this.isOk=false;
-      let rememberMe=this.loginForm.get("rememberMe").value;
+      this.isOk = false;
+      let rememberMe = this.loginForm.get("rememberMe").value;
       let loginModel = Object.assign({}, this.loginForm.value);
-      this.authService.login(loginModel,rememberMe)
-      this.isOk=true;
+      this.authService.login(loginModel, rememberMe,
+        (responseErr) => {
+          this.toastrService.error(responseErr.error.message)
+        },
+        (response) => {
+
+        })
+      this.isOk = true;
     }
   }
 
-  getYear(){
+  getYear() {
     let date = new Date();
     return date.getFullYear();
   }
