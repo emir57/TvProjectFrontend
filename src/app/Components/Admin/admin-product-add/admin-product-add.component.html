@@ -1,138 +1,129 @@
-<app-admin-navbar></app-admin-navbar>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <app-admin-leftnav></app-admin-leftnav>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2 display-4">Ürün Ekle</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminproducts">Geri
+        Gel</button>
     </div>
-    <main class="col-9 ms-sm-auto col-lg-10 px-md-4">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 display-4">Ürün Ekle</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminproducts">Geri Gel</button>
-          </div>
+  </div>
+</div>
+<div class="col-6">
+  <!-- Form Start -->
+  <form [formGroup]="productAddForm" class="" enctype="multipart/form-data">
+    <div class="row">
+      <!-- Product Name -->
+      <div class="form-group col-6 mb-3">
+        <label for="productName">Ürün İsmi</label>
+        <input formControlName="productName" id="productName" type="text" class="form-control"
+          placeholder="Philips 50PUS/8505">
+        <div
+          *ngIf="(productAddForm.get('productName').dirty || productAddForm.get('productName').touched) && productAddForm.get('productName').errors">
+          <span *ngIf="productAddForm.get('productName').errors.required" class="text-danger">Ürün ismi gerekli
+          </span>
+          <span *ngIf="productAddForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi 50
+            karakteri geçemez </span>
+          <span *ngIf="productAddForm.get('productName').errors.minlength" class="text-danger">Ürün ismi 5
+            karakterden küçük olamaz </span>
         </div>
       </div>
-      <div class="col-6">
-        <!-- Form Start -->
-        <form [formGroup]="productAddForm" class="" enctype="multipart/form-data">
-          <div class="row">
-            <!-- Product Name -->
-            <div class="form-group col-6 mb-3">
-              <label for="productName">Ürün İsmi</label>
-              <input formControlName="productName" id="productName" type="text" class="form-control"
-                placeholder="Philips 50PUS/8505">
-              <div
-                *ngIf="(productAddForm.get('productName').dirty || productAddForm.get('productName').touched) && productAddForm.get('productName').errors">
-                <span *ngIf="productAddForm.get('productName').errors.required" class="text-danger">Ürün ismi gerekli
-                </span>
-                <span *ngIf="productAddForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi 50
-                  karakteri geçemez </span>
-                <span *ngIf="productAddForm.get('productName').errors.minlength" class="text-danger">Ürün ismi 5
-                  karakterden küçük olamaz </span>
-              </div>
-            </div>
-            <!-- Product Code -->
-            <div class="form-group col-6 mb-3">
-              <label for="productCode">Ürün Kodu</label>
-              <input formControlName="productCode" id="productCode" type="text" class="form-control"
-                placeholder="Philips 50PUS/8505">
-            </div>
-            <!-- Screen Type -->
-            <div class="form-group col-6 mb-3">
-              <label for="screenType">Ekran Türü</label>
-              <input formControlName="screenType" id="screenType" type="text" class="form-control" placeholder="OLED">
-              <div
-                *ngIf="(productAddForm.get('screenType').dirty || productAddForm.get('screenType').touched) && productAddForm.get('screenType').errors">
-                <span *ngIf="productAddForm.get('screenType').errors.required" class="text-danger">Ekran türü gerekli
-                </span>
-                <span *ngIf="productAddForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü 50
-                  karakteri geçemez</span>
-              </div>
-            </div>
-            <!-- Screen Inch -->
-            <div class="form-group col-6 mb-3">
-              <label for="screenInch">Inç</label>
-              <input formControlName="screenInch" id="screenInch" type="text" class="form-control" placeholder='50"'>
-              <div
-                *ngIf="(productAddForm.get('screenInch').dirty || productAddForm.get('screenInch').touched) && productAddForm.get('screenInch').errors">
-                <span *ngIf="productAddForm.get('screenInch').errors.required" class="text-danger">Inç gerekli </span>
-                <span *ngIf="productAddForm.get('screenInch').errors.maxlength" class="text-danger">Inç 50 karakteri
-                  geçemez</span>
-              </div>
-            </div>
-            <!-- Extras -->
-            <div class="form-group col-12 mb-3">
-              <label for="extras">Ekstra Özellikler</label>
-              <textarea formControlName="extras" id="extras" type="text" class="form-control"
-                placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
-              <div
-                *ngIf="(productAddForm.get('extras').dirty || productAddForm.get('extras').touched) && productAddForm.get('extras').errors">
-                <span *ngIf="productAddForm.get('extras').errors.maxlength" class="text-danger">50 karakteri
-                  geçemez</span>
-              </div>
-            </div>
-            <!-- Brand -->
-            <div class="form-group col-12 mb-3">
-              <select (click)="selectCategory(productAddForm.get('brandId'))" formControlName="brandId" id="brandId" class="form-control">
-                <option *ngIf="!selectedCategory" [value]="productAddForm.get('brandId').value">Marka Seçiniz</option>
-                <option *ngIf="selectedCategory" [value]="productAddForm.get('brandId').value">{{selectedCategory.name}}</option>
-                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-              </select>
-              <span *ngIf="selectedCategory"><span class="text-primary">{{selectedCategory.name}}</span> Seçildi</span>
-              <div
-                *ngIf="(productAddForm.get('brandId').dirty || productAddForm.get('brandId').touched) && productAddForm.get('brandId').errors">
-                <span *ngIf="productAddForm.get('brandId').errors.required" class="text-danger">Marka gerekli </span>
-              </div>
-            </div>
-            <!-- Unit Price -->
-            <div class="form-group col-6 mb-3">
-              <label for="unitPrice">Ürün Fiyatı</label>
-              <input formControlName="unitPrice" id="unitPrice" type="number" class="form-control" placeholder='5000'>
-              <div
-                *ngIf="(productAddForm.get('unitPrice').dirty || productAddForm.get('unitPrice').touched) && productAddForm.get('unitPrice').errors">
-                <span *ngIf="productAddForm.get('unitPrice').errors.required" class="text-danger">Ürün fiyatı gerekli
-                </span>
-                <span *ngIf="productAddForm.get('unitPrice').errors.min" class="text-danger">Minimum 500 olabilir</span>
-              </div>
-            </div>
-            <!-- Discount -->
-            <div class="form-group col-6 mb-3">
-              <label for="unitPrice">İndirim Oranı %</label>
-              <input formControlName="discount" id="discount" type="number" class="form-control" placeholder='5'>
-            </div>
-            <!-- Stock -->
-            <div class="form-group col-12 mb-3">
-              <label for="stock">Stok Adedi</label>
-              <input formControlName="stock" id="stock" type="number" class="form-control" placeholder='3'>
-              <div
-                *ngIf="(productAddForm.get('stock').dirty || productAddForm.get('stock').touched) && productAddForm.get('stock').errors">
-                <span *ngIf="productAddForm.get('stock').errors.required" class="text-danger">Stok adedi boş
-                  olamaz</span>
-                <span *ngIf="productAddForm.get('stock').errors.min" class="text-danger">En az 1 olabilir</span>
-                <span *ngIf="productAddForm.get('stock').errors.max" class="text-danger">En fazla 255 olabilir</span>
-              </div>
-            </div>
-            <!-- Is Discount ?-->
-            <div class="form-group col-6 mb-3">
-              <div class="form-check">
-                <input formControlName="isDiscount" class="form-check-input" type="checkbox"
-                  [value]="productAddForm.get('isDiscount').value" id="isDiscount">
-                <label class="form-check-label" for="isDiscount">
-                  İndirimli Mi?
-                </label>
-              </div>
-            </div>
-          </div>
-        </form>
-        <!-- Form End -->
-        <button [disabled]="!isOk" (click)="addProduct()" [disabled]="!productAddForm.valid" class="btn btn-primary col-12">
-          <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          Kaydet
-        </button>
+      <!-- Product Code -->
+      <div class="form-group col-6 mb-3">
+        <label for="productCode">Ürün Kodu</label>
+        <input formControlName="productCode" id="productCode" type="text" class="form-control"
+          placeholder="Philips 50PUS/8505">
       </div>
-    </main>
-  </div>
+      <!-- Screen Type -->
+      <div class="form-group col-6 mb-3">
+        <label for="screenType">Ekran Türü</label>
+        <input formControlName="screenType" id="screenType" type="text" class="form-control" placeholder="OLED">
+        <div
+          *ngIf="(productAddForm.get('screenType').dirty || productAddForm.get('screenType').touched) && productAddForm.get('screenType').errors">
+          <span *ngIf="productAddForm.get('screenType').errors.required" class="text-danger">Ekran türü gerekli
+          </span>
+          <span *ngIf="productAddForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü 50
+            karakteri geçemez</span>
+        </div>
+      </div>
+      <!-- Screen Inch -->
+      <div class="form-group col-6 mb-3">
+        <label for="screenInch">Inç</label>
+        <input formControlName="screenInch" id="screenInch" type="text" class="form-control" placeholder='50"'>
+        <div
+          *ngIf="(productAddForm.get('screenInch').dirty || productAddForm.get('screenInch').touched) && productAddForm.get('screenInch').errors">
+          <span *ngIf="productAddForm.get('screenInch').errors.required" class="text-danger">Inç gerekli </span>
+          <span *ngIf="productAddForm.get('screenInch').errors.maxlength" class="text-danger">Inç 50 karakteri
+            geçemez</span>
+        </div>
+      </div>
+      <!-- Extras -->
+      <div class="form-group col-12 mb-3">
+        <label for="extras">Ekstra Özellikler</label>
+        <textarea formControlName="extras" id="extras" type="text" class="form-control"
+          placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
+        <div
+          *ngIf="(productAddForm.get('extras').dirty || productAddForm.get('extras').touched) && productAddForm.get('extras').errors">
+          <span *ngIf="productAddForm.get('extras').errors.maxlength" class="text-danger">50 karakteri
+            geçemez</span>
+        </div>
+      </div>
+      <!-- Brand -->
+      <div class="form-group col-12 mb-3">
+        <select (click)="selectCategory(productAddForm.get('brandId'))" formControlName="brandId" id="brandId"
+          class="form-control">
+          <option *ngIf="!selectedCategory" [value]="productAddForm.get('brandId').value">Marka Seçiniz</option>
+          <option *ngIf="selectedCategory" [value]="productAddForm.get('brandId').value">{{selectedCategory.name}}
+          </option>
+          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+        <span *ngIf="selectedCategory"><span class="text-primary">{{selectedCategory.name}}</span> Seçildi</span>
+        <div
+          *ngIf="(productAddForm.get('brandId').dirty || productAddForm.get('brandId').touched) && productAddForm.get('brandId').errors">
+          <span *ngIf="productAddForm.get('brandId').errors.required" class="text-danger">Marka gerekli </span>
+        </div>
+      </div>
+      <!-- Unit Price -->
+      <div class="form-group col-6 mb-3">
+        <label for="unitPrice">Ürün Fiyatı</label>
+        <input formControlName="unitPrice" id="unitPrice" type="number" class="form-control" placeholder='5000'>
+        <div
+          *ngIf="(productAddForm.get('unitPrice').dirty || productAddForm.get('unitPrice').touched) && productAddForm.get('unitPrice').errors">
+          <span *ngIf="productAddForm.get('unitPrice').errors.required" class="text-danger">Ürün fiyatı gerekli
+          </span>
+          <span *ngIf="productAddForm.get('unitPrice').errors.min" class="text-danger">Minimum 500 olabilir</span>
+        </div>
+      </div>
+      <!-- Discount -->
+      <div class="form-group col-6 mb-3">
+        <label for="unitPrice">İndirim Oranı %</label>
+        <input formControlName="discount" id="discount" type="number" class="form-control" placeholder='5'>
+      </div>
+      <!-- Stock -->
+      <div class="form-group col-12 mb-3">
+        <label for="stock">Stok Adedi</label>
+        <input formControlName="stock" id="stock" type="number" class="form-control" placeholder='3'>
+        <div
+          *ngIf="(productAddForm.get('stock').dirty || productAddForm.get('stock').touched) && productAddForm.get('stock').errors">
+          <span *ngIf="productAddForm.get('stock').errors.required" class="text-danger">Stok adedi boş
+            olamaz</span>
+          <span *ngIf="productAddForm.get('stock').errors.min" class="text-danger">En az 1 olabilir</span>
+          <span *ngIf="productAddForm.get('stock').errors.max" class="text-danger">En fazla 255 olabilir</span>
+        </div>
+      </div>
+      <!-- Is Discount ?-->
+      <div class="form-group col-6 mb-3">
+        <div class="form-check">
+          <input formControlName="isDiscount" class="form-check-input" type="checkbox"
+            [value]="productAddForm.get('isDiscount').value" id="isDiscount">
+          <label class="form-check-label" for="isDiscount">
+            İndirimli Mi?
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+  <!-- Form End -->
+  <button [disabled]="!isOk" (click)="addProduct()" [disabled]="!productAddForm.valid" class="btn btn-primary col-12">
+    <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Kaydet
+  </button>
 </div>
