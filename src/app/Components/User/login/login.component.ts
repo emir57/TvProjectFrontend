@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
 
   async login() {
     if (this.loginForm.valid) {
+      this.toastrService.info("Giriş Yapılıyor...")
       this.isOk = false;
       let rememberMe = this.loginForm.get("rememberMe").value;
       let loginModel = Object.assign({}, this.loginForm.value);
@@ -58,7 +59,6 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("userInfo", JSON.stringify(response.data.user))
           //Expiration
           localStorage.setItem("expiration", response.data.accessToken.expiration)
-          this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
           this.isOk = true;
           this.router.navigate(["/"])
