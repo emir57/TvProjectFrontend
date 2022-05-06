@@ -22,9 +22,6 @@ export class AdminDashboardComponent implements OnInit {
     this.getCategoriesWithCount();
     this.getCategoriesWithPriceAverage();
     Chart.register(...registerables);
-    setTimeout(() => {
-
-    }, 1000);
   }
 
   createCategoryProductCountCanv() {
