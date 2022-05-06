@@ -35,9 +35,11 @@ div#charts_main div {
   padding: 10px;
   border: 3px solid #F2F3F4;
   margin: 5px;
+  background: #F4F6F6;
 }
 
 div#charts_main div:nth-child(odd) {
+
 }
 
 div#charts_main div:nth-child(even) {
