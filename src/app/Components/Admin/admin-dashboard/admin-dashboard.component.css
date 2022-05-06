@@ -24,7 +24,7 @@ body {
 
 #charts_main {
   display: flex;
-  justify-content: start;
+  justify-content: space-around;
   padding: 10px;
 }
 
