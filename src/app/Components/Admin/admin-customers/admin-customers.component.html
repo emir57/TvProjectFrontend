@@ -1,44 +1,34 @@
-<app-admin-navbar></app-admin-navbar>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <app-admin-leftnav></app-admin-leftnav>
-    </div>
-    <main class="col-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 display-4">Müşteriler</h1>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          Müşteri Ara<input type="text" [(ngModel)]="searchString" class="form-control">
-        </div>
-      </div>
-      <!-- Table -->
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Adı</th>
-            <th>Soyadı</th>
-            <th>Eposta</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users | userSearch:searchString">
-            <td>{{user.id}}</td>
-            <td>{{user.firstName}}</td>
-            <td>{{user.lastName}} </td>
-            <td>{{user.email}}</td>
-            <td>
-              <a class="edit" title="{{user.firstName}} {{user.lastName}} kullanıcısı düzenle" (click)="goUpdatePage(user)"><i class="far fa-edit"></i></a>
-              <!-- <a class="edit" title="{{user.firstName}} {{user.lastName}} kullanıcısının rollerini düzenle" (click)="goRoleUpdatePage(user)"><i class="fas fa-user-tag"></i></a> -->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- Table End -->
-    </main>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2 display-4">Müşteriler</h1>
+</div>
+<div class="row">
+  <div class="col-4">
+    Müşteri Ara<input type="text" [(ngModel)]="searchString" class="form-control">
   </div>
 </div>
+<!-- Table -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Adı</th>
+      <th>Soyadı</th>
+      <th>Eposta</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | userSearch:searchString">
+      <td>{{user.id}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}} </td>
+      <td>{{user.email}}</td>
+      <td>
+        <a class="edit" title="{{user.firstName}} {{user.lastName}} kullanıcısı düzenle" (click)="goUpdatePage(user)"><i
+            class="far fa-edit"></i></a>
+        <!-- <a class="edit" title="{{user.firstName}} {{user.lastName}} kullanıcısının rollerini düzenle" (click)="goRoleUpdatePage(user)"><i class="fas fa-user-tag"></i></a> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- Table End -->
