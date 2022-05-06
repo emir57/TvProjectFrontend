@@ -20,6 +20,7 @@ import { User } from '../Models/user';
 })
 export class AuthService {
 
+  currentUser: User;
   apiUrl = ApiUrl
   constructor(
     private httpClient: HttpClient,
@@ -47,7 +48,9 @@ export class AuthService {
 
           //Expiration
           localStorage.setItem("expiration", response.data.accessToken.expiration)
-
+          this.getLoginUser().subscribe(response => {
+            this.currentUser = response.data;
+          })
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
           this.isLogin = true;
