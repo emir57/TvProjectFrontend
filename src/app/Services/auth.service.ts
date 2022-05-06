@@ -36,10 +36,11 @@ export class AuthService {
   }
   isLogin = false;
 
-  async login(loginModel: LoginModel, rememberMe: boolean, errorCallBack?: (responseErr) => void, successCallBack?: () => void) {
+  async login(loginModel: LoginModel, rememberMe: boolean, errorCallBack?: (responseErr) => void, successCallBack?: (response: ResponseSingleModel<AuthResponseModel>) => void) {
     let newPath = `${this.apiUrl}/api/auth/login`;
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
+        successCallBack(response);
         if (response.isSuccess) {
           this.isLogin = true;
           localStorage.setItem("remember", JSON.stringify(rememberMe))
