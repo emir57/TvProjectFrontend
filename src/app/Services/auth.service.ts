@@ -40,31 +40,13 @@ export class AuthService {
     let newPath = `${this.apiUrl}/api/auth/login`;
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
-        successCallBack(response);
         if (response.isSuccess) {
-          this.isLogin = true;
-          localStorage.setItem("remember", JSON.stringify(rememberMe))
-          if (rememberMe) {
-            localStorage.setItem("token", response.data.accessToken.token)
-            localStorage.setItem("user", JSON.stringify(response.data.user.id))
-            localStorage.setItem("userInfo", JSON.stringify(response.data.user))
-            sessionStorage.setItem("user", response.data.user.id + "")
-          } else {
-            sessionStorage.setItem("token", response.data.accessToken.token)
-            sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
-          }
-
-          sessionStorage.setItem("userInfo", JSON.stringify(response.data.user))
-          //Expiration
-          localStorage.setItem("expiration", response.data.accessToken.expiration)
-
           this.getLoginUser(response.data.user.id).subscribe(response => {
             this.currentUser = response.data;
             this.getRoles();
           });
-          this.toastrService.info("Giriş Yapılıyor...")
-          this.toastrService.success(response.message)
-          this.router.navigate(["/"])
+          this.isLogin = true;
+          successCallBack(response);
         }
       }, responseErr => {
         errorCallBack(responseErr);
