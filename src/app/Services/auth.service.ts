@@ -68,7 +68,6 @@ export class AuthService {
         }
       }, responseErr => {
         errorCallBack(responseErr);
-        this.toastrService.error(responseErr.error.message)
       })
   }
 
