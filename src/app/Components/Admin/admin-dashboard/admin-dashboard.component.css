@@ -36,6 +36,7 @@ div#charts_main div {
   border: 3px solid #F2F3F4;
   margin: 5px;
   background: #F4F6F6;
+  border-radius: 10px;
 }
 
 div#charts_main div:nth-child(odd) {
