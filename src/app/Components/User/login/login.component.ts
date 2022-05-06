@@ -43,7 +43,22 @@ export class LoginComponent implements OnInit {
           this.toastrService.error(responseErr.error.message)
         },
         (response) => {
-
+          localStorage.setItem("remember", JSON.stringify(rememberMe))
+          if (rememberMe) {
+            localStorage.setItem("token", response.data.accessToken.token)
+            localStorage.setItem("user", JSON.stringify(response.data.user.id))
+            localStorage.setItem("userInfo", JSON.stringify(response.data.user))
+            sessionStorage.setItem("user", response.data.user.id + "")
+          } else {
+            sessionStorage.setItem("token", response.data.accessToken.token)
+            sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
+          }
+          sessionStorage.setItem("userInfo", JSON.stringify(response.data.user))
+          //Expiration
+          localStorage.setItem("expiration", response.data.accessToken.expiration)
+          this.toastrService.info("Giriş Yapılıyor...")
+          this.toastrService.success(response.message)
+          this.router.navigate(["/"])
         })
       this.isOk = true;
     }
