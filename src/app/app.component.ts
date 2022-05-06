@@ -28,5 +28,5 @@ export class AppComponent implements OnInit{
     }
   }
 
-  title = 'TvProjectFrontend';
+  title = 'TvProject';
 }
