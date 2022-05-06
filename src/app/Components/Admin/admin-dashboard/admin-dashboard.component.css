@@ -28,6 +28,6 @@ body {
   padding: 10px;
 }
 
-#charts_main>div :nth-child(odd) {
-  background-color: red;
+div#charts_main div:nth-child(odd) {
+  border-right: 3px solid black;
 }
