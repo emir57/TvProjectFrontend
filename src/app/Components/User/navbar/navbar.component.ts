@@ -38,9 +38,6 @@ export class NavbarComponent implements OnInit {
       }
     })
   }
-  getUser() {
-    return this.authService.getLoginUser()
-  }
   isInRoleAdmin(): boolean {
     return this.authService.isInRole(this.roles, "Admin");
   }
