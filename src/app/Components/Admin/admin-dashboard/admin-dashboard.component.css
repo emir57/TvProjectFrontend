@@ -22,13 +22,13 @@ body {
   }
 }
 
-#charts_main {
+div#charts_main {
   display: flex;
   justify-content: space-around;
   padding: 10px;
 }
 
-div#charts_main>div {
+div#charts_main div {
   width: 450px;
   height: auto;
   padding: 10px;
