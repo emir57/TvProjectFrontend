@@ -44,7 +44,6 @@ const routes: Routes = [
     ]
   },
   //Admin Panels
-
   {
     path: "admindashboard", component: AdminComponent, children: [
       { path: "home", component: AdminDashboardComponent, canActivate: [AdminGuard, ExpirationGuard] },
