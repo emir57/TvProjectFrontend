@@ -34,6 +34,7 @@ export class AuthService {
     return this.httpClient.post<ResponseSingleModel<AuthResponseModel>>(newPath, loginModel)
       .subscribe(response => {
         if (response.isSuccess) {
+          this.isLogin = true;
           localStorage.setItem("remember", JSON.stringify(rememberMe))
           if (rememberMe) {
             localStorage.setItem("token", response.data.accessToken.token)
@@ -44,16 +45,17 @@ export class AuthService {
             sessionStorage.setItem("token", response.data.accessToken.token)
             sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
           }
+
           sessionStorage.setItem("userInfo", JSON.stringify(response.data.user))
           //Expiration
           localStorage.setItem("expiration", response.data.accessToken.expiration)
+
           this.getLoginUser(response.data.user.id).subscribe(response => {
             this.currentUser = response.data;
             console.log(this.currentUser)
           })
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
-          this.isLogin = true;
           this.router.navigate(["/"])
         } else {
           this.toastrService.error(response.message)
@@ -116,7 +118,7 @@ export class AuthService {
     else if (sessionUser) {
       path = `${path}${sessionUser}`
       return this.httpClient.get<ResponseSingleModel<User>>(path)
-    } else if (localUser) {
+    } else {
       path = `${path}${localUser}`
       return this.httpClient.get<ResponseSingleModel<User>>(path)
     }
