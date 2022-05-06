@@ -1,73 +1,60 @@
-<app-admin-navbar></app-admin-navbar>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <app-admin-leftnav></app-admin-leftnav>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2 display-4">Marka Güncelle</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminbrands">Geri
+        Gel</button>
     </div>
-    <main class="col-9 ms-sm-auto col-lg-10 px-md-4">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 display-4">Marka Güncelle</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/admindashboard/adminbrands">Geri
-              Gel</button>
-          </div>
-          <button [disabled]="!isOk" (click)="deleteCategory()" type="button" class="btn btn-sm btn-outline-danger">
-            <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            Bu Markayı Sil
-          </button>
+    <button [disabled]="!isOk" (click)="deleteCategory()" type="button" class="btn btn-sm btn-outline-danger">
+      <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Bu Markayı Sil
+    </button>
+  </div>
+</div>
+<div class="col-6" *ngIf="category">
+  <!-- Form Start -->
+  <form [formGroup]="categoryUpdateForm" class="">
+    <div class="row">
+      <!-- Category Name -->
+      <div class="form-group col-6 mb-3">
+        <label for="name">Ürün İsmi</label>
+        <input formControlName="name" id="name" type="text" class="form-control" placeholder="Philips">
+        <div
+          *ngIf="(categoryUpdateForm.get('name').dirty || categoryUpdateForm.get('name').touched) && categoryUpdateForm.get('name').errors">
+          <span *ngIf="categoryUpdateForm.get('name').errors.required" class="text-danger">Kategori ismi gerekli
+          </span>
+          <span *ngIf="categoryUpdateForm.get('name').errors.maxlength" class="text-danger">Kategori ismi 50
+            karakteri geçemez </span>
         </div>
       </div>
-      <div class="col-6" *ngIf="category">
-        <!-- Form Start -->
-        <form [formGroup]="categoryUpdateForm" class="">
-          <div class="row">
-            <!-- Category Name -->
-            <div class="form-group col-6 mb-3">
-              <label for="name">Ürün İsmi</label>
-              <input formControlName="name" id="name" type="text" class="form-control" placeholder="Philips">
-              <div
-                *ngIf="(categoryUpdateForm.get('name').dirty || categoryUpdateForm.get('name').touched) && categoryUpdateForm.get('name').errors">
-                <span *ngIf="categoryUpdateForm.get('name').errors.required" class="text-danger">Kategori ismi gerekli
-                </span>
-                <span *ngIf="categoryUpdateForm.get('name').errors.maxlength" class="text-danger">Kategori ismi 50
-                  karakteri geçemez </span>
-              </div>
-            </div>
-            <!-- Phone Number -->
-            <div class="form-group col-6 mb-3">
-              <label for="phoneNumber">Telefon Numarası</label>
-              <input formControlName="phoneNumber" id="phoneNumber" type="text" class="form-control"
-                placeholder='000 000 00 00'>
-              <div
-                *ngIf="(categoryUpdateForm.get('phoneNumber').dirty || categoryUpdateForm.get('phoneNumber').touched) && categoryUpdateForm.get('phoneNumber').errors">
-                <span *ngIf="categoryUpdateForm.get('phoneNumber').errors.maxlength" class="text-danger">
-                  Telefon numarası 15 karakteri geçemez
-                </span>
-              </div>
-            </div>
-            <!-- Address -->
-            <div class="form-group col-12 mb-3">
-              <label for="address">Adres</label>
-              <textarea formControlName="address" id="address" type="text" class="form-control"
-                placeholder=""></textarea>
-              <div
-                *ngIf="(categoryUpdateForm.get('address').dirty || categoryUpdateForm.get('address').touched) && categoryUpdateForm.get('address').errors">
-                <span *ngIf="categoryUpdateForm.get('address').errors.maxlength" class="text-danger">250 karakteri
-                  geçemez</span>
-              </div>
-            </div>
-          </div>
-        </form>
-        <!-- Form End -->
-        <button [disabled]="!isOk" [disabled]="!categoryUpdateForm.valid" (click)="updateCategory()"
-          class="btn btn-primary col-12">
-          <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          Kaydet
-        </button>
+      <!-- Phone Number -->
+      <div class="form-group col-6 mb-3">
+        <label for="phoneNumber">Telefon Numarası</label>
+        <input formControlName="phoneNumber" id="phoneNumber" type="text" class="form-control"
+          placeholder='000 000 00 00'>
+        <div
+          *ngIf="(categoryUpdateForm.get('phoneNumber').dirty || categoryUpdateForm.get('phoneNumber').touched) && categoryUpdateForm.get('phoneNumber').errors">
+          <span *ngIf="categoryUpdateForm.get('phoneNumber').errors.maxlength" class="text-danger">
+            Telefon numarası 15 karakteri geçemez
+          </span>
+        </div>
       </div>
-    </main>
-  </div>
+      <!-- Address -->
+      <div class="form-group col-12 mb-3">
+        <label for="address">Adres</label>
+        <textarea formControlName="address" id="address" type="text" class="form-control" placeholder=""></textarea>
+        <div
+          *ngIf="(categoryUpdateForm.get('address').dirty || categoryUpdateForm.get('address').touched) && categoryUpdateForm.get('address').errors">
+          <span *ngIf="categoryUpdateForm.get('address').errors.maxlength" class="text-danger">250 karakteri
+            geçemez</span>
+        </div>
+      </div>
+    </div>
+  </form>
+  <!-- Form End -->
+  <button [disabled]="!isOk" [disabled]="!categoryUpdateForm.valid" (click)="updateCategory()"
+    class="btn btn-primary col-12">
+    <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Kaydet
+  </button>
 </div>
