@@ -58,9 +58,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("expiration", response.data.accessToken.expiration)
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
+          this.isOk = true;
           this.router.navigate(["/"])
         })
-      this.isOk = true;
     }
   }
 
