@@ -65,10 +65,9 @@ export class AuthService {
           this.toastrService.info("Giriş Yapılıyor...")
           this.toastrService.success(response.message)
           this.router.navigate(["/"])
-        } else {
-          this.toastrService.error(response.message)
         }
       }, responseErr => {
+        errorCallBack(responseErr);
         this.toastrService.error(responseErr.error.message)
       })
   }
