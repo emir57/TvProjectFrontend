@@ -99,6 +99,7 @@ export class UserCreditcardsComponent implements OnInit {
     this.selectedCardId = card.id;
     this.deleteAlertService.showAlertBox(`
     <div class="creditCardFront mt-2" align="center">
+      <div class="text-danger">Bu kredi kartını silmek istediğinizden emin misiniz?</div>
       <div class="creditCardNumber font">${this.getCreditCardNumber(card.creditCardNumber)}</div>
       <div class="creditCardUserName font">${this.getFirstName(card.firstName)} ${this.getLastName(card.lastName)}</div>
       <div class="creditCardDate font">${this.getDay(card.date)}/${this.getYear(card.date)}</div>
