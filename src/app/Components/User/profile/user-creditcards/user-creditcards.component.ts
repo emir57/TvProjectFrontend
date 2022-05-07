@@ -5,6 +5,7 @@ import { CreditCardService } from 'src/app/Services/credit-card.service';
 import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
 import $ from 'jquery';
 import { User } from 'src/app/Models/user';
+import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
 
 @Component({
   selector: 'app-user-creditcards',
@@ -13,24 +14,25 @@ import { User } from 'src/app/Models/user';
 })
 export class UserCreditcardsComponent implements OnInit {
 
-  user:User
+  user: User
   today = new Date;
-  cYear = +this.today.getFullYear().toString().substring(2,4);
+  cYear = +this.today.getFullYear().toString().substring(2, 4);
   creditCardNumber: string = "";
   cvv: string = "";
   name: String = "";
   surname: String = "";
-  day:string="";
-  year:string=""
+  day: string = "";
+  year: string = ""
 
-  selectedCardId:number;
+  selectedCardId: number;
   addForm: FormGroup;
   userId: number = +sessionStorage.getItem("user")
-  userCreditCards:CreditCardWithUser[]=[]
+  userCreditCards: CreditCardWithUser[] = []
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
-    private creditCardService:CreditCardService
+    private creditCardService: CreditCardService,
+    private deleteAlertService: DeleteAlertService
   ) { }
 
   ngOnInit(): void {
@@ -41,61 +43,61 @@ export class UserCreditcardsComponent implements OnInit {
     this.deleteModalSettings();
   }
 
-  getCreditCards(){
-    this.creditCardService.getUserCreditCards(this.userId).subscribe(response=>{
-      if(response.isSuccess){
+  getCreditCards() {
+    this.creditCardService.getUserCreditCards(this.userId).subscribe(response => {
+      if (response.isSuccess) {
         this.userCreditCards = response.data;
       }
     })
   }
-  createAddForm(){
+  createAddForm() {
     this.addForm = this.formBuilder.group({
-      creditCardNumber:[,[Validators.required,Validators.maxLength(19),Validators.minLength(16)]],
-      cvv:[,[Validators.required,Validators.maxLength(3),Validators.minLength(2)]],
-      day:[,[Validators.required,Validators.max(31),Validators.min(1)]],
-      year:[,[Validators.required,Validators.min(this.cYear)]]
+      creditCardNumber: [, [Validators.required, Validators.maxLength(19), Validators.minLength(16)]],
+      cvv: [, [Validators.required, Validators.maxLength(3), Validators.minLength(2)]],
+      day: [, [Validators.required, Validators.max(31), Validators.min(1)]],
+      year: [, [Validators.required, Validators.min(this.cYear)]]
     })
   }
-  creditCardFormat(){
+  creditCardFormat() {
     var creditCardNumber = $("#creditCardNumber");
     let creditStatus = false;
-    creditCardNumber.blur(function(){
+    creditCardNumber.blur(function () {
       let trimNumber = "";
       for (let i = 0; i < creditCardNumber.val().length; i++) {
         const c = creditCardNumber.val()[i];
-        if(c != " ") trimNumber+=c;
+        if (c != " ") trimNumber += c;
       }
       console.log(trimNumber)
-      if(creditCardNumber.val()==""){
+      if (creditCardNumber.val() == "") {
         creditStatus = false;
         return;
       }
-      if(creditStatus){
-        let first4 = trimNumber.substring(0,4);
-        let second4 = trimNumber.substring(4,8);
-        let third4 = trimNumber.substring(8,12);
-        let fourth4 = trimNumber.substring(12,16);
-        let completeNumber = first4+" "+second4+" "+third4+" "+fourth4
+      if (creditStatus) {
+        let first4 = trimNumber.substring(0, 4);
+        let second4 = trimNumber.substring(4, 8);
+        let third4 = trimNumber.substring(8, 12);
+        let fourth4 = trimNumber.substring(12, 16);
+        let completeNumber = first4 + " " + second4 + " " + third4 + " " + fourth4
         creditCardNumber.val(completeNumber)
       }
-      if(creditCardNumber.val().length!=19){
+      if (creditCardNumber.val().length != 19) {
         console.log("geçersiz kredi kartı numarası")
       }
-      creditStatus=true;
+      creditStatus = true;
     })
   }
-  deleteModalSettings(){
+  deleteModalSettings() {
     var bgDiv = $("#backgroundDiv");
     var deleteModal = $("#deleteDiv");
-    bgDiv.click(function(){
+    bgDiv.click(function () {
       deleteModal.fadeOut(500);
       bgDiv.fadeOut(1000);
     })
 
   }
-  showDeleteModal(card:CreditCardWithUser){
+  showDeleteModal(card: CreditCardWithUser) {
     this.selectedCardId = card.id;
-    var html = `
+    this.deleteAlertService.showAlertBox(`
     <div class="creditCardFront mt-2" align="center">
       <div class="creditCardNumber font">${this.getCreditCardNumber(card.creditCardNumber)}</div>
       <div class="creditCardUserName font">${this.getFirstName(card.firstName)} ${this.getLastName(card.lastName)}</div>
@@ -104,91 +106,79 @@ export class UserCreditcardsComponent implements OnInit {
       <div *ngIf="${card.creditCardNumber.startsWith('5')}" class="creditCardTypeMasterCard masterCardPosition"></div>
 
       </div>
-    `
-    var bgDiv = $("#backgroundDiv");
-    var deleteModal = $("#deleteDiv");
-    var grid = $("#grid");
-    bgDiv.fadeIn(500);
-    deleteModal.fadeIn(1000);
-    grid.html(html)
-    $(".cancelBtn").click(function(){
-      deleteModal.fadeOut(500);
-      bgDiv.fadeOut(1000);
-    })
-    $("#closeBtn").click(function(){
-      deleteModal.fadeOut(500);
-      bgDiv.fadeOut(1000);
-    })
-
+    `, () => {
+      this.deleteCard();
+    },
+      () => { })
   }
 
-  addCreditCard(){
-    if(this.addForm.valid){
+  addCreditCard() {
+    if (this.addForm.valid) {
       let creditCardNumber = this.addForm.get("creditCardNumber").value;
       let trimNumber = "";
       for (let i = 0; i < creditCardNumber.length; i++) {
         const c = creditCardNumber[i];
-        if(c != " ") trimNumber+=c;
+        if (c != " ") trimNumber += c;
       }
       let day = this.addForm.get("day").value;
-      if(+day >=1 && +day<=9){
-        day = "0"+day
+      if (+day >= 1 && +day <= 9) {
+        day = "0" + day
       }
       let year = this.addForm.get("year").value;
-      let date = day+"/"+year;
+      let date = day + "/" + year;
       this.addForm.get("creditCardNumber").setValue(trimNumber)
       let creditCard = Object.assign({
-        userId:this.userId,
-        date:date,
-        firstName:this.user.firstName,
-        lastName:this.user.lastName,
-      },this.addForm.value)
-      this.creditCardService.add(creditCard).subscribe(response=>{
-        if(response.isSuccess){
+        userId: this.userId,
+        date: date,
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+      }, this.addForm.value)
+      this.creditCardService.add(creditCard).subscribe(response => {
+        if (response.isSuccess) {
           this.toastrService.success(response.message);
           this.userCreditCards.push(creditCard)
         }
-        else{
+        else {
           this.toastrService.error(response.message);
         }
-      },responseErr=>{
+      }, responseErr => {
         console.log(responseErr)
         this.toastrService.error(responseErr.error.Message)
       })
     }
   }
-  deleteCard(){
+  deleteCard() {
 
-    this.creditCardService.delete(this.selectedCardId).subscribe(response=>{
-      if(response.isSuccess){
+    this.creditCardService.delete(this.selectedCardId).subscribe(response => {
+      if (response.isSuccess) {
         this.toastrService.success(response.message);
-        let index =this.userCreditCards.findIndex(x=>x.id==this.selectedCardId);
-        this.userCreditCards.splice(index,1);
+        let index = this.userCreditCards.findIndex(x => x.id == this.selectedCardId);
+        this.userCreditCards.splice(index, 1);
         $("#deleteDiv").fadeOut(500);
         $("#backgroundDiv").fadeOut(1000);
-        this.selectedCardId=-1;
+        this.selectedCardId = -1;
       }
-    },responseErr=>{
+    }, responseErr => {
       this.toastrService.error(responseErr.error.message)
     })
 
   }
-  getYear(date:string){
+  getYear(date: string) {
     return this.creditCardService.getYear(date);
   }
-  getDay(date:string){
+  getDay(date: string) {
     return this.creditCardService.getDay(date);
   }
-  getFirstName(firstName:string){
+  getFirstName(firstName: string) {
     return this.creditCardService.getFirstName(firstName);
   }
-  getLastName(lastName:string){
+  getLastName(lastName: string) {
     return this.creditCardService.getLastName(lastName);
   }
-  getCvv(cvv:string){
+  getCvv(cvv: string) {
     return this.creditCardService.getCvv(cvv);
   }
-  getCreditCardNumber(number:string){
+  getCreditCardNumber(number: string) {
     return this.creditCardService.getCreditCardNumber(number);
   }
 
