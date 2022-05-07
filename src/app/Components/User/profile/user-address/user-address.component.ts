@@ -8,6 +8,7 @@ import { AddressService } from 'src/app/Services/address.service';
 import { CityService } from 'src/app/Services/city.service';
 
 import $ from 'jquery';
+import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
 
 @Component({
   selector: 'app-user-address',
@@ -27,7 +28,8 @@ export class UserAddressComponent implements OnInit {
     private addressService: AddressService,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
-    private cityService: CityService
+    private cityService: CityService,
+    private deleteAlertService: DeleteAlertService
   ) { }
 
   ngOnInit(): void {
@@ -144,24 +146,18 @@ export class UserAddressComponent implements OnInit {
   }
   showdeleteBox(address: UserAddressCityModel) {
     this.selectedAddress = address;
-    $("#deleteBox").fadeIn();
-    $("#deleteBoxBackground").fadeIn();
-    let text = `
+    this.deleteAlertService.showAlertBox(`
     ${address.addressName}
     <br>
     ${address.addressText.substring(0, 30)}...
     <br>
     Bu adresi silmek istediğinizden emin misiniz?
-    `
-    $("#deleteBoxText").html(text);
+    `,
+      () => {
+        this.deleteAddress();
+      },
+      () => {
 
-    $(".deleteBoxClose").click(function () {
-      $("#deleteBox").fadeOut();
-      $("#deleteBoxBackground").fadeOut();
-    })
-    $("#deleteBoxBackground").click(function () {
-      $("#deleteBox").fadeOut();
-      $("#deleteBoxBackground").fadeOut();
-    })
+      })
   }
 }
