@@ -22,6 +22,7 @@ import { BrandsearchModule } from 'src/app/pipes/brandsearch/brandsearch.module'
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { ImageSlideModule } from 'src/app/image-slide/image-slide.module';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { AdminComponent } from './admin.component';
     ProductsearchModule,
     UsersearchModule,
     BrandsearchModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ImageSlideModule
   ]
 })
 export class AdminModule { }
