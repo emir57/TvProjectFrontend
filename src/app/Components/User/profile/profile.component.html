@@ -1,3 +1,36 @@
+<!-- Address Update Form -->
+<div id="updateDiv" style="display: none;">
+  <a id="closeBtn">
+    <i class="fas fa-times"></i>
+  </a>
+  <div class="row">
+    <form [formGroup]="updateForm">
+      <div class="col-12 mb-3">
+        <label class="form-label" for="addressName">Adres Adı</label>
+        <input class="form-control" formControlName="addressName" type="text" name="addressName" id="addressName">
+      </div>
+      <div class="col-12 mb-3">
+        <label class="form-label" for="addressText">Açık Adres</label>
+        <textarea class="form-control" formControlName="addressText" style="max-height: 100px;" type="text"
+          name="addressText" id="addressText"></textarea>
+      </div>
+      <div class="col-12 mb-3">
+        <select class="form-control" name="cityId" id="cityId" formControlName="cityId">
+          <option value="0">Şehir Seçiniz</option>
+          <option *ngFor="let city of cities" [value]="city.id">{{city.cityName}}</option>
+        </select>
+      </div>
+    </form>
+    <div class="col-4">
+      <button (click)="updateAddress()" [disabled]="!updateForm.valid" class="btn btn-primary">
+        Güncelle
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Address Update Form End -->
+
+
 <app-navbar></app-navbar>
 <div class="container-fluid">
   <div class="row">
