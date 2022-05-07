@@ -11,13 +11,7 @@ export class DeleteAlertService {
   showAlertBox(bodyText: string, successCallBack: () => void, errorCallBack: () => void) {
     $("#deleteBox").fadeIn();
     $("#deleteBoxBackground").fadeIn();
-    let text = `
-    ${order.tv.productName}
-    <br>
-    Bu siparişi iptal etmek istediğinizden emin misiniz?
-    `;
-    text = bodyText;
-    $("#deleteBoxText").html(text)
+    $("#deleteBoxText").html(bodyText)
 
     $(".deleteBoxClose").click(function () {
       $("#deleteBox").fadeOut();

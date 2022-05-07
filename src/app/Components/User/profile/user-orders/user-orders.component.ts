@@ -7,6 +7,7 @@ import { User } from 'src/app/Models/user';
 import { OrderService } from 'src/app/Services/order.service';
 import $ from 'jquery';
 import { Order } from 'src/app/Models/order';
+import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
 
 @Component({
   selector: 'app-user-orders',
@@ -20,7 +21,8 @@ export class UserOrdersComponent implements OnInit {
   selectedOrder: OrderModel;
   constructor(
     private orderService: OrderService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private deleteAlertService: DeleteAlertService
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +58,14 @@ export class UserOrdersComponent implements OnInit {
     $("#deleteBoxBackground").fadeOut();
   }
 
-
+  showAlertBox(order: OrderModel) {
+    this.deleteAlertService.showAlertBox(
+      `${order.tv.productName}
+        <br>
+        Bu siparişi iptal etmek istediğinizden emin misiniz?
+    `,
+      () => { },
+      () => { })
+  }
 
 }
