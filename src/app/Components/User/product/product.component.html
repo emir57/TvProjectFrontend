@@ -52,7 +52,7 @@
           <span id="discount" *ngIf="product.isDiscount"
             class="badge rounded-pill bg-danger me-0">-%{{product.discount}}</span>
           <span *ngIf="product.stock==1" class="badge rounded-pill bg-warning me-0 stock1">Stokta 1 Adet</span>
-          <!-- <img src="{{getImageUrl()}}{{product.imageUrl}}" class="card-img-top" [alt]="product.imageUrl"> -->
+          <!-- Discount End -->
           <!-- Carousel Start -->
           <image-slide [photos]="product.photos" [product]="product"></image-slide>
           <!-- Carousel End -->
