@@ -161,22 +161,6 @@
     </button>
   </div>
   <div class="col-md-6">
-    <!-- Carousel Start -->
-    <div class="carousel slide">
-      <div class="carousel-inner">
-        <div *ngFor="let photo of product.photos" [class]="photocheck(photo,product)" id="photo{{photo.id}}">
-          <img width="100%" src="{{apiUrl}}{{photo.imageUrl}}" class="d-block w-100" alt="{{product.productName}}">
-        </div>
-      </div>
-      <button *ngIf="product.photos" class="carousel-control-prev" type="button" id="PrevBtn">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Geri</span>
-      </button>
-      <button *ngIf="product.photos" class="carousel-control-next" type="button" id="NextBtn">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">İleri</span>
-      </button>
-    </div>
-    <!-- Carousel End -->
+    <app-image-slide></app-image-slide>
   </div>
 </div>
