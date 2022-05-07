@@ -21,6 +21,11 @@ export class DeleteAlertService {
     $("#deleteBoxBackground").click(function () {
       $("#deleteBox").fadeOut();
       $("#deleteBoxBackground").fadeOut();
+      errorCallBack();
+    })
+    $("#deleteBoxBtn").click(function () {
+      $("#deleteBox").fadeOut();
+      $("#deleteBoxBackground").fadeOut();
       successCallBack();
     })
   }
