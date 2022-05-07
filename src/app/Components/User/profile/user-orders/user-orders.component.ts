@@ -56,26 +56,6 @@ export class UserOrdersComponent implements OnInit {
     $("#deleteBoxBackground").fadeOut();
   }
 
-  showAlertBox(order: OrderModel) {
-    this.selectedOrder = order;
-    $("#deleteBox").fadeIn();
-    $("#deleteBoxBackground").fadeIn();
-    let text = `
-    ${order.tv.productName}
-    <br>
-    Bu siparişi iptal etmek istediğinizden emin misiniz?
-    `
-    $("#deleteBoxText").html(text)
 
-
-    $(".deleteBoxClose").click(function () {
-      $("#deleteBox").fadeOut();
-      $("#deleteBoxBackground").fadeOut();
-    })
-    $("#deleteBoxBackground").click(function () {
-      $("#deleteBox").fadeOut();
-      $("#deleteBoxBackground").fadeOut();
-    })
-  }
 
 }
