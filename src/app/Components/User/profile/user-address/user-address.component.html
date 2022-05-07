@@ -1,24 +1,18 @@
-<!-- Update Form -->
-
-<!-- Update Form End -->
-
-<div id="backgroundDiv" style="display: none;"></div>
-
 <div class="row">
   <div class="col-md-6">
     <!-- Add Form -->
     <div class="row">
       <form [formGroup]="addForm">
-        <div class="col-4 mb-3">
+        <div class="col-6 mb-3">
           <label class="form-label" for="addressName">Adres Adı</label>
           <input class="form-control" formControlName="addressName" type="text" name="addressName" id="addressName">
         </div>
-        <div class="col-5 mb-3">
+        <div class="col-12 mb-3">
           <label class="form-label" for="addressText">Açık Adres</label>
           <textarea class="form-control" formControlName="addressText" style="max-height: 100px;" type="text"
             name="addressText" id="addressText"></textarea>
         </div>
-        <div class="col-4 mb-3">
+        <div class="col-6 mb-3">
           <select class="form-control" name="cityId" id="cityId" formControlName="cityId">
             <option value="0">Şehir Seçiniz</option>
             <option *ngFor="let city of cities" [value]="city.id">{{city.cityName}}</option>
@@ -34,6 +28,7 @@
     <!-- Add Form End -->
   </div>
   <div class="col-md-6">
+    <!-- Update Form -->
     <div id="updateDiv" style="display: none;">
       <a id="closeBtn">
         <i class="fas fa-times"></i>
@@ -63,6 +58,7 @@
         </div>
       </div>
     </div>
+    <!-- Update Form End -->
   </div>
 </div>
 
