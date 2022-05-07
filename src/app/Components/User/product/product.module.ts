@@ -16,8 +16,7 @@ import { ImageSlideComponent } from 'src/app/image-slide/image-slide.component';
 
 @NgModule({
   declarations: [
-    ProductComponent,
-    ImageSlideComponent
+    ProductComponent
   ],
   imports: [
     CommonModule,
