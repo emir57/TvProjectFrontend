@@ -24,6 +24,7 @@
 </head>
 
 <body>
+  <!-- Load -->
   <div id="spinnerDiv">
     <div class="spinner-border text-light" role="status">
       <span class="visually-hidden">Loading...</span>
@@ -31,6 +32,23 @@
     <span>Yükleniyor</span>
   </div>
   <div id="spinnerBgDiv"></div>
+  <!-- Load End -->
+
+  <!-- Delete Box -->
+  <div id="deleteBox">
+    <a class="closeButton deleteBoxClose">
+      <i class="fas fa-times"></i>
+    </a>
+    <div id="deleteBoxText">
+
+    </div>
+    <div id="deleteBoxButtons">
+      <button class="" class="btn btn-secondary me-1 deleteBoxClose">Vazgeç</button>
+      <button (click)="deleteOrder()" id="deleteOrder" class="btn btn-danger">İptal Et</button>
+    </div>
+  </div>
+  <div id="deleteBoxBackground"></div>
+  <!-- Delete Box End -->
   <router-outlet></router-outlet>
 
 
