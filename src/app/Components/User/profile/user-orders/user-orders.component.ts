@@ -54,18 +54,19 @@ export class UserOrdersComponent implements OnInit {
         this.toastrService.error(response.message)
       }
     })
-    $("#deleteBox").fadeOut();
-    $("#deleteBoxBackground").fadeOut();
   }
 
   showAlertBox(order: OrderModel) {
+    this.selectedOrder = order;
     this.deleteAlertService.showAlertBox(
       `${order.tv.productName}
         <br>
         Bu siparişi iptal etmek istediğinizden emin misiniz?
     `,
-      () => { },
-      () => { })
+      () => {
+        this.deleteOrder();
+      },
+      () => {})
   }
 
 }
