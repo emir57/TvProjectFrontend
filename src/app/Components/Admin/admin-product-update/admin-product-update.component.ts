@@ -100,7 +100,7 @@ export class AdminProductUpdateComponent implements OnInit {
       unitPrice: [this.product.unitPrice, [Validators.required, Validators.min(500)]],
       discount: [this.product.discount, []],
       isDiscount: [this.product.isDiscount, []],
-      stock: [this.product.stock, [Validators.required, Validators.min(1), Validators.max(255)]],
+      stock: [this.product.stock, [Validators.required, Validators.min(0), Validators.max(255)]],
       photos: [this.product.photos]
     })
   }
