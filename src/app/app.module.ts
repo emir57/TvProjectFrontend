@@ -15,11 +15,11 @@ import { UserModule } from './Components/User/user.module';
 import { AdminModule } from './Components/Admin/admin.module';
 import { RouterModule } from '@angular/router';
 import { ImageSlideComponent } from './image-slide/image-slide.component';
-import { ProductCardComponent } from './product-card/product-card.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
