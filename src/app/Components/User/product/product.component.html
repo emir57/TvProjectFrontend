@@ -36,6 +36,7 @@
         <div class="alert alert-info" align="center" *ngIf="products.length==0">
           Bu Kategoride Henüz Ürünümüz Yok.
         </div>
+        <product-card></product-card>
         <!-- Product Cards Start -->
         <div class="card m-1" style="width: 18rem;" *ngFor="let product of products | productSearch:searchString">
           <div *ngIf="product.stock==0" class="stock0"><span class="display-6 stock0Text">Tükendi</span></div>
