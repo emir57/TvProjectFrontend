@@ -62,12 +62,6 @@
   background-color: pink;
 }
 
-#deleteBoxButtons {
-  padding-right: 3px;
-  right: 1%;
-  bottom: 1%;
-}
-
 #deleteBoxBackground {
   z-index: 200;
   width: 100%;
