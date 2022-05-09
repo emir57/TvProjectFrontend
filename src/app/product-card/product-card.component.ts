@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProductAndPhoto } from '../Models/productAndPhoto';
 
 @Component({
-  selector: 'app-product-card',
+  selector: 'product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
