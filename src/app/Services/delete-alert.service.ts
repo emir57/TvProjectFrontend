@@ -40,7 +40,6 @@ export class DeleteAlertService {
           }, 100);
         }, 100);
       }
-      errorCallBack();
     })
     deleteBoxBtn.click(function () {
       deleteBox.fadeOut();
