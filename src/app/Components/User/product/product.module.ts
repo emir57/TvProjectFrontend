@@ -12,6 +12,7 @@ import { DiscountModule } from 'src/app/pipes/discount/discount.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ImageSlideComponent } from 'src/app/image-slide/image-slide.component';
 import { ImageSlideModule } from 'src/app/image-slide/image-slide.module';
+import { ProductCardModule } from 'src/app/product-card/product-card.module';
 
 
 
@@ -29,7 +30,8 @@ import { ImageSlideModule } from 'src/app/image-slide/image-slide.module';
     DiscountModule,
     CategoryModule,
     AppRoutingModule,
-    ImageSlideModule
+    ImageSlideModule,
+    ProductCardModule
   ]
 })
 export class ProductModule { }
