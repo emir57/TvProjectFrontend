@@ -6,6 +6,7 @@
         Gel</button>
       <button (click)="deleteProduct()" id="deleteButton" class="btn btn-sm btn-outline-danger" [disabled]="!isOk" [disabled]="!product"
         type="button">
+        <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         Bu Ürünü Sil
       </button>
     </div>
