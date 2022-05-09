@@ -17,22 +17,13 @@ export class DeleteAlertService {
 
     deleteBoxText.html(bodyText);
 
-    deleteBox.show();
-    deleteBox.css("transition", "opacity .5s")
-    deleteBox.animate({
-      opacity: 100,
-      top: "10%"
-    }, 400);
-
+    deleteBox.fadeIn();
+    deleteBox.css("top","10%");
     deleteBoxBackground.fadeIn();
 
     deleteBoxClose.click(function () {
-      deleteBox.css("transition", "none")
-      deleteBox.animate({
-        opacity: 0,
-        top: "5%"
-      }, 400);
-      deleteBox.hide(100);
+      deleteBox.css("top","5%");
+      deleteBox.fadeOut();
       deleteBoxBackground.fadeOut();
       errorCallBack();
     })
