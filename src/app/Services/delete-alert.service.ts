@@ -29,7 +29,7 @@ export class DeleteAlertService {
         opacity: 0,
         top: "5%"
       }, 400);
-      deleteBox.fadeOut(500);
+      deleteBox.hide(500);
       deleteBoxBackground.fadeOut();
       errorCallBack();
     })
