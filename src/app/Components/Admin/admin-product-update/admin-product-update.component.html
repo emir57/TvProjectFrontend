@@ -30,7 +30,7 @@
             </span>
             <span *ngIf="productUpdateForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi {{productUpdateForm.get('productName').errors.maxlength.requiredLength}}
               karakteri geçemez </span>
-            <span *ngIf="productUpdateForm.get('productName').errors.minlength" class="text-danger">Ürün ismi 5
+            <span *ngIf="productUpdateForm.get('productName').errors.minlength" class="text-danger">Ürün ismi {{productUpdateForm.get('productName').errors.minlength.requiredLength}}
               karakterden küçük olamaz </span>
           </div>
         </div>
@@ -49,7 +49,7 @@
             <span *ngIf="productUpdateForm.get('screenType').errors.required" class="text-danger">Ekran türü
               gerekli
             </span>
-            <span *ngIf="productUpdateForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü 50
+            <span *ngIf="productUpdateForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü {{productUpdateForm.get('screenType').errors.maxlength.requiredLength}}
               karakteri geçemez</span>
           </div>
         </div>
@@ -61,7 +61,7 @@
             *ngIf="(productUpdateForm.get('screenInch').dirty || productUpdateForm.get('screenInch').touched) && productUpdateForm.get('screenInch').errors">
             <span *ngIf="productUpdateForm.get('screenInch').errors.required" class="text-danger">Inç gerekli
             </span>
-            <span *ngIf="productUpdateForm.get('screenInch').errors.maxlength" class="text-danger">Inç 50
+            <span *ngIf="productUpdateForm.get('screenInch').errors.maxlength" class="text-danger">Inç {{productUpdateForm.get('screenInch').errors.maxlength.requiredLength}}
               karakteri
               geçemez</span>
           </div>
@@ -73,7 +73,7 @@
             placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
           <div
             *ngIf="(productUpdateForm.get('extras').dirty || productUpdateForm.get('extras').touched) && productUpdateForm.get('extras').errors">
-            <span *ngIf="productUpdateForm.get('extras').errors.maxlength" class="text-danger">50 karakteri
+            <span *ngIf="productUpdateForm.get('extras').errors.maxlength" class="text-danger">{{productUpdateForm.get('extras').errors.maxlength.requiredLength}} karakteri
               geçemez</span>
           </div>
         </div>
