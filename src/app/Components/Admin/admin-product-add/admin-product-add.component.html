@@ -20,9 +20,9 @@
           *ngIf="(productAddForm.get('productName').dirty || productAddForm.get('productName').touched) && productAddForm.get('productName').errors">
           <span *ngIf="productAddForm.get('productName').errors.required" class="text-danger">Ürün ismi gerekli
           </span>
-          <span *ngIf="productAddForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi 50
+          <span *ngIf="productAddForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi {{productAddForm.get('productName').errors.maxlength.requiredLength}}
             karakteri geçemez </span>
-          <span *ngIf="productAddForm.get('productName').errors.minlength" class="text-danger">Ürün ismi 5
+          <span *ngIf="productAddForm.get('productName').errors.minlength" class="text-danger">Ürün ismi {{productAddForm.get('productName').errors.minlength.requiredLength}}
             karakterden küçük olamaz </span>
         </div>
       </div>
@@ -40,7 +40,7 @@
           *ngIf="(productAddForm.get('screenType').dirty || productAddForm.get('screenType').touched) && productAddForm.get('screenType').errors">
           <span *ngIf="productAddForm.get('screenType').errors.required" class="text-danger">Ekran türü gerekli
           </span>
-          <span *ngIf="productAddForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü 50
+          <span *ngIf="productAddForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü {{productAddForm.get('screenType').errors.maxlength.requiredLength}}
             karakteri geçemez</span>
         </div>
       </div>
@@ -51,7 +51,7 @@
         <div
           *ngIf="(productAddForm.get('screenInch').dirty || productAddForm.get('screenInch').touched) && productAddForm.get('screenInch').errors">
           <span *ngIf="productAddForm.get('screenInch').errors.required" class="text-danger">Inç gerekli </span>
-          <span *ngIf="productAddForm.get('screenInch').errors.maxlength" class="text-danger">Inç 50 karakteri
+          <span *ngIf="productAddForm.get('screenInch').errors.maxlength" class="text-danger">Inç {{productAddForm.get('screenInch').errors.maxlength.requiredLength}} karakteri
             geçemez</span>
         </div>
       </div>
@@ -62,7 +62,7 @@
           placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
         <div
           *ngIf="(productAddForm.get('extras').dirty || productAddForm.get('extras').touched) && productAddForm.get('extras').errors">
-          <span *ngIf="productAddForm.get('extras').errors.maxlength" class="text-danger">50 karakteri
+          <span *ngIf="productAddForm.get('extras').errors.maxlength" class="text-danger">{{productAddForm.get('extras').errors.maxlength.requiredLength}} karakteri
             geçemez</span>
         </div>
       </div>
