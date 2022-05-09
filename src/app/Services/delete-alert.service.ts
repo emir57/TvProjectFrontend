@@ -25,8 +25,21 @@ export class DeleteAlertService {
       errorCallBack();
     })
     deleteBoxBackground.click(function () {
-      deleteBox.fadeOut();
-      deleteBoxBackground.fadeOut();
+      {
+        deleteBox.animate({
+          left: "+=5px"
+        }, 100);
+        setTimeout(() => {
+          deleteBox.animate({
+            left: "-=10px"
+          }, 100);
+        }, 100);
+        setTimeout(() => {
+          deleteBox.animate({
+            left: "+=5px"
+          }, 100);
+        }, 100);
+      }
       errorCallBack();
     })
     deleteBoxBtn.click(function () {
@@ -34,5 +47,9 @@ export class DeleteAlertService {
       deleteBoxBackground.fadeOut();
       successCallBack();
     })
+  }
+
+  deleteBoxNotCloseAnimation() {
+
   }
 }
