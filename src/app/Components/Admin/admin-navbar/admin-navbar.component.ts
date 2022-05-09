@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
 import { User } from 'src/app/Models/user';
 import { AuthService } from 'src/app/Services/auth.service';
+import { ProductService } from 'src/app/Services/product.service';
 @Component({
   selector: 'app-admin-navbar',
   templateUrl: './admin-navbar.component.html',
@@ -8,15 +10,30 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class AdminNavbarComponent implements OnInit {
 
-  currentUser:User
+  currentUser: User;
+  products: ProductAndPhoto[];
   constructor(
-    private authService:AuthService
+    private authService: AuthService,
+    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
-    this.authService.getLoginUser().subscribe(response=>{
-      if(response.isSuccess){
-        this.currentUser=response.data;
+    this.getLoginUser();
+    this.getProducts();
+  }
+
+  getLoginUser() {
+    this.authService.getLoginUser().subscribe(response => {
+      if (response.isSuccess) {
+        this.currentUser = response.data;
+      }
+    })
+  }
+
+  getProducts() {
+    this.productService.getProducts(0).subscribe(response => {
+      if (response.isSuccess) {
+        console.log(response)
       }
     })
   }
