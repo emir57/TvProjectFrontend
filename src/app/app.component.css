@@ -44,7 +44,11 @@
   align-items: center;
 }
 
-#deleteBox>div#top>a {
+#deleteBox>div#top>span:first-child {
+  font-size: 25px;
+}
+
+#deleteBox>div#top>span:last-child {
   font-size: 25px;
   padding-right: 10px;
 }
