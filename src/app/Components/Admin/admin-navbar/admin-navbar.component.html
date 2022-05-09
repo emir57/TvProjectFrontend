@@ -6,11 +6,7 @@
   <div class="w-100">
     <input class="form-control form-control-dark w-100" type="text" placeholder="Ara" aria-label="Search">
     <ul class="list-group w-75" style="position: absolute;">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
+      <li class="list-group-item" *ngFor="let product of products">{{product.productName}}</li>
     </ul>
   </div>
   <div class="navbar-nav">

@@ -33,7 +33,7 @@ export class AdminNavbarComponent implements OnInit {
   getProducts() {
     this.productService.getProducts(0).subscribe(response => {
       if (response.isSuccess) {
-        console.log(response)
+        this.products = response.data;
       }
     })
   }
