@@ -45,6 +45,7 @@
 }
 
 #deleteBox>div#top>span:first-child {
+  margin-right: auto;
   font-size: 25px;
 }
 
