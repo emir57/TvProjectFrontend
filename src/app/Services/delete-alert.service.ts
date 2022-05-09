@@ -12,7 +12,7 @@ export class DeleteAlertService {
     const deleteBox = $("#deleteBox");
     const deleteBoxBackground = $("#deleteBoxBackground");
     const deleteBoxText = $("#middle");
-    const deleteBoxClose = $(".deleteBoxClose");
+    const deleteBoxClose = $(".closeButton");
     const deleteBoxBtn = $("#deleteBoxBtn");
 
     deleteBox.fadeIn();
