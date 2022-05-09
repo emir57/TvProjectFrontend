@@ -1,1 +1,28 @@
-<p>product-card works!</p>
+<div class="card m-1" style="width: 18rem;" *ngFor="let product of products | productSearch:searchString">
+  <div *ngIf="product.stock==0" class="stock0"><span class="display-6 stock0Text">Tükendi</span></div>
+  <!-- Discount -->
+  <span id="discount" *ngIf="product.isDiscount" class="badge rounded-pill bg-danger me-0">-%{{product.discount}}</span>
+  <span *ngIf="product.stock==1" class="badge rounded-pill bg-warning me-0 stock1">Stokta 1 Adet</span>
+  <!-- Discount End -->
+  <!-- Carousel Start -->
+  <image-slide [photos]="product.photos" [product]="product"></image-slide>
+  <!-- Carousel End -->
+  <!-- Body -->
+  <div class="card-body">
+    <h5 class="card-title">{{product.productName}}</h5>
+    <p class="card-text">Ürün Kodu: <span *ngIf="product.productCode">{{product.productCode}}</span><span
+        class="text-muted" *ngIf="!product.productCode">Belirtilmedi</span></p>
+    <p class="card-text">{{product.screenType}} {{product.screenInch}}</p>
+    <p class="card-text">{{product.extras}}</p>
+  </div>
+  <!-- Body End -->
+  <!-- Footer -->
+  <div class="card-footer">
+    <p class="card-text"><span class="text-muted"><del *ngIf="product.isDiscount">{{product.unitPrice |
+          currency:'TRY'}}</del></span>
+      {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} </p>
+    <button [disabled]="!product.stock" (click)="goCheckout(product)" class="btn btn-primary">Hemen Satın
+      Al</button>
+  </div>
+  <!-- Footer End -->
+</div>
