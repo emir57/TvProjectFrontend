@@ -48,7 +48,8 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   goUpdatePage(product: Product) {
-    this.router.navigate(["admindashboard/productupdate",product.id]);
+    this.searchString = "";
+    this.router.navigate(["admindashboard/productupdate", product.id]);
   }
 
 }
