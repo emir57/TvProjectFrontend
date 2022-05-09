@@ -94,7 +94,6 @@ export class AdminCategoryUpdateComponent implements OnInit {
         })
       },
       () => {
-        this.toastrService.info("Silme işlemi iptal edildi");
         this.isOk = true;
       })
   }
