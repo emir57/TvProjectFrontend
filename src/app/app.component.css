@@ -36,9 +36,9 @@
 #deleteBoxText{
   margin-top: 5%;
   padding:10px;
+  background-color: red;
 }
 #deleteBoxButtons{
-  position: absolute;
   padding-right: 3px;
   right: 1%;
   bottom: 1%;
