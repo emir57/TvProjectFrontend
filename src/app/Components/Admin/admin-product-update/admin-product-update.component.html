@@ -28,7 +28,7 @@
             <span *ngIf="productUpdateForm.get('productName').errors.required" class="text-danger">Ürün ismi
               gerekli
             </span>
-            <span *ngIf="productUpdateForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi 50
+            <span *ngIf="productUpdateForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi {{productUpdateForm.get('productName').errors.maxlength.requiredLength}}
               karakteri geçemez </span>
             <span *ngIf="productUpdateForm.get('productName').errors.minlength" class="text-danger">Ürün ismi 5
               karakterden küçük olamaz </span>
