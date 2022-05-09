@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiUrl } from 'src/app/Models/apiUrl';
 import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
 import { User } from 'src/app/Models/user';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -10,6 +11,7 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class AdminNavbarComponent implements OnInit {
 
+  apiUrl = ApiUrl;
   searchString: string = "";
   currentUser: User;
   products: ProductAndPhoto[];
@@ -21,6 +23,9 @@ export class AdminNavbarComponent implements OnInit {
   ngOnInit(): void {
     this.getLoginUser();
     this.getProducts();
+  }
+  getImageUrl() {
+    return this.apiUrl;
   }
 
   getLoginUser() {
