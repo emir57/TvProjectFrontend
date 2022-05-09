@@ -46,26 +46,36 @@ export class ImageSlideComponent implements OnInit {
         }
       }
       var photos = $(`.photoProduct${this.product.id}`);
+      let currentIndex = 0;
       let i = 0;
       photosDisplayNone(photos);
-      this.photos.forEach(photo => {
+      this.photos.forEach((photo, index) => {
         if (photo.isMain) {
           $(`#photo${photo.id}`).show();
+          currentIndex = index;
         }
       })
       $(`#productNextBtn${this.product.id}`).click(function () {
         i++;
-        photosDisplayNone(photos);
+        if (currentIndex === i) {
+          i++;
+        }
         if (i > photos.length - 1) {
           i = 0;
         }
+        currentIndex = i;
+        photosDisplayNone(photos);
         photos[i].style.display = "block";
       })
       $(`#productPrevBtn${this.product.id}`).click(function () {
         i--;
+        if (currentIndex === i) {
+          i--;
+        }
         if (i < 0) {
           i = photos.length - 1;
         }
+        currentIndex = i;
         photosDisplayNone(photos);
         photos[i].style.display = "block";
       })
