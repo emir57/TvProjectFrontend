@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class AdminNavbarComponent implements OnInit {
 
+  searchString: string = "";
   currentUser: User;
   products: ProductAndPhoto[];
   constructor(

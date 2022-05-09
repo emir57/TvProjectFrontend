@@ -1,12 +1,16 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" routerLink="/admindashboard/home"><span *ngIf="currentUser">{{currentUser.firstName}}</span> Hoşgeldiniz</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" routerLink="/admindashboard/home"><span
+      *ngIf="currentUser">{{currentUser.firstName}}</span> Hoşgeldiniz</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="w-100">
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Ara" aria-label="Search">
+    <input [(ngModel)]="searchString" class="form-control form-control-dark w-100" type="text" placeholder="Ara"
+      aria-label="Search">
     <ul class="list-group w-75" style="position: absolute;">
-      <li class="list-group-item" *ngFor="let product of products">{{product.productName}}</li>
+      <li class="list-group-item" *ngFor="let product of products | productSearch:searchString">{{product.productName}}
+      </li>
     </ul>
   </div>
   <div class="navbar-nav">
