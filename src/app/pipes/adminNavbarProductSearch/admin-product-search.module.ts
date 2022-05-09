@@ -5,10 +5,11 @@ import { AdminProductSearchPipe } from './admin-product-search.pipe';
 
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
+  declarations: [
     AdminProductSearchPipe
+  ],
+  imports: [
+    CommonModule
   ], exports: [
     AdminProductSearchPipe
   ]
