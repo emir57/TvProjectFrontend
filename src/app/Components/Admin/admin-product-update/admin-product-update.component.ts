@@ -73,6 +73,7 @@ export class AdminProductUpdateComponent implements OnInit {
     }
   }
   deleteProduct() {
+    this.isOk = false;
     this.deleteAlertService.showAlertBox("Bu ürünü silmek istediğinizden eminmisiniz?",
       () => {
         this.productService.deleteProduct(this.product).subscribe(response => {
@@ -84,7 +85,8 @@ export class AdminProductUpdateComponent implements OnInit {
         })
       },
       () => {
-        this.toastrService.info("Silme işlemi iptal edildi.")
+        this.toastrService.info("Silme işlemi iptal edildi.");
+        this.isOk = true;
       })
   }
   async createproductUpdateForm() {
