@@ -13,13 +13,16 @@
           <input [(ngModel)]="searchString" placeholder="Ürün Ara" type="text" class="form-control mb-1">
         </div>
         <div class="col-12">
-          <a (click)="getProducts()" id="productResetBtn" class="filterOptionsButton"><i class="fas fa-redo"></i> Sıfırla</a>
+          <a (click)="getProducts()" id="productResetBtn" class="filterOptionsButton"><i class="fas fa-redo"></i>
+            Sıfırla</a>
         </div>
         <div class="col-12">
-          <a (click)="increasedPrice()" id="productIncrease" class="filterOptionsButton"><i class="fas fa-chevron-up"></i> Artan Fiyat</a>
+          <a (click)="increasedPrice()" id="productIncrease" class="filterOptionsButton"><i
+              class="fas fa-chevron-up"></i> Artan Fiyat</a>
         </div>
         <div class="col-12">
-          <a (click)="decreasingPrice()" id="productDecrease" class="filterOptionsButton"><i class="fas fa-chevron-down"></i> Azalan
+          <a (click)="decreasingPrice()" id="productDecrease" class="filterOptionsButton"><i
+              class="fas fa-chevron-down"></i> Azalan
             Fiyat</a>
         </div>
       </div>
@@ -36,9 +39,11 @@
         <div class="alert alert-info" align="center" *ngIf="products.length==0">
           Bu Kategoride Henüz Ürünümüz Yok.
         </div>
-        <product-card *ngFor="let product of products | productSearch:searchString" [product]="product"></product-card>
         <!-- Product Cards Start -->
-
+        <div class="card-group">
+          <product-card [product]="product" *ngFor="let product of products | productSearch:searchString">
+          </product-card>
+        </div>
       </div>
     </div>
     <!-- RightPanel End -->
