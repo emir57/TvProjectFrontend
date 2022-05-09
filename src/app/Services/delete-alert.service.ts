@@ -36,16 +36,16 @@ export class DeleteAlertService {
     deleteBoxBackground.click(function () {
       {
         deleteBox.animate({
-          left: "+=5px"
+          left: "+=2px"
         }, 100);
         setTimeout(() => {
           deleteBox.animate({
-            left: "-=10px"
+            left: "-=4px"
           }, 100);
         }, 100);
         setTimeout(() => {
           deleteBox.animate({
-            left: "+=5px"
+            left: "+=2px"
           }, 100);
         }, 100);
       }
