@@ -25,7 +25,11 @@ export class DeleteAlertService {
     deleteBoxText.html(bodyText);
 
     deleteBoxClose.click(function () {
-      deleteBox.fadeOut();
+      deleteBox.animate({
+        opacity: 0,
+        top: "5%"
+      }, 400);
+      deleteBox.fadeOut(500);
       deleteBoxBackground.fadeOut();
       errorCallBack();
     })
