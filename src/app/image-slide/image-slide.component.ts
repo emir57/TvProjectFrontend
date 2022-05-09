@@ -39,46 +39,40 @@ export class ImageSlideComponent implements OnInit {
   }
 
   ImageSlide() {
-    setTimeout(() => {
-      function photosDisplayNone(photos) {
-        for (let i = 0; i < photos.length; i++) {
-          photos[i].style.display = "none"
-        }
+    function photosDisplayNone(photos) {
+      for (let i = 0; i < photos.length; i++) {
+        photos[i].style.display = "none"
       }
-      var photos = $(`.photoProduct${this.product.id}`);
-      let currentIndex = 0;
-      let i = 0;
+    }
+    var photos = $(`.photoProduct${this.product.id}`);
+    let currentIndex = 0;
+    let i = 0;
+    photosDisplayNone(photos);
+    this.photos.forEach((photo, index) => {
+      if (photo.isMain) {
+        $(`#photo${photo.id}`).show();
+        currentIndex = index;
+      }
+    })
+    $(`#productNextBtn${this.product.id}`).click(function () {
+      i++;
       photosDisplayNone(photos);
-      this.photos.forEach((photo, index) => {
-        if (photo.isMain) {
-          $(`#photo${photo.id}`).show();
-          currentIndex = index;
-        }
-      })
-      $(`#productNextBtn${this.product.id}`).click(function () {
-        i++;
-        if (currentIndex === i) {
-          i++;
-        }
-        if (i > photos.length - 1) {
-          i = 0;
-        }
-        currentIndex = i;
-        photosDisplayNone(photos);
-        photos[i].style.display = "block";
-      })
-      $(`#productPrevBtn${this.product.id}`).click(function () {
-        i--;
-        if (currentIndex === i) {
-          i--;
-        }
-        if (i < 0) {
-          i = photos.length - 1;
-        }
-        currentIndex = i;
-        photosDisplayNone(photos);
-        photos[i].style.display = "block";
-      })
-    }, 500);
+      if (i > photos.length - 1) {
+        i = 0;
+      }
+      if (currentIndex === i) i++;
+      currentIndex = i;
+      photos[i].style.display = "block";
+    })
+    $(`#productPrevBtn${this.product.id}`).click(function () {
+      i--;
+      photosDisplayNone(photos);
+      if (i < 0) {
+        i = photos.length - 1;
+      }
+      if (currentIndex === i) i--;
+      currentIndex = i;
+      photos[i].style.display = "block";
+    })
   }
 }
