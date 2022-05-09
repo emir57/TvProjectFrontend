@@ -37,7 +37,7 @@ export class AdminProductUpdateComponent implements OnInit {
 
   async ngOnInit() {
     this.getCategories();
-    this.loadingService.showLoading("Yükleniyor lütfen bekleyiniz...");
+    this.loadingService.showLoading();
     this.activatedRoute.params.subscribe(async param => {
       if (!param["product"]) {
         this.router.navigate(["/admindashboard/home"])
