@@ -53,13 +53,11 @@
   width: 100%;
   min-height: 60%;
   padding: 10px;
-  background-color: red;
 }
 
 #deleteBox>div#bottom {
   width: 100%;
   min-height: 20%;
-  background-color: pink;
   display: flex;
   justify-content: end;
 }
