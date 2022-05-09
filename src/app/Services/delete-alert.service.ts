@@ -12,11 +12,14 @@ export class DeleteAlertService {
     const deleteBox = $("#deleteBox");
     const deleteBoxBackground = $("#deleteBoxBackground");
     const deleteBoxText = $("#deleteBoxText");
+    const deleteBoxClose = $(".deleteBoxClose");
+    const deleteBoxBtn = $("#deleteBoxBtn");
+
     deleteBox.fadeIn();
     deleteBoxBackground.fadeIn();
-    deleteBoxText.html(bodyText)
+    deleteBoxText.html(bodyText);
 
-    $(".deleteBoxClose").click(function () {
+    deleteBoxClose.click(function () {
       deleteBox.fadeOut();
       deleteBoxBackground.fadeOut();
       errorCallBack();
@@ -26,7 +29,7 @@ export class DeleteAlertService {
       deleteBoxBackground.fadeOut();
       errorCallBack();
     })
-    $("#deleteBoxBtn").click(function () {
+    deleteBoxBtn.click(function () {
       deleteBox.fadeOut();
       deleteBoxBackground.fadeOut();
       successCallBack();
