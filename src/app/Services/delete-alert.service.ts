@@ -11,7 +11,7 @@ export class DeleteAlertService {
   showAlertBox(bodyText: string, successCallBack: () => void, errorCallBack: () => void) {
     const deleteBox = $("#deleteBox");
     const deleteBoxBackground = $("#deleteBoxBackground");
-    const deleteBoxText = $("#deleteBoxText");
+    const deleteBoxText = $("#middle");
     const deleteBoxClose = $(".deleteBoxClose");
     const deleteBoxBtn = $("#deleteBoxBtn");
 
