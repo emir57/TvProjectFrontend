@@ -10,9 +10,10 @@ export class AdminProductSearchPipe implements PipeTransform {
     let array: Product[] = [];
     searchString = searchString ?? searchString.toLocaleLowerCase();
     return searchString == "" ? array :
-    value.filter(
-      product => product.productName.toLocaleLowerCase().indexOf(searchString) !== -1
-    );
+      value.filter(
+        product => product.productName.toLocaleLowerCase().indexOf(searchString) !== -1 ||
+          product.extras.toLocaleLowerCase().indexOf(searchString) !== -1
+      );
   }
 
 }
