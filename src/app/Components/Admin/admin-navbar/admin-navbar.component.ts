@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiUrl } from 'src/app/Models/apiUrl';
+import { Product } from 'src/app/Models/product';
 import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
 import { User } from 'src/app/Models/user';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -17,7 +19,8 @@ export class AdminNavbarComponent implements OnInit {
   products: ProductAndPhoto[];
   constructor(
     private authService: AuthService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +45,10 @@ export class AdminNavbarComponent implements OnInit {
         this.products = response.data;
       }
     })
+  }
+
+  goUpdatePage(product: Product) {
+    this.router.navigate(["admindashboard/productupdate",product.id]);
   }
 
 }
