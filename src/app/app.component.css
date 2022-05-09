@@ -23,6 +23,7 @@
 
 
 #deleteBox {
+  padding: 10px;
   width: 30%;
   height: 25%;
   top: 10%;
@@ -31,15 +32,16 @@
   right: 35%;
   left: 35%;
   z-index: 201;
-  border-radius: 2%;
+  border-radius: 9px;
   display: none;
 }
 
 #deleteBox>div#top {
   width: 100%;
-  height: auto;
+  height: 20%;
   display: flex;
   justify-content: end;
+  align-items: center;
 }
 
 #deleteBox>div#top>a {
