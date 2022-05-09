@@ -41,6 +41,7 @@ export class AdminProductUpdateComponent implements OnInit {
       }
       let result = await this.productService.getProduct(param["product"]).toPromise();
       this.product = result.data;
+      console.log(this.product.photos)
       this.createproductUpdateForm();
     })
     // this.createproductUpdateForm();
