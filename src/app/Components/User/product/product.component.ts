@@ -97,10 +97,6 @@ export class ProductComponent implements OnInit {
     this.products = this.products.sort((x, y) => y.unitPrice - x.unitPrice);
   }
 
-  goCheckout(product: Product) {
-    this.router.navigate(["checkout", product.id])
-  }
-
   setAnimations(element: any, className: string) {
     let i = 0;
     i++;

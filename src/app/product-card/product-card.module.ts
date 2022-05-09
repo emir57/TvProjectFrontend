@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from './product-card.component';
 import { ImageSlideModule } from '../image-slide/image-slide.module';
+import { DiscountModule } from '../pipes/discount/discount.module';
 
 
 
@@ -11,7 +12,8 @@ import { ImageSlideModule } from '../image-slide/image-slide.module';
   ],
   imports: [
     CommonModule,
-    ImageSlideModule
+    ImageSlideModule,
+    DiscountModule,
   ], exports: [
     ProductCardComponent
   ]
