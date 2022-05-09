@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/Models/category';
 import { CategoryService } from 'src/app/Services/category.service';
+import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
 declare var $: any;
 
 @Component({
@@ -21,7 +22,8 @@ export class AdminCategoryUpdateComponent implements OnInit {
     private categoryService: CategoryService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private deleteAlertService: DeleteAlertService
   ) { }
 
   async ngOnInit() {
@@ -77,21 +79,23 @@ export class AdminCategoryUpdateComponent implements OnInit {
   }
 
   deleteCategory() {
-    if (confirm("Silmek istediğinizden emin misiniz?")) {
-      this.isOk = false;
-      this.categoryService.deleteCategory(this.category.id).subscribe(response => {
-        if (response.isSuccess) {
-          this.toastrService.success("Marka başarıyla silindi");
-          this.router.navigate(["admindashboard/adminbrands"])
+    this.isOk = false;
+    this.deleteAlertService.showAlertBox("Bu kategoriyi silmek istediğinizden emin misiniz?",
+      () => {
+        this.categoryService.deleteCategory(this.category.id).subscribe(response => {
+          if (response.isSuccess) {
+            this.toastrService.success("Marka başarıyla silindi");
+            this.router.navigate(["admindashboard/adminbrands"])
+            this.isOk = true;
+          }
+        }, responseErr => {
+          console.log(responseErr);
           this.isOk = true;
-        }
-      }, responseErr => {
-        console.log(responseErr);
-        this.isOk = true;
+        })
+      },
+      () => {
+        this.toastrService.info("Silme işlemi iptal edildi")
       })
-    } else {
-      this.toastrService.info("Silme işlemi iptal edildi")
-    }
   }
 
 }
