@@ -56,6 +56,12 @@
   background-color: red;
 }
 
+#deleteBox>div#bottom {
+  width: 100%;
+  height: 20%;
+  background-color: pink;
+}
+
 #deleteBoxButtons {
   padding-right: 3px;
   right: 1%;
