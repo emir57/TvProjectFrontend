@@ -15,7 +15,12 @@ export class DeleteAlertService {
     const deleteBoxClose = $(".closeButton");
     const deleteBoxBtn = $("#deleteBoxBtn");
 
-    deleteBox.fadeIn();
+    deleteBox.fadeIn(100);
+    deleteBox.animate({
+      opacity: 100,
+      top: "10%"
+    }, 400);
+
     deleteBoxBackground.fadeIn();
     deleteBoxText.html(bodyText);
 
