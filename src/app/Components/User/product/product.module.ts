@@ -13,6 +13,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ImageSlideComponent } from 'src/app/image-slide/image-slide.component';
 import { ImageSlideModule } from 'src/app/image-slide/image-slide.module';
 import { ProductCardModule } from 'src/app/product-card/product-card.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -31,7 +32,7 @@ import { ProductCardModule } from 'src/app/product-card/product-card.module';
     CategoryModule,
     AppRoutingModule,
     ImageSlideModule,
-    ProductCardModule
+    ProductCardModule,
   ]
 })
 export class ProductModule { }
