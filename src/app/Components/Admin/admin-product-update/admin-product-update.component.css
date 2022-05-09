@@ -51,3 +51,6 @@
 #closeBtn:hover{
   color: #34495E;
 }
+#extras{
+  max-height: 100px;
+}
