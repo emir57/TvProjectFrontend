@@ -2,7 +2,7 @@
  * Navbar
  */
 
- .navbar-brand {
+.navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
@@ -30,4 +30,14 @@
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+.productitem {
+  transition: background .4s;
+  transition: color .8s;
+}
+
+.productitem:hover {
+  background: #5DADE2;
+  color: #fff;
 }

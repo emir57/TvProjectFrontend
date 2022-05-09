@@ -9,7 +9,7 @@
     <input [(ngModel)]="searchString" class="form-control form-control-dark w-100" type="text" placeholder="Ürün Ara"
       aria-label="Search">
     <ul class="list-group w-75" style="position: absolute;">
-      <li class="list-group-item" *ngFor="let product of products | adminProductSearch:searchString">{{product.productName}}
+      <li class="list-group-item productitem" *ngFor="let product of products | adminProductSearch:searchString">{{product.productName}}
       </li>
     </ul>
   </div>
