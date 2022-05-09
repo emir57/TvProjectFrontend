@@ -56,22 +56,18 @@ export class ImageSlideComponent implements OnInit {
     })
     $(`#productNextBtn${this.product.id}`).click(function () {
       i++;
-      photosDisplayNone(photos);
       if (i > photos.length - 1) {
         i = 0;
       }
-      if (currentIndex === i) i++;
-      currentIndex = i;
+      photosDisplayNone(photos);
       photos[i].style.display = "block";
     })
     $(`#productPrevBtn${this.product.id}`).click(function () {
       i--;
-      photosDisplayNone(photos);
       if (i < 0) {
         i = photos.length - 1;
       }
-      if (currentIndex === i) i--;
-      currentIndex = i;
+      photosDisplayNone(photos);
       photos[i].style.display = "block";
     })
   }
