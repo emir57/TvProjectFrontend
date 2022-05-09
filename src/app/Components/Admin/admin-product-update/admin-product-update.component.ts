@@ -11,6 +11,7 @@ import $ from 'jquery';
 import { Photo } from 'src/app/Models/photo';
 import { Subject } from 'rxjs';
 import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
+import { LoadingService } from 'src/app/Services/loading.service';
 @Component({
   selector: 'app-admin-product-update',
   templateUrl: './admin-product-update.component.html',
@@ -30,11 +31,13 @@ export class AdminProductUpdateComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private deleteAlertService: DeleteAlertService
+    private deleteAlertService: DeleteAlertService,
+    private loadingService: LoadingService
   ) { }
 
   async ngOnInit() {
     this.getCategories();
+    this.loadingService.showLoading("Yükleniyor lütfen bekleyiniz...");
     this.activatedRoute.params.subscribe(async param => {
       if (!param["product"]) {
         this.router.navigate(["/admindashboard/home"])
@@ -43,6 +46,9 @@ export class AdminProductUpdateComponent implements OnInit {
       this.product = result.data;
       console.log(this.product.photos)
       this.createproductUpdateForm();
+      setTimeout(() => {
+        this.loadingService.closeLoading();
+      }, 500);
     })
     // this.createproductUpdateForm();
     this.deleteDiv();
