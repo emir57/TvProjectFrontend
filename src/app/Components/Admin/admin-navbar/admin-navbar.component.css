@@ -37,7 +37,13 @@
   transition: color .8s;
 }
 
-.productitem:hover {
+.list-group {
+  position: absolute;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.list-group>.productitem:hover {
   background: #5DADE2;
   color: #fff;
 }

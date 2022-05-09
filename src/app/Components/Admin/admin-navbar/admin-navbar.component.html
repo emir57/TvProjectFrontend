@@ -8,7 +8,7 @@
   <div class="w-100">
     <input [(ngModel)]="searchString" class="form-control form-control-dark w-100" type="text" placeholder="Ürün Ara"
       aria-label="Search">
-    <ul class="list-group w-75" style="position: absolute;max-height: 500px;overflow-y: scroll;">
+    <ul class="list-group w-75">
       <li class="list-group-item productitem" *ngFor="let product of products | adminProductSearch:searchString">
         <img width="90px" [src]="getImageUrl()+product.photos[0].imageUrl" alt="">
         {{product.productName}}
