@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/Services/product.service';
 import $ from 'jquery';
 import { Photo } from 'src/app/Models/photo';
 import { Subject } from 'rxjs';
+import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
 @Component({
   selector: 'app-admin-product-update',
   templateUrl: './admin-product-update.component.html',
@@ -28,7 +29,8 @@ export class AdminProductUpdateComponent implements OnInit {
     private categoryService: CategoryService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private deleteAlertService: DeleteAlertService
   ) { }
 
   async ngOnInit() {
@@ -71,17 +73,19 @@ export class AdminProductUpdateComponent implements OnInit {
     }
   }
   deleteProduct() {
-    this.isOk = false;
-    this.productService.deleteProduct(this.product).subscribe(response => {
-      if (response.isSuccess) {
-        this.toastrService.success(response.message);
-        // this.router.navigate(["admindashboard/adminproducts"])
-      }
-    })
-
-  }
-  cancelDelete() {
-    this.toastrService.info("Silme işlemi iptal edildi.")
+    this.deleteAlertService.showAlertBox("Bu ürünü silmek istediğinizden eminmisiniz?",
+      () => {
+        this.productService.deleteProduct(this.product).subscribe(response => {
+          if (response.isSuccess) {
+            this.isOk = true;
+            this.toastrService.success(response.message);
+            this.router.navigate(["admindashboard/adminproducts"])
+          }
+        })
+      },
+      () => {
+        this.toastrService.info("Silme işlemi iptal edildi.")
+      })
   }
   async createproductUpdateForm() {
     this.productUpdateForm = this.formBuilder.group({
