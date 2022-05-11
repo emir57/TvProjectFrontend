@@ -149,6 +149,7 @@ export class UserAddressComponent implements OnInit {
     this.deleteAlertService.showAlertBox(`
     <div class="text-center text-primary">${address.addressName}</div>
     <div>${address.addressText}</div>
+    <br>
     Bu adresi silmek istediğinizden emin misiniz?
     `,
       () => {
