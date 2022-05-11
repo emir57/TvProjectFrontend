@@ -35,7 +35,24 @@
   <!-- Load End -->
 
   <!-- Delete Box -->
-  <app-delete-modal></app-delete-modal>
+  <div id="deleteBox">
+    <div id="top">
+      <span>
+        Silme İşlemi!
+      </span>
+      <span>
+        <a class="closeButton deleteBoxClose">
+          <i class="fas fa-times"></i>
+        </a>
+      </span>
+    </div>
+    <div id="middle"></div>
+    <div id="bottom">
+      <button class="" class="btn btn-secondary closeButton">Vazgeç</button>
+      <button id="deleteBoxBtn" class="btn btn-danger">Sil</button>
+    </div>
+  </div>
+  <div id="deleteBoxBackground"></div>
   <!-- Delete Box End -->
   <router-outlet></router-outlet>
 
