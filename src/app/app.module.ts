@@ -15,11 +15,13 @@ import { UserModule } from './Components/User/user.module';
 import { AdminModule } from './Components/Admin/admin.module';
 import { RouterModule } from '@angular/router';
 import { ImageSlideComponent } from './image-slide/image-slide.component';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DeleteModalComponent,
   ],
   imports: [
     BrowserModule,
