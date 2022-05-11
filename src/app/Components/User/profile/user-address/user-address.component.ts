@@ -147,10 +147,8 @@ export class UserAddressComponent implements OnInit {
   showdeleteBox(address: UserAddressCityModel) {
     this.selectedAddress = address;
     this.deleteAlertService.showAlertBox(`
-    ${address.addressName}
-    <br>
-    ${address.addressText.substring(0, 30)}...
-    <br>
+    <div class="text-center text-primary">${address.addressName}</div>
+    <div>${address.addressText}</div>
     Bu adresi silmek istediğinizden emin misiniz?
     `,
       () => {
