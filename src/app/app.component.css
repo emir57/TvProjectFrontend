@@ -25,7 +25,7 @@
 #deleteBox {
   padding: 15px;
   width: 30%;
-  height: 25%;
+  height: auto;
   top: 5%;
   position: fixed;
   background-color: white;
