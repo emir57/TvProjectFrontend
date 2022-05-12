@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DiscountModule } from 'src/app/pipes/discount/discount.module';
+import { ImageSlideModule } from 'src/app/image-slide/image-slide.module';
 
 
 
@@ -32,6 +33,7 @@ import { DiscountModule } from 'src/app/pipes/discount/discount.module';
     ReactiveFormsModule,
     FormsModule,
     DiscountModule,
+    ImageSlideModule
 
   ]
 })
