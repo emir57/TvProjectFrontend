@@ -22,6 +22,12 @@ export class ImageSlideComponent implements OnInit {
       this.ImageSlide();
     }, 0);
   }
+  carouselSetStyle(): string {
+    let style = "";
+    if (this.width) style = `width:${this.width};`;
+    if (this.height) style += `height:${this.height};`;
+    return style;
+  }
   getImageUrl() {
     return this.apiUrl;
   }
