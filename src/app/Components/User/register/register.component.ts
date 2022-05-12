@@ -11,13 +11,13 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  isLoad=true;
+  isLoad = true;
   registerForm: FormGroup
   constructor(
     private formBuilder: FormBuilder,
-    private authService:AuthService,
-    private toastrService:ToastrService,
-    private router:Router
+    private authService: AuthService,
+    private toastrService: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,40 +26,43 @@ export class RegisterComponent implements OnInit {
 
   createRegisterForm() {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required,Validators.maxLength(20)]],
-      lastName: ['', [Validators.required,Validators.maxLength(20)]],
-      email: ['', [Validators.required, Validators.email,Validators.maxLength(40)]],
-      password: ['', [Validators.required, Validators.minLength(5),Validators.maxLength(30)]],
-      rePassword: ['', [Validators.required, Validators.minLength(5),Validators.maxLength(30)]],
-      agreement:[false,[Validators.requiredTrue]]
-    },{validators:this.checkPasswords})
+      firstName: ['', [Validators.required, Validators.maxLength(20)]],
+      lastName: ['', [Validators.required, Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(40)]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      rePassword: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      agreement: [false, [Validators.requiredTrue]]
+    }, { validators: this.checkPasswords })
   }
 
-  register(){
-    if(this.registerForm.valid && this.registerForm.get('agreement').value){
-      this.isLoad=false;
-      let registerModel = Object.assign({},this.registerForm.value);
+  register() {
+    if (this.registerForm.valid && this.registerForm.get('agreement').value) {
+      this.isLoad = false;
+      let registerModel = Object.assign({}, this.registerForm.value);
       this.authService.register(registerModel)
-        .subscribe(response=>{
-          if(response.isSuccess){
+        .subscribe(response => {
+          if (response.isSuccess) {
             this.toastrService.success(response.message);
-            this.isLoad=true;
+            this.isLoad = true;
             this.router.navigate(["login"]);
           }
-          else{
+          else {
             this.toastrService.error(response.message);
           }
-          this.isLoad=true;
-        },responseErr=>{
+          this.isLoad = true;
+        }, responseErr => {
           console.log(responseErr)
         })
     }
   }
 
-  checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     let pass = group.get('password').value;
     let confirmPass = group.get('rePassword').value
     return pass === confirmPass ? null : { notSame: true }
+  }
+  get firstName() {
+    return this.registerForm.get("firstName")
   }
 
 }
