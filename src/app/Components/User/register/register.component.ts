@@ -73,6 +73,9 @@ export class RegisterComponent implements OnInit {
   get password() {
     return this.registerForm.get("password")
   }
+  get rePassword() {
+    return this.registerForm.get("rePassword")
+  }
 
 }
 
