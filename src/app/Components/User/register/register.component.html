@@ -8,9 +8,9 @@
     <div class="form-floating">
       <input formControlName="firstName" type="text" class="form-control" id="ad" placeholder="emir">
       <label for="ad">Ad</label>
-      <div *ngIf="(firstName.dirty ||firstName.touched) && firstName.errors">
-        <div class="text text-danger" *ngIf="(firstName.errors.required)">Ad gerekli</div>
-        <div class="text text-danger" *ngIf="(firstName.errors.maxlength)">Ad en fazla 20 karakter olabilir</div>
+      <div class="text text-danger" *ngIf="(firstName.dirty ||firstName.touched) && firstName.errors">
+        <div *ngIf="(firstName.errors.required)">Ad gerekli</div>
+        <div *ngIf="(firstName.errors.maxlength)">Ad en fazla 20 karakter olabilir</div>
       </div>
     </div>
     <!-- FirstName End-->
