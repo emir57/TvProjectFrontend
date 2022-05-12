@@ -71,4 +71,8 @@ export class LoginComponent implements OnInit {
     return date.getFullYear();
   }
 
+  get email(){
+    return this.loginForm.get("email");
+  }
+
 }
