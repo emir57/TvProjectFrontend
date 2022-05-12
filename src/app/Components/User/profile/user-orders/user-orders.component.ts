@@ -33,7 +33,6 @@ export class UserOrdersComponent implements OnInit {
     this.orderService.getOrdersByUser(this.user.id).subscribe(response => {
       if (response.isSuccess) {
         this.orders = response.data;
-        console.log(this.orders)
       } else {
         this.toastrService.error(response.message);
       }
