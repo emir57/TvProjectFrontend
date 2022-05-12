@@ -10,7 +10,6 @@ declare var $: any;
 })
 export class ImageSlideComponent implements OnInit {
 
-  @Input() carouselId: string;
   @Input() photos: Photo[] = [];
   @Input() product: Product;
   apiUrl = ApiUrl;
