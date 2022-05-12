@@ -69,4 +69,9 @@ export class UserOrdersComponent implements OnInit {
       () => {})
   }
 
+  getDate(dateString:string){
+    let date = new Date(dateString);
+    return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+  }
+
 }
