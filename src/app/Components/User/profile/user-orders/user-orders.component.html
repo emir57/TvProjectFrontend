@@ -12,9 +12,8 @@
       style="position: absolute;right: 0;top: 0;text-decoration: none; margin: 5px;cursor: pointer;"><i>İptal Et</i></a>
   </div>
   <div class="card-body">
-    <p>
-      <!-- <img src="{{getApiUrl()}}{{order.tv.imageUrl}}" alt=""> -->
-      <image-slide [product]="order.tv" [photos]="order.tv.photos"></image-slide>
+    <p style="display: flex;justify-content: center;">
+      <image-slide width="400px" [product]="order.tv" [photos]="order.tv.photos"></image-slide>
     </p>
     <i>Ürün Açıklaması: </i>
     <p>{{order.tv.extras}}</p>
