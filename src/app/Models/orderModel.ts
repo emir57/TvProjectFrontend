@@ -5,7 +5,7 @@ import { User } from "./user";
 export interface OrderModel{
   id:number;
   user:User;
-  tv:ProductAndPhoto;
+  tv:Product;
   shippedDate:Date;
   totalPrice:number;
   addressText:string;
