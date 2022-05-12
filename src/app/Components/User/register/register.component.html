@@ -1,6 +1,7 @@
 <main class="form-register">
   <form [formGroup]="registerForm">
-    <img class="mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <img class="mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72"
+      height="57">
     <h1 class="h3 mb-3 fw-normal">Kayıt Ol</h1>
     <!-- FirstName -->
     <div class="form-floating">
@@ -17,8 +18,10 @@
     <div class="form-floating">
       <input formControlName="lastName" type="text" class="form-control" id="soyad" placeholder="gurbuz">
       <label for="soyad">Soyad</label>
-      <div *ngIf="(registerForm.get('lastName').dirty ||registerForm.get('lastName').touched) && registerForm.get('lastName').errors">
-        <div class="text text-danger" *ngIf="(registerForm.get('lastName').errors.maxlength)">Ad en fazla 20 karakter olabilir</div>
+      <div
+        *ngIf="(registerForm.get('lastName').dirty ||registerForm.get('lastName').touched) && registerForm.get('lastName').errors">
+        <div class="text text-danger" *ngIf="(registerForm.get('lastName').errors.maxlength)">Ad en fazla 20 karakter
+          olabilir</div>
         <div class="text text-danger" *ngIf="(registerForm.get('lastName').errors.required)">Soyad gerekli</div>
       </div>
     </div>
@@ -28,20 +31,26 @@
     <div class="form-floating">
       <input formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com">
       <label for="email">Eposta Adresi</label>
-      <div *ngIf="(registerForm.get('email').dirty ||registerForm.get('email').touched) && registerForm.get('email').errors">
-        <div class="text text-danger" *ngIf="(registerForm.get('email').errors.maxlength)">Eposta en fazla 40 karakter olabilir</div>
+      <div
+        *ngIf="(registerForm.get('email').dirty ||registerForm.get('email').touched) && registerForm.get('email').errors">
+        <div class="text text-danger" *ngIf="(registerForm.get('email').errors.maxlength)">Eposta en fazla 40 karakter
+          olabilir</div>
         <div class="text text-danger" *ngIf="(registerForm.get('email').errors.email)">Geçersiz eposta</div>
         <div class="text text-danger" *ngIf="(registerForm.get('email').errors.required)">Eposta gerekli</div>
       </div>
     </div>
-    <!-- Email EfirstName
+    <!-- Email End-->
+    <!-- Password-->
     <div class="form-floating">
       <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
       <label for="password">Şifre</label>
-      <div *ngIf="(registerForm.get('password').dirty ||registerForm.get('password').touched) && registerForm.get('password').errors">
-        <div class="text text-danger" *ngIf="(registerForm.get('password').errors.maxlength)">Şifre en fazla 30 karakter olabilir</div>
+      <div
+        *ngIf="(registerForm.get('password').dirty ||registerForm.get('password').touched) && registerForm.get('password').errors">
+        <div class="text text-danger" *ngIf="(registerForm.get('password').errors.maxlength)">Şifre en fazla 30 karakter
+          olabilir</div>
         <div class="text text-danger" *ngIf="(registerForm.get('password').errors.required)">Şifre gerekli</div>
-        <div class="text text-danger" *ngIf="(registerForm.get('password').errors.minlength)">Şifre en az 5 karakter olabilir</div>
+        <div class="text text-danger" *ngIf="(registerForm.get('password').errors.minlength)">Şifre en az 5 karakter
+          olabilir</div>
       </div>
     </div>
     <!-- Password End -->
@@ -49,10 +58,14 @@
     <div class="form-floating">
       <input formControlName="rePassword" type="password" class="form-control" id="password" placeholder="Repassword">
       <label for="rePassword">Şifre Tekrar</label>
-      <div *ngIf="(registerForm.get('rePassword').dirty ||registerForm.get('rePassword').touched) && registerForm.get('rePassword').errors">
-        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.maxlength)">Şifre tekrarı en fazla 30 karakter olabilir</div>
-        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.required)">Şifre tekrarı gerekli</div>
-        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.minlength)">Şifre tekrarı en az 5 karakter olabilir</div>
+      <div
+        *ngIf="(registerForm.get('rePassword').dirty ||registerForm.get('rePassword').touched) && registerForm.get('rePassword').errors">
+        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.maxlength)">Şifre tekrarı en fazla
+          30 karakter olabilir</div>
+        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.required)">Şifre tekrarı gerekli
+        </div>
+        <div class="text text-danger" *ngIf="(registerForm.get('rePassword').errors.minlength)">Şifre tekrarı en az 5
+          karakter olabilir</div>
       </div>
       <div class="text text-danger" *ngIf="(registerForm.hasError('notSame'))">Şifreler uyuşmuyor</div>
     </div>
@@ -64,7 +77,8 @@
       </label>
     </div>
     <!-- Agreement End -->
-    <button [disabled]="!isLoad" [disabled]="!registerForm.valid" (click)="register()" class="w-100 btn btn-lg btn-primary" type="submit">
+    <button [disabled]="!isLoad" [disabled]="!registerForm.valid" (click)="register()"
+      class="w-100 btn btn-lg btn-primary" type="submit">
       <span *ngIf="!isLoad" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       Kayıt Ol
     </button>
