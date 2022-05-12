@@ -8,19 +8,18 @@
       <input formControlName="email" type="email" class="form-control" id="floatingInput"
         placeholder="name@example.com">
       <label for="floatingInput">Eposta Adresi</label>
-      <div *ngIf="(email.touched || email.dirty) && email.errors">
-        <div class="text text-danger" *ngIf="email.errors.required">Eposta alanı zorunlu</div>
-        <div class="text text-danger" *ngIf="email.errors.email">Geçersiz eposta</div>
+      <div class="text text-danger" *ngIf="(email.touched || email.dirty) && email.errors">
+        <div *ngIf="email.errors.required">Eposta alanı zorunlu</div>
+        <div *ngIf="email.errors.email">Geçersiz eposta</div>
       </div>
     </div>
     <div class="form-floating">
       <input formControlName="password" type="password" class="form-control" id="floatingPassword"
         placeholder="Password">
       <label for="floatingPassword">Şifre</label>
-      <div
-        *ngIf="(password.touched || password.dirty) && password.errors">
-        <div class="text text-danger" *ngIf="password.errors.required">Şifre alanı zorunlu</div>
-        <div class="text text-danger" *ngIf="password.errors.minlength">Şifre minimum 5 karakter
+      <div class="text text-danger" *ngIf="(password.touched || password.dirty) && password.errors">
+        <div *ngIf="password.errors.required">Şifre alanı zorunlu</div>
+        <div *ngIf="password.errors.minlength">Şifre minimum 5 karakter
           olabilir</div>
       </div>
     </div>
@@ -35,7 +34,7 @@
       <span *ngIf="isOk">Giriş yap</span>
       <span *ngIf="!isOk">Giriş yapılıyor</span>
     </button>
-    <span>Hesabın yok mu?  <a class="linkButton" routerLink="/register">hemen kaydol</a></span>
+    <span>Hesabın yok mu? <a class="linkButton" routerLink="/register">hemen kaydol</a></span>
     <br>
     <span>Şifreni mi unuttun? <a class="linkButton" routerLink="/forgotpassword">şifremi sıfırla</a></span>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–{{getYear()}}</p>
