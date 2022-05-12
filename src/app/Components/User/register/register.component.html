@@ -31,11 +31,11 @@
     <div class="form-floating">
       <input formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com">
       <label for="email">Eposta Adresi</label>
-      <div *ngIf="(email.dirty ||email.touched) && email.errors">
-        <div class="text text-danger" *ngIf="(email.errors.maxlength)">Eposta en fazla 40 karakter
+      <div class="text text-danger" *ngIf="(email.dirty ||email.touched) && email.errors">
+        <div *ngIf="(email.errors.maxlength)">Eposta en fazla 40 karakter
           olabilir</div>
-        <div class="text text-danger" *ngIf="(email.errors.email)">Geçersiz eposta</div>
-        <div class="text text-danger" *ngIf="(email.errors.required)">Eposta gerekli</div>
+        <div *ngIf="(email.errors.email)">Geçersiz eposta</div>
+        <div *ngIf="(email.errors.required)">Eposta gerekli</div>
       </div>
     </div>
     <!-- Email End-->
