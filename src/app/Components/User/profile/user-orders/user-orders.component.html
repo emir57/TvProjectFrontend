@@ -13,7 +13,8 @@
   </div>
   <div class="card-body">
     <p>
-      <img src="{{getApiUrl()}}{{order.tv.imageUrl}}" alt="">
+      <!-- <img src="{{getApiUrl()}}{{order.tv.imageUrl}}" alt=""> -->
+      <image-slide [product]="order.tv" [photos]="order.tv.photos"></image-slide>
     </p>
     <i>Ürün Açıklaması: </i>
     <p>{{order.tv.extras}}</p>
