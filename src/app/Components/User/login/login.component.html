@@ -7,9 +7,9 @@
       <input formControlName="email" type="email" class="form-control" id="floatingInput"
         placeholder="name@example.com">
       <label for="floatingInput">Eposta Adresi</label>
-      <div *ngIf="(loginForm.get('email').touched || loginForm.get('email').dirty) && loginForm.get('email').errors">
-        <div class="text text-danger" *ngIf="loginForm.get('email').errors.required">Eposta alanı zorunlu</div>
-        <div class="text text-danger" *ngIf="loginForm.get('email').errors.email">Geçersiz eposta</div>
+      <div *ngIf="(email.touched || email.dirty) && email.errors">
+        <div class="text text-danger" *ngIf="email.errors.required">Eposta alanı zorunlu</div>
+        <div class="text text-danger" *ngIf="email.errors.email">Geçersiz eposta</div>
       </div>
     </div>
     <div class="form-floating">
