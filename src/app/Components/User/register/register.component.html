@@ -19,10 +19,10 @@
     <div class="form-floating">
       <input formControlName="lastName" type="text" class="form-control" id="soyad" placeholder="gurbuz">
       <label for="soyad">Soyad</label>
-      <div *ngIf="(lastName.dirty ||lastName.touched) && lastName.errors">
-        <div class="text text-danger" *ngIf="(lastName.errors.maxlength)">Ad en fazla 20 karakter
+      <div class="text text-danger" *ngIf="(lastName.dirty ||lastName.touched) && lastName.errors">
+        <div *ngIf="(lastName.errors.maxlength)">Ad en fazla 20 karakter
           olabilir</div>
-        <div class="text text-danger" *ngIf="(lastName.errors.required)">Soyad gerekli</div>
+        <div *ngIf="(lastName.errors.required)">Soyad gerekli</div>
       </div>
     </div>
     <!-- LastName End -->
