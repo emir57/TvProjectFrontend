@@ -43,11 +43,11 @@
     <div class="form-floating">
       <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
       <label for="password">Şifre</label>
-      <div *ngIf="(password.dirty ||password.touched) && password.errors">
-        <div class="text text-danger" *ngIf="(password.errors.maxlength)">Şifre en fazla 30 karakter
+      <div class="text text-danger" *ngIf="(password.dirty ||password.touched) && password.errors">
+        <div *ngIf="(password.errors.maxlength)">Şifre en fazla 30 karakter
           olabilir</div>
-        <div class="text text-danger" *ngIf="(password.errors.required)">Şifre gerekli</div>
-        <div class="text text-danger" *ngIf="(password.errors.minlength)">Şifre en az 5 karakter
+        <div *ngIf="(password.errors.required)">Şifre gerekli</div>
+        <div *ngIf="(password.errors.minlength)">Şifre en az 5 karakter
           olabilir</div>
       </div>
     </div>
