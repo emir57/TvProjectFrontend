@@ -10,6 +10,8 @@ declare var $: any;
 })
 export class ImageSlideComponent implements OnInit {
 
+  @Input() width?: string;
+  @Input() height?: string;
   @Input() photos: Photo[] = [];
   @Input() product: Product;
   apiUrl = ApiUrl;
