@@ -17,9 +17,9 @@
         placeholder="Password">
       <label for="floatingPassword">Şifre</label>
       <div
-        *ngIf="(loginForm.get('password').touched || loginForm.get('password').dirty) && loginForm.get('password').errors">
-        <div class="text text-danger" *ngIf="loginForm.get('password').errors.required">Şifre alanı zorunlu</div>
-        <div class="text text-danger" *ngIf="loginForm.get('password').errors.minlength">Şifre minimum 5 karakter
+        *ngIf="(password.touched || password.dirty) && password.errors">
+        <div class="text text-danger" *ngIf="password.errors.required">Şifre alanı zorunlu</div>
+        <div class="text text-danger" *ngIf="password.errors.minlength">Şifre minimum 5 karakter
           olabilir</div>
       </div>
     </div>
