@@ -62,19 +62,22 @@ export class RegisterComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }
   }
   get firstName() {
-    return this.registerForm.get("firstName")
+    return this.registerForm.get("firstName");
   }
   get lastName() {
-    return this.registerForm.get("lastName")
+    return this.registerForm.get("lastName");
   }
   get email() {
-    return this.registerForm.get("email")
+    return this.registerForm.get("email");
   }
   get password() {
-    return this.registerForm.get("password")
+    return this.registerForm.get("password");
   }
   get rePassword() {
-    return this.registerForm.get("rePassword")
+    return this.registerForm.get("rePassword");
+  }
+  get agreement() {
+    return this.registerForm.get("agreement");
   }
 
 }
