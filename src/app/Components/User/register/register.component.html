@@ -56,12 +56,12 @@
     <div class="form-floating">
       <input formControlName="rePassword" type="password" class="form-control" id="password" placeholder="Repassword">
       <label for="rePassword">Şifre Tekrar</label>
-      <div *ngIf="(rePassword.dirty ||rePassword.touched) && rePassword.errors">
-        <div class="text text-danger" *ngIf="(rePassword.errors.maxlength)">Şifre tekrarı en fazla
+      <div class="text text-danger" *ngIf="(rePassword.dirty ||rePassword.touched) && rePassword.errors">
+        <div *ngIf="(rePassword.errors.maxlength)">Şifre tekrarı en fazla
           30 karakter olabilir</div>
-        <div class="text text-danger" *ngIf="(rePassword.errors.required)">Şifre tekrarı gerekli
+        <div *ngIf="(rePassword.errors.required)">Şifre tekrarı gerekli
         </div>
-        <div class="text text-danger" *ngIf="(rePassword.errors.minlength)">Şifre tekrarı en az 5
+        <div *ngIf="(rePassword.errors.minlength)">Şifre tekrarı en az 5
           karakter olabilir</div>
       </div>
       <div class="text text-danger" *ngIf="(registerForm.hasError('notSame'))">Şifreler uyuşmuyor</div>
