@@ -6,9 +6,9 @@
     <div class="form-floating">
       <input formControlName="firstName" type="text" class="form-control" id="ad" placeholder="emir">
       <label for="ad">Ad</label>
-      <div *ngIf="(registerForm.get('firstName').dirty ||registerForm.get('firstName').touched) && registerForm.get('firstName').errors">
-        <div class="text text-danger" *ngIf="(registerForm.get('firstName').errors.required)">Ad gerekli</div>
-        <div class="text text-danger" *ngIf="(registerForm.get('firstName').errors.maxlength)">Ad en fazla 20 karakter olabilir</div>
+      <div *ngIf="(firstName.dirty ||firstName.touched) && firstName.errors">
+        <div class="text text-danger" *ngIf="(firstName.errors.required)">Ad gerekli</div>
+        <div class="text text-danger" *ngIf="(firstName.errors.maxlength)">Ad en fazla 20 karakter olabilir</div>
       </div>
     </div>
     <!-- FirstName End-->
@@ -34,9 +34,7 @@
         <div class="text text-danger" *ngIf="(registerForm.get('email').errors.required)">Eposta gerekli</div>
       </div>
     </div>
-    <!-- Email End -->
-
-    <!-- Password -->
+    <!-- Email EfirstName
     <div class="form-floating">
       <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
       <label for="password">Şifre</label>
