@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../Models/product';
 import { ProductAndPhoto } from '../Models/productAndPhoto';
+declare var $: any;
 
 @Component({
   selector: 'product-card',
@@ -20,6 +21,10 @@ export class ProductCardComponent implements OnInit {
 
   goCheckout(product: Product) {
     this.router.navigate(["checkout", product.id])
+  }
+
+  productBuyBtnAnimation() {
+
   }
 
 }
