@@ -29,10 +29,12 @@ export class AuthService {
     private toastrService: ToastrService,
     private router: Router
   ) {
-    this.getLoginUser().subscribe(response => {
-      this.currentUser = response.data;
-      this.getRoles();
-    })
+    if (this.isLogin) {
+      this.getLoginUser().subscribe(response => {
+        this.currentUser = response.data;
+        this.getRoles();
+      })
+    }
   }
   isLogin = false;
 
