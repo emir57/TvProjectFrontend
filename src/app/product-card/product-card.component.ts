@@ -40,7 +40,7 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
       buy_btn.animate({
         bottom: "10px",
         opacity: 100
-      }, 500);
+      }, 400);
     })
 
     product_card.mouseleave(() => {
