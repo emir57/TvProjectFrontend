@@ -15,12 +15,14 @@ export class NavbarComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   userPhoto = `${ApiUrl}/images/user.png`
   isAdmin = false;
+
   ngOnInit(): void {
   }
+
   isLogin() {
     return this.authService.isAuthenticated();
   }
@@ -33,6 +35,7 @@ export class NavbarComponent implements OnInit {
 
 
   isInRoleAdmin(): boolean {
+    if (!this.isLogin()) return false;
     return this.authService.isInRole("Admin");
   }
 
