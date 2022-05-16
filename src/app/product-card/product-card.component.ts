@@ -34,11 +34,12 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
     buy_btn.css("bottom", "0px");
     buy_btn.css("opacity", "0");
 
+
     product_card.mouseenter(() => {
       buy_btn.show();
       buy_btn.animate({
         bottom: "10px",
-        opacity: "100"
+        opacity: 100
       }, 500)
     })
 
@@ -47,8 +48,9 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
         bottom: "0px",
         opacity: "0"
       }, 500, () => {
-        buy_btn.hide();
+
       })
+      buy_btn.hide();
     })
 
   }

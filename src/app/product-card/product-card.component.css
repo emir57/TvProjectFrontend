@@ -36,6 +36,7 @@
 }
 
 .product_buy_btn {
+  bottom: 0px;
   display: none;
   position: absolute;
   width: 90%;
