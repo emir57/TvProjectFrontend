@@ -21,7 +21,7 @@
     <p class="card-text"><span class="text-muted"><del *ngIf="product.isDiscount">{{product.unitPrice |
           currency:'TRY'}}</del></span>
       {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} </p>
-    <button [disabled]="!product.stock" (click)="goCheckout(product)" class="btn btn-primary">Hemen Satın
+    <button id="product_buy_btn_{{product.id}}" [disabled]="!product.stock" (click)="goCheckout(product)" class="btn btn-primary">Hemen Satın
       Al</button>
   </div>
   <!-- Footer End -->
