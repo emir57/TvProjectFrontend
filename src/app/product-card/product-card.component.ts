@@ -50,6 +50,7 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
         buy_btn.hide();
       })
     })
+
   }
 
 }
