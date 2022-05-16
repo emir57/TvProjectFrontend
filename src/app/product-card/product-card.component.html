@@ -12,8 +12,8 @@
     <h5 class="card-title">{{product.productName}}</h5>
     <p class="card-text">Ürün Kodu: <span *ngIf="product.productCode">{{product.productCode}}</span><span
         class="text-muted" *ngIf="!product.productCode">Belirtilmedi</span></p>
-    <p class="card-text">{{product.screenType}} {{product.screenInch}}</p>
-    <p class="card-text">{{product.extras}}</p>
+    <!-- <p class="card-text">{{product.screenType}} {{product.screenInch}}</p>
+    <p class="card-text">{{product.extras}}</p> -->
     <p style="margin-bottom: 30px;" class="card-text"><span class="text-muted"><del *ngIf="product.isDiscount">{{product.unitPrice |
           currency:'TRY'}}</del></span>
       {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} </p>
