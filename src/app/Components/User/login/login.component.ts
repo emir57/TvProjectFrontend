@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
       let loginModel = Object.assign({}, this.loginForm.value);
       this.authService.login(loginModel, rememberMe,
         (responseErr) => {
-          this.toastrService.error(responseErr.error.message)
+          this.toastrService.error(responseErr.error.message);
+          this.isOk = true;
         },
         (response) => {
           localStorage.setItem("remember", JSON.stringify(rememberMe))
