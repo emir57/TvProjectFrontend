@@ -26,6 +26,9 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
   goCheckout(product: Product) {
     this.router.navigate(["checkout", product.id])
   }
+  goProductDetail(product: Product) {
+    this.router.navigate(["productdetail", product.id]);
+  }
 
   productBuyBtnAnimation() {
     const buy_btn = $("#product_buy_btn_" + this.product.id);
@@ -33,7 +36,6 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
 
     buy_btn.css("bottom", "0px");
     buy_btn.css("opacity", "0");
-
 
     product_card.mouseenter(() => {
       buy_btn.show();
