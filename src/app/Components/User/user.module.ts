@@ -18,9 +18,11 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { UserComponent } from "./user.component";
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 @NgModule({
   declarations: [
-    UserComponent
+    UserComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,
