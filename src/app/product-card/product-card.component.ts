@@ -9,7 +9,7 @@ declare var $: any;
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent implements OnInit,AfterViewInit {
+export class ProductCardComponent implements OnInit, AfterViewInit {
 
   @Input() product: ProductAndPhoto;
   constructor(
@@ -30,8 +30,16 @@ export class ProductCardComponent implements OnInit,AfterViewInit {
   productBuyBtnAnimation() {
     const buy_btn = $("#product_buy_btn_" + this.product.id);
     const product_card = $("#product_card_" + this.product.id);
-    product_card.mouseenter(()=>{
-      buy_btn.css("bottom","20px");
+
+    buy_btn.css("bottom", "0px");
+    buy_btn.css("opacity", "0");
+
+    product_card.mouseenter(() => {
+      buy_btn.show();
+      buy_btn.animate({
+        bottom: "10px",
+        opacity: "100"
+      })
     })
   }
 

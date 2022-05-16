@@ -36,9 +36,10 @@
 }
 
 .product_buy_btn {
+  display: none;
   position: absolute;
-  bottom: 10px;
   width: 90%;
   left: 5%;
   right: 5%;
+  opacity: 0;
 }
