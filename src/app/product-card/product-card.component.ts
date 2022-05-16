@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../Models/product';
 import { ProductAndPhoto } from '../Models/productAndPhoto';
@@ -9,14 +9,18 @@ declare var $: any;
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent implements OnInit,AfterViewInit {
 
   @Input() product: ProductAndPhoto;
   constructor(
     private router: Router
   ) { }
+  ngAfterViewInit(): void {
+    this.productBuyBtnAnimation();
+  }
 
   ngOnInit(): void {
+
   }
 
   goCheckout(product: Product) {
@@ -24,7 +28,11 @@ export class ProductCardComponent implements OnInit {
   }
 
   productBuyBtnAnimation() {
-
+    const buy_btn = $("#product_buy_btn_" + this.product.id);
+    const product_card = $("#product_card_" + this.product.id);
+    product_card.mouseenter(()=>{
+      buy_btn.css("bottom","20px");
+    })
   }
 
 }
