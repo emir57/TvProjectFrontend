@@ -14,14 +14,15 @@
         class="text-muted" *ngIf="!product.productCode">Belirtilmedi</span></p>
     <p class="card-text">{{product.screenType}} {{product.screenInch}}</p>
     <p class="card-text">{{product.extras}}</p>
+    <p class="card-text"><span class="text-muted"><del *ngIf="product.isDiscount">{{product.unitPrice |
+          currency:'TRY'}}</del></span>
+      {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} </p>
   </div>
   <!-- Body End -->
   <!-- Footer -->
   <div class="card-footer">
-    <p class="card-text"><span class="text-muted"><del *ngIf="product.isDiscount">{{product.unitPrice |
-          currency:'TRY'}}</del></span>
-      {{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}} </p>
-    <button id="product_buy_btn_{{product.id}}" [disabled]="!product.stock" (click)="goCheckout(product)" class="btn btn-primary product_buy_btn">Hemen Satın
+    <button id="product_buy_btn_{{product.id}}" [disabled]="!product.stock" (click)="goCheckout(product)"
+      class="btn btn-primary product_buy_btn">Hemen Satın
       Al</button>
   </div>
   <!-- Footer End -->
