@@ -1,4 +1,4 @@
-<div (click)="goProductDetail(product)" id="product_card_{{product.id}}" class="card m-1" style="width: 18rem;">
+<div (click)="goProductDetail(product)" id="product_card_{{product.id}}" class="card m-1 product_card" style="width: 18rem;">
   <div *ngIf="product.stock==0" class="stock0"><span class="display-6 stock0Text">Tükendi</span></div>
   <!-- Discount -->
   <span id="discount" *ngIf="product.isDiscount" class="badge rounded-pill bg-danger me-0">-%{{product.discount}}</span>

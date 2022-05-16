@@ -44,3 +44,11 @@
   right: 5%;
   opacity: 0;
 }
+
+.product_card > .card-body{
+  cursor: pointer;
+  transition: background .4s;
+}
+.product_card > .card-body:hover{
+  background: #EBF5FB;
+}
