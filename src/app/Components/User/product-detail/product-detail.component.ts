@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/Services/product.service';
 export class ProductDetailComponent implements OnInit {
 
   product: Product;
+  otherProducts: Product[];
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
@@ -28,9 +29,18 @@ export class ProductDetailComponent implements OnInit {
         this.productService.getProduct(param["product"]).subscribe(response => {
           if (response.isSuccess) {
             this.product = response.data;
-            console.log(this.product)
+            this.getOtherProducts();
           }
         })
+      }
+    })
+  }
+
+  getOtherProducts() {
+    this.productService.getProductsByCategory(this.product.brandId).subscribe(response => {
+      if (response.isSuccess) {
+        this.otherProducts = response.data;
+        console.log(this.otherProducts)
       }
     })
   }
