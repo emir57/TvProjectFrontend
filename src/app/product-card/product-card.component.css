@@ -45,10 +45,19 @@
   opacity: 0;
 }
 
-.product_card > .card-body{
+.product_card>.card-body {
   cursor: pointer;
   transition: background .4s;
 }
-.product_card > .card-body:hover{
+
+.product_card>.card-body:hover {
   background: #EBF5FB;
+}
+
+.product_old_price {
+
+}
+
+.product_new_price {
+  font-size: 19px;
 }
