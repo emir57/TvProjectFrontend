@@ -21,7 +21,7 @@ export class ProductDetailComponent implements OnInit {
   getProduct() {
     this.activatedRoute.params.subscribe(param => {
       if (param["product"]) {
-        this.product = param["product"];
+        this.product = JSON.parse(param["product"]);
         console.log(this.product)
       }
     })
