@@ -1,4 +1,5 @@
 <div id="container" *ngIf="product">
+  <p *ngIf="product.stock == 0" class="alert alert-warning text-center">Ürün Tükendi</p>
   <div class="row">
     <div class="col-md-4">
       <image-slide [photos]="product.photos" [product]="product"></image-slide>
@@ -22,7 +23,7 @@
           currency:"TRY"}}&nbsp;<span class="badge bg-primary">-{{product.discount}}%</span></span>
       </p>
       <p>
-        <button (click)="goBuyPage()" class="btn btn-primary">
+        <button [disabled]="product.stock==0" (click)="goBuyPage()" class="btn btn-primary">
           Satın Al
         </button>
       </p>
