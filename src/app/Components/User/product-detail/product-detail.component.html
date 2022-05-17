@@ -14,7 +14,8 @@
       <p>Ekran Tipi: <span class="text-success">{{product.screenType}}</span></p>
       <p>Ekran boyutu: <span class="text-success">{{product.screenInch}}</span></p>
       <p>
-        <span class="text-success">{{product.unitPrice |discount:product.discount:product.isDiscount}}</span>
+        <span class="text-success">{{product.unitPrice |discount:product.discount:product.isDiscount|
+          currency:"TRY"}}</span>
       </p>
     </div>
   </div>
