@@ -12,9 +12,10 @@ import { ProfileModule } from './profile/profile.module';
 import { RegisterModule } from './register/register.module';
 import { ResetpasswordModule } from './resetpassword/resetpassword.module';
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 import { UserComponent } from "./user.component";
 import { ProductDetailModule } from './product-detail/product-detail.module';
+
+
 @NgModule({
   declarations: [
     UserComponent
