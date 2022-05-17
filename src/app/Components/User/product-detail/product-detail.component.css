@@ -13,3 +13,7 @@
 }
 
 #productDescription {}
+
+#productPrice>span:last-child {
+  font-size: 20px;
+}
