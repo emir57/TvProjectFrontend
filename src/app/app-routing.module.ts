@@ -18,6 +18,7 @@ import { CategoryComponent } from './Components/User/category/category.component
 import { CheckoutComponent } from './Components/User/checkout/checkout.component';
 import { ForgotpasswordComponent } from './Components/User/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './Components/User/login/login.component';
+import { ProductDetailComponent } from './Components/User/product-detail/product-detail.component';
 import { ProductComponent } from './Components/User/product/product.component';
 import { ProfileComponent } from './Components/User/profile/profile.component';
 import { UserAddressComponent } from './Components/User/profile/user-address/user-address.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
       { path: "forgotpassword", component: ForgotpasswordComponent },
       { path: "checkout/:productId", component: CheckoutComponent, canActivate: [ExpirationGuard] },
       { path: "resetpassword/:key", component: ResetpasswordComponent },
+      { path: "product-detail/:product", component: ProductDetailComponent },
     ]
   },
   //Admin Panels
