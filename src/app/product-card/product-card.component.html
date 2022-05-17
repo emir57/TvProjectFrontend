@@ -19,7 +19,7 @@
       <span class="text-muted product_old_price">
         <del *ngIf="product.isDiscount">{{product.unitPrice | currency:'TRY'}}</del>
       </span>
-      <span class="product_new_price">{{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}}</span>
+      <span class="product_new_price text-success">{{product.unitPrice | discount:product.discount:product.isDiscount | currency:'TRY'}}</span>
     </p>
   </div>
   <!-- Body End -->
