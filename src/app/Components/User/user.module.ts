@@ -14,6 +14,7 @@ import { ResetpasswordModule } from './resetpassword/resetpassword.module';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { UserComponent } from "./user.component";
+import { ProductDetailModule } from './product-detail/product-detail.module';
 @NgModule({
   declarations: [
     UserComponent
@@ -31,7 +32,8 @@ import { UserComponent } from "./user.component";
     ProfileModule,
     RegisterModule,
     ResetpasswordModule,
-    RouterModule
+    RouterModule,
+    ProductDetailModule
   ], exports: [
     CategoryModule,
     CheckoutModule,
@@ -43,7 +45,8 @@ import { UserComponent } from "./user.component";
     ProductModule,
     ProfileModule,
     RegisterModule,
-    ResetpasswordModule
+    ResetpasswordModule,
+    ProductDetailModule
   ]
 })
 export class UserModule { }
