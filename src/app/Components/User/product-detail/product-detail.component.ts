@@ -40,7 +40,6 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductsByCategory(this.product.brandId).subscribe(response => {
       if (response.isSuccess) {
         this.otherProducts = response.data;
-        console.log(this.otherProducts)
       }
     })
   }
