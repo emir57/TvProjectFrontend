@@ -1,7 +1,7 @@
-<div id="container">
+<div id="container" *ngIf="product">
   <div class="row">
     <div class="col-md-6">
-      <!-- <image-slide [photos]="product.photos" [product]="product"></image-slide> -->
+      <image-slide [photos]="product.photos" [product]="product"></image-slide>
     </div>
     <div class="col-md-6">
 
