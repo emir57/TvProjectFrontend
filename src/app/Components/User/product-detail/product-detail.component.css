@@ -19,3 +19,7 @@
   align-items: center;
   font-size: 20px;
 }
+
+#other_products{
+  display: flex;
+}
