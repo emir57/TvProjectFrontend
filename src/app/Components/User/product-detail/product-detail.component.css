@@ -8,6 +8,8 @@
   font-size: 20px;
 }
 
-#productDescription{
-
+#productName>span {
+  font-style: italic;
 }
+
+#productDescription {}
