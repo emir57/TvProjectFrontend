@@ -9,7 +9,7 @@
   <image-slide [photos]="product.photos" [product]="product"></image-slide>
   <!-- Carousel End -->
   <!-- Body -->
-  <div class="card-body">
+  <div (click)="goProductDetail(product)" class="card-body">
     <h5 class="card-title">{{product.productName}}</h5>
     <p class="card-text">Ürün Kodu: <span *ngIf="product.productCode">{{product.productCode}}</span><span
         class="text-muted" *ngIf="!product.productCode">Belirtilmedi</span></p>
