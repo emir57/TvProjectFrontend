@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
 import { ProductService } from 'src/app/Services/product.service';
@@ -14,7 +14,8 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +33,10 @@ export class ProductDetailComponent implements OnInit {
         })
       }
     })
+  }
+
+  goBuyPage() {
+    this.router.navigate(["checkout", this.product.id]);
   }
 
 }
