@@ -27,7 +27,7 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
     this.router.navigate(["checkout", product.id])
   }
   goProductDetail(product: Product) {
-    this.router.navigate(["productdetail", JSON.stringify(product)]);
+    this.router.navigate(["product-detail", JSON.stringify(product)]);
   }
 
   productBuyBtnAnimation() {
