@@ -123,8 +123,8 @@ export class AuthService {
     });
     return inRole;
   }
-  getRoles() {
-    this.getUserRoles(this.currentUser.id).subscribe(response => {
+  getRoles(userId?: number) {
+    this.getUserRoles(this.currentUser ? this.currentUser.id : userId).subscribe(response => {
       if (response.isSuccess) {
         this.roles = response.data
       }
