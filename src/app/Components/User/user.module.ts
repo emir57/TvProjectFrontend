@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
 import { CategoryModule } from './category/category.module';
 import { CheckoutModule } from './checkout/checkout.module';
 import { FooterModule } from './footer/footer.module';
@@ -12,17 +11,12 @@ import { ProductModule } from './product/product.module';
 import { ProfileModule } from './profile/profile.module';
 import { RegisterModule } from './register/register.module';
 import { ResetpasswordModule } from './resetpassword/resetpassword.module';
-import { DiscountModule } from 'src/app/pipes/discount/discount.module';
-import { ProductsearchModule } from 'src/app/pipes/productsearch/productsearch.module';
-import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { UserComponent } from "./user.component";
-import { ProductDetailComponent } from './product-detail/product-detail.component';
 @NgModule({
   declarations: [
-    UserComponent,
-    ProductDetailComponent
+    UserComponent
   ],
   imports: [
     CommonModule,
