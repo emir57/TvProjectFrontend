@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ImageSlideModule } from 'src/app/image-slide/image-slide.module';
 import { ProductDetailComponent } from './product-detail.component';
 import { DiscountModule } from 'src/app/pipes/discount/discount.module';
+import { ProductCardModule } from 'src/app/product-card/product-card.module';
 
 
 
@@ -13,7 +14,8 @@ import { DiscountModule } from 'src/app/pipes/discount/discount.module';
   imports: [
     CommonModule,
     ImageSlideModule,
-    DiscountModule
+    DiscountModule,
+    ProductCardModule
   ]
 })
 export class ProductDetailModule { }
