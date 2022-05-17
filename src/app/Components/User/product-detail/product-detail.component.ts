@@ -27,6 +27,7 @@ export class ProductDetailComponent implements OnInit {
         this.productService.getProduct(param["product"]).subscribe(response => {
           if (response.isSuccess) {
             this.product = response.data;
+            console.log(this.product)
           }
         })
       }
