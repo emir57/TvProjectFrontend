@@ -22,8 +22,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigateByUrl("/");
+    }
     this.createLoginForm();
-
   }
 
   createLoginForm() {
@@ -72,10 +74,10 @@ export class LoginComponent implements OnInit {
     return date.getFullYear();
   }
 
-  get email(){
+  get email() {
     return this.loginForm.get("email");
   }
-  get password(){
+  get password() {
     return this.loginForm.get("password");
   }
 
