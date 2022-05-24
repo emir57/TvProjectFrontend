@@ -92,7 +92,7 @@ export class CheckoutComponent implements OnInit {
     if (this.selectedAddress && this.selectedCreditCard) {
       let totalPrice = this.product.unitPrice;
       if (this.product.isDiscount) {
-        totalPrice = this.product.unitPrice * (100 / this.product.discount);
+        totalPrice = this.product.unitPrice-(this.product.unitPrice * (this.product.discount/100));
       }
       let order: Order = {
         userId: this.userId,

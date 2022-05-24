@@ -8,10 +8,14 @@ export class LoadingService {
 
   constructor() { }
 
-  showLoading(message?: string) {
+  showLoading(message?: string, timer?: number) {
     if (message) $("#spinnerDiv > span").html(message);
     $("#spinnerDiv").show();
     $("#spinnerBgDiv").show();
+    setTimeout(() => {
+      $("#spinnerDiv").hide();
+      $("#spinnerBgDiv").hide();
+    }, timer ?? 5000);
   }
 
   closeLoading() {
