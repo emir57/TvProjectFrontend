@@ -1,8 +1,8 @@
 export interface Order{
-  id:number;
+  id?:number;
   userId:number;
   tvId:number;
-  shippedDate:Date;
+  shippedDate?:Date;
   totalPrice:number;
   addressId:number;
 }
