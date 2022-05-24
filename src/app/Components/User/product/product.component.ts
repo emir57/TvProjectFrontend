@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/Services/product.service';
 import $ from 'jquery';
 import { style } from '@angular/animations';
 import { LoadingService } from 'src/app/Services/loading.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -29,7 +30,8 @@ export class ProductComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
     private router: Router,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -47,7 +49,12 @@ export class ProductComponent implements OnInit {
         }
         this.loadingService.closeLoading();
       }, responseErr => {
-        console.log(responseErr)
+        if (!responseErr.error.message) {
+          this.toastrService.warning("Sunucuya bağlanılamıyor..");
+        }
+        if (responseErr.error.message) {
+          this.toastrService.error(responseErr.error.message);
+        }
       }, () => {
       })
   }
@@ -70,7 +77,14 @@ export class ProductComponent implements OnInit {
           .subscribe(response => {
             this.products = response.data;
             this.loadingService.closeLoading();
-          }, err => { },
+          }, responseErr => {
+            if (!responseErr.error.message) {
+              this.toastrService.warning("Sunucuya bağlanılamıyor..");
+            }
+            if (responseErr.error.message) {
+              this.toastrService.error(responseErr.error.message);
+            }
+          },
             () => {
             })
       } else {
