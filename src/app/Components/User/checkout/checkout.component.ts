@@ -11,6 +11,7 @@ import { UserCreditCard } from 'src/app/Models/userCreditCard';
 import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
 import { OrderService } from 'src/app/Services/order.service';
 import { Order } from 'src/app/Models/order';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-checkout',
@@ -30,7 +31,8 @@ export class CheckoutComponent implements OnInit {
     private productService: ProductService,
     private addressService: AddressService,
     private creditCardService: CreditCardService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -96,9 +98,18 @@ export class CheckoutComponent implements OnInit {
         userId: this.userId,
         tvId: this.product.id,
         addressId: this.selectedAddress.id,
-        totalPrice:totalPrice
+        totalPrice: totalPrice
       }
-      this.orderService.add(order)
+      this.orderService.add(order).subscribe(response => {
+        if (response.isSuccess) {
+          this.toastrService.success(response.message);
+        }else{
+          this.toastrService.error(response.message);
+        }
+      }, responseErr => {
+        console.log(responseErr)
+        // this.toastrService.error(response.message);
+      })
     }
   }
 
