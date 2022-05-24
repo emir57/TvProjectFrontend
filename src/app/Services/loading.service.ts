@@ -9,12 +9,24 @@ export class LoadingService {
   constructor() { }
 
   showLoading(message?: string, timer?: number) {
-    if (message) $("#spinnerDiv > span").html(message);
+    let i = 0;
+    let messageHtml = message ?? "Yükleniyor";
+    let messageHtmlDot = messageHtml;
+    var interval = setInterval(() => {
+      messageHtmlDot += ".";
+      $("#spinnerDiv > span").html(messageHtmlDot);
+      i++;
+      if (i === 3) {
+        messageHtmlDot = messageHtml;
+        i = 0;
+      }
+    }, 400)
     $("#spinnerDiv").show();
     $("#spinnerBgDiv").show();
     setTimeout(() => {
       $("#spinnerDiv").hide();
       $("#spinnerBgDiv").hide();
+      clearInterval(interval);
     }, timer ?? 5000);
   }
 
