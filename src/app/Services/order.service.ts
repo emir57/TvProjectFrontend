@@ -18,7 +18,7 @@ export class OrderService {
   ) { }
 
   add(order: Order): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/addorder`;
+    let newPath = `${this.apiUrl}/api/orders/add`;
     return this.httpClient.post<ResponseModel>(newPath, order);
   }
 
