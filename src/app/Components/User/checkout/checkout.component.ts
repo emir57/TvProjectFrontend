@@ -115,7 +115,7 @@ export class CheckoutComponent implements OnInit {
       }, responseErr => {
         this.loadingService.closeLoading();
         console.log(responseErr)
-        // this.toastrService.error(response.message);
+        this.toastrService.error(responseErr.error.Message);
       })
     }
   }
