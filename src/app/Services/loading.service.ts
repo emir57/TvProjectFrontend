@@ -12,6 +12,7 @@ export class LoadingService {
     let i = 0;
     let messageHtml = message ?? "Yükleniyor";
     let messageHtmlDot = messageHtml;
+    $("#spinnerDiv > span").html(messageHtmlDot);
     var interval = setInterval(() => {
       messageHtmlDot += ".";
       $("#spinnerDiv > span").html(messageHtmlDot);
