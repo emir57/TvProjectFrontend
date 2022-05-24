@@ -12,10 +12,15 @@ import { ResponseModel } from '../Models/response/responseModel';
 })
 export class OrderService {
 
-  apiUrl = ApiUrl
+  private apiUrl = ApiUrl
   constructor(
     private httpClient: HttpClient
   ) { }
+
+  add(order: Order): Observable<ResponseModel> {
+    let newPath = `${this.apiUrl}/api/addorder`;
+    return this.httpClient.post<ResponseModel>(newPath, order);
+  }
 
   getOrders(): Observable<ResponseListModel<OrderModel>> {
     let newPath = `${this.apiUrl}/api/orders/getall`;
