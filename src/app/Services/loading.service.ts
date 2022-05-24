@@ -15,7 +15,7 @@ export class LoadingService {
     $("#spinnerDiv > span").html(messageHtmlDot);
     var interval = setInterval(() => {
       messageHtmlDot += ".";
-      $("#spinnerDiv > span").html(messageHtmlDot);
+      $("#spinnerDiv > span#spinnerText").html(messageHtmlDot);
       i++;
       if (i === 3) {
         messageHtmlDot = messageHtml;
