@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'cluster';
 import { Product } from 'src/app/Models/product';
 import { UserAddressCityModel } from 'src/app/Models/userAddressCity';
@@ -12,6 +12,7 @@ import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
 import { OrderService } from 'src/app/Services/order.service';
 import { Order } from 'src/app/Models/order';
 import { ToastrService } from 'ngx-toastr';
+import { LoadingService } from 'src/app/Services/loading.service';
 
 @Component({
   selector: 'app-checkout',
@@ -32,7 +33,9 @@ export class CheckoutComponent implements OnInit {
     private addressService: AddressService,
     private creditCardService: CreditCardService,
     private orderService: OrderService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
@@ -90,9 +93,10 @@ export class CheckoutComponent implements OnInit {
 
   completeCheckOut() {
     if (this.selectedAddress && this.selectedCreditCard) {
+      this.loadingService.showLoading("İşlem yapılıyor lütfen bekleyiniz");
       let totalPrice = this.product.unitPrice;
       if (this.product.isDiscount) {
-        totalPrice = this.product.unitPrice-(this.product.unitPrice * (this.product.discount/100));
+        totalPrice = this.product.unitPrice - (this.product.unitPrice * (this.product.discount / 100));
       }
       let order: Order = {
         userId: this.userId,
@@ -101,12 +105,15 @@ export class CheckoutComponent implements OnInit {
         totalPrice: totalPrice
       }
       this.orderService.add(order).subscribe(response => {
+        this.loadingService.closeLoading();
         if (response.isSuccess) {
           this.toastrService.success(response.message);
-        }else{
+          this.router.navigateByUrl("/profile/myorders")
+        } else {
           this.toastrService.error(response.message);
         }
       }, responseErr => {
+        this.loadingService.closeLoading();
         console.log(responseErr)
         // this.toastrService.error(response.message);
       })
