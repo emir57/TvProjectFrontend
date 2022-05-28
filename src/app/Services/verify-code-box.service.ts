@@ -8,9 +8,10 @@ export class VerifyCodeBoxService {
 
   constructor() { }
 
-  show(okConfirm: () => void) {
+  show(okConfirm: (code) => void) {
     const box = $("#verifyCode");
     const okButton = $("#verifyCode>button");
+    const codeInput = $("#verifyCode>input");
     const background = $("#verifyCodeBackground");
     box.fadeIn();
     background.fadeIn();
@@ -19,7 +20,7 @@ export class VerifyCodeBoxService {
       background.fadeOut();
     });
     okButton.click(() => {
-      okConfirm();
+      okConfirm(codeInput.val());
       box.fadeOut();
       background.fadeOut();
     })
