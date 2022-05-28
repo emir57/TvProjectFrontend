@@ -91,6 +91,9 @@
   text-align: center;
   margin-top: 10vh;
 }
+#verifyCode > div:last-child {
+  margin-top: 10px;
+}
 
 #verifyCodeBackground {
   position: absolute;
