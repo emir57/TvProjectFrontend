@@ -78,7 +78,8 @@ export class LoginComponent implements OnInit {
               this.isOk = true;
               this.router.navigate(["/"])
             }, responseErr => {
-              this.toastrService.error("Hatalı Kod")
+              this.toastrService.error("Hatalı Kod");
+              this.isOk = true;
             })
           })
 
