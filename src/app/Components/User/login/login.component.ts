@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user';
 import { AuthService } from 'src/app/Services/auth.service';
 import { UserService } from 'src/app/Services/user.service';
+import { VerifyCodeBoxService } from 'src/app/Services/verify-code-box.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private toastrService: ToastrService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private verifyCodeBoxService: VerifyCodeBoxService
   ) { }
 
   ngOnInit(): void {
@@ -57,23 +59,29 @@ export class LoginComponent implements OnInit {
         },
         (response) => {
           this.userService.sendCode(response.data.user.id).subscribe();
+          this.verifyCodeBoxService.show((code) => {
+            this.userService.verifyCode(response.data.user.id, code).subscribe(codeResponse => {
+              localStorage.setItem("remember", JSON.stringify(rememberMe))
+              if (rememberMe) {
+                localStorage.setItem("token", response.data.accessToken.token)
+                localStorage.setItem("user", JSON.stringify(response.data.user.id))
+                localStorage.setItem("userInfo", JSON.stringify(response.data.user))
+                sessionStorage.setItem("user", response.data.user.id + "")
+              } else {
+                sessionStorage.setItem("token", response.data.accessToken.token)
+                sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
+              }
+              sessionStorage.setItem("userInfo", JSON.stringify(response.data.user))
+              //Expiration
+              localStorage.setItem("expiration", response.data.accessToken.expiration)
+              this.toastrService.success(response.message)
+              this.isOk = true;
+              this.router.navigate(["/"])
+            }, responseErr => {
+              this.toastrService.error("Hatalı Kod")
+            })
+          })
 
-          localStorage.setItem("remember", JSON.stringify(rememberMe))
-          if (rememberMe) {
-            localStorage.setItem("token", response.data.accessToken.token)
-            localStorage.setItem("user", JSON.stringify(response.data.user.id))
-            localStorage.setItem("userInfo", JSON.stringify(response.data.user))
-            sessionStorage.setItem("user", response.data.user.id + "")
-          } else {
-            sessionStorage.setItem("token", response.data.accessToken.token)
-            sessionStorage.setItem("user", JSON.stringify(response.data.user.id))
-          }
-          sessionStorage.setItem("userInfo", JSON.stringify(response.data.user))
-          //Expiration
-          localStorage.setItem("expiration", response.data.accessToken.expiration)
-          this.toastrService.success(response.message)
-          this.isOk = true;
-          this.router.navigate(["/"])
         })
     }
   }
