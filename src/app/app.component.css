@@ -90,6 +90,7 @@
   border-radius: 10px;
   text-align: center;
   margin-top: 10vh;
+  display: none;
 }
 #verifyCode > div:last-child {
   margin-top: 10px;
@@ -102,4 +103,5 @@
   z-index: 99;
   background: #000;
   opacity: .6;
+  display: none;
 }
