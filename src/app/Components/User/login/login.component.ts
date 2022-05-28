@@ -56,9 +56,8 @@ export class LoginComponent implements OnInit {
           this.isOk = true;
         },
         (response) => {
-          this.userService.sendCode(response.data.user.id).subscribe(response => {
+          this.userService.sendCode(response.data.user.id).subscribe();
 
-          })
           localStorage.setItem("remember", JSON.stringify(rememberMe))
           if (rememberMe) {
             localStorage.setItem("token", response.data.accessToken.token)

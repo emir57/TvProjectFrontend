@@ -43,8 +43,8 @@ export class UserService {
 
   sendCode(userId: number) {
     let newPath = `${this.apiUrl}/api/users/sendcode`;
-    return this.httpClient.post(newPath, {
-      userId: userId
+    return this.httpClient.post(newPath,{
+      userId:userId
     });
   }
 
