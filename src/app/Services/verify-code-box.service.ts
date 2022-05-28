@@ -11,7 +11,7 @@ export class VerifyCodeBoxService {
   show(okConfirm: (code) => void) {
     const box = $("#verifyCode");
     const okButton = $("#verifyOkButton");
-    const codeInput = $("#verifyCode>input");
+    const codeInput = $("#verifyInput");
     const background = $("#verifyCodeBackground");
     box.fadeIn();
     background.fadeIn();
