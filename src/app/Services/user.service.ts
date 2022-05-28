@@ -41,4 +41,11 @@ export class UserService {
     return this.httpClient.get<ResponseSingleModel<User>>(newPath);
   }
 
+  sendCode(userId: number) {
+    let newPath = `${this.apiUrl}/api/users/sendcode`;
+    return this.httpClient.post(newPath, {
+      userId: userId
+    });
+  }
+
 }

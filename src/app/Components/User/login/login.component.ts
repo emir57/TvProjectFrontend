@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user';
 import { AuthService } from 'src/app/Services/auth.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +56,9 @@ export class LoginComponent implements OnInit {
           this.isOk = true;
         },
         (response) => {
+          this.userService.sendCode(response.data.user.id).subscribe(response => {
+
+          })
           localStorage.setItem("remember", JSON.stringify(rememberMe))
           if (rememberMe) {
             localStorage.setItem("token", response.data.accessToken.token)
