@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2 display-4">Kullanıcı Düzenle</h1>
-  <button routerLink="/admindashboard/admincustomers" class="btn btn-outline-secondary">Geri Dön</button>
+  <button (click)="back()" class="btn btn-outline-secondary">Geri Dön</button>
 </div>
 <form *ngIf="user && allRoles && userRoles" [formGroup]="updateForm">
   <div class="row">

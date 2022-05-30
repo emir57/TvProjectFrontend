@@ -1,4 +1,4 @@
-import { getLocaleExtraDayPeriodRules } from '@angular/common';
+import { getLocaleExtraDayPeriodRules, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,8 +28,13 @@ export class AdminEditcustomerComponent implements OnInit {
     private toastrService: ToastrService,
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private location: Location
   ) { }
+
+  back() {
+    this.location.back();
+  }
 
   async ngOnInit() {
     this.activatedRoute.params.subscribe(async param => {
