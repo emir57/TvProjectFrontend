@@ -14,14 +14,13 @@ export class ImageSlideComponent implements OnInit {
   @Input() height?: string;
   @Input() photos: Photo[] = [];
   @Input() product: Product;
-  @Input() delayMilisecond: number;
   apiUrl = ApiUrl;
   constructor() { }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.ImageSlide();
-    }, this.delayMilisecond ?? 0);
+    }, 0);
   }
   carouselSetStyle(): string {
     let style = "";
