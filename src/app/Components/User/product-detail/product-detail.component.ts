@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { ProductAndPhoto } from 'src/app/Models/productAndPhoto';
@@ -17,13 +17,13 @@ export class ProductDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private router: Router
-  ) { }
-
+  ) {}
   ngOnInit(): void {
     this.getProduct();
   }
 
   getProduct() {
+    this.product = undefined;
     this.activatedRoute.params.subscribe(param => {
       if (param["product"]) {
         this.productService.getProduct(param["product"]).subscribe(response => {
