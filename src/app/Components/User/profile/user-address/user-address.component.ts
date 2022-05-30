@@ -110,8 +110,7 @@ export class UserAddressComponent implements OnInit {
           let address = Object.assign({ cityName: responseCity.data.cityName }, this.updateForm.value)
           this.addressService.updateAddress(address).subscribe(response => {
             if (response.isSuccess) {
-              let index = this.addresses.findIndex(x => x.id == address.id)
-              this.addresses[index] = address;
+              this.getAddress();
               this.toastrService.success(`${address.addressName} başarıyla güncellendi`);
             }
           })
@@ -133,7 +132,7 @@ export class UserAddressComponent implements OnInit {
           this.addressService.addAddress(address).subscribe(response => {
             if (response.isSuccess) {
               this.toastrService.success(`${address.addressName} başarıyla eklendi`);
-              this.addresses.push(address);
+              this.getAddress();
             } else {
               this.toastrService.error(response.message);
             }
