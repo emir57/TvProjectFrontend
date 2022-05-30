@@ -13,7 +13,6 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { UserModule } from './Components/User/user.module';
 import { AdminModule } from './Components/Admin/admin.module';
-import { RouterModule } from '@angular/router';
 import { ProductDetailModule } from './Components/user/product-detail/product-detail.module';
 
 
@@ -29,13 +28,13 @@ import { ProductDetailModule } from './Components/user/product-detail/product-de
     NgImageSliderModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass:"toast-bottom-right"
+      positionClass: "toast-bottom-right"
     }),
     UserModule,
     AdminModule
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

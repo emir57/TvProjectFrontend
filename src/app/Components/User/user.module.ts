@@ -11,10 +11,9 @@ import { ProductModule } from './product/product.module';
 import { ProfileModule } from './profile/profile.module';
 import { RegisterModule } from './register/register.module';
 import { ResetpasswordModule } from './resetpassword/resetpassword.module';
-import { RouterModule } from '@angular/router';
 import { UserComponent } from "./user.component";
 import { ProductDetailModule } from './product-detail/product-detail.module';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,8 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
     ProfileModule,
     RegisterModule,
     ResetpasswordModule,
-    RouterModule,
-    ProductDetailModule
+    ProductDetailModule,
+    RouterModule
   ], exports: [
     CategoryModule,
     CheckoutModule,
