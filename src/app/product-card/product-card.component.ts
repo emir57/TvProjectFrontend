@@ -27,6 +27,10 @@ export class ProductCardComponent implements OnInit, AfterViewInit {
     this.router.navigate(["checkout", product.id])
   }
   goProductDetail(product: Product) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    }
+    this.router.onSameUrlNavigation = "reload";
     this.router.navigate(["product-detail", product.id]);
   }
 
