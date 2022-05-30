@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,8 +24,13 @@ export class AdminCategoryUpdateComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private deleteAlertService: DeleteAlertService
+    private deleteAlertService: DeleteAlertService,
+    private location: Location
   ) { }
+
+  back() {
+    this.location.back();
+  }
 
   async ngOnInit() {
     this.activatedRoute.params.subscribe(async param => {
