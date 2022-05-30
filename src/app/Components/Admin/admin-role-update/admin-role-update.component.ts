@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,8 +21,13 @@ export class AdminRoleUpdateComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private location: Location
   ) { }
+
+  back() {
+    this.location.back();
+  }
 
   async ngOnInit() {
     this.activatedRoute.params.subscribe(async param => {
@@ -70,7 +76,7 @@ export class AdminRoleUpdateComponent implements OnInit {
         this.toastrService.error(responseErr.error.message);
         this.isOk = true;
       })
-    }else{
+    } else {
       this.toastrService.info("Silme işlemi iptal edildi");
     }
 
