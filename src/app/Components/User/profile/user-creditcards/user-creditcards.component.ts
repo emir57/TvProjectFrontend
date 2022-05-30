@@ -137,7 +137,7 @@ export class UserCreditcardsComponent implements OnInit {
       this.creditCardService.add(creditCard).subscribe(response => {
         if (response.isSuccess) {
           this.toastrService.success(response.message);
-          this.userCreditCards.push(creditCard)
+          this.getCreditCards();
         }
         else {
           this.toastrService.error(response.message);
@@ -149,12 +149,10 @@ export class UserCreditcardsComponent implements OnInit {
     }
   }
   deleteCard() {
-
     this.creditCardService.delete(this.selectedCardId).subscribe(response => {
       if (response.isSuccess) {
         this.toastrService.success(response.message);
-        let index = this.userCreditCards.findIndex(x => x.id == this.selectedCardId);
-        this.userCreditCards.splice(index, 1);
+        this.getCreditCards();
         $("#deleteDiv").fadeOut(500);
         $("#backgroundDiv").fadeOut(1000);
         this.selectedCardId = -1;
