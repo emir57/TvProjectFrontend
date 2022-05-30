@@ -12,6 +12,7 @@ import { Photo } from 'src/app/Models/photo';
 import { Subject } from 'rxjs';
 import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
 import { LoadingService } from 'src/app/Services/loading.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-admin-product-update',
   templateUrl: './admin-product-update.component.html',
@@ -32,8 +33,13 @@ export class AdminProductUpdateComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private deleteAlertService: DeleteAlertService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private location: Location
   ) { }
+
+  back() {
+    this.location.back();
+  }
 
   async ngOnInit() {
     this.getCategories();
