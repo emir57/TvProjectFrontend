@@ -23,7 +23,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getProduct() {
-    this.product = undefined;
     this.activatedRoute.params.subscribe(param => {
       if (param["product"]) {
         this.productService.getProduct(param["product"]).subscribe(response => {
