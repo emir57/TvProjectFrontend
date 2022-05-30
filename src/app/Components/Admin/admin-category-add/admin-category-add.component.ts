@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,38 +13,43 @@ import { CategoryService } from 'src/app/Services/category.service';
 })
 export class AdminCategoryAddComponent implements OnInit {
 
-  isOk=true;
-  categoryAddForm:FormGroup
+  isOk = true;
+  categoryAddForm: FormGroup
   constructor(
-    private categoryService:CategoryService,
-    private activatedRouter:ActivatedRoute,
-    private router:Router,
-    private formBuilder:FormBuilder,
-    private toastrService:ToastrService
+    private categoryService: CategoryService,
+    private activatedRouter: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private toastrService: ToastrService,
+    private location: Location
   ) { }
+
+  back() {
+    this.location.back();
+  }
 
   ngOnInit(): void {
     this.createCategoryAddForm();
   }
 
-  createCategoryAddForm(){
+  createCategoryAddForm() {
     this.categoryAddForm = this.formBuilder.group({
-      name:['',[Validators.required,Validators.maxLength(50)]],
-      phoneNumber:['',[Validators.maxLength(15)]],
-      address:['',[Validators.maxLength(250)]]
+      name: ['', [Validators.required, Validators.maxLength(50)]],
+      phoneNumber: ['', [Validators.maxLength(15)]],
+      address: ['', [Validators.maxLength(250)]]
     })
   }
 
-  addCategory(){
-    if(this.categoryAddForm.valid){
-      this.isOk=false;
-      let categoryModel = Object.assign({},this.categoryAddForm.value);
-      this.categoryService.addCategory(categoryModel).subscribe(response=>{
-        if(response.isSuccess){
+  addCategory() {
+    if (this.categoryAddForm.valid) {
+      this.isOk = false;
+      let categoryModel = Object.assign({}, this.categoryAddForm.value);
+      this.categoryService.addCategory(categoryModel).subscribe(response => {
+        if (response.isSuccess) {
           this.toastrService.success(response.message);
           this.categoryAddForm.reset();
-          this.isOk=true;
-        }else{
+          this.isOk = true;
+        } else {
           this.toastrService.error(response.message);
         }
       })
