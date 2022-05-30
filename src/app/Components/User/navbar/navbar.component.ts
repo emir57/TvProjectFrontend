@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrl } from 'src/app/Models/apiUrl';
@@ -14,7 +15,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private location: Location
   ) { }
 
   userPhoto = `${ApiUrl}/images/user.png`
@@ -31,6 +33,10 @@ export class NavbarComponent implements OnInit {
     this.toastrService.info("Çıkış Yapılıyor...")
     this.authService.logout();
     this.toastrService.success("Başarıyla Çıkış Yapıldı")
+  }
+
+  back() {
+    this.location.back();
   }
 
 
