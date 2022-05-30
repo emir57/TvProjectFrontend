@@ -1,18 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-0">
   <div class="container-xl">
+    <a (click)="back()" style="font-size: x-large;color: #fff;margin-right:10px;cursor:pointer">
+      <i class="bi bi-arrow-left"></i>
+    </a>
     <a class="navbar-brand" href="#" routerLink="/">TvProject</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#" routerLink="/">Ana Sayfa</a>
-        </li>
-        <li class="nav-item">
-          <a (click)="back()">
-            <i class="bi bi-arrow-left"></i>
-          </a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -37,19 +36,25 @@
         <button class="btn btn-success" type="submit">Ara</button>
       </form> -->
       <div class="text-end">
-        <button *ngIf="!isLogin()" class="btn btn-outline-light me-2" routerLink="/login"><i class="fas fa-user"></i> Giriş Yap</button>
+        <button *ngIf="!isLogin()" class="btn btn-outline-light me-2" routerLink="/login"><i class="fas fa-user"></i>
+          Giriş Yap</button>
         <!-- <button *ngIf="!isLogin()" type="button" class="btn btn-warning" routerLink="register">Kayıt Ol</button> -->
         <!-- <button *ngIf="isLogin()" type="button" class="btn btn-warning" (click)="logout()">Çıkış Yap</button> -->
         <div class="dropdown" *ngIf="isLogin()">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{userPhoto}}" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong *ngIf="authService.currentUser">{{authService.currentUser.firstName}} {{authService.currentUser.lastName}}</strong>
+            <strong *ngIf="authService.currentUser">{{authService.currentUser.firstName}}
+              {{authService.currentUser.lastName}}</strong>
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser2">
             <li *ngIf="isInRoleAdmin()"><a class="dropdown-item" routerLink="/admindashboard/home">Admin Paneli</a></li>
             <li><a class="dropdown-item" routerLink="/profile/update">Profilim</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="#" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item text-danger" href="#" (click)="logout()"><i class="fas fa-sign-out-alt"></i>
+                Çıkış Yap</a></li>
           </ul>
         </div>
       </div>
