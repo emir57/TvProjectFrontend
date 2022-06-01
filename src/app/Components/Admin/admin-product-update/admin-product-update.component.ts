@@ -143,7 +143,7 @@ export class AdminProductUpdateComponent implements OnInit {
     }
   }
   setFile(files: FileList) {
-    this.selectedFile = files.item[0];
+    this.selectedFile = files.item(0);
   }
 
   photocheck(photo: Photo, product: Product) {
