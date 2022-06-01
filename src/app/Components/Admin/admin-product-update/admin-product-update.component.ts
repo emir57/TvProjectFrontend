@@ -61,9 +61,6 @@ export class AdminProductUpdateComponent implements OnInit {
       }, 500);
     })
     this.deleteDiv();
-    setTimeout(() => {
-      this.imageSlide();
-    }, 500);
   }
   getCategories() {
     this.categoryService.getCategories().subscribe(response => {
