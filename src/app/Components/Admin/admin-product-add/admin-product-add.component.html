@@ -82,9 +82,9 @@
           <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
         </select>
         <span *ngIf="selectedCategory"><span class="text-primary">{{selectedCategory.name}}</span> Seçildi</span>
-        <div
+        <div class="text-danger"
           *ngIf="(productAddForm.get('brandId').dirty || productAddForm.get('brandId').touched) && productAddForm.get('brandId').errors">
-          <span *ngIf="productAddForm.get('brandId').errors.required" class="text-danger">Marka gerekli </span>
+          <small *ngIf="productAddForm.get('brandId').errors.required">Marka gerekli </small>
         </div>
       </div>
       <!-- Unit Price -->
