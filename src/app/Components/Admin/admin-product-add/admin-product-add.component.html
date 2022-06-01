@@ -91,11 +91,11 @@
       <div class="form-group col-md-6 mb-3">
         <label for="unitPrice">Ürün Fiyatı</label>
         <input formControlName="unitPrice" id="unitPrice" type="number" class="form-control" placeholder='5000'>
-        <div
+        <div class="text-danger"
           *ngIf="(productAddForm.get('unitPrice').dirty || productAddForm.get('unitPrice').touched) && productAddForm.get('unitPrice').errors">
-          <span *ngIf="productAddForm.get('unitPrice').errors.required" class="text-danger">Ürün fiyatı gerekli
-          </span>
-          <span *ngIf="productAddForm.get('unitPrice').errors.min" class="text-danger">Minimum 500 olabilir</span>
+          <small *ngIf="productAddForm.get('unitPrice').errors.required">Ürün fiyatı gerekli
+          </small>
+          <small *ngIf="productAddForm.get('unitPrice').errors.min">Minimum 500 olabilir</small>
         </div>
       </div>
       <!-- Discount -->
