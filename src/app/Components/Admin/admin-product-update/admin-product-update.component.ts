@@ -134,12 +134,14 @@ export class AdminProductUpdateComponent implements OnInit {
         const file = fileInput.files.item(i);
         files.push(file)
       }
-      this.photoService.uploadImages(files, photoModel).subscribe(response => {
-        if (response.isSuccess) {
-          this.toastrService.success(response.message);
-        } else {
-          this.toastrService.error(response.message);
-        }
+      this.photoService.uploadImages(files, photoModel).subscribe(responses => {
+        responses.forEach(response => {
+          if (response.isSuccess) {
+            this.toastrService.success(response.message);
+          } else {
+            this.toastrService.error(response.message);
+          }
+        });
         this.isOk = true;
       }, responseErr => {
         this.isOk = true;

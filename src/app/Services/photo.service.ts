@@ -23,7 +23,7 @@ export class PhotoService {
     // sendForm.append("",JSON.stringify(photoModel));
     return this.httpClient.post<ResponseModel>(this.apiUrl, sendForm)
   }
-  uploadImages(images: File[], photoModel: Photo): Observable<ResponseModel> {
+  uploadImages(images: File[], photoModel: Photo): Observable<ResponseModel[]> {
     const sendForm = new FormData();
     images.forEach(image => {
       sendForm.append("files", image, image.name);
@@ -31,6 +31,6 @@ export class PhotoService {
     sendForm.append("tvid", JSON.stringify(photoModel.tvId));
     sendForm.append("ismain", JSON.stringify(photoModel.isMain));
     // sendForm.append("",JSON.stringify(photoModel));
-    return this.httpClient.post<ResponseModel>(this.apiUrl, sendForm)
+    return this.httpClient.post<ResponseModel[]>(this.apiUrl, sendForm)
   }
 }
