@@ -4,8 +4,8 @@
     <div class="btn-group me-2">
       <button type="button" class="btn btn-sm btn-outline-secondary" (click)="back()">Geri
         Gel</button>
-      <button (click)="deleteProduct()" id="deleteButton" class="btn btn-sm btn-outline-danger" [disabled]="!isOk" [disabled]="!product"
-        type="button">
+      <button (click)="deleteProduct()" id="deleteButton" class="btn btn-sm btn-outline-danger" [disabled]="!isOk"
+        [disabled]="!product" type="button">
         <span *ngIf="!isOk" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         Bu Ürünü Sil
       </button>
@@ -28,9 +28,11 @@
             <span *ngIf="productUpdateForm.get('productName').errors.required" class="text-danger">Ürün ismi
               gerekli
             </span>
-            <span *ngIf="productUpdateForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi {{productUpdateForm.get('productName').errors.maxlength.requiredLength}}
+            <span *ngIf="productUpdateForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi
+              {{productUpdateForm.get('productName').errors.maxlength.requiredLength}}
               karakteri geçemez </span>
-            <span *ngIf="productUpdateForm.get('productName').errors.minlength" class="text-danger">Ürün ismi {{productUpdateForm.get('productName').errors.minlength.requiredLength}}
+            <span *ngIf="productUpdateForm.get('productName').errors.minlength" class="text-danger">Ürün ismi
+              {{productUpdateForm.get('productName').errors.minlength.requiredLength}}
               karakterden küçük olamaz </span>
           </div>
         </div>
@@ -49,7 +51,8 @@
             <span *ngIf="productUpdateForm.get('screenType').errors.required" class="text-danger">Ekran türü
               gerekli
             </span>
-            <span *ngIf="productUpdateForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü {{productUpdateForm.get('screenType').errors.maxlength.requiredLength}}
+            <span *ngIf="productUpdateForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü
+              {{productUpdateForm.get('screenType').errors.maxlength.requiredLength}}
               karakteri geçemez</span>
           </div>
         </div>
@@ -61,7 +64,8 @@
             *ngIf="(productUpdateForm.get('screenInch').dirty || productUpdateForm.get('screenInch').touched) && productUpdateForm.get('screenInch').errors">
             <span *ngIf="productUpdateForm.get('screenInch').errors.required" class="text-danger">Inç gerekli
             </span>
-            <span *ngIf="productUpdateForm.get('screenInch').errors.maxlength" class="text-danger">Inç {{productUpdateForm.get('screenInch').errors.maxlength.requiredLength}}
+            <span *ngIf="productUpdateForm.get('screenInch').errors.maxlength" class="text-danger">Inç
+              {{productUpdateForm.get('screenInch').errors.maxlength.requiredLength}}
               karakteri
               geçemez</span>
           </div>
@@ -73,7 +77,8 @@
             placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
           <div
             *ngIf="(productUpdateForm.get('extras').dirty || productUpdateForm.get('extras').touched) && productUpdateForm.get('extras').errors">
-            <span *ngIf="productUpdateForm.get('extras').errors.maxlength" class="text-danger">{{productUpdateForm.get('extras').errors.maxlength.requiredLength}} karakteri
+            <span *ngIf="productUpdateForm.get('extras').errors.maxlength"
+              class="text-danger">{{productUpdateForm.get('extras').errors.maxlength.requiredLength}} karakteri
               geçemez</span>
           </div>
         </div>
@@ -141,10 +146,18 @@
   </div>
   <div class="col-md-6">
     <image-slide [product]="product" [photos]="product.photos"></image-slide>
-    <input type="file" class="form-control" accept="image/*" placeholder="Resim Yükleyiniz">
-
-    <button>
-
+    <form [formGroup]="uploadImageForm">
+      <input formControlName="file" type="file" class="form-control" accept="image/*" placeholder="Resim Yükleyiniz">
+      <div class="form-check">
+        <input formControlName="isMain" class="form-check-input" type="checkbox"
+          [value]="productUpdateForm.get('isDiscount').value" id="isDiscount">
+        <label class="form-check-label" for="isDiscount">
+          Ana Fotoğraf mı?
+        </label>
+      </div>
+    </form>
+    <button [disabled]="!uploadImageForm.valid" class="btn btn-primary">
+      Yükle
     </button>
   </div>
 </div>
