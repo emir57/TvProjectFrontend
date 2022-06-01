@@ -156,7 +156,7 @@
         </label>
       </div>
     </form>
-    <button [disabled]="!uploadImageForm.valid" class="btn btn-primary">
+    <button (click)="uploadImage()" [disabled]="!uploadImageForm.valid" class="btn btn-primary">
       Yükle
     </button>
   </div>

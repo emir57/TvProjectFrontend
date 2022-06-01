@@ -13,6 +13,7 @@ import { Subject } from 'rxjs';
 import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
 import { LoadingService } from 'src/app/Services/loading.service';
 import { Location } from '@angular/common';
+import { PhotoService } from 'src/app/Services/photo.service';
 @Component({
   selector: 'app-admin-product-update',
   templateUrl: './admin-product-update.component.html',
@@ -26,6 +27,7 @@ export class AdminProductUpdateComponent implements OnInit {
   uploadImageForm: FormGroup;
   categories: Category[] = [];
   product: Product;
+  selectedFile: File;
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
@@ -35,7 +37,8 @@ export class AdminProductUpdateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private deleteAlertService: DeleteAlertService,
     private loadingService: LoadingService,
-    private location: Location
+    private location: Location,
+    private photoService: PhotoService
   ) { }
 
   back() {
@@ -126,46 +129,29 @@ export class AdminProductUpdateComponent implements OnInit {
     })
   }
 
+  async uploadImage() {
+    if (this.uploadImageForm.valid) {
+      this.isOk = false;
+      let photoModel = Object.assign({}, this.photoUploadForm.value)
+      this.photoService.uploadImage(this.selectedFile, photoModel).subscribe(response => {
+        if (response.isSuccess) {
+          this.toastrService.success(response.message);
+        } else {
+          this.toastrService.error(response.message)
+        }
+        this.isOk = true;
+      }, responseErr => {
+        this.isOk = true;
+      })
+    }
+  }
+
   photocheck(photo: Photo, product: Product) {
     if (photo.isMain == true) {
       return `carousel-item active photoProduct`
     } else {
       return `carousel-item photoProduct`
     }
-  }
-  imageSlide() {
-
-    var nextBtn = $("#NextBtn");
-    var prevBtn = $("#PrevBtn");
-    let photos = $(".photoProduct");
-    let length = photos.length;
-    let i = 0;
-    function photosDisplayNone(photos) {
-      for (let i = 0; i < photos.length; i++) {
-        photos[i].style.display = "none"
-      }
-    }
-    this.product.photos.forEach((photo, index) => {
-      if (photo.isMain) {
-        $("#photo" + photo.id).fadeIn();
-        let i = index;
-      }
-      else $("#photo" + photo.id).fadeOut()
-    })
-    nextBtn.click(function () {
-      i++;
-      if (i > photos.length - 1) i = 0;
-      photosDisplayNone(photos);
-      photos[i].style.display = "block";
-    })
-    prevBtn.click(function () {
-      i--;
-      if (i < 0) {
-        i = photos.length - 1;
-      }
-      photosDisplayNone(photos);
-      photos[i].style.display = "block";
-    })
   }
   deleteDiv() {
     var bgDiv = $("#backgroundDiv");
