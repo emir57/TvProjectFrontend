@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, Form } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrl } from 'src/app/Models/apiUrl';
@@ -23,6 +23,7 @@ export class AdminProductUpdateComponent implements OnInit {
   apiUrl = ApiUrl
   isOk = true;
   productUpdateForm: FormGroup;
+  uploadImageForm: FormGroup;
   categories: Category[] = [];
   product: Product;
   constructor(
@@ -42,6 +43,7 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.createUploadImageForm();
     this.getCategories();
     this.loadingService.showLoading();
     this.activatedRoute.params.subscribe(async param => {
@@ -85,6 +87,7 @@ export class AdminProductUpdateComponent implements OnInit {
       })
     }
   }
+
   deleteProduct() {
     this.isOk = false;
     this.deleteAlertService.showAlertBox("Bu ürünü silmek istediğinizden eminmisiniz?",
@@ -115,6 +118,13 @@ export class AdminProductUpdateComponent implements OnInit {
       isDiscount: [this.product.isDiscount, []],
       stock: [this.product.stock, [Validators.required, Validators.min(0), Validators.max(255)]],
       photos: [this.product.photos]
+    })
+  }
+  createUploadImageForm() {
+    this.uploadImageForm = this.formBuilder.group({
+      tvId: [this.product.id, [Validators.required]],
+      isMain: [false],
+      file: [, [Validators.required]]
     })
   }
 
