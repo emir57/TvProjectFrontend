@@ -107,12 +107,12 @@
       <div class="form-group col-md-12 mb-3">
         <label for="stock">Stok Adedi</label>
         <input formControlName="stock" id="stock" type="number" class="form-control" placeholder='3'>
-        <div
+        <div class="text-danger"
           *ngIf="(productAddForm.get('stock').dirty || productAddForm.get('stock').touched) && productAddForm.get('stock').errors">
-          <span *ngIf="productAddForm.get('stock').errors.required" class="text-danger">Stok adedi boş
-            olamaz</span>
-          <span *ngIf="productAddForm.get('stock').errors.min" class="text-danger">En az 1 olabilir</span>
-          <span *ngIf="productAddForm.get('stock').errors.max" class="text-danger">En fazla 255 olabilir</span>
+          <small *ngIf="productAddForm.get('stock').errors.required">Stok adedi boş
+            olamaz</small>
+          <small *ngIf="productAddForm.get('stock').errors.min">En az 1 olabilir</small>
+          <small *ngIf="productAddForm.get('stock').errors.max">En fazla 255 olabilir</small>
         </div>
       </div>
       <!-- Is Discount ?-->
