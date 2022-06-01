@@ -147,11 +147,11 @@
   <div class="col-md-6">
     <image-slide [product]="product" [photos]="product.photos"></image-slide>
     <form [formGroup]="uploadImageForm">
-      <input formControlName="file" type="file" class="form-control" accept="image/*" placeholder="Resim Yükleyiniz">
+      <input formControlName="file" (change)="setFile($event.target.files)" type="file" class="form-control"
+        accept="image/*" placeholder="Resim Yükleyiniz">
       <div class="form-check">
-        <input formControlName="isMain" class="form-check-input" type="checkbox"
-          [value]="productUpdateForm.get('isDiscount').value" id="isDiscount">
-        <label class="form-check-label" for="isDiscount">
+        <input formControlName="isMain" class="form-check-input" type="checkbox" id="isMain">
+        <label class="form-check-label" for="isMain">
           Ana Fotoğraf mı?
         </label>
       </div>
