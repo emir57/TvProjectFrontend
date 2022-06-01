@@ -126,11 +126,16 @@ export class AdminProductUpdateComponent implements OnInit {
     })
   }
 
-  async uploadImage() {
+  async uploadImage(fileInput: HTMLInputElement) {
     if (this.uploadImageForm.valid) {
       this.isOk = false;
-      let photoModel = Object.assign({}, this.uploadImageForm.value)
-      this.photoService.uploadImage(this.selectedFile, photoModel).subscribe(response => {
+      let photoModel = Object.assign({}, this.uploadImageForm.value);
+      let files: File[] = [];
+      for (let i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files.item(i);
+        files.push(file)
+      }
+      this.photoService.uploadImages(files, photoModel).subscribe(response => {
         if (response.isSuccess) {
           this.toastrService.success(response.message);
         } else {
