@@ -121,8 +121,7 @@ export class AdminProductUpdateComponent implements OnInit {
   createUploadImageForm() {
     this.uploadImageForm = this.formBuilder.group({
       tvId: [this.product.id, [Validators.required]],
-      isMain: [false],
-      file: [, [Validators.required]]
+      isMain: [false]
     })
   }
 
