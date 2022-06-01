@@ -43,7 +43,6 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.createUploadImageForm();
     this.getCategories();
     this.loadingService.showLoading();
     this.activatedRoute.params.subscribe(async param => {
@@ -52,13 +51,12 @@ export class AdminProductUpdateComponent implements OnInit {
       }
       let result = await this.productService.getProduct(param["product"]).toPromise();
       this.product = result.data;
-      console.log(this.product.photos)
       this.createproductUpdateForm();
+      this.createUploadImageForm();
       setTimeout(() => {
         this.loadingService.closeLoading();
       }, 500);
     })
-    // this.createproductUpdateForm();
     this.deleteDiv();
     setTimeout(() => {
       this.imageSlide();
