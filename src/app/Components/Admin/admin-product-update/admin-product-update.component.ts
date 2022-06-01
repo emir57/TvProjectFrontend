@@ -126,7 +126,7 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   async uploadImage(fileInput: HTMLInputElement) {
-    if (this.uploadImageForm.valid) {
+    if (this.uploadImageForm.valid && fileInput.files.length > 0) {
       this.isOk = false;
       let photoModel = Object.assign({}, this.uploadImageForm.value);
       let files: File[] = [];
@@ -144,6 +144,8 @@ export class AdminProductUpdateComponent implements OnInit {
       }, responseErr => {
         this.isOk = true;
       })
+    } else {
+      this.toastrService.warning("Lütfen resim seçiniz");
     }
   }
   setFile(files: FileList) {
