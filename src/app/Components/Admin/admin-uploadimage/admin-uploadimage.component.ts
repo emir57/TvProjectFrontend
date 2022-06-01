@@ -17,7 +17,7 @@ export class AdminUploadimageComponent implements OnInit {
   isOk = true;
   photoUploadForm: FormGroup
   products: Product[] = []
-  selectedFile:File;
+  selectedFile: File;
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
@@ -30,20 +30,27 @@ export class AdminUploadimageComponent implements OnInit {
     this.createPhotoUploadForm();
   }
 
-  uploadImage() {
-    if(this.photoUploadForm.valid){
+  uploadImage(fileInput: HTMLInputElement) {
+    if (this.photoUploadForm.valid && fileInput.files.length > 0) {
       this.isOk = false;
       this.photoUploadForm.get("tvId").setValue(+this.photoUploadForm.get("tvId").value)
-      let photoModel = Object.assign({},this.photoUploadForm.value)
-      this.photoService.uploadImage(this.selectedFile,photoModel).subscribe(response=>{
-        if(response.isSuccess){
-          this.toastrService.success(response.message);
-        }else{
-          this.toastrService.error(response.message)
-        }
-        this.isOk=true;
-      },responseErr=>{
-        this.isOk=true;
+      let photoModel = Object.assign({}, this.photoUploadForm.value);
+      let files: File[] = [];
+      for (let i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files.item(i);
+        files.push(file)
+      }
+      this.photoService.uploadImages(files, photoModel).subscribe(responses => {
+        responses.forEach(response => {
+          if (response.isSuccess) {
+            this.toastrService.success(response.message);
+          } else {
+            this.toastrService.error(response.message);
+          }
+        });
+        this.isOk = true;
+      }, responseErr => {
+        this.isOk = true;
       })
     }
   }
@@ -59,11 +66,10 @@ export class AdminUploadimageComponent implements OnInit {
   createPhotoUploadForm() {
     this.photoUploadForm = this.formBuilder.group({
       tvId: [0, [Validators.required]],
-      isMain: [false],
-      file:[,[Validators.required]]
+      isMain: [false]
     })
   }
-  setFile(files:FileList){
+  setFile(files: FileList) {
     this.selectedFile = files.item(0);
   }
 }
