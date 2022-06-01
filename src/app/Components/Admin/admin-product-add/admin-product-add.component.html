@@ -38,13 +38,13 @@
       <div class="form-group col-md-6 mb-3">
         <label for="screenType">Ekran Türü</label>
         <input formControlName="screenType" id="screenType" type="text" class="form-control" placeholder="OLED">
-        <div
+        <div class="text-danger"
           *ngIf="(productAddForm.get('screenType').dirty || productAddForm.get('screenType').touched) && productAddForm.get('screenType').errors">
-          <span *ngIf="productAddForm.get('screenType').errors.required" class="text-danger">Ekran türü gerekli
-          </span>
-          <span *ngIf="productAddForm.get('screenType').errors.maxlength" class="text-danger">Ekran türü
+          <small *ngIf="productAddForm.get('screenType').errors.required">Ekran türü gerekli
+          </small>
+          <small *ngIf="productAddForm.get('screenType').errors.maxlength">Ekran türü
             {{productAddForm.get('screenType').errors.maxlength.requiredLength}}
-            karakteri geçemez</span>
+            karakteri geçemez</small>
         </div>
       </div>
       <!-- Screen Inch -->
