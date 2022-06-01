@@ -16,14 +16,14 @@
         <label for="productName">Ürün İsmi</label>
         <input formControlName="productName" id="productName" type="text" class="form-control"
           placeholder="Philips 50PUS/8505">
-        <div
+        <div class="text-danger"
           *ngIf="(productAddForm.get('productName').dirty || productAddForm.get('productName').touched) && productAddForm.get('productName').errors">
-          <span *ngIf="productAddForm.get('productName').errors.required" class="text-danger">Ürün ismi gerekli
-          </span>
-          <span *ngIf="productAddForm.get('productName').errors.maxlength" class="text-danger">Ürün ismi {{productAddForm.get('productName').errors.maxlength.requiredLength}}
-            karakteri geçemez </span>
-          <span *ngIf="productAddForm.get('productName').errors.minlength" class="text-danger">Ürün ismi {{productAddForm.get('productName').errors.minlength.requiredLength}}
-            karakterden küçük olamaz </span>
+          <small *ngIf="productAddForm.get('productName').errors.required">Ürün ismi gerekli
+          </small>
+          <small *ngIf="productAddForm.get('productName').errors.maxlength">Ürün ismi {{productAddForm.get('productName').errors.maxlength.requiredLength}}
+            karakteri geçemez </small>
+          <small *ngIf="productAddForm.get('productName').errors.minlength">Ürün ismi {{productAddForm.get('productName').errors.minlength.requiredLength}}
+            karakterden küçük olamaz </small>
         </div>
       </div>
       <!-- Product Code -->
