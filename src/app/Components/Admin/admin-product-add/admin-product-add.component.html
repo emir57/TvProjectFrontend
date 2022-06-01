@@ -64,11 +64,12 @@
         <label for="extras">Ekstra Özellikler</label>
         <textarea formControlName="extras" id="extras" type="text" class="form-control"
           placeholder="Ürünü'de belirtmek istediğiniz ekstra özellikler"></textarea>
-        <div
+        <div class="text-danger"
           *ngIf="(productAddForm.get('extras').dirty || productAddForm.get('extras').touched) && productAddForm.get('extras').errors">
-          <span *ngIf="productAddForm.get('extras').errors.maxlength"
-            class="text-danger">{{productAddForm.get('extras').errors.maxlength.requiredLength}} karakteri
-            geçemez</span>
+          <small
+            *ngIf="productAddForm.get('extras').errors.maxlength">{{productAddForm.get('extras').errors.maxlength.requiredLength}}
+            karakteri
+            geçemez</small>
         </div>
       </div>
       <!-- Brand -->
