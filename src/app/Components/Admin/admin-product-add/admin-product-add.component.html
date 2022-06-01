@@ -51,12 +51,12 @@
       <div class="form-group col-md-6 mb-3">
         <label for="screenInch">Inç</label>
         <input formControlName="screenInch" id="screenInch" type="text" class="form-control" placeholder='50"'>
-        <div
+        <div class="text-danger"
           *ngIf="(productAddForm.get('screenInch').dirty || productAddForm.get('screenInch').touched) && productAddForm.get('screenInch').errors">
-          <span *ngIf="productAddForm.get('screenInch').errors.required" class="text-danger">Inç gerekli </span>
-          <span *ngIf="productAddForm.get('screenInch').errors.maxlength" class="text-danger">Inç
+          <small *ngIf="productAddForm.get('screenInch').errors.required">Inç gerekli </small>
+          <small *ngIf="productAddForm.get('screenInch').errors.maxlength">Inç
             {{productAddForm.get('screenInch').errors.maxlength.requiredLength}} karakteri
-            geçemez</span>
+            geçemez</small>
         </div>
       </div>
       <!-- Extras -->
