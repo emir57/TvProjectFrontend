@@ -54,10 +54,15 @@
   background: #EBF5FB;
 }
 
-.product_old_price {
-
-}
+.product_old_price {}
 
 .product_new_price {
   font-size: 19px;
+}
+
+.card-text {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
