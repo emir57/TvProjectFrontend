@@ -2,7 +2,7 @@
   <p *ngIf="product.stock == 0" class="alert alert-warning text-center">Ürün Tükendi</p>
   <div class="row">
     <div class="col-md-4">
-      <image-slide [photos]="product.photos" [product]="product"></image-slide>
+      <image-slide *ngIf="product.photos" [photos]="product.photos" [product]="product"></image-slide>
     </div>
     <div class="col-md-8">
       <p id="productName">
@@ -30,7 +30,7 @@
     </div>
   </div>
   <br>
-  <div class="row" *ngIf="otherProducts.length > 0">
+  <div class="row" *ngIf="otherProducts && otherProducts.length > 0">
     <h4 class="display-5">Benzer Ürünler</h4>
     <hr>
     <div id="other_products">
