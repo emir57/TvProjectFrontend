@@ -12,7 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <img src="project_images/1_2.png"/>
 <img src="project_images/1_3.png"/>
 <img src="project_images/5.png"/>
-<img src="project_images/6.png"/>
+
 <img src="project_images/7.png"/>
 <img src="project_images/8.png"/>
 <img src="project_images/9.png"/>
