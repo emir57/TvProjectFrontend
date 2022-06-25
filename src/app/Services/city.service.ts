@@ -21,7 +21,7 @@ export class CityService {
     return this.httpClient.get<ResponseListModel<City>>(newPath);
   }
   getCity(id: number): Observable<ResponseSingleModel<City>> {
-    let newPath = `${this.apiUrl}/api/cities/id=${id}`;
+    let newPath = `${this.apiUrl}/api/cities/${id}`;
     return this.httpClient.get<ResponseSingleModel<City>>(newPath);
   }
   updateCity(city: City): Observable<ResponseModel> {
