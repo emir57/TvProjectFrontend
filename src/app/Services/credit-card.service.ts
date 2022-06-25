@@ -21,11 +21,11 @@ export class CreditCardService {
     return this.httpClient.get<ResponseListModel<CreditCardWithUser>>(newPath);
   }
   add(creditCardModel: UserCreditCard): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/creditcards/add`;
+    let newPath = `${this.apiUrl}/api/creditcards`;
     return this.httpClient.post<ResponseModel>(newPath, creditCardModel);
   }
   delete(creditCardId: number): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/creditcards/delete?id=${creditCardId}`;
+    let newPath = `${this.apiUrl}/api/creditcards/${creditCardId}`;
     return this.httpClient.delete<ResponseModel>(newPath);
   }
 
