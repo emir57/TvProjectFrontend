@@ -19,23 +19,23 @@ export class AddressService {
   ) { }
 
   getAddressesByUserId(userId: number): Observable<ResponseListModel<UserAddressCityModel>> {
-    let newPath = `${this.apiUrl}/api/addresses/getall?userId=${userId}`;
+    let newPath = `${this.apiUrl}/api/addresses/${userId}`;
     return this.httpClient.get<ResponseListModel<UserAddressCityModel>>(newPath);
   }
   deleteAddress(id: number): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/addresses/delete?id=${id}`;
+    let newPath = `${this.apiUrl}/api/addresses/${id}`;
     return this.httpClient.delete<ResponseModel>(newPath);
   }
   getAddress(id: number): Observable<ResponseSingleModel<UserAddressCityModel>> {
-    let newPath = `${this.apiUrl}/api/addresses/getbyid?id=${id}`;
+    let newPath = `${this.apiUrl}/api/addresses/${id}`;
     return this.httpClient.get<ResponseSingleModel<UserAddressCityModel>>(newPath);
   }
   addAddress(address: UserAddress): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/addresses/add`;
+    let newPath = `${this.apiUrl}/api/addresses`;
     return this.httpClient.post<ResponseModel>(newPath, address);
   }
   updateAddress(address: UserAddress): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/addresses/update`;
+    let newPath = `${this.apiUrl}/api/addresses`;
     return this.httpClient.put<ResponseModel>(newPath, address);
   }
 }
