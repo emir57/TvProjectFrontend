@@ -25,15 +25,15 @@ export class CityService {
     return this.httpClient.get<ResponseSingleModel<City>>(newPath);
   }
   updateCity(city: City): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/cities/update`;
+    let newPath = `${this.apiUrl}/api/cities`;
     return this.httpClient.put<ResponseModel>(newPath, city);
   }
   addCity(city: City): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/cities/add`;
+    let newPath = `${this.apiUrl}/api/cities`;
     return this.httpClient.post<ResponseModel>(newPath, city);
   }
   deleteCity(id: number): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/cities/delete?cityId=${id}`;
+    let newPath = `${this.apiUrl}/api/cities/${id}`;
     return this.httpClient.delete<ResponseModel>(newPath);
   }
 }
