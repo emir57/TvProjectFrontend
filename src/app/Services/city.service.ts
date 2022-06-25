@@ -17,7 +17,7 @@ export class CityService {
     private httpClient: HttpClient
   ) { }
   getCities(): Observable<ResponseListModel<City>> {
-    let newPath = `${this.apiUrl}/api/cities/getall`;
+    let newPath = `${this.apiUrl}/api/cities`;
     return this.httpClient.get<ResponseListModel<City>>(newPath);
   }
   getCity(id: number): Observable<ResponseSingleModel<City>> {
