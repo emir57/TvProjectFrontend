@@ -18,21 +18,21 @@ export class OrderService {
   ) { }
 
   add(order: Order): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/orders/add`;
+    let newPath = `${this.apiUrl}/api/orders`;
     return this.httpClient.post<ResponseModel>(newPath, order);
   }
 
   getOrders(): Observable<ResponseListModel<OrderModel>> {
-    let newPath = `${this.apiUrl}/api/orders/getall`;
+    let newPath = `${this.apiUrl}/api/orders`;
     return this.httpClient.get<ResponseListModel<OrderModel>>(newPath);
   }
 
   getOrdersByUser(id: number): Observable<ResponseListModel<OrderModel>> {
-    let newPath = `${this.apiUrl}/api/orders/getbyid/?id=${id}`;
+    let newPath = `${this.apiUrl}/api/orders/${id}`;
     return this.httpClient.get<ResponseListModel<OrderModel>>(newPath);
   }
   deleteOrder(id: number): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/orders/delete/?id=${id}`;
+    let newPath = `${this.apiUrl}/api/orders/${id}`;
     return this.httpClient.delete<ResponseModel>(newPath);
   }
 }
