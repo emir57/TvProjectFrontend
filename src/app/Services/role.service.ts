@@ -30,11 +30,11 @@ export class RoleService {
     return this.httpClient.get<ResponseListModel<Role>>(newPath);
   }
   updateRole(role:Role):Observable<ResponseModel>{
-    let newPath = `${this.apiUrl}/api/roles/update`;
+    let newPath = `${this.apiUrl}/api/roles`;
     return this.httpClient.put<ResponseModel>(newPath,role);
   }
   deleteRole(role:Role):Observable<ResponseModel>{
-    let newPath = `${this.apiUrl}/api/roles/delete?roleId=${role.id}`;
+    let newPath = `${this.apiUrl}/api/roles/${role.id}`;
     return this.httpClient.delete<ResponseModel>(newPath);
   }
 }
