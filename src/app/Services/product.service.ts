@@ -29,15 +29,15 @@ export class ProductService {
     return this.httpClient.get<ResponseListModel<ProductAndPhoto>>(newPath);
   }
   addProduct(product: Product): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/tvs/add`;
+    let newPath = `${this.apiUrl}/api/tvs`;
     return this.httpClient.post<ResponseModel>(newPath, product);
   }
   updateProduct(product: Product): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/tvs/update`;
+    let newPath = `${this.apiUrl}/api/tvs`;
     return this.httpClient.put<ResponseModel>(newPath, product);
   }
   deleteProduct(product: Product): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/tvs/delete/?tvId=${product.id}`;
+    let newPath = `${this.apiUrl}/api/tvs/delete/${product.id}`;
     return this.httpClient.delete<ResponseModel>(newPath);
   }
 
