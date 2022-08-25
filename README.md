@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.15.
 <br>
+<h4>Startup</h4>
+<ol>
+<li>npm i</li>
+<li>ng serve</li>
+</ol>
+<br>
 <a href="https://github.com/emir57/TvProjectBackend">Backend</a>
 
 <img src="project_images/2.png"/>
