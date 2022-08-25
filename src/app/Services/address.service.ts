@@ -19,7 +19,7 @@ export class AddressService {
   ) { }
 
   getAddressesByUserId(userId: number): Observable<ResponseListModel<UserAddressCityModel>> {
-    let newPath = `${this.apiUrl}/api/user/${userId}/addresses`;
+    let newPath = `${this.apiUrl}/api/users/${userId}/addresses`;
     return this.httpClient.get<ResponseListModel<UserAddressCityModel>>(newPath);
   }
   deleteAddress(id: number): Observable<ResponseModel> {
