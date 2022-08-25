@@ -19,12 +19,12 @@ export class UserService {
   ) { }
 
   updateUser(updateUserModel: UpdateUserModel): Observable<ResponseModel> {
-    let newPath = `${this.apiUrl}/api/users/update`;
-    return this.httpClient.post<ResponseModel>(newPath, updateUserModel);
+    let newPath = `${this.apiUrl}/api/users`;
+    return this.httpClient.put<ResponseModel>(newPath, updateUserModel);
   }
   updateUserAdmin(updateUserModel: UpdateUserModel): Observable<ResponseModel> {
     let newPath = `${this.apiUrl}/api/users/updateAdmin`;
-    return this.httpClient.post<ResponseModel>(newPath, updateUserModel);
+    return this.httpClient.put<ResponseModel>(newPath, updateUserModel);
   }
 
   changePassword(changePasswordModel: ChangePasswordModel): Observable<ResponseModel> {
@@ -33,11 +33,11 @@ export class UserService {
   }
 
   getUsers(): Observable<ResponseListModel<User>> {
-    let newPath = `${this.apiUrl}/api/users/get`;
+    let newPath = `${this.apiUrl}/api/users`;
     return this.httpClient.get<ResponseListModel<User>>(newPath);
   }
   getUserById(id: number): Observable<ResponseSingleModel<User>> {
-    let newPath = `${this.apiUrl}/api/users/getbyid?id=${id}`;
+    let newPath = `${this.apiUrl}/api/users/${id}`;
     return this.httpClient.get<ResponseSingleModel<User>>(newPath);
   }
 
