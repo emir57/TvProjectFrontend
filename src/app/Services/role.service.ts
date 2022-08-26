@@ -22,11 +22,11 @@ export class RoleService {
     return this.httpClient.get<ResponseListModel<Role>>(newPath);
   }
   getById(id:number):Observable<ResponseSingleModel<Role>>{
-    let newPath = `${this.apiUrl}/api/roles/getbyid?id=${id}`;
+    let newPath = `${this.apiUrl}/api/roles/${id}`;
     return this.httpClient.get<ResponseSingleModel<Role>>(newPath);
   }
   getUserRoles(userId:number):Observable<ResponseListModel<Role>>{
-    let newPath = `${this.apiUrl}/api/roles/getuserroles?userId=${userId}`;
+    let newPath = `${this.apiUrl}/api/users/${userId}/roles`;
     return this.httpClient.get<ResponseListModel<Role>>(newPath);
   }
   updateRole(role:Role):Observable<ResponseModel>{
