@@ -17,7 +17,7 @@ export class CreditCardService {
     private httpClient: HttpClient
   ) { }
   getUserCreditCards(userId: number): Observable<ResponseListModel<CreditCardWithUser>> {
-    let newPath = `${this.apiUrl}/api/creditcards/getallbyuserid?userId=${userId}`;
+    let newPath = `${this.apiUrl}/api/users/${userId}/creditcards`;
     return this.httpClient.get<ResponseListModel<CreditCardWithUser>>(newPath);
   }
   add(creditCardModel: UserCreditCard): Observable<ResponseModel> {
