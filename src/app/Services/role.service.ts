@@ -18,7 +18,7 @@ export class RoleService {
   ) { }
 
   getRoles():Observable<ResponseListModel<Role>>{
-    let newPath = `${this.apiUrl}/api/roles/getall`;
+    let newPath = `${this.apiUrl}/api/roles`;
     return this.httpClient.get<ResponseListModel<Role>>(newPath);
   }
   getById(id:number):Observable<ResponseSingleModel<Role>>{
