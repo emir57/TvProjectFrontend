@@ -2,7 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.15.
 <br>
-<h4>Startup</h4>
+<h2>Startup</h2>
+<h5>Configure Api Url</h5>
+<img src="screenshots/api-url.png"/>
 <ol>
 <li>npm i</li>
 <li>ng serve</li>
