@@ -51,7 +51,8 @@ export class RegisterComponent implements OnInit {
           }
           this.isLoad = true;
         }, responseErr => {
-          console.log(responseErr)
+          this.toastrService.error(responseErr.error);
+          this.isLoad = true;
         })
     }
   }
