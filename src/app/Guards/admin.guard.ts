@@ -1,9 +1,10 @@
-import { Injectable, OnInit } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
+import { Observable, of, switchMap } from 'rxjs';
 import { Role } from '../Models/role';
 import { User } from '../Models/user';
 import { AuthService } from '../Services/auth.service';
+import { ResponseListModel } from '../Models/response/responseListModel';
 
 @Injectable({
   providedIn: 'root'
@@ -13,46 +14,36 @@ export class AdminGuard implements CanActivate {
   pageRole = "Admin";
   roles: Role[] = [];
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {
 
   }
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const result = new Subject<boolean>();
-    this.getUser().subscribe(response => {
-      this.currentUser = response.data
-    }, responseErr => { },
-      () => {
-        this.getRoles().subscribe(response => {
-          if (response.isSuccess) {
-            response.data.forEach(role => {
-              if (role.name == "Admin") {
-                result.next(true);
-                result.complete();
-                return result.asObservable();
-              }
-            })
-          }
-          result.next(false);
-          result.complete();
-          // this.router.navigate(["login"])
-        })
+    state: RouterStateSnapshot): Observable<boolean> {
+    return this.authService.getLoginUser().pipe(
+      switchMap(response => {
+        if (this.authService.isAuthenticated()) {
+          return of(response.data);
+        }
+        return of(null);
+      }),
+      switchMap((user: User | null) => {
+        if (user == null) {
+          return of(false);
+        }
+        return this.authService.getUserRoles(user.id)
+      }),
+      switchMap((rolesResponse: boolean | ResponseListModel<Role>) => {
+        if (!rolesResponse) {
+          return of(!!rolesResponse);
+        }
+        const response: ResponseListModel<Role> = rolesResponse as any;
+        if (response.isSuccess && response.data.map(r => r.name).includes('Admin')) {
+          return of(true);
+        }
+        return of(false);
       })
-    return result;
+    )
   }
-  getRoles() {
-    return this.authService.getUserRoles(this.currentUser.id)
-  }
-  getUser() {
-    if (this.authService.isAuthenticated()) {
-      return this.authService.getLoginUser()
-    }
-  }
-  isInRoleAdmin(): boolean {
-    return this.authService.isInRole(this.pageRole);
-  }
-
 }
