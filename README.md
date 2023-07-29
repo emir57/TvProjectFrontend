@@ -4,7 +4,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <p>
  ⚠️ Required NodeJs v13.14.0 ⚠️
 </p>
-<br>
 <h2>Startup</h2>
 <h5>Configure Api Url</h5>
 <img src="screenshots/api-url.png"/>
