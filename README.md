@@ -1,6 +1,9 @@
 # TvProjectFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.15.
+<p>
+ ⚠️ Required NodeJs v13.14.0 ⚠️
+</p>
 <br>
 <h2>Startup</h2>
 <h5>Configure Api Url</h5>
