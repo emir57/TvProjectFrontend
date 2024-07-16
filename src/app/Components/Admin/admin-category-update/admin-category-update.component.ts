@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/Models/category';
@@ -17,13 +17,13 @@ export class AdminCategoryUpdateComponent implements OnInit {
 
   isOk = true;
   category: Category
-  categoryUpdateForm: FormGroup
+  categoryUpdateForm: UntypedFormGroup
   constructor(
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private deleteAlertService: DeleteAlertService,
     private location: Location
   ) { }

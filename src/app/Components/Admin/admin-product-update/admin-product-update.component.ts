@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, Form } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormControl, Form } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrl } from 'src/app/Models/apiUrl';
@@ -23,8 +23,8 @@ export class AdminProductUpdateComponent implements OnInit {
 
   apiUrl = ApiUrl
   isOk = true;
-  productUpdateForm: FormGroup;
-  uploadImageForm: FormGroup;
+  productUpdateForm: UntypedFormGroup;
+  uploadImageForm: UntypedFormGroup;
   categories: Category[] = [];
   product: Product;
   selectedFile: File;
@@ -34,7 +34,7 @@ export class AdminProductUpdateComponent implements OnInit {
     private categoryService: CategoryService,
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private deleteAlertService: DeleteAlertService,
     private loadingService: LoadingService,
     private location: Location,

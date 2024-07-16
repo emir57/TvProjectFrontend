@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ApiUrl } from 'src/app/Models/apiUrl';
 import { Product } from 'src/app/Models/product';
@@ -15,11 +15,11 @@ export class AdminUploadimageComponent implements OnInit {
 
   searchString: string = "";
   isOk = true;
-  photoUploadForm: FormGroup
+  photoUploadForm: UntypedFormGroup
   products: Product[] = []
   selectedFile: File;
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private toastrService: ToastrService,
     private photoService: PhotoService,
     private productService: ProductService

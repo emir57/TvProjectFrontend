@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormControl, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -12,9 +12,9 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class RegisterComponent implements OnInit {
 
   isLoad = true;
-  registerForm: FormGroup
+  registerForm: UntypedFormGroup
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
     private toastrService: ToastrService,
     private router: Router

@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Role } from 'src/app/Models/role';
@@ -15,12 +15,12 @@ export class AdminRoleUpdateComponent implements OnInit {
 
   isOk = true;
   role: Role
-  updateForm: FormGroup
+  updateForm: UntypedFormGroup
   constructor(
     private roleService: RoleService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private toastrService: ToastrService,
     private location: Location
   ) { }

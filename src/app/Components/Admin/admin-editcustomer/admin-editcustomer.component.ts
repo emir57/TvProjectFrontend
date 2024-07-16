@@ -1,6 +1,6 @@
 import { getLocaleExtraDayPeriodRules, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Role } from 'src/app/Models/role';
@@ -15,7 +15,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AdminEditcustomerComponent implements OnInit {
 
-  updateForm: FormGroup
+  updateForm: UntypedFormGroup
   user: User;
   allRoles: Role[] = [];
   userRoles: Role[] = [];
@@ -23,7 +23,7 @@ export class AdminEditcustomerComponent implements OnInit {
   addedRoles: Role[] = [];
   removedRoles: Role[] = [];
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private router: Router,
     private toastrService: ToastrService,
     private userService: UserService,

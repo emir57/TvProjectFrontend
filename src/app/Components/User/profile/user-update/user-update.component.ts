@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user';
@@ -15,12 +15,12 @@ export class UserUpdateComponent implements OnInit {
 
   isOk = true;
   user: User
-  userUpdateForm: FormGroup;
-  resetPasswordForm: FormGroup
+  userUpdateForm: UntypedFormGroup;
+  resetPasswordForm: UntypedFormGroup
   constructor(
     private toastrService: ToastrService,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private userService:UserService,
     private authService:AuthService,
   ) { }

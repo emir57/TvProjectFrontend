@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/Models/category';
@@ -14,12 +14,12 @@ import { CategoryService } from 'src/app/Services/category.service';
 export class AdminCategoryAddComponent implements OnInit {
 
   isOk = true;
-  categoryAddForm: FormGroup
+  categoryAddForm: UntypedFormGroup
   constructor(
     private categoryService: CategoryService,
     private activatedRouter: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private toastrService: ToastrService,
     private location: Location
   ) { }

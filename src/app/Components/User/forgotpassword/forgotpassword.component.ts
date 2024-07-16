@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup,Validators,FormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup,Validators,FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
 
@@ -11,9 +11,9 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class ForgotpasswordComponent implements OnInit {
 
   isSend=true;
-  forgotPasswordForm:FormGroup
+  forgotPasswordForm:UntypedFormGroup
   constructor(
-    private formBuilder:FormBuilder,
+    private formBuilder:UntypedFormBuilder,
     private authService:AuthService,
     private toastrService:ToastrService
   ) { }

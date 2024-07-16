@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CreditCardService } from 'src/app/Services/credit-card.service';
 import { CreditCardWithUser } from 'src/app/Models/creditCardWithUser';
@@ -25,11 +25,11 @@ export class UserCreditcardsComponent implements OnInit {
   year: string = ""
 
   selectedCardId: number;
-  addForm: FormGroup;
+  addForm: UntypedFormGroup;
   userId: number = +sessionStorage.getItem("user")
   userCreditCards: CreditCardWithUser[] = []
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private toastrService: ToastrService,
     private creditCardService: CreditCardService,
     private deleteAlertService: DeleteAlertService

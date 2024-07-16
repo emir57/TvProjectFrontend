@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup,Validators,FormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup,Validators,FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -12,9 +12,9 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class ResetpasswordComponent implements OnInit {
 
   isLoad=true;
-  resetPasswordForm:FormGroup
+  resetPasswordForm:UntypedFormGroup
   constructor(
-    private formBuilder:FormBuilder,
+    private formBuilder:UntypedFormBuilder,
     private activatedRouted:ActivatedRoute,
     private toastrService:ToastrService,
     private router:Router,

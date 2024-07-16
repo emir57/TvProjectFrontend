@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/Models/category';
 import { Product } from 'src/app/Models/product';
@@ -15,11 +15,11 @@ import { ProductService } from 'src/app/Services/product.service';
 export class AdminProductAddComponent implements OnInit {
 
   isOk = true;
-  productAddForm: FormGroup;
+  productAddForm: UntypedFormGroup;
   categories: Category[] = [];
   selectedCategory: Category;
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private productService: ProductService,
     private categoryService: CategoryService,
     private toastrService: ToastrService,

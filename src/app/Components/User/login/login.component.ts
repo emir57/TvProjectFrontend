@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/user';
@@ -15,9 +15,9 @@ import { VerifyCodeBoxService } from 'src/app/Services/verify-code-box.service';
 export class LoginComponent implements OnInit {
 
   isOk = true;
-  loginForm: FormGroup
+  loginForm: UntypedFormGroup
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
     private toastrService: ToastrService,
     private router: Router,

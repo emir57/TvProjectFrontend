@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { City } from 'src/app/Models/city';
 import { UserAddress } from 'src/app/Models/userAddress';
@@ -18,8 +18,8 @@ import { DeleteAlertService } from 'src/app/Services/delete-alert.service';
 export class UserAddressComponent implements OnInit {
 
   address: UserAddress
-  addForm: FormGroup
-  updateForm: FormGroup
+  addForm: UntypedFormGroup
+  updateForm: UntypedFormGroup
   cities: City[] = []
   addresses: UserAddressCityModel[] = []
   selectedAddress: UserAddressCityModel;
@@ -27,7 +27,7 @@ export class UserAddressComponent implements OnInit {
   constructor(
     private addressService: AddressService,
     private toastrService: ToastrService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private cityService: CityService,
     private deleteAlertService: DeleteAlertService
   ) { }
