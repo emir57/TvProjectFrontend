@@ -2,7 +2,7 @@
   <div class="position-sticky pt-3">
     <ul class="nav flex-column">
       <li class="nav-item" *ngFor="let item of items">
-        <a [class]="getItemClass(item)" aria-current="page" [routerLink]="item.link">
+        <a [class]="getItemClass(item)" aria-current="page" [routerLink]="[item.link]">
           <span [innerHtml]="item.displayName"></span>
         </a>
       </li>
