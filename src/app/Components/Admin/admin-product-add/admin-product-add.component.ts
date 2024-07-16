@@ -2,7 +2,6 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { $ } from 'protractor';
 import { Category } from 'src/app/Models/category';
 import { Product } from 'src/app/Models/product';
 import { CategoryService } from 'src/app/Services/category.service';
@@ -46,7 +45,7 @@ export class AdminProductAddComponent implements OnInit {
       screenType: ['', [Validators.required, Validators.maxLength(50)]],
       screenInch: ['', [Validators.required, Validators.maxLength(10)]],
       extras: ['', [Validators.maxLength(50)]],
-      brandId: [0, [Validators.required, Validators.min(1)]],
+      brandId: [null, [Validators.required]],
       unitPrice: [, [Validators.required, Validators.min(500)]],
       discount: [, []],
       isDiscount: [false, []],

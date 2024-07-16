@@ -14,7 +14,7 @@
         </div>
         <div class="col-6 mb-3">
           <select class="form-control" name="cityId" id="cityId" formControlName="cityId">
-            <option value="0">Şehir Seçiniz</option>
+            <option [value]="null">Şehir Seçiniz</option>
             <option *ngFor="let city of cities" [value]="city.id">{{city.cityName}}</option>
           </select>
         </div>
@@ -46,7 +46,7 @@
           </div>
           <div class="col-12 mb-3">
             <select class="form-control" name="cityId" id="cityId" formControlName="cityId">
-              <option value="0">Şehir Seçiniz</option>
+              <option [value]="null">Şehir Seçiniz</option>
               <option *ngFor="let city of cities" [value]="city.id">{{city.cityName}}</option>
             </select>
           </div>

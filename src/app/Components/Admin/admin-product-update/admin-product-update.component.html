@@ -85,7 +85,7 @@
         <!-- Brand -->
         <div class="form-group col-12 mb-3">
           <select formControlName="brandId" id="brandId" class="form-control">
-            <option [value]="productUpdateForm.get('brandId').value">Marka Seçiniz</option>
+            <option [value]="null">Marka Seçiniz</option>
             <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
           </select>
           <div

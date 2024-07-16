@@ -110,7 +110,7 @@ export class AdminProductUpdateComponent implements OnInit {
       screenType: [this.product.screenType, [Validators.required, Validators.maxLength(50)]],
       screenInch: [this.product.screenInch, [Validators.required, Validators.maxLength(10)]],
       extras: [this.product.extras, [Validators.maxLength(50)]],
-      brandId: [this.product.brandId, [Validators.required, Validators.min(1)]],
+      brandId: [this.product.brandId, [Validators.required]],
       unitPrice: [this.product.unitPrice, [Validators.required, Validators.min(500)]],
       discount: [this.product.discount, []],
       isDiscount: [this.product.isDiscount, []],

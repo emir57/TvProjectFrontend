@@ -44,7 +44,7 @@ export class UserAddressComponent implements OnInit {
       addressName: ['', [Validators.required, Validators.maxLength(20)]],
       addressText: ['', [Validators.required, Validators.maxLength(200)]],
       userId: [this.userId, []],
-      cityId: [0, [Validators.required, Validators.min(1)]],
+      cityId: [null, [Validators.required]],
     })
   }
   createUpdateForm() {
@@ -53,7 +53,7 @@ export class UserAddressComponent implements OnInit {
       addressName: ['', [Validators.required, Validators.maxLength(20)]],
       addressText: ['', [Validators.required, Validators.maxLength(200)]],
       userId: [this.userId, []],
-      cityId: [0, [Validators.required, Validators.min(1)]],
+      cityId: [null, [Validators.required]],
     })
   }
   getCities() {

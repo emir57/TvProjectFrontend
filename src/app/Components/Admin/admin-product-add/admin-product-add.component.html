@@ -76,7 +76,7 @@
       <div class="form-group col-md-12 mb-3">
         <select (click)="selectCategory(productAddForm.get('brandId'))" formControlName="brandId" id="brandId"
           class="form-control">
-          <option *ngIf="!selectedCategory" [value]="productAddForm.get('brandId').value">Marka Seçiniz</option>
+          <option *ngIf="!selectedCategory" [value]="null">Marka Seçiniz</option>
           <option *ngIf="selectedCategory" [value]="productAddForm.get('brandId').value">{{selectedCategory.name}}
           </option>
           <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
