@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AuthService } from '../Services/auth.service';
@@ -7,7 +7,7 @@ import { AuthService } from '../Services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ExpirationGuard implements CanActivate {
+export class ExpirationGuard  {
   constructor(
     private router:Router,
     private toastrService:ToastrService,

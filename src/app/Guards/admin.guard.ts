@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, of, switchMap } from 'rxjs';
 import { Role } from '../Models/role';
 import { User } from '../Models/user';
@@ -9,7 +9,7 @@ import { ResponseListModel } from '../Models/response/responseListModel';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class AdminGuard  {
   currentUser: User
   pageRole = "Admin";
   roles: Role[] = [];
