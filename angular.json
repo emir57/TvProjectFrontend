@@ -77,10 +77,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "TvProjectFrontend:build:production"
+              "buildTarget": "TvProjectFrontend:build:production"
             },
             "development": {
-              "browserTarget": "TvProjectFrontend:build:development"
+              "buildTarget": "TvProjectFrontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TvProjectFrontend:build"
+            "buildTarget": "TvProjectFrontend:build"
           }
         },
         "test": {
